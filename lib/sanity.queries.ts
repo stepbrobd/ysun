@@ -1,4 +1,4 @@
-import { groq } from 'next-sanity'
+import { groq } from "next-sanity";
 
 export const homePageQuery = groq`
   *[_type == "home"][0]{
@@ -15,11 +15,11 @@ export const homePageQuery = groq`
     }, 
     title, 
   }
-`
+`;
 
 export const homePageTitleQuery = groq`
   *[_type == "home"][0].title
-`
+`;
 
 export const pagesBySlugQuery = groq`
   *[_type == "page" && slug.current == $slug][0] {
@@ -29,7 +29,7 @@ export const pagesBySlugQuery = groq`
     slug,
     title,
   }
-`
+`;
 
 export const projectBySlugQuery = groq`
   *[_type == "project" && slug.current == $slug][0] {
@@ -44,7 +44,7 @@ export const projectBySlugQuery = groq`
     tags,
     title,
   }
-`
+`;
 
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
@@ -56,4 +56,4 @@ export const settingsQuery = groq`
     },
     ogImage,
   }
-`
+`;
