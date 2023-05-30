@@ -15,7 +15,7 @@ const PostLaTeX = ({ value }) => {
     return <LaTeX body={value.body} />;
   } else
     return (
-      <span className="block mb-4">
+      <span className="mb-4 block">
         <LaTeX body={value.body} />
       </span>
     );
@@ -23,7 +23,7 @@ const PostLaTeX = ({ value }) => {
 
 const PostCode = ({ value }) => {
   return (
-    <span className="block mb-4">
+    <span className="mb-4 block">
       {" "}
       <Code language={value.language} code={value.code} />
     </span>
@@ -33,7 +33,7 @@ const PostCode = ({ value }) => {
 const PostImage = ({ value }) => {
   const { width, height } = getImageDimensions(value);
   return (
-    <span className="block mb-4">
+    <span className="mb-4 block">
       {" "}
       <Image
         src={urlForImage(value).url()}
@@ -48,7 +48,7 @@ const PostImage = ({ value }) => {
 
 const PostLink = ({ value }) => {
   return (
-    <span className="block mb-4">
+    <span className="mb-4 block">
       {" "}
       <Link href={urlForAsset(value)}>{value.name}</Link>
     </span>
@@ -57,7 +57,7 @@ const PostLink = ({ value }) => {
 
 const PostVideo = ({ value }) => {
   return (
-    <span className="block mb-4">
+    <span className="mb-4 block">
       {" "}
       <Video title={value.title} payload={value.payload} />
     </span>
@@ -76,37 +76,37 @@ const components = {
   block: {
     normal: (props) => <p className="text mb-4">{props.children}</p>,
     blockquote: (props) => (
-      <blockquote className="text blockquote mb-4 bg-action">
+      <blockquote className="text blockquote bg-action mb-4">
         {props.children}
       </blockquote>
     ),
     h1: (props) => (
-      <h1 className="heading text text-6xl mt-16 mb-4">
+      <h1 className="heading text mb-4 mt-16 text-6xl">
         <Balancer>{props.children}</Balancer>
       </h1>
     ),
     h2: (props) => (
-      <h2 className="heading text text-5xl mt-12 mb-4">
+      <h2 className="heading text mb-4 mt-12 text-5xl">
         <Balancer>{props.children}</Balancer>
       </h2>
     ),
     h3: (props) => (
-      <h3 className="heading text text-4xl mt-8 mb-4">
+      <h3 className="heading text mb-4 mt-8 text-4xl">
         <Balancer>{props.children}</Balancer>
       </h3>
     ),
     h4: (props) => (
-      <h4 className="heading text text-3xl mt-6 mb-4">
+      <h4 className="heading text mb-4 mt-6 text-3xl">
         <Balancer>{props.children}</Balancer>
       </h4>
     ),
     h5: (props) => (
-      <h5 className="heading text text-2xl mt-5 mb-4">
+      <h5 className="heading text mb-4 mt-5 text-2xl">
         <Balancer>{props.children}</Balancer>
       </h5>
     ),
     h6: (props) => (
-      <h6 className="heading text text-xl mt-4 mb-4">
+      <h6 className="heading text mb-4 mt-4 text-xl">
         <Balancer>{props.children}</Balancer>
       </h6>
     ),
@@ -132,10 +132,10 @@ const components = {
 
   list: {
     bullet: (props) => (
-      <ul className="list-disc pl-8 mb-4">{props.children}</ul>
+      <ul className="mb-4 list-disc pl-8">{props.children}</ul>
     ),
     number: (props) => (
-      <ol className="list-decimal pl-8 mb-4">{props.children}</ol>
+      <ol className="mb-4 list-decimal pl-8">{props.children}</ol>
     ),
   },
 

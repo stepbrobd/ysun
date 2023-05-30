@@ -11,13 +11,13 @@ export default function Alert({
   if (!preview) return null;
 
   return (
-    <div className="border-b border-accent-7 bg-accent-7 text-white">
+    <div className="border-accent-7 bg-accent-7 border-b text-white">
       <Container>
         <div className="py-2 text-center text-sm">
           {loading ? "Loading... " : "Preview mode enabled. "}
           <a
             href="/api/exit-preview"
-            className="underline transition-colors duration-200 hover:text-cyan"
+            className="hover:text-cyan underline transition-colors duration-200"
           >
             Click here
           </a>{" "}
