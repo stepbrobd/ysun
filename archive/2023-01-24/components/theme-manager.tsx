@@ -58,7 +58,7 @@ const ThemeManager = () => {
       {({ open }) => (
         <>
           <div className="relative w-[150px] min-w-[150px]">
-            <Listbox.Button className="relative rounded-md border border-color py-1.5 px-2 text-center w-[150px] min-w-[150px] focus:outline-none">
+            <Listbox.Button className="border-color relative w-[150px] min-w-[150px] rounded-md border px-2 py-1.5 text-center focus:outline-none">
               <span className="flex flex-row items-center justify-center">
                 <selected.Icon className="absolute left-[10px]" />
                 <span className="block truncate">{selected.Name}</span>
@@ -72,18 +72,18 @@ const ThemeManager = () => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute overflow-auto rounded-md border-x border-b border-color divide-y divide-color focus:outline-none w-[150px] min-w-[150px] flex flex-col items-center justify-center">
+              <Listbox.Options className="border-color divide-color absolute flex w-[150px] min-w-[150px] flex-col items-center justify-center divide-y overflow-auto rounded-md border-x border-b focus:outline-none">
                 {options.map((theme) => (
                   <Listbox.Option
                     key={theme.Value}
-                    className="relative select-none w-[150px] min-w-[150px]"
+                    className="relative w-[150px] min-w-[150px] select-none"
                     value={theme}
                   >
                     {({ selected, active }) => (
                       <div
                         className={classNames(
                           active ? "bg-action" : "",
-                          "flex flex-row items-center justify-center py-1.5 px-2 w-[150px] min-w-[150px]"
+                          "flex w-[150px] min-w-[150px] flex-row items-center justify-center px-2 py-1.5"
                         )}
                       >
                         <theme.Icon className="absolute left-[10px]" />
@@ -93,7 +93,7 @@ const ThemeManager = () => {
                         {selected ? (
                           <CheckmarkIcon className="absolute right-[10px]" />
                         ) : (
-                          <div className="h-[16px] min-h-[16px] w-[16px] min-w-[16px] absolute right-[10px]" />
+                          <div className="absolute right-[10px] h-[16px] min-h-[16px] w-[16px] min-w-[16px]" />
                         )}
                       </div>
                     )}

@@ -10,7 +10,7 @@ type VideoProps = {
 const Video = ({ title, payload }: VideoProps) => {
   return (
     <span className="z-0 block">
-      <span className="z-10 block min-w-full rounded-md text-center overflow-hidden items-center justify-center">
+      <span className="z-10 block min-w-full items-center justify-center overflow-hidden rounded-md text-center">
         <span className="flex items-center justify-center">
           <MuxPlayer
             className="scale-y-105 border-none"
