@@ -1,17 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "build": "next build",
     "dev": "next",
-    "format": "npx prettier --write . --ignore-path .gitignore",
-    "lint": "next lint -- --ignore-path .gitignore",
-    "lint:fix": "npm run format && npm run lint -- --fix",
+    "build": "next build",
     "start": "next start",
+    "lint": "next lint -- --ignore-path .gitignore",
+    "lint:fix": "pnpm run format && pnpm run lint -- --fix",
+    "format": "pnpx prettier --write . --ignore-path .gitignore",
     "type-check": "tsc --noEmit"
-  },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
   },
   "dependencies": {
     "@next/font": "13.3.2",
