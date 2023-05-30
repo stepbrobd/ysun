@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+}
+
+@layer components {
+    .bg {
+        @apply bg-white;
+        @apply dark:bg-black;
+    }
+
+    .bg-action {
+        @apply bg-neutral-300;
+        @apply dark:bg-neutral-800;
+    }
+
+    .border-color {
+        @apply border-neutral-400;
+        @apply dark:border-neutral-600;
+    }
+
+    .divide-color {
+        @apply divide-neutral-400;
+        @apply dark:divide-neutral-600;
+    }
+
+    .text {
+        @apply text-neutral-900;
+        @apply dark:text-neutral-200;
+    }
+
+    .heading {
+        @apply font-bold leading-snug;
+    }
+
+    .link {
+        @apply underline decoration-dashed decoration-from-font;
+        @apply text-neutral-600  hover:decoration-solid active:decoration-solid;
+        @apply dark:text-neutral-400  dark:hover:decoration-solid dark:active:decoration-solid;
+    }
+
+    .blockquote {
+        @apply border-l-4;
+        @apply border-neutral-400;
+        @apply dark:border-neutral-600;
+        @apply pl-4;
+        @apply italic;
+        @apply text-neutral-800;
+        @apply dark:text-neutral-300;
+    }
+
+    .code {
+        @apply rounded border-[1px];
+        @apply bg-white border-[#dddddd];
+        @apply dark:bg-[#1e1e1e] dark:border-none;
+    }
+}
