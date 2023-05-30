@@ -1,0 +1,15 @@
+Code hosted on GitHub and on a self-hosted Soft Serve by Charm.sh deployed on Fly.io.
+
+Deployed on Vercel which uses AWS as backend.
+
+Without these following open source projects, you wouldn't be seeing this site right now. Thank you to all the developers who have made this possible!
+
+- TypeScript           <https://www.typescriptlang.org>
+- React                <https://reactjs.org>
+- Next.js              <https://nextjs.org>
+- Tailwind CSS         <https://tailwindcss.com>
+- MDX                  <https://mdxjs.com>
+- React Headroom       <https://github.com/KyleAMathews/react-headroom>
+- Next Sitemap         <https://github.com/iamvishnusankar/next-sitemap>
+- Next Themes          <https://github.com/pacocoursey/next-themes>
+- Next.js Progressbar  <https://github.com/apal21/nextjs-progressbar>
