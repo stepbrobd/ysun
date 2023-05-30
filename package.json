@@ -10,7 +10,6 @@
         "type-check": "tsc --noEmit"
     },
     "dependencies": {
-        "@next/font": "13.3.2",
         "@portabletext/react": "3.0.0",
         "@sanity/demo": "1.0.2",
         "@sanity/image-url": "1.0.2",
@@ -21,7 +20,6 @@
         "date-fns": "2.30.0",
         "intl-segmenter-polyfill": "0.4.4",
         "next": "13.3.2",
-        "next-google-fonts": "2.2.0",
         "next-sanity": "4.3.2",
         "react": "18.2.0",
         "react-dom": "18.2.0",
@@ -34,15 +32,15 @@
     },
     "devDependencies": {
         "@types/react": "18.2.0",
-        "autoprefixer": "^10.4.13",
-        "eslint": "^8.29.0",
+        "autoprefixer": "^10.4.14",
+        "eslint": "^8.41.0",
         "eslint-config-next": "13.3.1",
         "eslint-plugin-simple-import-sort": "^10.0.0",
-        "postcss": "^8.4.19",
-        "prettier": "^2.8.1",
-        "prettier-plugin-packagejson": "^2.3.0",
-        "prettier-plugin-tailwindcss": "^0.2.0",
+        "postcss": "^8.4.24",
+        "prettier": "^2.8.8",
+        "prettier-plugin-packagejson": "^2.4.3",
+        "prettier-plugin-tailwindcss": "^0.2.8",
         "tailwindcss": "3.3.2",
-        "typescript": "^5.0.0"
+        "typescript": "^5.0.4"
     }
 }
