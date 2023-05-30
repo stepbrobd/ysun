@@ -57,7 +57,7 @@
 
     .code {
         @apply rounded border-[1px];
-        @apply bg-white border-[#dddddd];
-        @apply dark:bg-[#1e1e1e] dark:border-none;
+        @apply border-[#dddddd] bg-white;
+        @apply dark:border-none dark:bg-[#1e1e1e];
     }
 }

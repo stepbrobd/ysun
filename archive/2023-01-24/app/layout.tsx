@@ -8,10 +8,10 @@ const Layout = ({ children }) => {
   return (
     <html lang="en-US">
       <head />
-      <body className="bg-white dark:bg-black selection:bg-highlight">
+      <body className="bg-white selection:bg-highlight dark:bg-black">
         <Providers>
           {children}
-          <div className="flex justify-center items-center pb-[200px]">
+          <div className="flex items-center justify-center pb-[200px]">
             <ThemeManager />
           </div>
         </Providers>

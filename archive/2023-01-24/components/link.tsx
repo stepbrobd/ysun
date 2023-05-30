@@ -13,7 +13,7 @@ const Link = (props: LinkProps) => {
       props.href.startsWith("mailto") ||
       props.href.startsWith("tel") ? (
         <a
-          className="inline link"
+          className="link inline"
           href={props.href}
           rel="noopener noreferrer"
           target={props.newTab ? "_blank" : "_self"}
@@ -39,7 +39,7 @@ const Link = (props: LinkProps) => {
           </span>
         </a>
       ) : (
-        <NextLink href={props.href} className="inline link">
+        <NextLink href={props.href} className="link inline">
           {props.children}
           <span className="max-h-[39px] min-h-[39px] min-w-[39px] max-w-[39px]">
             <svg

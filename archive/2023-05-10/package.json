@@ -1,11 +1,11 @@
 {
     "private": true,
     "scripts": {
-        "dev": "next dev",
         "build": "next build",
-        "start": "next start",
+        "dev": "next dev",
+        "format": "pnpx prettier --write . --ignore-path .gitignore",
         "lint": "next lint",
-        "format": "pnpx prettier --write . --ignore-path .gitignore"
+        "start": "next start"
     },
     "dependencies": {
         "@next/env": "^13.4.1",
