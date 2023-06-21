@@ -5,7 +5,11 @@ import ScrollUp from "components/shared/ScrollUp";
 import Link from "next/link";
 import type { ProjectPayload } from "types";
 
-export function ProjectPage({ data }: { data: ProjectPayload }) {
+export interface ProjectPageProps {
+    data: ProjectPayload | null;
+}
+
+export function ProjectPage({ data }: ProjectPageProps) {
     // Default to an empty object to allow previews on non-existent documents
     const {
         client,
@@ -16,7 +20,7 @@ export function ProjectPage({ data }: { data: ProjectPayload }) {
         site,
         tags,
         title,
-    } = data || {};
+    } = data ?? {};
 
     const startYear = new Date(duration?.start!).getFullYear();
     const endYear = duration?.end
