@@ -31,6 +31,7 @@
     },
     "devDependencies": {
         "@types/react": "18.2.13",
+        "@portabletext/types": "^2.0.2",
         "autoprefixer": "^10.4.14",
         "eslint": "^8.43.0",
         "eslint-config-next": "13.4.6",

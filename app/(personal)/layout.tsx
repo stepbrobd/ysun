@@ -5,7 +5,6 @@ import { Footer } from "components/global/Footer";
 import { Navbar } from "components/global/Navbar";
 import { PreviewBanner } from "components/preview/PreviewBanner";
 import PreviewProvider from "components/preview/PreviewProvider";
-import IntroTemplate from "intro-template";
 import { readToken } from "lib/sanity.api";
 import { getClient } from "lib/sanity.client";
 import { settingsQuery } from "lib/sanity.queries";
@@ -36,7 +35,6 @@ export default async function IndexRoute({
                 {children}
             </div>
             <Footer footer={settings.footer as PortableTextBlock[]} />
-            <IntroTemplate />
         </div>
     );
 
