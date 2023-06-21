@@ -7,10 +7,10 @@
  * https://github.com/sanity-io/next-sanity
  */
 
-import Studio from "./Studio";
+import SanityStudio from "./sanity-studio";
 
 export { metadata } from "next-sanity/studio/metadata";
 
 export default function StudioPage() {
-    return <Studio />;
+    return <SanityStudio />;
 }
