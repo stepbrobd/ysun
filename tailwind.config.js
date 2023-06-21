@@ -9,11 +9,10 @@ module.exports = {
     ],
     theme: {
         ...theme,
-        // Overriding fontFamily to use @next/font loaded families
         fontFamily: {
-            mono: "var(--font-mono)",
-            sans: "var(--font-sans)",
-            serif: "var(--font-serif)",
+            serif: ["var(--font-tinos)"],
+            sans: ["var(--font-inter)"],
+            mono: ["var(--font-jetbrains-mono)"],
         },
     },
     plugins: [require("@tailwindcss/typography")],
