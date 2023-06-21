@@ -1,6 +1,6 @@
 import "tailwindcss/tailwind.css";
 
-import { Tinos, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Tinos } from "next/font/google";
 
 const serif = Tinos({
     weight: ["400", "700"],
