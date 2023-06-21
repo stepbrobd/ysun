@@ -1,38 +1,64 @@
+import { toPlainText } from "@portabletext/react";
 import { ProjectPage } from "components/pages/project/ProjectPage";
-import { ProjectPreview } from "components/pages/project/ProjectPreview";
-import { PreviewSuspense } from "components/preview/PreviewSuspense";
-import { PreviewWrapper } from "components/preview/PreviewWrapper";
-import { getProjectBySlug } from "lib/sanity.client";
-import { getPreviewToken } from "lib/sanity.server.preview";
+import ProjectPreview from "components/pages/project/ProjectPreview";
+import { readToken } from "lib/sanity.api";
+import { getClient } from "lib/sanity.client";
+import {
+    homePageTitleQuery,
+    projectBySlugQuery,
+    projectPaths,
+} from "lib/sanity.queries";
+import { defineMetadata } from "lib/utils.metadata";
+import { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
+import { ProjectPayload } from "types";
 
-export default async function ProjectSlugRoute({
-    params,
-}: {
+type Props = {
     params: { slug: string };
-}) {
-    const token = getPreviewToken();
-    const data = await getProjectBySlug({ slug: params.slug });
+};
 
-    if (!data && !token) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug } = params;
+    const preview = draftMode().isEnabled ? { token: readToken! } : undefined;
+    const client = getClient(preview);
+
+    const [homePageTitle, project] = await Promise.all([
+        client.fetch<string | null>(homePageTitleQuery),
+        client.fetch<ProjectPayload | null>(projectBySlugQuery, {
+            slug,
+        }),
+    ]);
+
+    return defineMetadata({
+        baseTitle: homePageTitle ?? undefined,
+        description: project?.overview ? toPlainText(project.overview) : "",
+        image: project?.coverImage,
+        title: project?.title,
+    });
+}
+
+export async function generateStaticParams() {
+    const client = getClient();
+    const slugs = await client.fetch<string[]>(projectPaths);
+    return slugs.map((slug) => ({ slug }));
+}
+
+export default async function ProjectSlugRoute({ params }: Props) {
+    const { slug } = params;
+    const preview = draftMode().isEnabled ? { token: readToken! } : undefined;
+    const client = getClient(preview);
+    const data = await client.fetch<ProjectPayload | null>(projectBySlugQuery, {
+        slug,
+    });
+
+    if (!data && !preview) {
         notFound();
     }
 
-    return (
-        <>
-            {token ? (
-                <PreviewSuspense
-                    fallback={
-                        <PreviewWrapper>
-                            <ProjectPage data={data!} />
-                        </PreviewWrapper>
-                    }
-                >
-                    <ProjectPreview token={token} slug={params.slug} />
-                </PreviewSuspense>
-            ) : (
-                <ProjectPage data={data!} />
-            )}
-        </>
+    return preview ? (
+        <ProjectPreview data={data} />
+    ) : (
+        <ProjectPage data={data} />
     );
 }

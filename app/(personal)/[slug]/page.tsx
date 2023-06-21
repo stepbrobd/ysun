@@ -1,39 +1,60 @@
+import { toPlainText } from "@portabletext/react";
 import { Page } from "components/pages/page/Page";
-import { PagePreview } from "components/pages/page/PagePreview";
-import { PreviewSuspense } from "components/preview/PreviewSuspense";
-import { PreviewWrapper } from "components/preview/PreviewWrapper";
-import { getPageBySlug } from "lib/sanity.client";
-import { getPreviewToken } from "lib/sanity.server.preview";
+import PagePreview from "components/pages/page/PagePreview";
+import { readToken } from "lib/sanity.api";
+import { getClient } from "lib/sanity.client";
+import {
+    homePageTitleQuery,
+    pagePaths,
+    pagesBySlugQuery,
+    settingsQuery,
+} from "lib/sanity.queries";
+import { defineMetadata } from "lib/utils.metadata";
+import { Metadata } from "next";
+import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
+import { PagePayload, SettingsPayload } from "types";
 
-export default async function PageSlugRoute({
-    params,
-}: {
+type Props = {
     params: { slug: string };
-}) {
-    const { slug } = params;
-    const token = getPreviewToken();
-    const data = await getPageBySlug({ slug });
+};
 
-    if (!data && !token) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug } = params;
+    const preview = draftMode().isEnabled ? { token: readToken! } : undefined;
+    const client = getClient(preview);
+
+    const [settings, page, homePageTitle] = await Promise.all([
+        client.fetch<SettingsPayload | null>(settingsQuery),
+        client.fetch<PagePayload | null>(pagesBySlugQuery, { slug }),
+        client.fetch<string | null>(homePageTitleQuery),
+    ]);
+
+    return defineMetadata({
+        baseTitle: homePageTitle ?? undefined,
+        description: page?.overview ? toPlainText(page.overview) : "",
+        image: settings?.ogImage,
+        title: page?.title,
+    });
+}
+
+export async function generateStaticParams() {
+    const client = getClient();
+    const slugs = await client.fetch<string[]>(pagePaths);
+    return slugs.map((slug) => ({ slug }));
+}
+
+export default async function PageSlugRoute({ params }: Props) {
+    const { slug } = params;
+    const preview = draftMode().isEnabled ? { token: readToken! } : undefined;
+    const client = getClient(preview);
+    const data = await client.fetch<PagePayload | null>(pagesBySlugQuery, {
+        slug,
+    });
+
+    if (!data && !preview) {
         notFound();
     }
 
-    return (
-        <>
-            {token ? (
-                <PreviewSuspense
-                    fallback={
-                        <PreviewWrapper>
-                            <Page data={data!} />
-                        </PreviewWrapper>
-                    }
-                >
-                    <PagePreview token={token} slug={params.slug} />
-                </PreviewSuspense>
-            ) : (
-                <Page data={data!} />
-            )}
-        </>
-    );
+    return preview ? <PagePreview data={data} /> : <Page data={data} />;
 }
