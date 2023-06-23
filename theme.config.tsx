@@ -1,11 +1,9 @@
-import React from "react";
-
+import Footer from "components/footer";
+import Head from "components/head";
+import Logo from "components/logo";
 import { useRouter } from "next/router";
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
-
-import Logo from "components/logo";
-import Head from "components/head";
-import Footer from "components/footer";
+import React from "react";
 
 const config: DocsThemeConfig = {
   navigation: false,
@@ -31,12 +29,9 @@ const config: DocsThemeConfig = {
   logoLink: "/",
 
   useNextSeoProps() {
-    const { asPath } = useRouter();
-    if (asPath !== "/") {
-      return {
-        titleTemplate: "%s – Yifei Sun",
-      };
-    }
+    return {
+      titleTemplate: "%s – Yifei Sun",
+    };
   },
 
   head: () => {
@@ -49,7 +44,7 @@ const config: DocsThemeConfig = {
     return (
       <Head
         url={url}
-        title={frontMatter.title}
+        title={`${frontMatter.title} - Yifei Sun`}
         description={frontMatter.description}
       />
     );
