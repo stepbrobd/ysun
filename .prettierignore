@@ -1,0 +1,5 @@
+archive
+
+**/.git
+**/node_modules
+**/.next
