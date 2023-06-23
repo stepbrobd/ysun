@@ -1,0 +1,14 @@
+{
+  "index": {
+    "title": "About",
+    "type": "page"
+  },
+  "writing": {
+    "title": "Writing",
+    "type": "page"
+  },
+  "cv": {
+    "title": "CV",
+    "type": "page"
+  }
+}
