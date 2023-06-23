@@ -64,15 +64,24 @@ const Head = ({
 
       <meta
         property="description"
-        content={description || defaultDescription}
+        content={
+          description.substring(0, 197) + "..." ||
+          defaultDescription.substring(0, 197) + "..."
+        }
       />
       <meta
         property="og:description"
-        content={description || defaultDescription}
+        content={
+          description.substring(0, 197) + "..." ||
+          defaultDescription.substring(0, 197) + "..."
+        }
       />
       <meta
         property="twitter:description"
-        content={description || defaultDescription}
+        content={
+          description.substring(0, 197) + "..." ||
+          defaultDescription.substring(0, 197) + "..."
+        }
       />
 
       <meta property="og:image" content="https://ysun.co/og.png" />
