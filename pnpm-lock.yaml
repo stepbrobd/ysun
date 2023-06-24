@@ -5,6 +5,9 @@ settings:
     excludeLinksFromLockfile: false
 
 dependencies:
+    "@vercel/kv":
+        specifier: ^0.2.2
+        version: 0.2.2
     "@vercel/og":
         specifier: ^0.5.8
         version: 0.5.8
@@ -857,6 +860,29 @@ packages:
             "@typescript-eslint/types": 5.60.0
             eslint-visitor-keys: 3.4.1
         dev: true
+
+    /@upstash/redis@1.21.0:
+        resolution:
+            {
+                integrity: sha512-c6M+cl0LOgGK/7Gp6ooMkIZ1IDAJs8zFR+REPkoSkAq38o7CWFX5FYwYEqGZ6wJpUGBuEOr/7hTmippXGgL25A==,
+            }
+        dependencies:
+            isomorphic-fetch: 3.0.0
+        transitivePeerDependencies:
+            - encoding
+        dev: false
+
+    /@vercel/kv@0.2.2:
+        resolution:
+            {
+                integrity: sha512-mqnQOB6bkp4h5eObxfLNIlhlVqOGSH8cWOlC5pDVWTjX3zL8dETO1ZBl6M74HBmeBjbD5+J7wDJklRigY6UNKw==,
+            }
+        engines: { node: ">=14.6" }
+        dependencies:
+            "@upstash/redis": 1.21.0
+        transitivePeerDependencies:
+            - encoding
+        dev: false
 
     /@vercel/og@0.5.8:
         resolution:
@@ -3819,6 +3845,18 @@ packages:
                 integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==,
             }
 
+    /isomorphic-fetch@3.0.0:
+        resolution:
+            {
+                integrity: sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==,
+            }
+        dependencies:
+            node-fetch: 2.6.11
+            whatwg-fetch: 3.6.2
+        transitivePeerDependencies:
+            - encoding
+        dev: false
+
     /jiti@1.18.2:
         resolution:
             {
@@ -5091,6 +5129,21 @@ packages:
             zod: 3.21.4
         transitivePeerDependencies:
             - supports-color
+        dev: false
+
+    /node-fetch@2.6.11:
+        resolution:
+            {
+                integrity: sha512-4I6pdBY1EthSqDmJkiNk3JIT8cswwR9nfeW/cPdUagJYEQG7R95WRH74wpz7ma8Gh/9dI9FP+OU+0E4FvtA55w==,
+            }
+        engines: { node: 4.x || >=6.0.0 }
+        peerDependencies:
+            encoding: ^0.1.0
+        peerDependenciesMeta:
+            encoding:
+                optional: true
+        dependencies:
+            whatwg-url: 5.0.0
         dev: false
 
     /node-releases@2.0.12:
@@ -6553,6 +6606,13 @@ packages:
             is-number: 7.0.0
         dev: true
 
+    /tr46@0.0.3:
+        resolution:
+            {
+                integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==,
+            }
+        dev: false
+
     /trim-lines@3.0.1:
         resolution:
             {
@@ -6959,6 +7019,30 @@ packages:
             {
                 integrity: sha512-PgF341avzqyx60neE9DD+XS26MMNMoUQRz9NOZwW32nPQrF6p77f1htcnjBSEV8BGMKZ16choqUG4hyI0Hx7mA==,
             }
+        dev: false
+
+    /webidl-conversions@3.0.1:
+        resolution:
+            {
+                integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==,
+            }
+        dev: false
+
+    /whatwg-fetch@3.6.2:
+        resolution:
+            {
+                integrity: sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==,
+            }
+        dev: false
+
+    /whatwg-url@5.0.0:
+        resolution:
+            {
+                integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==,
+            }
+        dependencies:
+            tr46: 0.0.3
+            webidl-conversions: 3.0.1
         dev: false
 
     /which-boxed-primitive@1.0.2:
