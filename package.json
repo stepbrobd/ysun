@@ -5,6 +5,7 @@
         "start": "next start"
     },
     "dependencies": {
+        "@vercel/og": "^0.5.8",
         "next": "^13.4.7",
         "nextra": "^2.8.0",
         "nextra-theme-docs": "^2.8.0",
