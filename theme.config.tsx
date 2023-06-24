@@ -13,7 +13,18 @@ const config: DocsThemeConfig = {
     },
 
     search: {
-        placeholder: "Looking for something?",
+        placeholder: () => {
+            const placeholders = [
+                "Need a hint?",
+                "Meaning of life?",
+                "Needle in a haystack?",
+                "What's the secret word?",
+                "What's your quest today?",
+                "Looking for buried treasure?",
+                "Witch way to the information?",
+            ];
+            return placeholders[new Date().getDay() % placeholders.length];
+        },
     },
 
     sidebar: {
