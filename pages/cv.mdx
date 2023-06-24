@@ -18,45 +18,45 @@ import { useSSG } from "nextra/ssg";
 import { Callout } from "nextra/components";
 
 export const getStaticProps = ({ params }) => {
-  return fetch("https://api.github.com/repos/stepbrobd/cv/releases/latest")
-    .then((res) => res.json())
-    .then((res) => ({
-      props: {
-        ssg: {
-          asset: res.assets[0].browser_download_url,
-          date: res.published_at,
-        },
-      },
-      revalidate: 60,
-    }));
+    return fetch("https://api.github.com/repos/stepbrobd/cv/releases/latest")
+        .then((res) => res.json())
+        .then((res) => ({
+            props: {
+                ssg: {
+                    asset: res.assets[0].browser_download_url,
+                    date: res.published_at,
+                },
+            },
+            revalidate: 60,
+        }));
 };
 
 export const Download = () => {
-  const { asset, date } = useSSG();
-  return (
-    <>
-      <p>
-        Last updated on{" "}
-        {new Date(date).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })}
-        . The PDF version can be downloaded <a
-          href={`https://docs.google.com/viewer?url=${asset}`}
-        >
-          here
-        </a>.
-      </p>
-    </>
-  );
+    const { asset, date } = useSSG();
+    return (
+        <>
+            <p>
+                Last updated on{" "}
+                {new Date(date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                })}
+                . The PDF version can be downloaded <a
+                    href={`https://docs.google.com/viewer?url=${asset}`}
+                >
+                    here
+                </a>.
+            </p>
+        </>
+    );
 };
 
 # Curriculum Vitae
 
 <Callout type="info" emoji="ℹ️">
-  Listings below are not complete, please refer to the PDF version for more
-  details.
+    Listings below are not complete, please refer to the PDF version for more
+    details.
 </Callout>
 
 <Download />
@@ -67,9 +67,9 @@ Like my CV? Get a yours by forking [this repo](https://github.com/stepbrobd/cv).
 
 ### Northeastern University
 
-- **M.Sc. in Computer Science**
-- 2023/09 - 2024/12
-- Boston, MA, USA
+-   **M.Sc. in Computer Science**
+-   2023/09 - 2024/12
+-   Boston, MA, USA
 
 Attended: PyCon 2023 (Salt Lake City, UT), WWDC 2023 (Cupertino, CA)
 
@@ -79,9 +79,9 @@ Advisor: TBD
 
 ### University of Utah
 
-- **B.Sc. in Computer Science**
-- 2019/08 - 2023/05
-- Salt Lake City, UT, USA
+-   **B.Sc. in Computer Science**
+-   2019/08 - 2023/05
+-   Salt Lake City, UT, USA
 
 Attended: CppCon 2021 (Denver, CO), PyCon 2022 (Salt Lake City, UT), DockerCon 2022 (Palo Alto, CA), HackMIT 2022 (Boston, MA)
 
@@ -95,8 +95,8 @@ Co-advisor: [Tucker Hermans](https://robot-learning.cs.utah.edu/thermans)
 
 ### University of Utah
 
-- **Research Assistant**
-- 2021/08 - 2023/05
+-   **Research Assistant**
+-   2021/08 - 2023/05
 
 Joint research project, PI: Suzanne Vernon, advisor: Shad Roundy, co-adviser: Tucker Hermans. In collaboration with the Bateman Horne Center's clinical research team, we developed and managed a new data collection infrastructure.
 
@@ -104,8 +104,8 @@ The infrastructure is built on 5000+ lines of Nix, Python, Go and C++, aggregati
 
 ### University of Utah
 
-- **System Administrator**
-- 2019/12 - 2020/09
+-   **System Administrator**
+-   2019/12 - 2020/09
 
 Enterprise system administration, managed 1000+ university-owned Apple devices (Macs, iPads, Apple TVs, etc.).
 
@@ -113,8 +113,8 @@ Utilized Jamf Pro, Radmind, and Apple School Manager to perform day-to-day MDM t
 
 ### DJI
 
-- **Intern**
-- 2018/07 - 2018/08
+-   **Intern**
+-   2018/07 - 2018/08
 
 Competitive robotic system design/modeling, embedded system programming, control system programming, and computer vision. Developed path planning and task scheduling algorithms for predefined workflow.
 

@@ -5,49 +5,49 @@ import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
 import React from "react";
 
 const config: DocsThemeConfig = {
-  navigation: false,
+    navigation: false,
 
-  darkMode: true,
-  nextThemes: {
-    defaultTheme: "system",
-  },
+    darkMode: true,
+    nextThemes: {
+        defaultTheme: "system",
+    },
 
-  search: {
-    placeholder: "Looking for something?",
-  },
+    search: {
+        placeholder: "Looking for something?",
+    },
 
-  sidebar: {
-    autoCollapse: true,
-    toggleButton: true,
-  },
+    sidebar: {
+        autoCollapse: true,
+        toggleButton: true,
+    },
 
-  toc: {
-    float: true,
-  },
+    toc: {
+        float: true,
+    },
 
-  feedback: {
-    content: () => <></>,
-  },
+    feedback: {
+        content: () => <></>,
+    },
 
-  editLink: {
-    component: () => <></>,
-  },
+    editLink: {
+        component: () => <></>,
+    },
 
-  logo: <Logo />,
-  logoLink: "/",
+    logo: <Logo />,
+    logoLink: "/",
 
-  useNextSeoProps() {
-    return {
-      titleTemplate: "%s – Yifei Sun",
-    };
-  },
+    useNextSeoProps() {
+        return {
+            titleTemplate: "%s – Yifei Sun",
+        };
+    },
 
-  head: () => {
-    const { frontMatter } = useConfig();
-    const { asPath, defaultLocale, locale } = useRouter();
+    head: () => {
+        const { frontMatter } = useConfig();
+        const { asPath, defaultLocale, locale } = useRouter();
 
-    const defaultTitle = "Yifei Sun";
-    const defaultDescription = `
+        const defaultTitle = "Yifei Sun";
+        const defaultDescription = `
       Yifei Sun is a graduate student at Northeastern University studying computer science.
     
       His research interests are: 
@@ -72,55 +72,61 @@ const config: DocsThemeConfig = {
           - Twitter: https://twitter.com/stepbrobd
           `;
 
-    const url =
-      "https://ysun.co" +
-      (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
-    const title = `${frontMatter.title} - Yifei Sun` || defaultTitle;
-    const description =
-      frontMatter.description.substring(0, 197) + "..." ||
-      defaultDescription.substring(0, 197) + "...";
+        const url =
+            "https://ysun.co" +
+            (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
+        const title = `${frontMatter.title} - Yifei Sun` || defaultTitle;
+        const description =
+            frontMatter.description.substring(0, 197) + "..." ||
+            defaultDescription.substring(0, 197) + "...";
 
-    return (
-      <>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
+        return (
+            <>
+                <link
+                    rel="apple-touch-icon"
+                    sizes="180x180"
+                    href="/apple-touch-icon.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="32x32"
+                    href="/favicon-32x32.png"
+                />
+                <link
+                    rel="icon"
+                    type="image/png"
+                    sizes="16x16"
+                    href="/favicon-16x16.png"
+                />
 
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={url} />
-        <meta property="twitter:card" content="summary_large_image" />
+                <meta property="og:locale" content="en_US" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={url} />
+                <meta property="twitter:card" content="summary_large_image" />
 
-        <meta property="og:title" content={title || defaultTitle} />
-        <meta property="twitter:title" content={title || defaultTitle} />
+                <meta property="og:title" content={title || defaultTitle} />
+                <meta
+                    property="twitter:title"
+                    content={title || defaultTitle}
+                />
 
-        <meta property="description" content={description} />
-        <meta property="og:description" content={description} />
-        <meta property="twitter:description" content={description} />
+                <meta property="description" content={description} />
+                <meta property="og:description" content={description} />
+                <meta property="twitter:description" content={description} />
 
-        <meta property="og:image" content="https://ysun.co/og.png" />
-        <meta property="twitter:image" content="https://ysun.co/og.png" />
-      </>
-    );
-  },
+                <meta property="og:image" content="https://ysun.co/og.png" />
+                <meta
+                    property="twitter:image"
+                    content="https://ysun.co/og.png"
+                />
+            </>
+        );
+    },
 
-  footer: {
-    text: <Footer />,
-  },
+    footer: {
+        text: <Footer />,
+    },
 };
 
 export default config;
