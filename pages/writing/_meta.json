@@ -1,6 +1,14 @@
 {
-    "index": "Table of Contents",
-    "2023": "2023",
-    "2022": "2022",
-    "2021": "2021"
+    "*": {
+        "theme": {
+            "typesetting": "article"
+        }
+    },
+    "index": {
+        "title": "Table of Contents",
+        "theme": {
+            "typesetting": "default",
+            "breadcrumb": false
+        }
+    }
 }

@@ -1,14 +1,43 @@
 {
-    "index": {
-        "title": "About",
+    "*": {
         "type": "page"
     },
-    "writing": {
-        "title": "Writing",
-        "type": "page"
-    },
-    "cv": {
-        "title": "CV",
-        "type": "page"
+    "index": "About",
+    "cv": "CV",
+    "writing": "Writing",
+    "contact": {
+        "title": "Contact",
+        "type": "menu",
+        "items": {
+            "email": {
+                "title": "Email",
+                "href": "mailto:yifei@email.com"
+            },
+            "github": {
+                "title": "GitHub",
+                "href": "https://github.com/stepbrobd",
+                "newWindow": true
+            },
+            "instagram": {
+                "title": "Instagram",
+                "href": "https://www.instagram.com/stepbrobd",
+                "newWindow": true
+            },
+            "linkedin": {
+                "title": "LinkedIn",
+                "href": "https://www.linkedin.com/in/yifei-s",
+                "newWindow": true
+            },
+            "reddit": {
+                "title": "Reddit",
+                "href": "https://www.reddit.com/user/stepbrobd",
+                "newWindow": true
+            },
+            "twitter": {
+                "title": "Twitter",
+                "href": "https://twitter.com/stepbrobd",
+                "newWindow": true
+            }
+        }
     }
 }
