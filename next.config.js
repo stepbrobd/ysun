@@ -7,4 +7,8 @@ const withNextra = require("nextra")({
   readingTime: true,
 });
 
-module.exports = withNextra();
+module.exports = withNextra({
+  experimental: {
+    nextScriptWorkers: true,
+  },
+});

@@ -26,11 +26,11 @@ const config: DocsThemeConfig = {
   },
 
   feedback: {
-    content: null,
+    content: () => <></>,
   },
 
   editLink: {
-    component: null,
+    component: () => <></>,
   },
 
   logo: <Logo />,
