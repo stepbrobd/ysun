@@ -9,6 +9,7 @@
     "singleQuote": false
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.8.0",
     "next": "^13.4.7",
     "nextra": "^2.8.0",
     "nextra-theme-docs": "^2.8.0",
