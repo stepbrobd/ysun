@@ -1,10 +1,8 @@
-import Views from "components/views";
 import Image from "next/image";
 
 const Footer = () => {
     return (
         <div className="flex flex-col items-center sm:items-start space-y-6">
-            <Views />
             <small>
                 &copy; {new Date().getFullYear()} Yifei Sun. Some rights
                 reserved.
