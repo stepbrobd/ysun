@@ -7,11 +7,6 @@ import React from "react";
 const config: DocsThemeConfig = {
     navigation: false,
 
-    darkMode: true,
-    nextThemes: {
-        defaultTheme: "system",
-    },
-
     search: {
         placeholder: () => {
             const placeholders = [
@@ -30,6 +25,7 @@ const config: DocsThemeConfig = {
     sidebar: {
         autoCollapse: true,
         toggleButton: true,
+        defaultMenuCollapseLevel: 1,
     },
 
     toc: {
