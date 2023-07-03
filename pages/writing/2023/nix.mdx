@@ -1,0 +1,24 @@
+---
+title: "The Nix Way"
+description: "Guide to Nix and Nix Darwin"
+date: 2023-07-02
+---
+
+# The Nix Way
+
+What's Nix? It's a "functional" package manager.
+
+With Nix Flakes, you provide a `flake.nix` file that describes your system, with input, couple "functions" that define your system, then it outputs a "derivation" that describes your system.
+
+Like a function, if you give it the same input, you get the same output.
+
+## Installation
+
+I suggest anyone that wants to try out Nix not to use the official installer, but to use the [Nix Installer](https://github.com/DeterminateSystems/nix-installer) by Determinate Systems.
+It installs Nix, but also gives you an easy way to fully remove it.
+
+```shell
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+... WIP

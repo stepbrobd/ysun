@@ -1,24 +1,23 @@
 import "styles/tailwind.css";
 
-import { AppProps } from "next/app";
 import { Inter, JetBrains_Mono, Tinos } from "next/font/google";
 import Script from "next/script";
 
-const serif = Tinos({
+export const serif = Tinos({
     preload: true,
     weight: ["400", "700"],
     subsets: ["latin", "latin-ext"],
     variable: "--font-tinos",
     display: "swap",
 });
-const sans = Inter({
+export const sans = Inter({
     preload: true,
     weight: ["400", "700"],
     subsets: ["latin", "latin-ext"],
     variable: "--font-inter",
     display: "swap",
 });
-const mono = JetBrains_Mono({
+export const mono = JetBrains_Mono({
     preload: true,
     weight: ["400", "700"],
     subsets: ["latin", "latin-ext"],
@@ -26,7 +25,7 @@ const mono = JetBrains_Mono({
     display: "swap",
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }) {
     return (
         <>
             <main
@@ -47,4 +46,5 @@ export default function App({ Component, pageProps }: AppProps) {
             </Script>
         </>
     );
+
 }
