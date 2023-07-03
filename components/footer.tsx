@@ -8,14 +8,27 @@ import {
     IconCreativeCommonsNc,
     IconMail,
 } from "@tabler/icons-react";
-import Image from "next/image";
 
 const Footer = () => {
+    const sha =
+        process.env.NEXT_PUBLIC_VERCEL_GIT_COMMIT_SHA ||
+        "8bb25f5122731a4d6fb3ce2b5d98f7ab34c77ae9";
+
     return (
-        <div className="flex flex-col items-center sm:items-start space-y-8">
+        <div className="flex flex-col items-center sm:items-start space-y-6">
             <small className="h-5">
                 &copy; {new Date().getFullYear()} Yifei Sun. Some rights
                 reserved.
+            </small>
+
+            <small className="h-5">
+                <a
+                    href={`https://github.com/stepbrobd/ysun.co/commit/${sha}`}
+                    target="_blank"
+                    className="font-mono underline"
+                >
+                    {sha.slice(0, 25)}
+                </a>
             </small>
 
             <div className="flex flex-row space-x-3 items-center justify-center h-5">
@@ -28,7 +41,7 @@ const Footer = () => {
                     <IconMail size={20} />
                 </a>
                 <a
-                    href="https://github.com/stepbrobd/stepbrobd.com"
+                    href="https://github.com/stepbrobd"
                     target="_blank"
                     className="inline-block"
                     aria-label="GitHub"

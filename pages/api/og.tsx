@@ -11,9 +11,14 @@ const image = fetch(new URL("./og.png", import.meta.url)).then((res) =>
     res.arrayBuffer()
 );
 
+const font = fetch(new URL("./inter.otf", import.meta.url)).then((res) =>
+    res.arrayBuffer()
+);
+
 export default async function handler(request: NextRequest) {
     try {
         const imageData = await image;
+        const fontData = await font;
 
         const { searchParams } = new URL(request.url);
 
@@ -42,11 +47,11 @@ export default async function handler(request: NextRequest) {
                         height="630"
                         // @ts-ignore
                         src={imageData}
-                        style={{ marginTop: -125 }}
+                        style={{ marginTop: -100 }}
                     />
-                    <div
+                    <h1
                         style={{
-                            fontSize: 36,
+                            fontSize: 64,
                             fontStyle: "normal",
                             color: "white",
                             marginTop: -100,
@@ -54,12 +59,19 @@ export default async function handler(request: NextRequest) {
                         }}
                     >
                         {text}
-                    </div>
+                    </h1>
                 </div>
             ),
             {
                 width: 1200,
                 height: 630,
+                fonts: [
+                    {
+                        name: "inter",
+                        data: fontData,
+                        style: "normal",
+                    },
+                ],
             }
         );
     } catch (e: any) {
