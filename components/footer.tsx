@@ -1,11 +1,14 @@
-import Image from "next/image";
 import {
-    IconMail,
     IconBrandGithub,
-    IconBrandTwitter,
     IconBrandInstagram,
+    IconBrandTwitter,
     IconBrandYoutube,
+    IconCreativeCommons,
+    IconCreativeCommonsBy,
+    IconCreativeCommonsNc,
+    IconMail,
 } from "@tabler/icons-react";
+import Image from "next/image";
 
 const Footer = () => {
     return (
@@ -65,9 +68,9 @@ const Footer = () => {
                 target="_blank"
             >
                 <div className="flex flex-row space-x-3">
-                    <Image src="/cc.svg" alt="CC" width={20} height={20} />
-                    <Image src="/by.svg" alt="BY" width={20} height={20} />
-                    <Image src="/nc.svg" alt="NC" width={20} height={20} />
+                    <IconCreativeCommons size={20} />
+                    <IconCreativeCommonsBy size={20} />
+                    <IconCreativeCommonsNc size={20} />
                 </div>
             </a>
         </div>
