@@ -2,9 +2,13 @@ import Footer from "components/footer";
 import Logo from "components/logo";
 import { useRouter } from "next/router";
 import { DocsThemeConfig, useConfig } from "nextra-theme-docs";
-import React from "react";
 
 const config: DocsThemeConfig = {
+    darkMode: true,
+    nextThemes: {
+        defaultTheme: "system",
+    },
+
     navigation: false,
 
     search: {
@@ -25,7 +29,7 @@ const config: DocsThemeConfig = {
     sidebar: {
         autoCollapse: true,
         toggleButton: true,
-        defaultMenuCollapseLevel: 2,
+        defaultMenuCollapseLevel: 3,
     },
 
     toc: {
@@ -95,14 +99,14 @@ const config: DocsThemeConfig = {
 
                 <meta
                     property="og:image"
-                    content={`https://ysun.co/api/og?text=${title.replaceAll(
+                    content={`https://ysun.co/api/og?text=${frontMatter.title.replaceAll(
                         " ",
                         "%20"
                     )}`}
                 />
                 <meta
                     property="twitter:image"
-                    content={`https://ysun.co/api/og?text=${title.replaceAll(
+                    content={`https://ysun.co/api/og?text=${frontMatter.title.replaceAll(
                         " ",
                         "%20"
                     )}`}
