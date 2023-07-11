@@ -8,11 +8,11 @@ export const config = {
 };
 
 const image = fetch(new URL("./og.png", import.meta.url)).then((res) =>
-    res.arrayBuffer()
+    res.arrayBuffer(),
 );
 
 const font = fetch(new URL("./inter.otf", import.meta.url)).then((res) =>
-    res.arrayBuffer()
+    res.arrayBuffer(),
 );
 
 export default async function handler(request: NextRequest) {
@@ -72,7 +72,7 @@ export default async function handler(request: NextRequest) {
                         style: "normal",
                     },
                 ],
-            }
+            },
         );
     } catch (e: any) {
         console.log(`${e.message}`);

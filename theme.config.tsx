@@ -101,14 +101,14 @@ const config: DocsThemeConfig = {
                     property="og:image"
                     content={`https://ysun.co/api/og?text=${frontMatter.title.replaceAll(
                         " ",
-                        "%20"
+                        "%20",
                     )}`}
                 />
                 <meta
                     property="twitter:image"
                     content={`https://ysun.co/api/og?text=${frontMatter.title.replaceAll(
                         " ",
-                        "%20"
+                        "%20",
                     )}`}
                 />
             </>
