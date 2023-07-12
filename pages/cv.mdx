@@ -15,7 +15,7 @@ export const getStaticProps = ({ params }) => {
                     date: res.published_at,
                 },
             },
-            revalidate: 86400,
+            revalidate: 60,
         }));
 };
 
