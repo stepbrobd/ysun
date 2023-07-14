@@ -3,3 +3,5 @@ archive
 **/.git
 **/node_modules
 **/.next
+
+pages/writing/2022/bachelors-thesis.mdx
