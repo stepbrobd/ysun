@@ -6,10 +6,10 @@ date: 2023-07-02
 
 # The Nix Way
 
+This is a guide to my personal [dotfiles repo](https://github.com/stepbrobd/dotfiles) (mainly for macOS systems), use it as a reference to create your own.
+
 What's Nix? It's a "functional" package manager.
-
 With Nix Flakes, you provide a `flake.nix` file that describes your system, with input, couple "functions" that define your system, then it outputs a "derivation" that describes your system.
-
 Like a function, if you give it the same input, you get the same output.
 
 ## Installation
@@ -21,4 +21,19 @@ It installs Nix, but also gives you an easy way to fully remove it.
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-... WIP
+After this, if you are following online guides, they'll probably tell you to run some commands start with `nix-env` or `nix-channel`, don't use it!
+As mentioned above, Nix Flakes is the new way to use Nix, it's more deterministic and reproducible, `nix-` commands are considered legacy and will be deprecated in the future.
+
+Since we'll be using Nix Flakes, to prevent typing a lot of `--experimental-features` flags, we can set it in our `~/.config/nix/nix.conf` file.
+
+```shell
+echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+```
+
+To build the system configuration, we'll use the `nix build` command.
+
+```shell
+nix build github:stepbrobd/dotfiles#darwinConfigurations.$(nix --extra-experimental-features nix-command eval --impure --raw --expr "builtins.currentSystem") --show-trace
+```
+
+...WIP
