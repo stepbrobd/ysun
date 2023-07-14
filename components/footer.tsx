@@ -15,7 +15,7 @@ const Footer = () => {
         "8bb25f5122731a4d6fb3ce2b5d98f7ab34c77ae9";
 
     return (
-        <div className="flex flex-col items-center sm:items-start space-y-6">
+        <div className="flex flex-col items-center md:items-start space-y-6">
             <small className="h-5">
                 &copy; {new Date().getFullYear()} Yifei Sun. Some rights
                 reserved.
