@@ -1,8 +1,8 @@
 import {
     IconBrandGithub,
-    IconBrandInstagram,
+    IconBrandLinkedin,
+    IconBrandThreads,
     IconBrandTwitter,
-    IconBrandYoutube,
     IconCreativeCommons,
     IconCreativeCommonsBy,
     IconCreativeCommonsNc,
@@ -41,6 +41,14 @@ const Footer = () => {
                     <IconMail size={20} />
                 </a>
                 <a
+                    href="https://www.linkedin.com/in/yifei-s"
+                    target="_blank"
+                    className="inline-block"
+                    aria-label="YouTube"
+                >
+                    <IconBrandLinkedin size={20} />
+                </a>
+                <a
                     href="https://github.com/stepbrobd"
                     target="_blank"
                     className="inline-block"
@@ -57,20 +65,12 @@ const Footer = () => {
                     <IconBrandTwitter size={20} />
                 </a>
                 <a
-                    href="https://instagram.com/stepbrobd"
+                    href="https://www.threads.net/@stepbrobd"
                     target="_blank"
                     className="inline-block"
                     aria-label="Instagram"
                 >
-                    <IconBrandInstagram size={20} />
-                </a>
-                <a
-                    href="https://www.youtube.com/@stepbrobd"
-                    target="_blank"
-                    className="inline-block"
-                    aria-label="YouTube"
-                >
-                    <IconBrandYoutube size={20} />
+                    <IconBrandThreads size={20} />
                 </a>
             </div>
 
