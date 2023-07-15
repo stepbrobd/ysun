@@ -4,11 +4,5 @@
             "typesetting": "article"
         }
     },
-    "index": {
-        "title": "Table of Contents",
-        "theme": {
-            "typesetting": "default",
-            "breadcrumb": false
-        }
-    }
+    "index": "Table of Contents"
 }
