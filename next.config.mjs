@@ -13,6 +13,10 @@ const withNextra = nextra({
 });
 
 export default withNextra({
+    i18n: {
+        locales: ["en-US"],
+        defaultLocale: "en-US",
+    },
     reactStrictMode: true,
     eslint: {
         ignoreDuringBuilds: true,
