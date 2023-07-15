@@ -63,7 +63,7 @@ const config: DocsThemeConfig = {
             (defaultLocale === locale ? asPath : `/${locale}${asPath}`);
         const description =
             frontMatter.description ||
-            "Yifei Sun is a graduate student at Northeastern University studying computer science. His research interests are: - Formal verification for distributed systems and database systems. - Programming language and concurrent data structure related formal verification and fuzz testing. - IMU data feature extraction and machine learning for robotic systems and healthcare applications.";
+            "Yifei Sun is a graduate student at Northeastern University studying computer science. His research interests are 1. Formal verification for distributed systems and database systems. 2. Programming language and concurrent data structure related formal verification and fuzz testing. 3. IMU data feature extraction and machine learning for robotic systems and healthcare applications.";
 
         return (
             <>
