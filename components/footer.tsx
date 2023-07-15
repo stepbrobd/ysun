@@ -44,7 +44,7 @@ const Footer = () => {
                     href="https://www.linkedin.com/in/yifei-s"
                     target="_blank"
                     className="inline-block"
-                    aria-label="YouTube"
+                    aria-label="LinkedIn"
                 >
                     <IconBrandLinkedin size={20} />
                 </a>
@@ -68,7 +68,7 @@ const Footer = () => {
                     href="https://www.threads.net/@stepbrobd"
                     target="_blank"
                     className="inline-block"
-                    aria-label="Instagram"
+                    aria-label="Threads"
                 >
                     <IconBrandThreads size={20} />
                 </a>
@@ -79,6 +79,7 @@ const Footer = () => {
                 href="https://creativecommons.org/licenses/by-nc/4.0/"
                 rel="noopener noreferrer"
                 target="_blank"
+                aria-label="CC BY-NC 4.0"
             >
                 <div className="flex flex-row space-x-3">
                     <IconCreativeCommons size={20} />
