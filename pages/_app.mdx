@@ -1,5 +1,6 @@
 import "styles/tailwind.css";
 
+import { Analytics } from "@vercel/analytics/react";
 import { Inter, JetBrains_Mono, Tinos } from "next/font/google";
 import Script from "next/script";
 
@@ -33,7 +34,7 @@ export default function App({ Component, pageProps }) {
             >
                 <Component {...pageProps} />
             </main>
-
+            <Analytics />
             <Script
                 id="plausible-analytics"
                 strategy="lazyOnload"
