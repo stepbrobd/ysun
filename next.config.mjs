@@ -12,13 +12,32 @@ const withNextra = nextra({
     },
 });
 
-export default withNextra({
+const nextConfig = {
+    reactStrictMode: true,
+
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+
     i18n: {
         locales: ["en-US"],
         defaultLocale: "en-US",
     },
-    reactStrictMode: true,
-    eslint: {
-        ignoreDuringBuilds: true,
+
+    async redirects() {
+        return [
+            {
+                permanent: true,
+                source: "/publications/:path*",
+                destination: "/publication/:path*",
+            },
+            {
+                permanent: true,
+                source: "/writings/:path*",
+                destination: "/writing/:path*",
+            },
+        ];
     },
-});
+};
+
+export default withNextra(nextConfig);
