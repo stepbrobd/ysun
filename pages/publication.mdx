@@ -1,0 +1,73 @@
+---
+title: List of Publications
+description: Yifei Sun list of publications.
+---
+
+import { Tabs, Tab } from "nextra/components";
+
+# List of Publications
+
+#### System and Methods to Determine ME/CFS & Long COVID Disease Severity Using Wearable Sensor & Survey Data
+
+<Tabs items={["Information", "Abstract", "BibTeX"]}>
+    <Tab>
+        **Y. Sun**, “System and Methods to Determine ME/CFS & Long COVID Disease Severity Using Wearable Sensor & Survey Data,” Thesis, Univ. Utah, 2023.
+    </Tab>
+    <Tab>
+        Myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) is a debilitating disease with high probability of misdiagnosis and significant unmet medical needs that affects as many as 2.5 million people in the U.S. and causes enormous burden for patients, their caregivers, the healthcare system and society. Between 84 to 91 percent of ME/CFS patients are not yet diagnosed, and at least one-quarter of ME/CFS patients are house- or bedbound at some point in their lives. The impact of ME/CFS to the U.S. economy, is about \$17 to \$24 billion in medical bills and lost income from lost household and labor force productivity per year.
+
+        Current widely used diagnosis methods of ME/CFS and other diseases with similar clinical symptoms like Long COVID are highly dependent on patients' self reporting and standardized survey, which are not optimal for medical diagnosis. In a joint study with The Bateman Horne Center (BHC), we designed and developed a system prototype that was able to stably collect terabytes of inertial measurement unit (IMU) time-series data, and analyzed multiple candidate parameters derived from them that could be used as reliable biomarkers for ME/CFS and other diseases with similar clinical symptoms.
+
+        Utilizing our system prototype, MetaProcessor, we conducted grouped t-tests on data collected from the EndoPAT study group (55 recruited, 51 participated, 30 ME/CFS, 15 Long COVID, 6 healthy control) to evaluate the predictive power of Upright Position Time (UpTime), Hours of Upright Activity (HUA), and Steps/Day. Through statistical analysis, we were able to assert the following for ME/CFS versus healthy control:
+        1. UpTime yielded a low p-value of 0.00004, indicating a significant difference between the groups and demonstrating its potential as a reliable measure for differentiating ME/CFS from healthy control populations.
+        2. HUA had a p-value of less than 0.00004, suggesting it could also serve as a useful measure for distinguishing ME/CFS from healthy control groups.
+        3. Steps/Day, x-axis and y-axis, had p-values of 0.01059 and 0.08665, respectively, indicating that step count may be relevant for differentiating ME/CFS individuals from healthy controls, but step count alone may not be sufficient to reliably distinguish between these groups.
+
+        In a linear regression analysis, we found a moderately positive correlation between UpTime and HUA with $r^2 = 0.68$.
+        Overall, we can confidently conclude that UpTime is a superior overall predictor due to its objective nature and the lowest p-values observed across all groups.
+
+</Tab>
+<Tab>
+```bibtex
+@thesis{ysun-2023-uu-bachelorsthesis,
+    type   = {Bachelor's Thesis},
+    author = {Sun, Yifei},
+    title  = {{S}ystem and {M}ethods to {D}etermine {ME/CFS} & {L}ong {COVID} {D}isease {S}everity {U}sing {W}earable {S}ensor & {S}urvey {D}ata},
+    school = {University of Utah},
+    year   = {2023},
+    month  = {5},
+}
+```
+</Tab>
+</Tabs>
+
+#### System and Methods to Determine ME/CFS & Long COVID Disease Severity Using a Wearable Sensor
+
+<Tabs items={["Information", "Abstract", "BibTeX"]}>
+    <Tab>
+        **Y. Sun**, S. Vernon, and S. Roundy, “System and Methods to Determine ME/CFS & Long COVID Disease Severity Using a Wearable Sensor,” IEEE Trans. Biomed. Eng., 2023. Manuscript in preparation.
+    </Tab>
+    <Tab>
+    Objective: We present a simple parameter, calculated from a single wearable sensor, that can be used to objectively measure disease severity in people with myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS) or Long COVID. We call this parameter UpTime.
+
+    Methods: Prior research has shown that the amount of time a person spends upright, defined as lower legs vertical with feet on the floor, correlates strongly with ME/CFS disease severity. We use a single commercial inertial measurement unit (IMU) attached to the ankle to calculate the percentage of time each day that a person spends upright (i.e., UpTime) and number of steps per day. As Long COVID shares symptoms with ME/CFS, we also apply this method to determine Long COVID disease severity. We performed a trial with 55 subjects broken into three cohorts, healthy controls, ME/CFS, and Long COVID. Subjects wore the IMU on their ankle for a period of 7 days. UpTime and steps/day were calculated each day and results compared between cohorts.
+
+    Results: UpTime effectively distinguishes between healthy controls and subjects diagnosed with ME/CFS ($p = 0.00004$) and between healthy controls and subjects diagnosed with Long COVID ($p = **$). Steps per day did distinguish between controls and subjects with ME/CFS ($p = 0.01$), but less effectively. Steps per day did not distinguish between controls and subjects with Long COVID ($p = **$).
+
+    Conclusion: UpTime is an objective measure that can effectively distinguish ME/CFS disease severity. UpTime can be used as an outcome measure to unambiguously measure the effect of treatments for ME/CFS. Although Long COVID is less understood, UpTime is a potentially promising outcome measure for treatments targeting Long COVID.
+
+    Significance: Development of effective treatments for ME/CFS is hampered by a lack of outcome measures for disease severity. This simple, objective outcome measure could spur development of treatments by enabling the effect of those treatments to be easily measured.
+
+</Tab>
+<Tab>
+```bibtex
+@article{ysun-2023-ieeetbme-mecfs,
+  author  = {Sun, Yifei and Vernon, Suzanne and Roundy, Shad},
+  journal = {IEEE Transactions on Biomedical Engineering},
+  title   = {{S}ystem and {M}ethods to {D}etermine {ME/CFS} & {L}ong {COVID} {D}isease {S}everity {U}sing a {W}earable {S}ensor},
+  year    = {2023},
+  note    = {Manuscript in preparation.}
+}
+```
+</Tab>
+</Tabs>
