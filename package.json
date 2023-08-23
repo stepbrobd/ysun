@@ -5,7 +5,7 @@
         "start": "next start"
     },
     "dependencies": {
-        "@tabler/icons-react": "^2.31.0",
+        "@tabler/icons-react": "^2.32.0",
         "@vercel/analytics": "^1.0.2",
         "@vercel/og": "^0.5.11",
         "next": "^13.4.19",
@@ -15,8 +15,8 @@
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
-        "@types/node": "20.5.1",
-        "@types/react": "^18.2.20",
+        "@types/node": "20.5.4",
+        "@types/react": "^18.2.21",
         "autoprefixer": "^10.4.15",
         "eslint": "^8.47.0",
         "eslint-config-next": "^13.4.19",
