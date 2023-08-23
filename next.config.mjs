@@ -26,6 +26,7 @@ const nextConfig = {
 
     async redirects() {
         return [
+            // page redirects
             {
                 permanent: true,
                 source: "/publications/:path*",
@@ -35,6 +36,43 @@ const nextConfig = {
                 permanent: true,
                 source: "/writings/:path*",
                 destination: "/writing/:path*",
+            },
+
+            // social redirects
+            {
+                permanent: true,
+                source: "/github/:path*",
+                destination: "https://github.com/stepbrobd",
+            },
+            {
+                permanent: true,
+                source: "/instagram/:path*",
+                destination: "https://www.instagram.com/stepbrobd",
+            },
+            {
+                permanent: true,
+                source: "/linkedin/:path*",
+                destination: "https://www.linkedin.com/in/yifei-s",
+            },
+            {
+                permanent: true,
+                source: "/threads/:path*",
+                destination: "https://threads.net/@stepbrobd",
+            },
+            {
+                permanent: true,
+                source: "/twitter/:path*",
+                destination: "https://twitter.com/stepbrobd",
+            },
+            {
+                permanent: true,
+                source: "/x/:path*",
+                destination: "https://x.com/stepbrobd",
+            },
+            {
+                permanent: true,
+                source: "/youtube/:path*",
+                destination: "https://www.youtube.com/@stepbrobd",
             },
         ];
     },
