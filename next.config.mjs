@@ -29,6 +29,11 @@ const nextConfig = {
             // page redirects
             {
                 permanent: true,
+                source: "/notes/:path*",
+                destination: "/note/:path*",
+            },
+            {
+                permanent: true,
                 source: "/publications/:path*",
                 destination: "/publication/:path*",
             },
@@ -73,6 +78,17 @@ const nextConfig = {
                 permanent: true,
                 source: "/youtube/:path*",
                 destination: "https://www.youtube.com/@stepbrobd",
+            },
+        ];
+    },
+
+    async rewrites() {
+        return [
+            // obsidian publish
+            {
+                source: "/note/:path*",
+                destination:
+                    "https://publish.obsidian.md/serve?url=ysun.co/note/:path*",
             },
         ];
     },
