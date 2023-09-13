@@ -5,9 +5,9 @@
         "start": "next start"
     },
     "dependencies": {
-        "@tabler/icons-react": "^2.32.0",
+        "@tabler/icons-react": "^2.34.0",
         "@vercel/analytics": "^1.0.2",
-        "@vercel/og": "^0.5.11",
+        "@vercel/og": "^0.5.13",
         "next": "^13.4.19",
         "nextra": "^2.12.3",
         "nextra-theme-docs": "^2.12.3",
@@ -15,16 +15,16 @@
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
-        "@types/node": "20.5.7",
+        "@types/node": "20.6.0",
         "@types/react": "^18.2.21",
         "autoprefixer": "^10.4.15",
-        "eslint": "^8.48.0",
+        "eslint": "^8.49.0",
         "eslint-config-next": "^13.4.19",
         "eslint-config-prettier": "^9.0.0",
         "eslint-plugin-simple-import-sort": "^10.0.0",
         "postcss": "^8.4.29",
         "prettier": "^3.0.3",
-        "prettier-plugin-tailwindcss": "^0.5.3",
+        "prettier-plugin-tailwindcss": "^0.5.4",
         "tailwindcss": "^3.3.3",
         "typescript": "5.2.2"
     }
