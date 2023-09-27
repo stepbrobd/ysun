@@ -1,12 +1,12 @@
 import {
     IconBrandGithub,
     IconBrandLinkedin,
-    IconBrandThreads,
-    IconBrandTwitter,
+    IconBrandX,
     IconCreativeCommons,
     IconCreativeCommonsBy,
     IconCreativeCommonsNc,
     IconMail,
+    IconWorldHeart,
 } from "@tabler/icons-react";
 
 const Footer = () => {
@@ -33,7 +33,7 @@ const Footer = () => {
 
             <div className="flex flex-row space-x-3 items-center justify-center h-5">
                 <a
-                    href="mailto:hi@ysun.co"
+                    href="mailto:ysun@hey.com"
                     target="_blank"
                     className="inline-block"
                     aria-label="Mail"
@@ -41,7 +41,7 @@ const Footer = () => {
                     <IconMail size={20} />
                 </a>
                 <a
-                    href="https://www.linkedin.com/in/yifei-s"
+                    href="https://ysun.co/linkedin"
                     target="_blank"
                     className="inline-block"
                     aria-label="LinkedIn"
@@ -49,7 +49,7 @@ const Footer = () => {
                     <IconBrandLinkedin size={20} />
                 </a>
                 <a
-                    href="https://github.com/stepbrobd"
+                    href="https://ysun.co/github"
                     target="_blank"
                     className="inline-block"
                     aria-label="GitHub"
@@ -57,20 +57,20 @@ const Footer = () => {
                     <IconBrandGithub size={20} />
                 </a>
                 <a
-                    href="https://twitter.com/stepbrobd"
+                    href="https://ysun.co/x"
                     target="_blank"
                     className="inline-block"
-                    aria-label="Twitter"
+                    aria-label="X"
                 >
-                    <IconBrandTwitter size={20} />
+                    <IconBrandX size={20} />
                 </a>
                 <a
-                    href="https://www.threads.net/@stepbrobd"
+                    href="https://ysun.co/world"
                     target="_blank"
                     className="inline-block"
-                    aria-label="Threads"
+                    aria-label="HEY World"
                 >
-                    <IconBrandThreads size={20} />
+                    <IconWorldHeart size={20} />
                 </a>
             </div>
 
