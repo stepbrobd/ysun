@@ -6,8 +6,8 @@ settings:
 
 dependencies:
     "@tabler/icons-react":
-        specifier: ^2.35.0
-        version: 2.35.0(react@18.2.0)
+        specifier: ^2.36.0
+        version: 2.36.0(react@18.2.0)
     "@vercel/analytics":
         specifier: ^1.0.2
         version: 1.0.2
@@ -32,8 +32,8 @@ dependencies:
 
 devDependencies:
     "@types/node":
-        specifier: 20.7.0
-        version: 20.7.0
+        specifier: 20.7.1
+        version: 20.7.1
     "@types/react":
         specifier: ^18.2.23
         version: 18.2.23
@@ -628,23 +628,23 @@ packages:
             tslib: 2.6.2
         dev: false
 
-    /@tabler/icons-react@2.35.0(react@18.2.0):
+    /@tabler/icons-react@2.36.0(react@18.2.0):
         resolution:
             {
-                integrity: sha512-jK2zgtMF2+LSjtbjYsfer+ryz72TwyJqv3MsmCfEpQwP37u01xvmTlVhJ+ox3bV+trsgjojsldVDuB05JuXLaw==,
+                integrity: sha512-IyJISQOuageoi+TbnkzUyC2tVjW/ABnMy4GFL+WpUVxawxQF1Hx2Lusbp53eHMwVhHnTI5lHPdOlB7OwANX8Tg==,
             }
         peerDependencies:
             react: ^16.5.1 || ^17.0.0 || ^18.0.0
         dependencies:
-            "@tabler/icons": 2.35.0
+            "@tabler/icons": 2.36.0
             prop-types: 15.8.1
             react: 18.2.0
         dev: false
 
-    /@tabler/icons@2.35.0:
+    /@tabler/icons@2.36.0:
         resolution:
             {
-                integrity: sha512-qW/itKdmFvfGw6mAQ+cZy+2MYTXb0XdGAVhO3obYLJEfsSPMwQRO0S9ckFk1xMQX/Tj7REC3TEmWUBWNi3/o3g==,
+                integrity: sha512-pgUAALzzr3sDQ1m0s240LrwVxeUgkFuP6oZnwd1zTB5V7sgvgVUt0Uf0/qYwUQkoqt0oDgGQngXriCCp7AOvrg==,
             }
         dev: false
 
@@ -801,10 +801,10 @@ packages:
             }
         dev: false
 
-    /@types/node@20.7.0:
+    /@types/node@20.7.1:
         resolution:
             {
-                integrity: sha512-zI22/pJW2wUZOVyguFaUL1HABdmSVxpXrzIqkjsHmyUjNhPoWM1CKfvVuXfetHhIok4RY573cqS0mZ1SJEnoTg==,
+                integrity: sha512-LT+OIXpp2kj4E2S/p91BMe+VgGX2+lfO+XTpfXhh+bCk2LkQtHZSub8ewFBMGP5ClysPjTDFa4sMI8Q3n4T0wg==,
             }
         dev: true
 
