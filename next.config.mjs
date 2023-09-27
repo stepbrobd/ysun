@@ -46,6 +46,11 @@ const nextConfig = {
             // social redirects
             {
                 permanent: true,
+                source: "/email/:path*",
+                destination: "mailto:ysun@hey.com",
+            },
+            {
+                permanent: true,
                 source: "/github/:path*",
                 destination: "https://github.com/stepbrobd",
             },
@@ -68,6 +73,11 @@ const nextConfig = {
                 permanent: true,
                 source: "/twitter/:path*",
                 destination: "https://twitter.com/stepbrobd",
+            },
+            {
+                permanent: true,
+                source: "/world/:path*",
+                destination: "https://world.hey.com/ysun",
             },
             {
                 permanent: true,
