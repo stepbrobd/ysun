@@ -30,3 +30,52 @@ You might want to try:
 -   [Fly.io](https://fly.io)
 -   [Vercel](https://vercel.com)
 -   [Heap](https://heap.io)
+
+import { useData } from "nextra/data";
+
+export const getStaticProps = async ({ params }) => {
+    const [ssh, pgp] = await Promise.all([
+        fetch("https://github.com/stepbrobd.keys").then((res) => res.text()),
+        fetch("https://meta.sr.ht/~stepbrobd.pgp").then((res) => res.text()),
+    ]);
+    return {
+        props: {
+            ssg: { ssh, pgp },
+        },
+        revalidate: 86400,
+    };
+};
+
+export const Keys = () => {
+    const { ssh, pgp } = useData();
+    return (
+        <>
+            <h4>
+                <a
+                    href="https://github.com/stepbrobd.keys"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    SSH
+                </a>
+            </h4>
+            <pre hasCopyCode data-language="plaintext">
+                {ssh}
+            </pre>
+            <h4>
+                <a
+                    href="https://meta.sr.ht/~stepbrobd.pgp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    PGP
+                </a>
+            </h4>
+            <pre hasCopyCode data-language="plaintext">
+                {pgp}
+            </pre>
+        </>
+    );
+};
+
+<Keys />
