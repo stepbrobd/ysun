@@ -1,4 +1,9 @@
 {
+    "life": {
+        "title": "Life",
+        "href": "https://ysun.life",
+        "newWindow": true
+    },
     "*": {
         "type": "page"
     },
