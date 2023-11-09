@@ -16,7 +16,7 @@
     "@mdx-js/loader": "^2.2.1",
     "@mdx-js/react": "^2.2.1",
     "@next/mdx": "^12.3.4",
-    "@sentry/nextjs": "^7.28.1",
+    "@sentry/nextjs": "^7.77.0",
     "@vercel/analytics": "^0.1.6",
     "feed": "^4.2.2",
     "next": "^12.3.4",
