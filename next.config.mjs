@@ -46,6 +46,11 @@ const nextConfig = {
             // social redirects
             {
                 permanent: true,
+                source: "/bsky/:path*",
+                destination: "https://bsky.app/profile/ysun.co",
+            },
+            {
+                permanent: true,
                 source: "/email/:path*",
                 destination: "mailto:ysun@hey.com",
             },
