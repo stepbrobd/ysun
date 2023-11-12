@@ -66,6 +66,11 @@ const nextConfig = {
             },
             {
                 permanent: true,
+                source: "/life/:path*",
+                destination: "https://ysun.life",
+            },
+            {
+                permanent: true,
                 source: "/linkedin/:path*",
                 destination: "https://www.linkedin.com/in/yifei-s",
             },
