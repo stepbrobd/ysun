@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply max-w-lg md:max-w-[768px] lg:max-w-3xl px-4 leading-loose text-xl ml-auto mr-auto;
+  }
+  body {
+    @apply bg-default text-default;
+  }
+  a {
+    @apply underline;
+  }
+  ul {
+    @apply list-disc list-outside;
+  }
+  ol {
+    @apply list-decimal list-outside;
+  }
+  img {
+    @apply rounded-md mb-3;
+  }
+}

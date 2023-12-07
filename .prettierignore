@@ -1,7 +1,0 @@
-archive
-
-**/.git
-**/node_modules
-**/.next
-
-pages/writing/2022/thesis.mdx
