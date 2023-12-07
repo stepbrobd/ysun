@@ -9,11 +9,11 @@ const Middleware = () => {
   response.headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   response.headers.set(
     "Permissions-Policy",
-    "camera=(), microphone=(), geolocation=()"
+    "camera=(), microphone=(), geolocation=()",
   );
   response.headers.set(
     "Strict-Transport-Security",
-    "max-age=31536000; includeSubDomains; preload"
+    "max-age=31536000; includeSubDomains; preload",
   );
   return response;
 };

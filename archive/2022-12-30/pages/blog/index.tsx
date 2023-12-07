@@ -18,8 +18,8 @@ const Blog = () => {
       <h1>Blog</h1>
 
       <p>
-        All content licensed under the Creative Commons
-        Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
+        All content licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+        license.
       </p>
 
       <Image
@@ -34,12 +34,10 @@ const Blog = () => {
       <div className="space-y-8">
         {blog.main.map((post) => (
           <NextLink key={post.title} href={post.href} passHref>
-            <section
-              className="hover:light-mode-bg-action-color hover:dark:dark-mode-bg-action-color
+            <section className="hover:light-mode-bg-action-color hover:dark:dark-mode-bg-action-color
                        active:light-mode-bg-action-color active:dark:dark-mode-bg-action-color
                        rounded-xl bg-neutral-200
-                       p-4 drop-shadow-xl dark:bg-neutral-800"
-            >
+                       p-4 drop-shadow-xl dark:bg-neutral-800">
               <div className="flex flex-col space-y-3">
                 <p className="m-0 text-xl	font-semibold">{post.title}</p>
                 <p className="m-0 text-xs text-neutral-500 dark:text-neutral-400">
@@ -59,18 +57,16 @@ const Blog = () => {
 
       <p>
         Other than the above, I also have something else just for fun{" "}
-        <Link href="https://thoughts.yifei.md">here</Link>. The contents are
-        hosted on <Link href="https://www.notion.so">Notion</Link> and I used{" "}
-        <Link href="https://super.so">Super</Link> with{" "}
+        <Link href="https://thoughts.yifei.md">here</Link>. The contents are hosted on{" "}
+        <Link href="https://www.notion.so">Notion</Link> and I used <Link href="https://super.so">Super</Link> with{" "}
         <Link href="https://cosmos.super.site">Cosmos</Link> theme by{" "}
-        <Link href="https://www.joshmillgate.co.uk/">Josh Millgate</Link> to
-        deploy it.
+        <Link href="https://www.joshmillgate.co.uk/">Josh Millgate</Link> to deploy it.
       </p>
 
       <h2>Feed</h2>
       <p>
-        If you think reading these posts are quite fun, here are three feeds
-        available (same content) for subscription:{" "}
+        If you think reading these posts are quite fun, here are three feeds available (same content) for subscription:
+        {" "}
         <Link href="/assets/misc/feed.atom" passHref>
           Atom
         </Link>

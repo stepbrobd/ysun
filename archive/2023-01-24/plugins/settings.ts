@@ -2,7 +2,7 @@
  * This plugin contains all the logic for setting up the `Settings` singleton
  */
 
-import { type DocumentDefinition, definePlugin } from "sanity";
+import { definePlugin, type DocumentDefinition } from "sanity";
 import { type StructureResolver } from "sanity/desk";
 
 export const settingsPlugin = definePlugin<{ type: string }>(({ type }) => {
@@ -14,7 +14,7 @@ export const settingsPlugin = definePlugin<{ type: string }>(({ type }) => {
       newDocumentOptions: (prev, { creationContext }) => {
         if (creationContext.type === "global") {
           return prev.filter(
-            (templateItem) => templateItem.templateId !== type
+            (templateItem) => templateItem.templateId !== type,
           );
         }
 
@@ -35,7 +35,7 @@ export const settingsPlugin = definePlugin<{ type: string }>(({ type }) => {
 // The StructureResolver is how we're changing the DeskTool structure to linking to a single "Settings" document, instead of rendering "settings" in a list
 // like how "Post" and "Author" is handled.
 export const settingsStructure = (
-  typeDef: DocumentDefinition
+  typeDef: DocumentDefinition,
 ): StructureResolver => {
   return (S) => {
     // The `Settings` root list item
@@ -47,12 +47,12 @@ export const settingsStructure = (
           S.editor()
             .id(typeDef.name)
             .schemaType(typeDef.name)
-            .documentId(typeDef.name)
+            .documentId(typeDef.name),
         );
 
     // The default root list items (except custom ones)
     const defaultListItems = S.documentTypeListItems().filter(
-      (listItem) => listItem.getId() !== typeDef.name
+      (listItem) => listItem.getId() !== typeDef.name,
     );
 
     return S.list()

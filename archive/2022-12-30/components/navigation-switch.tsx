@@ -11,9 +11,9 @@ const NavigationSwitch = () => {
   const { resolvedTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
-  if (!isMounted)
+  if (!isMounted) {
     return <div className="h-[50px] min-h-[50px] w-[30px] min-w-[30px]" />;
-  else
+  } else {
     return (
       <div className="flex h-[50px] min-h-[50px] w-[30px] min-w-[30px] items-center justify-center">
         <Menu as="div" className="relative inline-block text-left">
@@ -25,19 +25,21 @@ const NavigationSwitch = () => {
                          rounded-md border focus:outline-none"
               aria-label="Navigation Switch"
             >
-              {resolvedTheme === "light" ? (
-                <EllipsisVerticalIcon
-                  className="h-5 w-5"
-                  fill="dimgray"
-                  aria-hidden="true"
-                />
-              ) : (
-                <EllipsisVerticalIcon
-                  className="h-5 w-5"
-                  fill="white"
-                  aria-hidden="true"
-                />
-              )}
+              {resolvedTheme === "light"
+                ? (
+                  <EllipsisVerticalIcon
+                    className="h-5 w-5"
+                    fill="dimgray"
+                    aria-hidden="true"
+                  />
+                )
+                : (
+                  <EllipsisVerticalIcon
+                    className="h-5 w-5"
+                    fill="white"
+                    aria-hidden="true"
+                  />
+                )}
             </Menu.Button>
           </div>
 
@@ -67,6 +69,7 @@ const NavigationSwitch = () => {
         </Menu>
       </div>
     );
+  }
 };
 
 export default NavigationSwitch;

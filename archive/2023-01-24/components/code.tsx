@@ -2,10 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
-import {
-  vs,
-  vscDarkPlus,
-} from "react-syntax-highlighter/dist/esm/styles/prism";
+import { vs, vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 type CodeProps = {
   language: string;

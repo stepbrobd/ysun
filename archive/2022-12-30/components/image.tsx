@@ -50,10 +50,8 @@ const Image = (props: any) => {
           {...props}
         />
       </span>
-      <span
-        className="flex items-center justify-center px-5 pt-5 text-sm
-        text-neutral-500 dark:text-neutral-400"
-      >
+      <span className="flex items-center justify-center px-5 pt-5 text-sm
+        text-neutral-500 dark:text-neutral-400">
         <span>{props.alt}</span>
       </span>
     </span>

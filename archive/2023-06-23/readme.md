@@ -1,8 +1,12 @@
 # A Next.js Personal Website with a Native Authoring Experience<!-- omit in toc -->
 
-This starter is a statically generated personal website that uses [Next.js][nextjs] for the frontend and [Sanity][sanity-homepage] to handle its content. It comes with a native Sanity Studio that offers features like real-time collaboration, instant side-by-side content previews, and intuitive editing.
+This starter is a statically generated personal website that uses [Next.js][nextjs] for the frontend and
+[Sanity][sanity-homepage] to handle its content. It comes with a native Sanity Studio that offers features like
+real-time collaboration, instant side-by-side content previews, and intuitive editing.
 
-The Studio connects to Sanity Content Lake, which gives you hosted content APIs with a flexible query language, on-demand image transformations, powerful patching, and more. You can use this starter to kick-start a personal website or learn these technologies.
+The Studio connects to Sanity Content Lake, which gives you hosted content APIs with a flexible query language,
+on-demand image transformations, powerful patching, and more. You can use this starter to kick-start a personal website
+or learn these technologies.
 
 > **Note**
 >
@@ -14,30 +18,30 @@ The Studio connects to Sanity Content Lake, which gives you hosted content APIs 
 
 ## Features
 
--   A performant, static personal personal website with editable projects
--   A native and customizable authoring environment, accessible on `yourpersonalwebsite.com/studio`
--   Real-time and collaborative content editing with fine-grained revision history
--   Side-by-side instant content preview that works across your whole site
--   Support for block content and the most advanced custom fields capability in the industry
--   Webhook-triggered Incremental Static Revalidation; no need to wait for a rebuild to publish new content
--   Free Sanity project with unlimited admin users, free content updates, and pay-as-you-go for API overages
--   A project with starter-friendly and not too heavy-handed TypeScript and Tailwind.css
+- A performant, static personal personal website with editable projects
+- A native and customizable authoring environment, accessible on `yourpersonalwebsite.com/studio`
+- Real-time and collaborative content editing with fine-grained revision history
+- Side-by-side instant content preview that works across your whole site
+- Support for block content and the most advanced custom fields capability in the industry
+- Webhook-triggered Incremental Static Revalidation; no need to wait for a rebuild to publish new content
+- Free Sanity project with unlimited admin users, free content updates, and pay-as-you-go for API overages
+- A project with starter-friendly and not too heavy-handed TypeScript and Tailwind.css
 
 ## Table of Contents
 
--   [Features](#features)
--   [Table of Contents](#table-of-contents)
--   [Project Overview](#project-overview)
-    -   [Important files and folders](#important-files-and-folders)
--   [Configuration](#configuration)
-    -   [Step 1. Set up the environment](#step-1-set-up-the-environment)
-    -   [Step 2. Set up the project locally](#step-2-set-up-the-project-locally)
-    -   [Step 3. Run Next.js locally in development mode](#step-3-run-nextjs-locally-in-development-mode)
-    -   [Step 4. Deploy to production](#step-4-deploy-to-production)
--   [Questions and Answers](#questions-and-answers)
-    -   [It doesn't work! Where can I get help?](#it-doesnt-work-where-can-i-get-help)
-    -   [How can I remove the "Next steps" block from my personal site?](#how-can-i-remove-the-next-steps-block-from-my-personal-website)
--   [Next steps](#next-steps)
+- [Features](#features)
+- [Table of Contents](#table-of-contents)
+- [Project Overview](#project-overview)
+  - [Important files and folders](#important-files-and-folders)
+- [Configuration](#configuration)
+  - [Step 1. Set up the environment](#step-1-set-up-the-environment)
+  - [Step 2. Set up the project locally](#step-2-set-up-the-project-locally)
+  - [Step 3. Run Next.js locally in development mode](#step-3-run-nextjs-locally-in-development-mode)
+  - [Step 4. Deploy to production](#step-4-deploy-to-production)
+- [Questions and Answers](#questions-and-answers)
+  - [It doesn't work! Where can I get help?](#it-doesnt-work-where-can-i-get-help)
+  - [How can I remove the "Next steps" block from my personal site?](#how-can-i-remove-the-next-steps-block-from-my-personal-website)
+- [Next steps](#next-steps)
 
 ## Project Overview
 
@@ -62,13 +66,17 @@ The Studio connects to Sanity Content Lake, which gives you hosted content APIs 
 
 ### Step 1. Set up the environment
 
-Use the Deploy Button below. It will let you deploy the starter using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-sanity-example) as well as connect it to your Sanity Content Lake using [the Sanity Vercel Integration][integration].
+Use the Deploy Button below. It will let you deploy the starter using
+[Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-sanity-example) as well as connect it
+to your Sanity Content Lake using [the Sanity Vercel Integration][integration].
 
 [![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
 
 ### Step 2. Set up the project locally
 
-[Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) that was created for you on your GitHub account. Once cloned, run the following command from the project's root directory:
+[Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+that was created for you on your GitHub account. Once cloned, run the following command from the project's root
+directory:
 
 ```bash
 npx vercel link
@@ -86,9 +94,11 @@ npx vercel env pull
 npm install && npm run dev
 ```
 
-When you run this development server, the changes you make in your frontend and studio configuration will be applied live using hot reloading.
+When you run this development server, the changes you make in your frontend and studio configuration will be applied
+live using hot reloading.
 
-Your personal website should be up and running on [http://localhost:3000][localhost-3000]! You can create and edit content on [http://localhost:3000/studio][localhost-3000-studio].
+Your personal website should be up and running on [http://localhost:3000][localhost-3000]! You can create and edit
+content on [http://localhost:3000/studio][localhost-3000-studio].
 
 ### Step 4. Deploy to production
 
@@ -112,9 +122,9 @@ npx vercel --prod
 
 In case of any issues or questions, you can post:
 
--   [GitHub Discussions for Next.js][vercel-github]
--   [Sanity's GitHub Discussions][sanity-github]
--   [Sanity's Community Slack][sanity-community]
+- [GitHub Discussions for Next.js][vercel-github]
+- [Sanity's GitHub Discussions][sanity-github]
+- [Sanity's Community Slack][sanity-community]
 
 ### How can I remove the "Next steps" block from my personal website?
 
@@ -122,10 +132,10 @@ You can remove it by deleting the `IntroTemplate` component in `/app/(personal)/
 
 ## Next steps
 
--   [Join our Slack community to ask questions and get help][sanity-community]
--   [How to edit my content structure?][sanity-schema-types]
--   [How to query content?][sanity-groq]
--   [What is content modelling?][sanity-content-modelling]
+- [Join our Slack community to ask questions and get help][sanity-community]
+- [How to edit my content structure?][sanity-schema-types]
+- [How to query content?][sanity-groq]
+- [What is content modelling?][sanity-content-modelling]
 
 [vercel-deploy]: https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsanity-io%2Fsanity-template-nextjs-appdir-personal-website&project-name=nextjs-appdir-personal-website&repository-name=nextjs-appdir-personal-website&demo-title=Personal+Website+with+Built-in+Content+Editing&demo-description=A+Sanity-powered+personal+website+with+built-in+content+editing+and+instant+previews.+Uses+app+directory.&demo-url=https%3A%2F%2Ftemplate-nextjs-appdir-personal-website.sanity.build%2F&demo-image=https%3A%2F%2Fuser-images.githubusercontent.com%2F6951139%2F206395107-e58a796d-13a9-400a-94b6-31cb5df054ab.png&integration-ids=oac_hb2LITYajhRQ0i4QznmKH7gx&external-id=nextjs%3Btemplate%3Dsanity-template-nextjs-appdir-personal-website
 [integration]: https://www.sanity.io/docs/vercel-integration?utm_source=github.com&utm_medium=referral&utm_campaign=nextjs-v3vercelstarter

@@ -9,45 +9,48 @@ const Logo = () => {
 
   useEffect(() => setMounted(true), []);
 
-  if (!isMounted)
+  if (!isMounted) {
     return (
       <div
         className="h-[50px] min-h-[50px] w-[85px] min-w-[85px]"
         aria-label="Logo"
       />
     );
-  else
+  } else {
     return (
       <Link href="/" passHref aria-label="Logo">
         <div className="flex h-[50px] w-auto items-center justify-center">
           <div className="h-[30px] w-[85px]">
-            {resolvedTheme === "light" ? (
-              <Image
-                src="/assets/logo/logo-light-mode.webp"
-                alt="Logo"
-                width={170}
-                height={60}
-                quality={50}
-                placeholder="blur"
-                blurDataURL="/assets/logo/logo-light-mode.webp"
-                priority={true}
-              />
-            ) : (
-              <Image
-                src="/assets/logo/logo-dark-mode.webp"
-                alt="Logo"
-                width={170}
-                height={60}
-                quality={50}
-                placeholder="blur"
-                blurDataURL="/assets/logo/logo-dark-mode.webp"
-                priority={true}
-              />
-            )}
+            {resolvedTheme === "light"
+              ? (
+                <Image
+                  src="/assets/logo/logo-light-mode.webp"
+                  alt="Logo"
+                  width={170}
+                  height={60}
+                  quality={50}
+                  placeholder="blur"
+                  blurDataURL="/assets/logo/logo-light-mode.webp"
+                  priority={true}
+                />
+              )
+              : (
+                <Image
+                  src="/assets/logo/logo-dark-mode.webp"
+                  alt="Logo"
+                  width={170}
+                  height={60}
+                  quality={50}
+                  placeholder="blur"
+                  blurDataURL="/assets/logo/logo-dark-mode.webp"
+                  priority={true}
+                />
+              )}
           </div>
         </div>
       </Link>
     );
+  }
 };
 
 export default Logo;

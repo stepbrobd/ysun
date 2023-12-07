@@ -12,9 +12,7 @@ export default async function IndexRoute() {
 
     return (
       <PreviewSuspense
-        fallback={
-          <IndexPage loading preview posts={posts} settings={settings} />
-        }
+        fallback={<IndexPage loading preview posts={posts} settings={settings} />}
       >
         <PreviewIndexPage token={token} />
       </PreviewSuspense>

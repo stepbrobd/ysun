@@ -1,13 +1,7 @@
 "use client";
 
 import { Listbox, Transition } from "@headlessui/react";
-import {
-  CheckmarkIcon,
-  DesktopIcon,
-  MoonIcon,
-  SelectIcon,
-  SunIcon,
-} from "@sanity/icons";
+import { CheckmarkIcon, DesktopIcon, MoonIcon, SelectIcon, SunIcon } from "@sanity/icons";
 import { useTheme } from "next-themes";
 import { Fragment, useEffect, useState } from "react";
 
@@ -83,18 +77,16 @@ const ThemeManager = () => {
                       <div
                         className={classNames(
                           active ? "bg-action" : "",
-                          "flex w-[150px] min-w-[150px] flex-row items-center justify-center px-2 py-1.5"
+                          "flex w-[150px] min-w-[150px] flex-row items-center justify-center px-2 py-1.5",
                         )}
                       >
                         <theme.Icon className="absolute left-[10px]" />
                         <span key={theme.Value} className="block truncate">
                           {theme.Name}
                         </span>
-                        {selected ? (
-                          <CheckmarkIcon className="absolute right-[10px]" />
-                        ) : (
-                          <div className="absolute right-[10px] h-[16px] min-h-[16px] w-[16px] min-w-[16px]" />
-                        )}
+                        {selected
+                          ? <CheckmarkIcon className="absolute right-[10px]" />
+                          : <div className="absolute right-[10px] h-[16px] min-h-[16px] w-[16px] min-w-[16px]" />}
                       </div>
                     )}
                   </Listbox.Option>

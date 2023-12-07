@@ -22,9 +22,9 @@ export default async function PageHead() {
         // `VERCEL_URL` environment variable to get the deployment’s URL.
         // More info:
         // https://vercel.com/docs/concepts/projects/environment-variables
-        content={`${
-          process.env.VERCEL_URL ? "https://" + process.env.VERCEL_URL : ""
-        }/api/og?${new URLSearchParams({ title: ogImageTitle })}`}
+        content={`${process.env.VERCEL_URL ? "https://" + process.env.VERCEL_URL : ""}/api/og?${new URLSearchParams({
+          title: ogImageTitle,
+        })}`}
       />
     </>
   );

@@ -7,15 +7,15 @@ import type { ProjectPayload } from "types";
 import { ProjectPage, ProjectPageProps } from "./ProjectPage";
 
 export default function ProjectPreview({
-    data: initialData,
+  data: initialData,
 }: ProjectPageProps) {
-    const [data] = useLiveQuery<ProjectPayload | null>(
-        initialData,
-        projectBySlugQuery,
-        {
-            slug: initialData?.slug,
-        }
-    );
+  const [data] = useLiveQuery<ProjectPayload | null>(
+    initialData,
+    projectBySlugQuery,
+    {
+      slug: initialData?.slug,
+    },
+  );
 
-    return <ProjectPage data={data} />;
+  return <ProjectPage data={data} />;
 }

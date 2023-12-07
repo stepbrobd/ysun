@@ -101,8 +101,7 @@ const Footer = () => {
               Terms of Use
             </span>
           </Link>
-          . Site performance, crash logs and errors are tracked and monitored
-          with{" "}
+          . Site performance, crash logs and errors are tracked and monitored with{" "}
           <Link href="https://sentry.io">
             <span className="light-mode-link-color dark:dark-mode-link-color">
               Sentry
@@ -126,13 +125,11 @@ const Footer = () => {
               Vercel Analytics
             </span>
           </Link>
-          . All logs are anonymized and no personally identifiable information
-          is collected.
+          . All logs are anonymized and no personally identifiable information is collected.
         </p>
 
         <p className="text-center text-sm">
-          Copyright &copy; {new Date().getFullYear()} Yifei Sun. All rights
-          reserved.
+          Copyright &copy; {new Date().getFullYear()} Yifei Sun. All rights reserved.
         </p>
 
         <a

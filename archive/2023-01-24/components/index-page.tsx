@@ -14,8 +14,7 @@ export default function IndexPage(props: {
 }) {
   const { preview, loading, posts, settings } = props;
   const [heroPost, ...morePosts] = posts || [];
-  const { title = defaultData.title, description = defaultData.description } =
-    settings || {};
+  const { title = defaultData.title, description = defaultData.description } = settings || {};
 
   return (
     <>

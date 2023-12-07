@@ -1,8 +1,12 @@
 # A Next.js Blog with a Native Authoring Experience<!-- omit in toc -->
 
-This starter is a statically generated blog that uses [Next.js][nextjs] for the frontend and [Sanity][sanity-homepage] to handle its content. It comes with a native Sanity Studio that offers features like real-time collaboration, instant side-by-side content previews, and intuitive editing.
+This starter is a statically generated blog that uses [Next.js][nextjs] for the frontend and [Sanity][sanity-homepage]
+to handle its content. It comes with a native Sanity Studio that offers features like real-time collaboration, instant
+side-by-side content previews, and intuitive editing.
 
-The Studio connects to Sanity Content Lake, which gives you hosted content APIs with a flexible query language, on-demand image transformations, powerful patching, and more. You can use this starter to kick-start a blog or learn these technologies.
+The Studio connects to Sanity Content Lake, which gives you hosted content APIs with a flexible query language,
+on-demand image transformations, powerful patching, and more. You can use this starter to kick-start a blog or learn
+these technologies.
 
 [![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
 
@@ -58,13 +62,17 @@ The Studio connects to Sanity Content Lake, which gives you hosted content APIs 
 
 ### Step 1. Set up the environment
 
-Use the Deploy Button below. It will let you deploy the starter using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-sanity-example) as well as connect it to your Sanity Content Lake using [the Sanity Vercel Integration][integration].
+Use the Deploy Button below. It will let you deploy the starter using
+[Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-sanity-example) as well as connect it
+to your Sanity Content Lake using [the Sanity Vercel Integration][integration].
 
 [![Deploy with Vercel](https://vercel.com/button)][vercel-deploy]
 
 ### Step 2. Set up the project locally
 
-[Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) that was created for you on your GitHub account. Once cloned, run the following command from the project's root directory:
+[Clone the repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+that was created for you on your GitHub account. Once cloned, run the following command from the project's root
+directory:
 
 ```bash
 npx vercel link
@@ -82,9 +90,11 @@ npx vercel env pull
 npm install && npm run dev
 ```
 
-When you run this development server, the changes you make in your frontend and studio configuration will be applied live using hot reloading.
+When you run this development server, the changes you make in your frontend and studio configuration will be applied
+live using hot reloading.
 
-Your blog should be up and running on [http://localhost:3000][localhost-3000]! You can create and edit content on [http://localhost:3000/studio][localhost-3000-studio].
+Your blog should be up and running on [http://localhost:3000][localhost-3000]! You can create and edit content on
+[http://localhost:3000/studio][localhost-3000-studio].
 
 ### Step 4. Deploy to production
 
@@ -118,7 +128,8 @@ You can remove it by deleting the `IntroTemplate` component in `/components/Inde
 
 ### How can I set up Incremental Static Revalidation?
 
-Go to the serverless function code in `/pages/api/revalidate.ts`. In the code comments, you'll find instructions for how to set up [ISR][vercel-isr].
+Go to the serverless function code in `/pages/api/revalidate.ts`. In the code comments, you'll find instructions for how
+to set up [ISR][vercel-isr].
 
 ## Next steps
 

@@ -14,10 +14,8 @@ const Header = () => {
                          backdrop-blur-[3px] backdrop-filter"
         aria-label="Header"
       >
-        <div
-          className="container mx-3.5 flex max-w-3xl flex-row
-                        items-center justify-between xl:mx-0"
-        >
+        <div className="container mx-3.5 flex max-w-3xl flex-row
+                        items-center justify-between xl:mx-0">
           <Logo />
           <div className="container flex w-[85px] min-w-[85px] flex-row items-center justify-between">
             <ThemeSwitch />

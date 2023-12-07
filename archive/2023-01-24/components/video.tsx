@@ -24,13 +24,10 @@ const Video = ({ title, payload }: VideoProps) => {
           />
         </span>
       </span>
-      <span
-        className="flex items-center justify-center px-4 pt-4 text-sm
-                  text-neutral-600 dark:text-neutral-400"
-      >
+      <span className="flex items-center justify-center px-4 pt-4 text-sm
+                  text-neutral-600 dark:text-neutral-400">
         <span>
-          Video: {title} ({payload.data.aspect_ratio}{" "}
-          {payload.data.max_stored_resolution} @{" "}
+          Video: {title} ({payload.data.aspect_ratio} {payload.data.max_stored_resolution} @{" "}
           {payload.data.max_stored_frame_rate} FPS)
         </span>
       </span>

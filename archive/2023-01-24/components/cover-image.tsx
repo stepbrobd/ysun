@@ -27,13 +27,13 @@ export default function CoverImage(props: CoverImageProps) {
   );
   return (
     <div className="sm:mx-0">
-      {slug ? (
-        <Link href={`/blog/${slug}`} aria-label={title}>
-          {coverImage}
-        </Link>
-      ) : (
-        coverImage
-      )}
+      {slug
+        ? (
+          <Link href={`/blog/${slug}`} aria-label={title}>
+            {coverImage}
+          </Link>
+        )
+        : coverImage}
     </div>
   );
 }

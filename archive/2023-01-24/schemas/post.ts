@@ -16,9 +16,9 @@ import authorType from "./author";
 /**
  * This file is the schema definition for a post.
  *
- * Here you'll be able to edit the different fields that appear when you 
+ * Here you'll be able to edit the different fields that appear when you
  * create or edit a post in the studio.
- * 
+ *
  * Here you can see the different schema types that are available:
 
   https://www.sanity.io/docs/schema-types
@@ -92,8 +92,7 @@ export default defineType({
     defineField({
       name: "content",
       title: "Content",
-      description:
-        'Note: LaTeX content must always start with either "%inline" or "%block".',
+      description: 'Note: LaTeX content must always start with either "%inline" or "%block".',
       type: "array",
       of: [
         {
@@ -195,9 +194,9 @@ export default defineType({
       const subtitles = [
         author && `Author: ${author},`,
         initialPostDate &&
-          `Posted on ${format(parseISO(initialPostDate), "LLL d, yyyy")},`,
+        `Posted on ${format(parseISO(initialPostDate), "LLL d, yyyy")},`,
         lastModifiedDate &&
-          `Modified on ${format(parseISO(lastModifiedDate), "LLL d, yyyy")}.`,
+        `Modified on ${format(parseISO(lastModifiedDate), "LLL d, yyyy")}.`,
       ].filter(Boolean);
 
       return { title, media, subtitle: subtitles.join(" ") };

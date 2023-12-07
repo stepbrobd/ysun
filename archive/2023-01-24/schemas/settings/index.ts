@@ -23,8 +23,7 @@ export default defineType({
     }),
     defineField({
       name: "description",
-      description:
-        "Used both for the <meta> description tag for SEO, and the blog subheader.",
+      description: "Used both for the <meta> description tag for SEO, and the blog subheader.",
       title: "Descriprion",
       type: "array",
       initialValue: defaultData.description,
@@ -58,8 +57,7 @@ export default defineType({
     defineField({
       name: "ogImage",
       title: "Open Graph Image",
-      description:
-        "Used for social media previews when linking to the index page.",
+      description: "Used for social media previews when linking to the index page.",
       type: "object",
       components: {
         input: OpenGraphInput as any,

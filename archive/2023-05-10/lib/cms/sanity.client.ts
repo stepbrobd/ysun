@@ -6,9 +6,11 @@ import { createClient } from "next-sanity";
 import type { Region } from "@/lib/cms/sanity.types";
 
 const sanityClient = (token?: string | null) => {
-    return projectId ? createClient({ projectId, dataset, apiVersion, useCdn, token: token! }) : null;
+  return projectId ? createClient({ projectId, dataset, apiVersion, useCdn, token: token! }) : null;
 };
 
-export async function getRegion({ token }: { token?: string | null }): Promise<Region | undefined> {
-    return await sanityClient(token)?.fetch(regionQuery);
+export async function getRegion(
+  { token }: { token?: string | null },
+): Promise<Region | undefined> {
+  return await sanityClient(token)?.fetch(regionQuery);
 }

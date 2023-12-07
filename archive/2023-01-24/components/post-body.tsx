@@ -13,12 +13,13 @@ const PostLaTeX = ({ value }) => {
   const isInline = !value.body.split("\n")[0].includes("block");
   if (isInline) {
     return <LaTeX body={value.body} />;
-  } else
+  } else {
     return (
       <span className="mb-4 block">
         <LaTeX body={value.body} />
       </span>
     );
+  }
 };
 
 const PostCode = ({ value }) => {
@@ -117,12 +118,8 @@ const components = {
     strong: (props) => <strong className="font-bold">{props.children}</strong>,
     code: (props) => <code className="code">{props.children}</code>,
     underline: (props) => <u>{props.children}</u>,
-    "strike-through": (props) => (
-      <s className="line-through">{props.children}</s>
-    ),
-    internalLink: (props) => (
-      <Link href={props.value.slug.current}>{props.children}</Link>
-    ),
+    "strike-through": (props) => <s className="line-through">{props.children}</s>,
+    internalLink: (props) => <Link href={props.value.slug.current}>{props.children}</Link>,
     externalLink: (props) => (
       <Link href={props.value.href} newTab={props.value.blank}>
         {props.children}
@@ -131,12 +128,8 @@ const components = {
   },
 
   list: {
-    bullet: (props) => (
-      <ul className="mb-4 list-disc pl-8">{props.children}</ul>
-    ),
-    number: (props) => (
-      <ol className="mb-4 list-decimal pl-8">{props.children}</ol>
-    ),
+    bullet: (props) => <ul className="mb-4 list-disc pl-8">{props.children}</ul>,
+    number: (props) => <ol className="mb-4 list-decimal pl-8">{props.children}</ol>,
   },
 
   listItem: {

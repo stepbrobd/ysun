@@ -2,12 +2,7 @@
 
 import PostPage from "components/post-page";
 import { usePreview } from "lib/sanity.preview";
-import {
-  type Post,
-  type Settings,
-  postAndMoreStoriesQuery,
-  settingsQuery,
-} from "lib/sanity.queries";
+import { type Post, postAndMoreStoriesQuery, type Settings, settingsQuery } from "lib/sanity.queries";
 
 export default function PreviewPostPage({
   token,
@@ -21,7 +16,7 @@ export default function PreviewPostPage({
     postAndMoreStoriesQuery,
     {
       slug,
-    }
+    },
   ) || { post: null, morePosts: [] };
   const settings: Settings = usePreview(token, settingsQuery) || {};
 

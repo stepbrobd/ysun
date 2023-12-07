@@ -18,20 +18,22 @@ const LaTeX = (props: LaTeXProps) => {
       KaTeX.renderToString(latex, {
         displayMode: !isInline,
         throwOnError: false,
-      })
+      }),
     );
   };
 
   useMemo(createHtml, [latex, isInline]);
   return (
     <>
-      {isInline ? (
-        // eslint-disable-next-line react/no-danger
-        <span dangerouslySetInnerHTML={{ __html: html }} />
-      ) : (
-        // eslint-disable-next-line react/no-danger
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      )}
+      {isInline
+        ? (
+          // eslint-disable-next-line react/no-danger
+          <span dangerouslySetInnerHTML={{ __html: html }} />
+        )
+        : (
+          // eslint-disable-next-line react/no-danger
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        )}
     </>
   );
 };

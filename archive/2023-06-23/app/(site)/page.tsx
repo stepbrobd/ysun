@@ -11,29 +11,29 @@ import { notFound } from "next/navigation";
 import { HomePagePayload, SettingsPayload } from "types";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const preview = draftMode().isEnabled ? { token: readToken! } : undefined;
-    const client = getClient(preview);
+  const preview = draftMode().isEnabled ? { token: readToken! } : undefined;
+  const client = getClient(preview);
 
-    const [settings, page] = await Promise.all([
-        client.fetch<SettingsPayload | null>(settingsQuery),
-        client.fetch<HomePagePayload | null>(homePageQuery),
-    ]);
+  const [settings, page] = await Promise.all([
+    client.fetch<SettingsPayload | null>(settingsQuery),
+    client.fetch<HomePagePayload | null>(homePageQuery),
+  ]);
 
-    return defineMetadata({
-        description: page?.overview ? toPlainText(page.overview) : "",
-        image: settings?.ogImage,
-        title: page?.title,
-    });
+  return defineMetadata({
+    description: page?.overview ? toPlainText(page.overview) : "",
+    image: settings?.ogImage,
+    title: page?.title,
+  });
 }
 
 export default async function IndexRoute() {
-    const preview = draftMode().isEnabled ? { token: readToken! } : undefined;
-    const client = getClient(preview);
-    const data = await client.fetch<HomePagePayload | null>(homePageQuery);
+  const preview = draftMode().isEnabled ? { token: readToken! } : undefined;
+  const client = getClient(preview);
+  const data = await client.fetch<HomePagePayload | null>(homePageQuery);
 
-    if (!data && !preview) {
-        notFound();
-    }
+  if (!data && !preview) {
+    notFound();
+  }
 
-    return preview ? <HomePagePreview data={data} /> : <HomePage data={data} />;
+  return preview ? <HomePagePreview data={data} /> : <HomePage data={data} />;
 }

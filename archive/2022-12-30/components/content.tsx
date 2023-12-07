@@ -19,11 +19,9 @@ const Content = ({ children }: Props) => {
         className="mx-3.5 flex items-center justify-center xl:mx-0"
         aria-label="Content"
       >
-        <article
-          className="light-mode-text-color dark:dark-mode-text-color prose-a:light-mode-link-color
+        <article className="light-mode-text-color dark:dark-mode-text-color prose-a:light-mode-link-color
                      dark:prose-a:dark-mode-link-color prose-pre:light-mode-bg-action-color prose-pre:light-mode-text-color dark:prose-pre:dark-mode-bg-action-color dark:prose-pre:dark-mode-text-color container
-                     prose prose-neutral z-0 my-10 max-w-3xl dark:prose-invert prose-pre:drop-shadow-xl"
-        >
+                     prose prose-neutral z-0 my-10 max-w-3xl dark:prose-invert prose-pre:drop-shadow-xl">
           {children}
         </article>
       </main>

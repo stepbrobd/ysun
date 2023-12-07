@@ -14,7 +14,6 @@ export const usePreview = definePreview({
       alerted = true;
     }
   },
-
   // As your dataset grows you might hit the default limit of 3000.
   // However you can increase this limit however you like and audit how it performs.
   // Or even set it to `Infinity` if you want to disable the limit.

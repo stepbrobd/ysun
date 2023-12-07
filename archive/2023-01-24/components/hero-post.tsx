@@ -14,7 +14,7 @@ export default function HeroPost(
     | "excerpt"
     | "author"
     | "slug"
-  >
+  >,
 ) {
   const {
     title,
@@ -44,9 +44,7 @@ export default function HeroPost(
         </div>
         <div>
           {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
-          {author && (
-            <AuthorAvatar name={author.name} picture={author.picture} />
-          )}
+          {author && <AuthorAvatar name={author.name} picture={author.picture} />}
         </div>
       </div>
     </section>

@@ -1,0 +1,26 @@
+{
+  "tasks": {
+    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
+    "start": "deno run --allow-all --watch=components/,islands/,routes/,static/ dev.ts",
+    "build": "deno run --allow-all dev.ts build",
+    "preview": "deno run --allow-all main.ts",
+    "update": "deno run --allow-all --reload https://fresh.deno.dev/update ."
+  },
+  "imports": {
+    "!components/": "./components/",
+    "$fresh/": "https://deno.land/x/fresh@1.6.0/",
+    "!islands/": "./islands/",
+    "preact": "https://esm.sh/preact@10.19.2",
+    "preact/": "https://esm.sh/preact@10.19.2/",
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.2.1",
+    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.0",
+    "$std/": "https://deno.land/std@0.208.0/",
+    "tailwindcss": "npm:tailwindcss@3.3.5",
+    "tailwindcss/": "npm:/tailwindcss@3.3.5/",
+    "tailwindcss/plugin": "npm:/tailwindcss@3.3.5/plugin.js"
+  },
+  "exclude": ["**/_fresh/*"],
+  "lint": { "rules": { "tags": ["fresh", "recommended"] } },
+  "fmt": { "useTabs": false, "indentWidth": 2, "lineWidth": 120, "semiColons": true, "singleQuote": false },
+  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" }
+}

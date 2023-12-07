@@ -13,10 +13,9 @@ export default function PostHeader(
     | "lastModifiedDate"
     | "author"
     | "slug"
-  >
+  >,
 ) {
-  const { title, coverImage, initialPostDate, lastModifiedDate, author, slug } =
-    props;
+  const { title, coverImage, initialPostDate, lastModifiedDate, author, slug } = props;
   return (
     <>
       <PostTitle>{title}</PostTitle>
