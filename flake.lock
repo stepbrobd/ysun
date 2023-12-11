@@ -14,13 +14,13 @@
       "locked": {
         "lastModified": 1694341738,
         "narHash": "sha256-zEosA90LiNd3/EFpZNKs7XPdY7PIsat19I6uJb/MuYU=",
-        "owner": "snO2wman",
+        "owner": "stepbrobd",
         "repo": "deno2nix",
         "rev": "38dcc186763ab930acd1d751b4bfe3c0bd606ef3",
         "type": "github"
       },
       "original": {
-        "owner": "snO2wman",
+        "owner": "stepbrobd",
         "repo": "deno2nix",
         "type": "github"
       }
