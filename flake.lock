@@ -10,11 +10,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1702424486,
-        "narHash": "sha256-qjLOrc8Zz5M40ial5x5xqdBjYgAF0L1AFw9IJ75U3C8=",
+        "lastModified": 1702440459,
+        "narHash": "sha256-8TD9xQytBFATGcuYaxQGdVepjgUB6NBsql9/MQKrKls=",
         "owner": "stepbrobd",
         "repo": "deno2nix",
-        "rev": "6ced1f39b3c53a5bda656859b39c8d58c028cb7e",
+        "rev": "66a407d205158b8648dbd5034b0bfac305d2ac34",
         "type": "github"
       },
       "original": {
