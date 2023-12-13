@@ -5,7 +5,6 @@ const src: Record<string, string> = {
   "/bsky": "https://bsky.app/profile/ysun.co",
   "/github": "https://github.com/stepbrobd",
   "/instagram": "https://www.instagram.com/stepbrobd",
-  "/life": "https://ysun.life",
   "/linkedin": "https://www.linkedin.com/in/yifei-s",
   "/threads": "https://threads.net/@stepbrobd",
   "/twitter": "https://twitter.com/stepbrobd",
