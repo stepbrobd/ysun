@@ -23,14 +23,21 @@
         ];
       };
 
-      drv = pkgs.deno2nix.mkExecutable {
-        pname = "ysun.co";
+      drv = pkgs.stdenvNoCC.mkDerivation rec {
+        pname = "ysun";
         version = self.shortRev or self.dirtyShortRev;
         src = ./.;
-        allow.all = true;
-        config = "./deno.jsonc";
-        lockfile = "./deno.lock";
-        entrypoint = "./main.ts";
+        nativeBuildInputs = with pkgs; [ deno jq ];
+        buildPhase = ''
+          export DENO_DIR=$(mktemp -d)
+          ln -s "${pkgs.deno2nix.internal.mkDepsLink (src+"/deno.lock")}" $(deno info --json | jq -r .modulesCache)
+          ln -s "${pkgs.deno2nix.internal.mkNpmLink  (src+"/deno.lock")}" $(deno info --json | jq -r .npmCache)
+          # TODO: fix "Expected a JavaScript or TypeScript module, but identified a Unknown module. Importing these types of modules is currently not supported."
+          deno run --cached-only --allow-all --lock $src/deno.lock $src/dev.ts build
+        '';
+        installPhase = ''
+          # TODO: test if only _fresh/ and static/ are needed
+        '';
       };
     in
     {
