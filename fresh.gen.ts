@@ -9,6 +9,7 @@ import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
 import * as $cv from "./routes/cv.ts";
 import * as $geofeed from "./routes/geofeed.ts";
+import * as $stats from "./routes/stats.tsx";
 
 import { type Manifest } from "$fresh/server.ts";
 
@@ -21,6 +22,7 @@ const manifest = {
     "./routes/_middleware.ts": $_middleware,
     "./routes/cv.ts": $cv,
     "./routes/geofeed.ts": $geofeed,
+    "./routes/stats.tsx": $stats,
   },
   islands: {},
   baseUrl: import.meta.url,

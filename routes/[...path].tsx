@@ -28,6 +28,13 @@ const page = async (_req: Request, _ctx: FreshContext): Promise<JSX.Element | Re
 
         <section class="markdown-body mt-3 pb-4">
           <p>
+            Visitor stats tracked by{"  "}
+            <a href="/stats">
+              self-hosted Plausible Analytics
+            </a>
+            .
+          </p>
+          <p>
             Use{" "}
             <a href="https://github.com/charmbracelet/glow">
               Glow
