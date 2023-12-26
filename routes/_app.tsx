@@ -17,6 +17,7 @@ const app = ({ Component }: PageProps): JSX.Element => {
         <script defer data-domain="ysun.co" src="https://stats.ysun.co/js/script.js" />
       </head>
       <body
+        class="selection:bg-[#aaffec] dark:selection:bg-[#f81ce5]"
         data-color-mode="auto"
         data-light-theme="light"
         data-dark-theme="dark"
