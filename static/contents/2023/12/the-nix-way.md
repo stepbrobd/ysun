@@ -106,4 +106,226 @@ The `specialArgs` is used to pass arguments to modules, we added `inputs` and `o
 
 ## Getting Started on Configurations
 
-...WIP
+Depending on whether you have a NixOS or Darwin system (or both), you should decide on these couple of things:
+
+- How many host machines do you have? Is it really worth it spending time on Nix?
+- NixOS or Darwin? Or both (you've got to think it through if you want to have both, it'll be quite messy)?
+- Do you want to use [home-manager](https://github.com/nix-community/home-manager) (considering `nixpkgs` and `nix-darwin` both have limited configuration options, I personally strongly recommend using home-manager)?
+- Standalone home-manager or integrate it directly into your system configuration (standalone meaning you'll need to run `home-manager switch` instead of it automatically kicks in when rebuilding the system with `{nixos,darwin}-switch`)?
+
+Let's continue with the assumption that you have multiple NixOS and Darwin machines, and you want to use home-manager integrated into your system configuration.
+The first step would be adding flake inputs:
+
+```nix
+{
+    inputs = {
+        nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+        nix-darwin = {
+            url = "github:lnl7/nix-darwin";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+        home-manager = {
+            url = "github:nix-community/home-manager";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+    };
+
+    outputs = { self, nixpkgs, nix-darwin, home-manager, ... } @ inputs:
+    let
+        inherit (self) outputs;
+        lib = nixpkgs.lib // nix-darwin.lib // home-manager.lib; # merge all libs together so we don't need to use them separately
+    in
+    {
+        nixosConfigurations."nixos-machine-name" = lib.nixosSystem {
+            specialArgs = { inherit inputs outputs; };
+            modules = [
+                ... # put modules here
+            ];
+        };
+        darwinConfigurations."darwin-machine-name" = lib.darwinSystem {
+            specialArgs = { inherit inputs outputs; };
+            modules = [
+                ... # put modules here
+            ];
+        };
+    };
+}
+```
+
+This is rather cumbersome, let's extract the common section out:
+
+```nix
+{
+    inputs = { ... }; # same as above
+
+    outputs = { self, nixpkgs, nix-darwin, home-manager, ... } @ inputs:
+    let
+        inherit (self) outputs;
+        lib = nixpkgs.lib // nix-darwin.lib // home-manager.lib; # merge all libs together so we don't need to use them separately
+        mkSystem = { type, platform, config, username, stateVersion, hmstateVersion, extraModules, extraHMModules }: lib."${type}System" {
+            specialArgs = { inherit inputs outputs; };
+            modules = [
+                config # path to system config, hardware configs are usually imported inside the config
+                { nixpkgs.hostPlatform = lib.mkDefault platform; } # set host platform
+                { system.stateVersion = stateVersion; }                                  # state version
+                { home-manager.users."${username}".home.stateVersion = hmstateVersion; } # home-manager state version
+
+                # system user
+                (../. + "/users/${username}") # or change it based on your directory structure
+
+                # integrated home-manager
+                home-manager."${type}Modules".home-manager
+                {
+                  home-manager.extraSpecialArgs = { inherit inputs outputs; };
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.users."${username}" = {
+                    imports = [
+                      (../. + "/users/${username}/home.nix") # or change it based on your directory structure
+                    ] ++ extraHMModules;
+                  };
+                }
+            ] ++ extraModules;
+        };
+    in
+    {
+        # rec means recursive attrset, attrs inside recursive attrset can refer to other attrs inside the scope
+        nixosConfigurations."nixos-machine-name" = mkSystem rec { # we are using rec here since home-manager state version is the same as nixos state version
+            type = "nixos";
+            platform = "x86_64-linux"; # or "aarch64-linux"
+            config = ./path/to/nixos/configuration.nix;
+            username = "your-username";
+            stateVersion = "24.05";         # string type
+            hmstateVersion = stateVersion;  # string type
+            extraModules = [
+                # extra nixos modules
+            ];
+            extraHMModules = [
+                # extra home-manager modules
+            ];
+        };
+        # we don't need to use rec here since we are not referring to other attrs
+        darwinConfigurations."darwin-machine-name" = mkSystem {
+            type = "darwin";
+            platform = "x86_64-darwin"; # or "aarch64-darwin"
+            config = ./path/to/darwin/configuration.nix;
+            username = "your-username";
+            stateVersion = 4;              # integer type
+            hmstateVersion = "24.05";      # string type
+            extraModules = [
+                # extra darwin modules
+            ];
+            extraHMModules = [
+                # extra home-manager modules
+            ];
+        };
+    };
+}
+```
+
+`mkSystem` is a function that returns a system config, it assumes you have the following directory structure:
+
+```txt
+- flake.nix
+- flake.lock
+- some-other-directory-that-stores-your-system-config
+  - ...
+- some-other-directory-that-stores-your-modules
+  - ...
+- users
+  - your-username
+    - home.nix    # home-manager module
+    - default.nix # nixos/darwin module
+```
+
+You can change the directory structure, but you'll need to change the paths in `mkSystem` accordingly.
+Note that `users/${username}/default.nix` is a nixos/darwin module, it's content must match the definitions in [nixpkgs](https://mynixos.com/nixpkgs/option/users.users)
+or [nix-darwin](https://mynixos.com/nix-darwin/option/users.users).
+`users/${username}/home.nix` is a home-manager module, it's content must match the definitions in [home-manager](https://mynixos.com/home-manager/options/home).
+Similarly, the modules in `extraModules` must be from [nixpkgs](https://mynixos.com/nixpkgs/options) or [nix-darwin](https://mynixos.com/nix-darwin/options),
+and the modules in `extraHMModules` must be from [home-manager](https://mynixos.com/home-manager/options).
+Putting the `mkSystem` function in a separate file is also a good idea, check out [Haumea](https://github.com/nix-community/haumea) to easily manage your custom libraries.
+
+## Conflicts? System-Dependent Configs?
+
+Some options might only be available in nixpkgs options but not in nix-darwin options, or vice versa.
+To address this, [`lib.optionalAttrs`](https://ryantm.github.io/nixpkgs/functions/library/attrsets/#function-library-lib.attrsets.optionalAttrs)
+can be very useful:
+
+```nix
+{ config
+, lib
+, pkgs
+, ...
+}:
+
+{
+  programs.zsh.enable = true;
+
+  users.users."your-username" = {
+    shell = pkgs.zsh;
+
+    description = "Your Username";
+    home =
+      if pkgs.stdenv.isLinux
+      then lib.mkDefault "/home/your-username"
+      else if pkgs.stdenv.isDarwin
+      then lib.mkDefault "/Users/your-username"
+      else abort "Unsupported OS";
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 ...";
+      "ssh-ed25519 ...";
+    ];
+  } // lib.optionalAttrs pkgs.stdenv.isLinux {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "networkmanager" "input" "audio" "video" ];
+    hashedPassword = "...";
+  };
+}
+```
+
+In the example above, `users.users.<username>.isNormalUser` is only available in nixpkgs (for NixOS systems, not Darwin),
+so we use `lib.optionalAttrs pkgs.stdenv.isLinux` to make it only available on Linux systems or nix-darwin will throw an error.
+
+Also, if you only want some packages to be installed on a specific system, `lib.optionals` can make attributes appear or disappear based on conditions:
+
+```nix
+{ config
+, lib
+, pkgs
+, ...
+}:
+
+{
+  # available on all systems
+  home.packages = with pkgs; [
+    nix-output-monitor
+    # ...
+  ]
+  # linux only and when hyprland is enabled
+  ++ (lib.optionals (pkgs.stdenv.isLinux && config.wayland.windowManager.hyprland.enable) [
+    cider
+    # ...
+  ])
+  # darwin only
+  ++ (lib.optionals pkgs.stdenv.isDarwin [
+    cocoapods
+    # ...
+  ]);
+}
+```
+
+## Resources
+
+Nix's documentation is bad, my best advise is get used to reading the source code, and messing around with it using `nix repl`.
+Instead of complaining about the documentation, use online resources like [official discourse](https://discourse.nixos.org) and
+[github code search](https://github.com/features/code-search) (query with `lang:Nix`).
+
+- [nix wiki](https://nixos.wiki): usually outdated, but still useful
+- [nix pills](https://nixos.org/guides/nix-pills)
+- [nix manual](https://nixos.org/manual/nix/unstable)
+- [nixpkgs manual](https://nixos.org/manual/nixpkgs/unstable)
+- [mynixos](https://mynixos.com): a very nice tool to search for options
+- [direnv](https://direnv.net): a tool to automatically load/unload environment variables
+- ... the rest is up to your imagination
