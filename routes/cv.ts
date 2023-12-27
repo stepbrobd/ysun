@@ -5,6 +5,7 @@ const config: RouteConfig = {
 };
 
 const handler = async (_req: Request, _ctx: FreshContext): Promise<Response> => {
+  if (_ctx.url.pathname === "/cv") return Response.redirect(_ctx.url.href + ".pdf", 308);
   try {
     const res = await fetch("https://api.github.com/repos/stepbrobd/cv/releases/latest");
     const jsn = await res.json();
