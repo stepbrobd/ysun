@@ -3,6 +3,30 @@ import { asset, Partial } from "$fresh/runtime.ts";
 import { CSS, KATEX_CSS } from "$gfm";
 import { JSX } from "preact/jsx-runtime";
 
+(() => {
+  for (
+    const lang of [
+      "c",
+      "cpp",
+      "css",
+      "csv",
+      "bash",
+      "diff",
+      "dns-zone-file",
+      "docker",
+      "go",
+      "go-module",
+      "haskell",
+      "latex",
+      "log",
+      "python",
+      "nix",
+    ]
+  ) {
+    import(`prism/components/prism-${lang}?no-check`);
+  }
+})();
+
 const app = ({ Component }: PageProps): JSX.Element => {
   return (
     <html lang="en-US">
