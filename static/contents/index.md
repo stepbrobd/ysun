@@ -12,7 +12,7 @@ Before joining NEU, I got my bachelors at University of Utah for my thesis
 under the guidance of [Shad Roundy](https://iss.mech.utah.edu/shad-roundy) and
 [Tucker Hermans](https://robot-learning.cs.utah.edu/thermans).
 
-My research interests are theoretical computer science and distributed systems:
+My research interests are theoretical computer science and distributed systems ([CV](/cv.pdf)).
 
 - Type theory and type based program analysis for modern programming languages.
 - Distributed systems and consistency model verification.
@@ -28,4 +28,5 @@ Some random recommendations:
 - [Cloudflare](https://blog.cloudflare.com): [stop using speedtest.net](https://speed.cloudflare.com)
 - [Fly.io](https://fly.io): [the serverless server](https://fly.io/blog/the-serverless-server)
 - [Nix](https://nixos.org): [customize your neovim with nixvim](https://github.com/nix-community/nixvim), [secure boot](https://github.com/nix-community/lanzaboote)
+- [Plausible](https://github.com/plausible/analytics): [visitor stats](/stats), [stop using google analytics](https://plausible.io/vs-google-analytics)
 - [Tailscale](https://tailscale.com): [choose your own IP](https://tailscale.com/blog/choose-your-ip), [how NAT works](https://tailscale.com/blog/how-nat-traversal-works)
