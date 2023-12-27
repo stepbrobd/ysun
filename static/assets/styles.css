@@ -18,7 +18,105 @@
   ol {
     @apply list-decimal list-outside;
   }
+  figure {
+    @apply flex flex-col items-center justify-center;
+  }
   img {
     @apply rounded-md mb-3;
+  }
+  details > summary {
+    list-style: none;
+  }
+  details > summary::marker,
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  @media (prefers-color-scheme: light) {
+    .highlight {
+      .token.comment { @apply text-gray-500; }
+      .token.prolog { @apply text-gray-500; }
+      .token.doctype { @apply text-gray-500; }
+      .token.cdata { @apply text-gray-500; }
+
+      .token.punctuation { @apply text-gray-700; }
+
+      .token.namespace { @apply opacity-75; }
+
+      .token.property { @apply text-purple-700; }
+      .token.tag { @apply text-purple-700; }
+      .token.constant { @apply text-purple-700; }
+      .token.symbol { @apply text-purple-700; }
+      .token.deleted { @apply text-purple-700; }
+
+      .token.boolean { @apply text-red-600; }
+      .token.number { @apply text-red-600; }
+      .token.selector { @apply text-red-600; }
+      .token.attr-name { @apply text-red-600; }
+      .token.string { @apply text-red-600; }
+      .token.char { @apply text-red-600; }
+      .token.builtin { @apply text-red-600; }
+      .token.inserted { @apply text-red-600; }
+
+      .token.operator { @apply text-indigo-600; }
+      .token.entity { @apply text-indigo-600; }
+      .token.url { @apply text-indigo-600; }
+      .token.variable { @apply text-indigo-600; }
+
+      .token.atrule { @apply text-blue-700; }
+      .token.attr-value { @apply text-blue-700; }
+      .token.keyword { @apply text-blue-700; }
+
+      .token.function { @apply text-green-700; }
+      .token.class-name { @apply text-green-700; }
+
+      .token.regex { @apply text-orange-700; }
+      .token.important { @apply text-orange-700; }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .highlight {
+      .token.comment { @apply text-gray-400; }
+      .token.prolog { @apply text-gray-400; }
+      .token.doctype { @apply text-gray-400; }
+      .token.cdata { @apply text-gray-400; }
+
+      .token.punctuation { @apply text-gray-300; }
+
+      .token.namespace { @apply opacity-75; }
+
+      .token.property { @apply text-purple-300; }
+      .token.tag { @apply text-purple-300; }
+      .token.constant { @apply text-purple-300; }
+      .token.symbol { @apply text-purple-300; }
+      .token.deleted { @apply text-purple-300; }
+
+      .token.boolean { @apply text-red-400; }
+      .token.number { @apply text-red-400; }
+      .token.selector { @apply text-red-400; }
+      .token.attr-name { @apply text-red-400; }
+      .token.string { @apply text-red-400; }
+      .token.char { @apply text-red-400; }
+      .token.builtin { @apply text-red-400; }
+      .token.inserted { @apply text-red-400; }
+
+      .token.operator { @apply text-indigo-300; }
+      .token.entity { @apply text-indigo-300; }
+      .token.url { @apply text-indigo-300; }
+      .token.variable { @apply text-indigo-300; }
+
+      .token.atrule { @apply text-blue-300; }
+      .token.attr-value { @apply text-blue-300; }
+      .token.keyword { @apply text-blue-300; }
+
+      .token.function { @apply text-green-400; }
+      .token.class-name { @apply text-green-400; }
+
+      .token.regex { @apply text-orange-400; }
+      .token.important { @apply text-orange-400; }
+    }
   }
 }
