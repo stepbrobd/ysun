@@ -2,7 +2,7 @@
   "tasks": {
     "cache": "deno cache dev.ts main.ts",
     "check": "deno fmt --check && deno lint",
-    "start": "deno run --allow-all --watch=components/,islands/,routes/,static/ dev.ts",
+    "start": "DENO_DEPLOYMENT_ID=$(git rev-parse HEAD) deno run --allow-all --watch=components/,islands/,routes/,static/ dev.ts",
     "build": "deno run --allow-all dev.ts build",
     "preview": "deno run --allow-all main.ts",
     "update": "deno run --allow-all --reload https://fresh.deno.dev/update ."
