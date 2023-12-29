@@ -192,8 +192,7 @@ UpTime and Steps/Day to get a more accurate diagnosis.
 
 ## Roadmap
 
-<details>
-<summary>2021-08 ~ 2022-07</summary>
+**2021-08 ~ 2022-07**
 
 - MMS and Raspberry Pi setup
 - MMS hardware interface with Raspberry Pi
@@ -201,10 +200,7 @@ UpTime and Steps/Day to get a more accurate diagnosis.
 - Pre-processing pipeline
 - UpTime and Steps/Day calculation
 
-</details>
-
-<details>
-<summary>2022-08 ~ 2022-12</summary>
+**2022-08 ~ 2022-12**
 
 - Does UpTime predicts the existence of ME/CFS?
 - Does UpTime predicts the existence of Long COVID?
@@ -212,16 +208,11 @@ UpTime and Steps/Day to get a more accurate diagnosis.
 - Does Steps/Day predicts the existence of Long COVID?
 - Check standardized survey data's correlation with UpTime and Steps/Day (RAND36, OISA, OIDAS)
 
-</details>
-
-<details>
-<summary>2022-12 ~ 2022-05</summary>
+**2022-12 ~ 2022-05**
 
 - Explore multi-regression models
 - Explore other digital bio-markers
 - Explore ML approach
-
-</details>
 
 After gathering terabytes worth of sensor data, we used the raw data to determine UpTime and Steps/Day, then evaluate
 UpTime and Steps/Day and linear combination of the two as a predictor for ME/CFS disease severity. The final step of
