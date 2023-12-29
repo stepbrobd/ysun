@@ -20,7 +20,7 @@ const Layout = (
         ]}
       />
 
-      <main class="container py-4 border-y border-[##d8dee4] dark:border-[#21262d]">
+      <main class="container py-4 border-y border-[#d8dee4] dark:border-[#21262d]">
         {children}
       </main>
 

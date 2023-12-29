@@ -52,7 +52,7 @@ const page = async (_req: Request, _ctx: FreshContext): Promise<JSX.Element | Re
               <br />
               <span class="text-green-700 dark:text-green-400">glow </span>
               <span class="text-indigo-600 dark:text-indigo-300">
-                <a href={_ctx.url.origin + page.path} target="_blank" f-client-nav={false}>
+                <a class="no-underline" href={_ctx.url.origin + page.path} target="_blank" rel="noopener noreferrer">
                 {`${_ctx.url.origin + page.path}`}
                 </a>
                 </span>
@@ -60,7 +60,7 @@ const page = async (_req: Request, _ctx: FreshContext): Promise<JSX.Element | Re
           </div>
         </details>
 
-        <section class="pt-4 border-t border-[##d8dee4] dark:border-[#21262d]">
+        <section class="pt-4 border-t border-[#d8dee4] dark:border-[#21262d]">
           <Recommendation
             current={path}
             pages={pages}
