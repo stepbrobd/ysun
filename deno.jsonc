@@ -1,5 +1,6 @@
 {
   "tasks": {
+    "cache": "deno cache dev.ts main.ts",
     "check": "deno fmt --check && deno lint",
     "start": "deno run --allow-all --watch=components/,islands/,routes/,static/ dev.ts",
     "build": "deno run --allow-all dev.ts build",
