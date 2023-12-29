@@ -17,7 +17,7 @@
         name = "ysun";
         runtimeInputs = with pkgs; [ deno ];
         text = ''
-          pushd "$(dirname "$0")"
+          pushd "$(dirname "$0")" > /dev/null
           DENO_DEPLOYMENT_ID=${rev} deno run --allow-all main.ts
           popd
         '';
