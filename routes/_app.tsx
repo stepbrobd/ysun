@@ -24,7 +24,7 @@ const app = ({ Component }: PageProps): JSX.Element => {
         data-color-mode="auto"
         data-light-theme="light"
         data-dark-theme="dark"
-        f-client-nav={false}
+        f-client-nav={true}
       >
         <Partial name="body">
           <Component />
