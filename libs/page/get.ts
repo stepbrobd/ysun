@@ -1,3 +1,4 @@
+import { cwd } from "!libs/page/cwd.ts";
 import { type Page } from "!libs/page/type.ts";
 import { extract } from "$std/front_matter/any.ts";
 import { join } from "$std/path/join.ts";
@@ -7,9 +8,9 @@ const get = async (path: string): Promise<Page> => {
   const { attrs, body } = extract(text);
   return {
     path: path
-      .replace(join(Deno.cwd(), "static"), ""),
+      .replace(join(cwd, "static"), ""),
     slug: path
-      .replace(join(Deno.cwd(), "static/contents"), "")
+      .replace(join(cwd, "static/contents"), "")
       .replace(".md", "")
       .replace(/index$/, ""),
     title: attrs.title as string,
