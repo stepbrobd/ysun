@@ -29,6 +29,10 @@ const handler = async (_req: Request, _ctx: FreshContext): Promise<Response> => 
     if (_ctx.url.hostname.includes("metaprocessor.org")) {
       return Response.redirect("https://ysun.co/2023/05/metaprocessor", 308);
     }
+    // xdg.sh
+    if (_ctx.url.hostname.includes("xdg.sh")) {
+      return Response.redirect("https://ysun.co/2023/04/xdg", 308);
+    }
     // default
     return Response.redirect(_ctx.url.href.replace(_ctx.url.hostname, "ysun.co"), 308);
   }
