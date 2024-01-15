@@ -24,7 +24,6 @@ const app = ({ Component }: PageProps): JSX.Element => {
         data-color-mode="auto"
         data-light-theme="light"
         data-dark-theme="dark"
-        f-client-nav={false} // partials is broken: https://github.com/denoland/fresh/issues/2190
       >
         <Partial name="body">
           <Component />
