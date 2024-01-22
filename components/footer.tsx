@@ -25,9 +25,6 @@ const Footer = (): JSX.Element => {
         </pre>
       </div>
       <div class="flex flex-row justify-between text-neutral-600 dark:text-neutral-400">
-        <small class="tracking-tighter font-light text-xs">
-          &copy; {new Date().getFullYear()}
-        </small>
         <a
           href="https://creativecommons.org/licenses/by-nc/4.0/"
           class="flex flex-row gap-2"
@@ -37,6 +34,9 @@ const Footer = (): JSX.Element => {
           <IconCreativeCommonsBy class="w-4 h-4" />
           <IconCreativeCommonsNc class="w-4 h-4" />
         </a>
+        <small class="tracking-tighter font-light text-xs">
+          &copy; {new Date().getFullYear()}
+        </small>
       </div>
     </footer>
   );
