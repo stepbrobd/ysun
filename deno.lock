@@ -1996,5 +1996,10 @@
     "https://esm.sh/v135/prismjs@1.29.0/denonext/components/prism-nix.js": "3ae19af2cff180fe9c106410277073d3562dea3f81a6e63ea8f89bda81ecad2a",
     "https://esm.sh/v135/prismjs@1.29.0/denonext/prismjs.mjs": "0ccddfab01b35eb5fd1e32ee2230809343dfec5bab2ec50039aee88c5ec1e3e7",
     "https://esm.sh/v135/sanitize-html@2.8.1/esnext/sanitize-html.mjs": "f4d7c5f3b1fbe23a23a08b8cd8e8eb60c987bce0eab6e3aeec42b6139ce11008"
+  },
+  "workspace": {
+    "dependencies": [
+      "npm:tailwindcss@3.4.0"
+    ]
   }
 }
