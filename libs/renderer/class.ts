@@ -32,6 +32,9 @@ class Renderer extends R {
     if (href.match(/\.[a-z0-9]+$/i)) {
       return `<a href="${href}"${titleAttr} target="_blank" f-client-nav="false">${text}</a>`;
     }
+    if (!href.startsWith("http")) {
+      return `<a href="${href}"${titleAttr}>${text}</a>`;
+    }
     return `<a href="${href}"${titleAttr} rel="noopener noreferrer" target="_blank">${text}</a>`;
   }
 }
