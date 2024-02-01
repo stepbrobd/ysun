@@ -49,6 +49,19 @@ Read more about flakes:
 - [standard schemas](https://arc.net/l/quote/agerqwyq)
 - [extensible schemas](https://determinate.systems/posts/flake-schemas)
 
+## Nixology
+
+Update (2024-02-01):
+
+Before diving into system configurations, you should understand the following concepts:
+
+- derivations and closures
+- nix store
+- using nix as a package manager
+- development shell
+
+I prepared a short slide with examples to help you understand these concepts, you can find it [here](https://github.com/stepbrobd/nixology).
+
 ## Modules
 
 In the example above, `flakes` and `nix-command` are enabled in the format of a module.
@@ -322,6 +335,7 @@ Nix's documentation is bad, my best advise is get used to reading the source cod
 Instead of complaining about the documentation, use online resources like [official discourse](https://discourse.nixos.org) and
 [github code search](https://github.com/features/code-search) (query with `lang:Nix`).
 
+- [zero to nix](https://zero-to-nix.com)
 - [nix wiki](https://nixos.wiki): usually outdated, but still useful
 - [nix pills](https://nixos.org/guides/nix-pills)
 - [nix manual](https://nixos.org/manual/nix/unstable)
