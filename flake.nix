@@ -51,11 +51,6 @@
         };
       in
       {
-        formatter = pkgs.writeShellScriptBin "formatter" ''
-          ${pkgs.deno}/bin/deno fmt .
-          ${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt .
-        '';
-
         packages.default = drv;
 
         apps.default = flake-utils.lib.mkApp { drv = self.packages.${system}.default; };
@@ -68,10 +63,15 @@
             nix-direnv
           ];
         };
+
+        formatter = pkgs.writeShellScriptBin "formatter" ''
+          ${pkgs.deno}/bin/deno fmt .
+          ${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt .
+        '';
       }) // {
       hydraJobs = {
         inherit (self)
-          packages devShells;
+          packages devShells formatter;
       };
     };
 }
