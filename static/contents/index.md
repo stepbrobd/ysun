@@ -7,7 +7,7 @@ modified: 2024-02-01
 # Yifei Sun
 
 I'm a masters student at Northeastern University studying computer science since September 2023.
-I'm lucky to be advised by Prof. [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
+I have the fortune to be advised by Prof. [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
 
 Before joining Khoury College of Computer Sciences, I got my bachelors at University of Utah for my thesis
 [System and Methods to Determine ME/CFS & Long COVID Disease Severity Using Wearable Sensor & Survey Data](/pdfs/bachelors-thesis.pdf)
