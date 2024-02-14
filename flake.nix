@@ -2,12 +2,14 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    flake-schemas.url = "github:determinatesystems/flake-schemas";
   };
 
   outputs =
     { self
     , nixpkgs
     , flake-utils
+    , flake-schemas
     }: flake-utils.lib.eachDefaultSystem
       (system:
       let
@@ -44,14 +46,12 @@
             cp -r . $out/bin
           '';
         };
-
-        drv = pkgs.symlinkJoin {
+      in
+      {
+        packages.default = pkgs.symlinkJoin {
           name = "ysun";
           paths = [ app run ];
         };
-      in
-      {
-        packages.default = drv;
 
         apps.default = flake-utils.lib.mkApp { drv = self.packages.${system}.default; };
 
@@ -73,5 +73,7 @@
         inherit (self)
           packages devShells formatter;
       };
+
+      schemas = flake-schemas.schemas;
     };
 }
