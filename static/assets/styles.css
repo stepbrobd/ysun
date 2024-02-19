@@ -31,6 +31,10 @@
   details > summary::-webkit-details-marker {
     display: none;
   }
+
+  #ysun {
+    @apply flex items-baseline justify-between;
+  }
 }
 
 @layer components {

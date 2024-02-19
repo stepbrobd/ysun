@@ -4,7 +4,17 @@ description:  Yifei Sun is a masters student at Northeastern University studying
 modified: 2024-02-01
 ---
 
-# Yifei Sun
+<h1 id="ysun">
+  <span>Yifei Sun</span>
+  <span>
+    <ruby>
+      孫<rp>(</rp><rt>そん</rt><rp>)</rp>
+    </ruby>
+    <ruby>
+      奕飛<rp>(</rp><rt>いふぇい</rt><rp>)</rp>
+    </ruby>
+  </span>
+</h1>
 
 I'm a masters student at Northeastern University studying computer science since September 2023.
 I have the fortune to be advised by Prof. [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
