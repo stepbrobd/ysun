@@ -9,7 +9,7 @@
   },
   "imports": {
     "!components/": "./components/",
-    "$fresh/": "https://deno.land/x/fresh@1.6.3/",
+    "$fresh/": "https://deno.land/x/fresh@1.6.5/",
     "$gfm": "https://deno.land/x/gfm@0.3.0/mod.ts",
     "$icons/": "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/",
     "!islands/": "./islands/",
