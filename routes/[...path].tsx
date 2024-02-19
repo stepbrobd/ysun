@@ -31,7 +31,7 @@ const page = async (_req: Request, _ctx: FreshContext): Promise<JSX.Element | Re
 
         <details class="mt-4 pb-4">
           <summary class="m-0 cursor-help">
-            <p class="text-right tracking-tighter font-light text-xs text-neutral-600 dark:text-neutral-400">
+            <p class="text-right tracking-tighter font-light text-[0.675rem]/[0.75rem] text-neutral-600 dark:text-neutral-400">
               Last updated on{" "}
               <time>
                 {new Date(page.modified).toLocaleDateString("en-us", {
@@ -56,6 +56,24 @@ const page = async (_req: Request, _ctx: FreshContext): Promise<JSX.Element | Re
                 {`${_ctx.url.origin + page.path}`}
                 </a>
                 </span>
+              <br />
+                <span class="text-gray-500 dark:text-gray-400">
+                # If you have
+                {" "}<a href="https://github.com/determinatesystems/nix-installer" target="_blank" rel="noopener noreferrer">Nix</a>{" "}
+                on your system
+              </span>
+              <br />
+              <span class="text-green-700 dark:text-green-400">nix </span>
+              <span>--extra-experimental-features </span>
+              <span class="text-red-600 dark:text-red-400">"nix-command flakes" </span>
+              <span>run </span>
+              <span class="text-red-600 dark:text-red-400">"nixpkgs#glow" </span>
+              <span>-- </span>
+              <span class="text-indigo-600 dark:text-indigo-300">
+                <a class="no-underline" href={_ctx.url.origin + page.path} target="_blank" rel="noopener noreferrer">
+                {`${_ctx.url.origin + page.path}`}
+                </a>
+              </span>
             </pre>
           </div>
         </details>

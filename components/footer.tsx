@@ -11,9 +11,9 @@ const Footer = (): JSX.Element => {
         <pre>
           <span>DENO_DEPLOYMENT_ID</span>
           <span class="text-indigo-600 dark:text-indigo-300">=</span>
-          <span class="text-indigo-600 dark:text-indigo-300">
+          <span class="text-red-600 dark:text-red-400">
             <a class="no-underline" href={`https://github.com/stepbrobd/ysun/commit/${Deno.env.get("DENO_DEPLOYMENT_ID")}`} target="_blank" rel="noopener noreferrer">
-              {Deno.env.get("DENO_DEPLOYMENT_ID")}
+              "{Deno.env.get("DENO_DEPLOYMENT_ID")}"
             </a>
           </span>
           <span>{" "}</span>
@@ -25,6 +25,9 @@ const Footer = (): JSX.Element => {
         </pre>
       </div>
       <div class="flex flex-row justify-between text-neutral-600 dark:text-neutral-400">
+        <small class="tracking-tighter font-light text-xs">
+          &copy; {new Date().getFullYear()}
+        </small>
         <a
           href="https://creativecommons.org/licenses/by-nc/4.0/"
           class="flex flex-row gap-2"
@@ -34,9 +37,6 @@ const Footer = (): JSX.Element => {
           <IconCreativeCommonsBy class="w-4 h-4" />
           <IconCreativeCommonsNc class="w-4 h-4" />
         </a>
-        <small class="tracking-tighter font-light text-xs">
-          &copy; {new Date().getFullYear()}
-        </small>
       </div>
     </footer>
   );
