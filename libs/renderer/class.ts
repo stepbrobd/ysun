@@ -2,16 +2,13 @@ import { Renderer as R } from "$gfm";
 
 class Renderer extends R {
   image(src: string, title: string | null, alt: string | null) {
-    // ![alt](/path/to/image.jpg|width=300&height=200)
-    let width, height;
-    const dimensionMatch = src.match(/\|width=(\d+)&height=(\d+)$/);
-    if (dimensionMatch) {
-      width = dimensionMatch[1];
-      height = dimensionMatch[2];
-      src = src.split("|")[0];
-    }
+    // ![alt](/path/to/image.jpg/s:<width>)
+    // ![alt](/path/to/image.jpg/s::<height>)
+    // ![alt](/path/to/image.jpg/s:<width>:<height>)
+    const [url, size] = src.split("/s:");
+    const [width, height] = size?.split(":") ?? [];
     return `<figure>
-    <img src="${src}" alt="${alt ?? ""}" title="${title ?? ""}"
+    <img src="${url}" alt="${alt ?? ""}" title="${title ?? ""}"
     ${width ? `width="${width}"` : ""} ${height ? `height="${height}"` : ""}
     loading="lazy" decoding="async"></img>
     ${alt ? `<figcaption>${alt}</figcaption>` : ""}</figure>`;

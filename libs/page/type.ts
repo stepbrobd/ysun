@@ -3,8 +3,10 @@ interface Page {
   slug: string;
   title: string;
   description: string;
-  modified: Date;
-  content: string;
+  date: Date;
+  tags: string[];
+  image: string;
+  body: string;
 }
 
 export { type Page };

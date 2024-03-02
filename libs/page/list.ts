@@ -5,7 +5,7 @@ import { walk } from "$std/fs/walk.ts";
 import { join } from "$std/path/join.ts";
 
 const list = async (): Promise<Page[]> => {
-  const path = join(cwd, "static/contents");
+  const path = join(cwd, "static/txts");
   const promises = [];
   for await (const entry of walk(path, { exts: ["md"] })) {
     if (!entry.isDirectory) {
@@ -13,7 +13,7 @@ const list = async (): Promise<Page[]> => {
     }
   }
   const paged = await Promise.all(promises) as Page[];
-  paged.sort((a, b) => b.modified.getTime() - a.modified.getTime());
+  paged.sort((a, b) => b.date.getTime() - a.date.getTime());
   return paged;
 };
 

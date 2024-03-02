@@ -9,13 +9,13 @@ const Layout = (
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{title}: {description}</title>
         <meta name="description" content={description} />
       </Head>
 
       <Header />
 
-      <main class="container py-4 border-y border-[#d8dee4] dark:border-[#21262d]">
+      <main class="container pb-4 border-b border-[#d8dee4] dark:border-[#21262d]">
         {children}
       </main>
 

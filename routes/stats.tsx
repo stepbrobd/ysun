@@ -3,9 +3,9 @@ import { JSX } from "preact/jsx-runtime";
 
 const page = (): JSX.Element => {
   return (
-    <Layout title="Stats" description="Visitor stats tracked by self-hosted Plausible Analytics">
+    <Layout title="Visitor Stats" description="Visitor stats tracked by self-hosted Plausible Analytics">
       <div class="markdown-body">
-        <h1>Stats</h1>
+        <h1>Visitor Stats</h1>
         <iframe
           plausible-embed
           src="https://stats.ysun.co/share/ysun.co?auth=klGcRmSwwwUUJfBM1R1MB&embed=true&theme=system&background=transparent"

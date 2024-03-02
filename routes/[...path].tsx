@@ -22,19 +22,14 @@ const page = async (_req: Request, _ctx: FreshContext): Promise<JSX.Element | Re
   return (
     <Layout title={page.title} description={page.description}>
       <>
-        <article
-          class="markdown-body"
-          dangerouslySetInnerHTML={{
-            __html: render(page.content, { allowMath: true, renderer: new Renderer({ allowMath: true }) }),
-          }}
-        />
+        <h1 class="text-2xl font-bold pb-2 mb-2 border-b border-[#d8dee4] dark:border-[#21262d]">{page.title}</h1>
 
         <details class="mt-4 pb-4">
           <summary class="m-0 cursor-help">
-            <p class="text-right tracking-tighter font-light text-[0.675rem]/[0.75rem] text-neutral-600 dark:text-neutral-400">
+            <p class="tracking-tighter font-light text-[0.675rem]/[0.75rem] text-neutral-600 dark:text-neutral-400">
               Last updated on{" "}
               <time>
-                {new Date(page.modified).toLocaleDateString("en-us", {
+                {new Date(page.date).toLocaleDateString("en-us", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -77,6 +72,13 @@ const page = async (_req: Request, _ctx: FreshContext): Promise<JSX.Element | Re
             </pre>
           </div>
         </details>
+
+        <article
+          class="markdown-body pb-4"
+          dangerouslySetInnerHTML={{
+            __html: render(page.body, { allowMath: true, renderer: new Renderer({ allowMath: true }) }),
+          }}
+        />
 
         <section class="pt-4 border-t border-[#d8dee4] dark:border-[#21262d]">
           <Recommendation

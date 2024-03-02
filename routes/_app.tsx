@@ -12,11 +12,11 @@ const app = ({ Component }: PageProps): JSX.Element => {
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href={asset("/assets/styles.css")} />
+        <link rel="stylesheet" href={asset("/txts/tailwind.css")} />
         <style>{CSS}</style>
         <style>{KATEX_CSS}</style>
-        <link rel="icon" href={asset("/assets/favicon.ico")} />
-        <meta property="og:image" content={asset("/assets/og.webp")} />
+        <link rel="icon" href={asset("/imgs/favicon.ico")} />
+        <meta property="og:image" content={asset("/imgs/og.webp")} />
         <script defer data-domain="ysun.co" src="https://stats.ysun.co/js/script.js" />
       </head>
       <body

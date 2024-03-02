@@ -1,19 +1,20 @@
 ---
 title: The Nix Way
 description: Nix, a deterministic and reproducible package manager and system configuration tool. Nix Flakes, the correct/only way of using Nix.
-modified: 2023-12-08
+date: 2023-12-08
 ---
 
-# The Nix Way
-
-This is a guide to my personal [dotfiles repo](https://github.com/stepbrobd/dotfiles) (for NixOS and Darwin systems),
-use it as a reference to create your own.
+This is a guide to my personal
+[dotfiles repo](https://github.com/stepbrobd/dotfiles) (for NixOS and Darwin
+systems), use it as a reference to create your own.
 
 ## Installation
 
-I suggest anyone that wants to try out Nix not to use the official installer, but to use the
-[Nix Installer](https://github.com/determinatesystems/nix-installer) by Determinate Systems.
-It installs Nix, while providing a way to remove it from your system.
+I suggest anyone that wants to try out Nix not to use the official installer,
+but to use the
+[Nix Installer](https://github.com/determinatesystems/nix-installer) by
+Determinate Systems. It installs Nix, while providing a way to remove it from
+your system.
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
@@ -21,17 +22,25 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 
 ## The Only Correct Way of Using Nix
 
-If you are following online guides, a lot of those will probably tell you to run some commands start with `nix-env` or `nix-channel`, don't use it!
-Those `nix-` commands are [channel based](https://nixos.wiki/wiki/Nix_channels), while "reproducible", but hard to maintain.
-Instead, use [Nix Flakes](https://nixos.wiki/wiki/Flakes), think of it as a way to pin channels to a specific commit,
-so you can get the same result every time if the same flake inputs are given.
-While Nix Flakes are still marked as "experimental", but [it does not mean it's unstable](https://determinate.systems/posts/experimental-does-not-mean-unstable).
-Members of the Nix community are already using flakes at scale, I don't really see any way of flakes being removed from Nix.
+If you are following online guides, a lot of those will probably tell you to run
+some commands start with `nix-env` or `nix-channel`, don't use it! Those `nix-`
+commands are [channel based](https://nixos.wiki/wiki/Nix_channels), while
+"reproducible", but hard to maintain. Instead, use
+[Nix Flakes](https://nixos.wiki/wiki/Flakes), think of it as a way to pin
+channels to a specific commit, so you can get the same result every time if the
+same flake inputs are given. While Nix Flakes are still marked as
+"experimental", but
+[it does not mean it's unstable](https://determinate.systems/posts/experimental-does-not-mean-unstable).
+Members of the Nix community are already using flakes at scale, I don't really
+see any way of flakes being removed from Nix.
 
-If you installed Nix using the Nix Installer, you should already have flakes enabled.
-If not, prefix all `nix` commands with `nix --extra-experimental-features "nix-command flakes"`.
-If you see something like `echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf` in a guide, don't do it either.
-Instead, in your flake configurations, enable experimental features like this (in the module format):
+If you installed Nix using the Nix Installer, you should already have flakes
+enabled. If not, prefix all `nix` commands with
+`nix --extra-experimental-features "nix-command flakes"`. If you see something
+like
+`echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf` in
+a guide, don't do it either. Instead, in your flake configurations, enable
+experimental features like this (in the module format):
 
 ```nix
 { ... }:
@@ -53,22 +62,26 @@ Read more about flakes:
 
 Update (2024-02-01):
 
-Before diving into system configurations, you should understand the following concepts:
+Before diving into system configurations, you should understand the following
+concepts:
 
 - derivations and closures
 - nix store
 - using nix as a package manager
 - development shell
 
-I prepared a short slide with examples to help you understand these concepts, you can find it [here](https://github.com/stepbrobd/nixology).
+I prepared a short slide with examples to help you understand these concepts,
+you can find it [here](https://github.com/stepbrobd/nixology).
 
 ## Modules
 
-In the example above, `flakes` and `nix-command` are enabled in the format of a module.
-Modules can be imported into system configurations, and they are usually considered as the most basic building blocks of nix-based configurations.
-They can be attrsets, or a function that returns an attrset.
+In the example above, `flakes` and `nix-command` are enabled in the format of a
+module. Modules can be imported into system configurations, and they are usually
+considered as the most basic building blocks of nix-based configurations. They
+can be attrsets, or a function that returns an attrset.
 
-Generally, modules are imported directly from flake outputs inside a system configuration:
+Generally, modules are imported directly from flake outputs inside a system
+configuration:
 
 ```nix
 {
@@ -102,7 +115,8 @@ Generally, modules are imported directly from flake outputs inside a system conf
 }
 ```
 
-The `specialArgs` is used to pass arguments to modules, we added `inputs` and `outputs` to it so we can use them in modules like this:
+The `specialArgs` is used to pass arguments to modules, we added `inputs` and
+`outputs` to it so we can use them in modules like this:
 
 ```nix
 { inputs, outputs, ... }:
@@ -115,19 +129,30 @@ The `specialArgs` is used to pass arguments to modules, we added `inputs` and `o
 }
 ```
 
-[Standard arguments](https://arc.net/l/quote/fkjnloyb) like `config`, `pkgs`, `modulePath`, ... are passed to modules automatically.
+[Standard arguments](https://arc.net/l/quote/fkjnloyb) like `config`, `pkgs`,
+`modulePath`, ... are passed to modules automatically.
 
 ## Getting Started on Configurations
 
-Depending on whether you have a NixOS or Darwin system (or both), you should decide on these couple of things:
+Depending on whether you have a NixOS or Darwin system (or both), you should
+decide on these couple of things:
 
-- How many host machines do you have? Is it really worth it spending time on Nix?
-- NixOS or Darwin? Or both (you've got to think it through if you want to have both, it'll be quite messy)?
-- Do you want to use [home-manager](https://github.com/nix-community/home-manager) (considering `nixpkgs` and `nix-darwin` both have limited configuration options, I personally strongly recommend using home-manager)?
-- Standalone home-manager or integrate it directly into your system configuration (standalone meaning you'll need to run `home-manager switch` instead of it automatically kicks in when rebuilding the system with `{nixos,darwin}-switch`)?
+- How many host machines do you have? Is it really worth it spending time on
+  Nix?
+- NixOS or Darwin? Or both (you've got to think it through if you want to have
+  both, it'll be quite messy)?
+- Do you want to use
+  [home-manager](https://github.com/nix-community/home-manager) (considering
+  `nixpkgs` and `nix-darwin` both have limited configuration options, I
+  personally strongly recommend using home-manager)?
+- Standalone home-manager or integrate it directly into your system
+  configuration (standalone meaning you'll need to run `home-manager switch`
+  instead of it automatically kicks in when rebuilding the system with
+  `{nixos,darwin}-switch`)?
 
-Let's continue with the assumption that you have multiple NixOS and Darwin machines, and you want to use home-manager integrated into your system configuration.
-The first step would be adding flake inputs:
+Let's continue with the assumption that you have multiple NixOS and Darwin
+machines, and you want to use home-manager integrated into your system
+configuration. The first step would be adding flake inputs:
 
 ```nix
 {
@@ -236,7 +261,8 @@ This is rather cumbersome, let's extract the common section out:
 }
 ```
 
-`mkSystem` is a function that returns a system config, it assumes you have the following directory structure:
+`mkSystem` is a function that returns a system config, it assumes you have the
+following directory structure:
 
 ```txt
 - flake.nix
@@ -251,18 +277,28 @@ This is rather cumbersome, let's extract the common section out:
     - default.nix # nixos/darwin module
 ```
 
-You can change the directory structure, but you'll need to change the paths in `mkSystem` accordingly.
-Note that `users/${username}/default.nix` is a nixos/darwin module, it's content must match the definitions in [nixpkgs](https://mynixos.com/nixpkgs/option/users.users)
-or [nix-darwin](https://mynixos.com/nix-darwin/option/users.users).
-`users/${username}/home.nix` is a home-manager module, it's content must match the definitions in [home-manager](https://mynixos.com/home-manager/options/home).
-Similarly, the modules in `extraModules` must be from [nixpkgs](https://mynixos.com/nixpkgs/options) or [nix-darwin](https://mynixos.com/nix-darwin/options),
-and the modules in `extraHMModules` must be from [home-manager](https://mynixos.com/home-manager/options).
-Putting the `mkSystem` function in a separate file is also a good idea, check out [Haumea](https://github.com/nix-community/haumea) to easily manage your custom libraries.
+You can change the directory structure, but you'll need to change the paths in
+`mkSystem` accordingly. Note that `users/${username}/default.nix` is a
+nixos/darwin module, it's content must match the definitions in
+[nixpkgs](https://mynixos.com/nixpkgs/option/users.users) or
+[nix-darwin](https://mynixos.com/nix-darwin/option/users.users).
+`users/${username}/home.nix` is a home-manager module, it's content must match
+the definitions in
+[home-manager](https://mynixos.com/home-manager/options/home). Similarly, the
+modules in `extraModules` must be from
+[nixpkgs](https://mynixos.com/nixpkgs/options) or
+[nix-darwin](https://mynixos.com/nix-darwin/options), and the modules in
+`extraHMModules` must be from
+[home-manager](https://mynixos.com/home-manager/options). Putting the `mkSystem`
+function in a separate file is also a good idea, check out
+[Haumea](https://github.com/nix-community/haumea) to easily manage your custom
+libraries.
 
 ## Conflicts? System-Dependent Configs?
 
-Some options might only be available in nixpkgs options but not in nix-darwin options, or vice versa.
-To address this, [`lib.optionalAttrs`](https://ryantm.github.io/nixpkgs/functions/library/attrsets/#function-library-lib.attrsets.optionalAttrs)
+Some options might only be available in nixpkgs options but not in nix-darwin
+options, or vice versa. To address this,
+[`lib.optionalAttrs`](https://ryantm.github.io/nixpkgs/functions/library/attrsets/#function-library-lib.attrsets.optionalAttrs)
 can be very useful:
 
 ```nix
@@ -298,10 +334,13 @@ can be very useful:
 }
 ```
 
-In the example above, `users.users.<username>.isNormalUser` is only available in nixpkgs (for NixOS systems, not Darwin),
-so we use `lib.optionalAttrs pkgs.stdenv.isLinux` to make it only available on Linux systems or nix-darwin will throw an error.
+In the example above, `users.users.<username>.isNormalUser` is only available in
+nixpkgs (for NixOS systems, not Darwin), so we use
+`lib.optionalAttrs pkgs.stdenv.isLinux` to make it only available on Linux
+systems or nix-darwin will throw an error.
 
-Also, if you only want some packages to be installed on a specific system, `lib.optionals` can make attributes appear or disappear based on conditions:
+Also, if you only want some packages to be installed on a specific system,
+`lib.optionals` can make attributes appear or disappear based on conditions:
 
 ```nix
 { config
@@ -331,9 +370,12 @@ Also, if you only want some packages to be installed on a specific system, `lib.
 
 ## Resources
 
-Nix's documentation is bad, my best advise is get used to reading the source code, and messing around with it using `nix repl`.
-Instead of complaining about the documentation, use online resources like [official discourse](https://discourse.nixos.org) and
-[github code search](https://github.com/features/code-search) (query with `lang:Nix`).
+Nix's documentation is bad, my best advise is get used to reading the source
+code, and messing around with it using `nix repl`. Instead of complaining about
+the documentation, use online resources like
+[official discourse](https://discourse.nixos.org) and
+[github code search](https://github.com/features/code-search) (query with
+`lang:Nix`).
 
 - [zero to nix](https://zero-to-nix.com)
 - [nix wiki](https://nixos.wiki): usually outdated, but still useful
@@ -341,5 +383,6 @@ Instead of complaining about the documentation, use online resources like [offic
 - [nix manual](https://nixos.org/manual/nix/unstable)
 - [nixpkgs manual](https://nixos.org/manual/nixpkgs/unstable)
 - [mynixos](https://mynixos.com): a very nice tool to search for options
-- [direnv](https://direnv.net): a tool to automatically load/unload environment variables
+- [direnv](https://direnv.net): a tool to automatically load/unload environment
+  variables
 - ... the rest is up to your imagination

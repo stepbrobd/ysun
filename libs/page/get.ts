@@ -10,13 +10,15 @@ const get = async (path: string): Promise<Page> => {
     path: path
       .replace(join(cwd, "static"), ""),
     slug: path
-      .replace(join(cwd, "static/contents"), "")
+      .replace(join(cwd, "static/txts"), "")
       .replace(".md", "")
       .replace(/index$/, ""),
     title: attrs.title as string,
     description: attrs.description as string,
-    modified: new Date(attrs.modified as string),
-    content: body,
+    date: new Date(attrs.date as string),
+    tags: attrs.tags as string[],
+    image: attrs.image as string,
+    body: body,
   };
 };
 

@@ -1,0 +1,37 @@
+name: "PGS"
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  PGS:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@v4"
+        name: "Checkout"
+        with:
+          fetch-depth: 0
+      - name: "Cleanup"
+        run: |
+          rm ./static/txts/tailwind.css
+          rm ./static/txts/index.md
+      - name: "CV"
+        run: wget -O './static/pdfs/cv.pdf' $(curl 'https://api.github.com/repos/stepbrobd/cv/releases/latest' | jq -r '.assets[].browser_download_url')
+      - name: "Publish"
+        uses: picosh/pgs-action@v3
+        with:
+          user: "ysun"
+          key: ${{ secrets.PRIVATE_KEY }}
+          src: "./static/"
+          project: "ysun"
+      - name: "Prose"
+        uses: burnett01/rsync-deployments@6.0.0
+        with:
+          switches: -v
+          path: "./static/txts/*.md"
+          remote_path: /
+          remote_user: "ysun"
+          remote_host: "prose.sh"
+          remote_key: ${{ secrets.PRIVATE_KEY }}

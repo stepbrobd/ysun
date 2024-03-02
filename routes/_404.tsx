@@ -6,7 +6,7 @@ const page = (): JSX.Element => {
     <Layout title="Not Found" description="The page you were looking for doesn't exist.">
       <div class="markdown-body">
         <h1>Not Found</h1>
-        <p>The page you were looking for doesn't exist.</p>
+        <p>The page you are looking for doesn't exist.</p>
       </div>
     </Layout>
   );
