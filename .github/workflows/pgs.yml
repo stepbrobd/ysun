@@ -16,7 +16,9 @@ jobs:
       - name: "Cleanup"
         run: |
           rm ./static/txts/tailwind.css
+          echo 'footer { visibility: hidden; }' > ./static/txts/_styles.css
           mv ./static/txts/index.md ./static/txts/_readme.md
+          printf "<hr />\n\n\`\`\`console\n# Use Glow to view this page in terminal\n$ glow https://static.ysun.co/txts/<path>.md\n\`\`\`" > ./static/txts/_footer.md
       - name: "CV"
         run: wget -O './static/pdfs/cv.pdf' $(curl 'https://api.github.com/repos/stepbrobd/cv/releases/latest' | jq -r '.assets[].browser_download_url')
       - name: "Publish"
@@ -30,7 +32,7 @@ jobs:
         uses: burnett01/rsync-deployments@6.0.0
         with:
           switches: -v
-          path: "./static/txts/*.md"
+          path: "./static/txts/*"
           remote_path: /
           remote_user: "ysun"
           remote_host: "prose.sh"
