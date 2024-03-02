@@ -16,7 +16,7 @@ jobs:
       - name: "Cleanup"
         run: |
           rm ./static/txts/tailwind.css
-          rm ./static/txts/index.md
+          mv ./static/txts/index.md ./static/txts/_readme.md
       - name: "CV"
         run: wget -O './static/pdfs/cv.pdf' $(curl 'https://api.github.com/repos/stepbrobd/cv/releases/latest' | jq -r '.assets[].browser_download_url')
       - name: "Publish"
