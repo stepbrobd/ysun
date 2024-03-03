@@ -1,0 +1,116 @@
+footer { visibility: hidden; }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-hue: 250;
+    --white: #fff;
+    --white-light: #f3f4f6;
+    --white-dark: #24292e;
+    --code: #f3f4f6;
+    --code-border: #e1e4e8;
+    --pre: #f6f8fa;
+    --bg-color: #fff;
+    --text-color: #24292e;
+    --link-color: #0366d6;
+    --visited: #6f42c1;
+    --blockquote: #0366d6;
+    --blockquote-bg: #f3f4f6;
+    --hover: #d73a49;
+    --grey: #6a737d;
+    --grey-light: #f6f8fa;
+    --shadow: rgba(27, 31, 35, 0.15);
+  }
+
+  .md h1,
+  .md h2,
+  .md h3,
+  .md h4 {
+    padding: 0;
+    margin: 1.5rem 0 0.9rem 0;
+    font-weight: bold;
+    color: #24292e;
+  }
+
+  .md h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+    border-bottom: 2px solid var(--grey);
+    padding-bottom: 1rem;
+  }
+
+  .md h2 {
+    font-size: 1.5rem;
+    line-height: 1.15;
+    color: #24292e;
+  }
+
+  .md h3 {
+    font-size: 1.3rem;
+    color: #24292e;
+  }
+
+  .md h4 {
+    font-size: 1.1rem;
+    color: #24292e;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-hue: 250;
+    --white: #f0f6fc;
+    --white-light: #f0f6fc;
+    --white-dark: #c9d1d9;
+    --code: #1b1f23;
+    --code-border: #586069;
+    --pre: #1b1f23;
+    --bg-color: #0d1117;
+    --text-color: #c9d1d9;
+    --link-color: #58a6ff;
+    --visited: #bc8cff;
+    --blockquote: #bc8cff;
+    --blockquote-bg: #1f6feb;
+    --hover: #ffd33d;
+    --grey: #8b949e;
+    --grey-light: #30363d;
+    --shadow: rgba(0, 0, 0, 0.3);
+  }
+
+  code {
+    background-color: var(--code);
+    border: 1px solid var(--code-border);
+  }
+
+  .md h1,
+  .md h2,
+  .md h3,
+  .md h4 {
+    padding: 0;
+    margin: 1.5rem 0 0.9rem 0;
+    font-weight: bold;
+    color: #c9d1d9;
+  }
+
+  .md h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+    border-bottom: 2px solid var(--grey);
+    padding-bottom: 1rem;
+  }
+
+  .md h2 {
+    font-size: 1.5rem;
+    line-height: 1.15;
+    color: #c9d1d9;
+  }
+
+  .md h3 {
+    font-size: 1.3rem;
+    color: #c9d1d9;
+  }
+
+  .md h4 {
+    font-size: 1.1rem;
+    color: #c9d1d9;
+  }
+}

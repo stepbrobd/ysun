@@ -16,7 +16,7 @@ jobs:
       - name: "Cleanup"
         run: |
           rm ./static/txts/tailwind.css
-          echo 'footer { visibility: hidden; }' > ./static/txts/_styles.css
+          mv ./static/txts/prose.css ./static/txts/_styles.css
           mv ./static/txts/index.md ./static/txts/_readme.md
           printf "<hr />\n\n\`\`\`console\n# Use Glow to view this page in terminal\n$ glow https://static.ysun.co/txts/<path>.md\n\`\`\`" > ./static/txts/_footer.md
       - name: "CV"
