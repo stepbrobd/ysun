@@ -1,16 +1,14 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
-    flake-schemas.url = "github:determinatesystems/flake-schemas";
+    utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
     { self
     , nixpkgs
-    , flake-utils
-    , flake-schemas
-    }: flake-utils.lib.eachDefaultSystem
+    , utils
+    }: utils.lib.eachDefaultSystem
       (system:
       let
         rev = self.rev or self.dirtyRev;
@@ -53,7 +51,7 @@
           paths = [ app run ];
         };
 
-        apps.default = flake-utils.lib.mkApp { drv = self.packages.${system}.default; };
+        apps.default = utils.lib.mkApp { drv = self.packages.${system}.default; };
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
@@ -73,7 +71,5 @@
         inherit (self)
           packages devShells formatter;
       };
-
-      schemas = flake-schemas.schemas;
     };
 }
