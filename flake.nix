@@ -16,7 +16,7 @@
 
         run = pkgs.writeShellApplication rec {
           name = "ysun";
-          runtimeInputs = with pkgs; [ deno ];
+          runtimeInputs = with pkgs; [ toybox deno ];
           text = ''
             pushd "$(dirname "$0")" > /dev/null
             DENO_DEPLOYMENT_ID=${rev} deno run --allow-all main.ts
@@ -64,7 +64,9 @@
 
         formatter = pkgs.writeShellScriptBin "formatter" ''
           ${pkgs.deno}/bin/deno fmt .
+          ${pkgs.dockfmt}/bin/dockfmt fmt --write Dockerfile
           ${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt .
+          ${pkgs.taplo}/bin/taplo format fly.toml
         '';
       }) // {
       hydraJobs = {
