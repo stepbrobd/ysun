@@ -64,9 +64,7 @@
 
         formatter = pkgs.writeShellScriptBin "formatter" ''
           ${pkgs.deno}/bin/deno fmt .
-          ${pkgs.dockfmt}/bin/dockfmt fmt --write Dockerfile
           ${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt .
-          ${pkgs.taplo}/bin/taplo format fly.toml
         '';
       }) // {
       hydraJobs = {
