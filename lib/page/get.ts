@@ -1,5 +1,5 @@
-import { cwd } from "!libs/page/cwd.ts";
-import { type Page } from "!libs/page/type.ts";
+import { cwd } from "!lib/page/cwd.ts";
+import { type Page } from "!lib/page/type.ts";
 import { extract } from "$std/front_matter/any.ts";
 import { join } from "$std/path/join.ts";
 

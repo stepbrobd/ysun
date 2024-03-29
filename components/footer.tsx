@@ -1,4 +1,4 @@
-import { cwd } from "!libs/page/cwd.ts";
+import { cwd } from "!lib/page/cwd.ts";
 import IconCreativeCommons from "$icons/creative-commons.tsx";
 import IconCreativeCommonsBy from "$icons/creative-commons-by.tsx";
 import IconCreativeCommonsNc from "$icons/creative-commons-nc.tsx";
@@ -19,7 +19,7 @@ const Footer = (): JSX.Element => {
           <span>{" "}</span>
           <span class="text-green-700 dark:text-green-400">
             <a class="no-underline" href={`https://github.com/stepbrobd/ysun/blob/${Deno.env.get("DENO_DEPLOYMENT_ID")}/flake.nix`} target="_blank" rel="noopener noreferrer">
-              {cwd}/ysun
+              {Deno.realPathSync(cwd)}/ysun
             </a>
           </span>
         </pre>

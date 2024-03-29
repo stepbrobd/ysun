@@ -2,8 +2,8 @@ import { Recommendation } from "!components/recommendation.tsx";
 import { Layout } from "!components/layout.tsx";
 import { FreshContext, RouteConfig } from "$fresh/server.ts";
 import { render } from "$gfm";
-import { list } from "!libs/page/list.ts";
-import { Renderer } from "!libs/renderer/class.ts";
+import { list } from "!lib/page/list.ts";
+import { Renderer } from "!lib/renderer/class.ts";
 import { JSX } from "preact/jsx-runtime";
 
 const config: RouteConfig = {

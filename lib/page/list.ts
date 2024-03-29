@@ -1,6 +1,6 @@
-import { cwd } from "!libs/page/cwd.ts";
-import { get } from "!libs/page/get.ts";
-import { type Page } from "!libs/page/type.ts";
+import { cwd } from "!lib/page/cwd.ts";
+import { get } from "!lib/page/get.ts";
+import { type Page } from "!lib/page/type.ts";
 import { walk } from "$std/fs/walk.ts";
 import { join } from "$std/path/join.ts";
 

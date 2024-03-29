@@ -1,4 +1,4 @@
-import { Page } from "!libs/page/type.ts";
+import { Page } from "!lib/page/type.ts";
 import { JSX } from "preact/jsx-runtime";
 
 const Recommendation = (
