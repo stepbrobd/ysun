@@ -6,6 +6,7 @@ interface Page {
   date: Date;
   tags: string[];
   image: string;
+  metadata: { name: string; content: string }[];
   body: string;
 }
 

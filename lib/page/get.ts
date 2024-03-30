@@ -18,6 +18,7 @@ const get = async (path: string): Promise<Page> => {
     date: new Date(attrs.date as string),
     tags: attrs.tags as string[],
     image: attrs.image as string,
+    metadata: attrs.metadata as { name: string; content: string }[],
     body: body,
   };
 };

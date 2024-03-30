@@ -2631,6 +2631,7 @@
     "https://esm.sh/preact@10.19.6/hooks": "3037d71a7794c70bacb2da5dd9520334c6a24b3a7a75a2eeec9f025f8dc549f1",
     "https://esm.sh/preact@10.19.6/jsx-runtime": "f4c9e5f72ef18435eab846ae02e315a63da724f64fb08d806d2ddeaf08d99bd8",
     "https://esm.sh/prismjs@1.29.0/components/prism-bash?no-check": "8735146f58622dbed22b198a770068d3fe9ed64153307105997e0afd22857a77",
+    "https://esm.sh/prismjs@1.29.0/components/prism-go?no-check": "46c3941b7f466a77fac1a84a9ad1eb2d247e011c42b23a20bdf0dcc3c682bce7",
     "https://esm.sh/prismjs@1.29.0/components/prism-nix?no-check": "b1a8cc6ba70f70725ea23b96d16edafec9f8a5422c4c56458da348296a0b0455",
     "https://esm.sh/prismjs@1.29.0?pin=v135": "67e956514925401c964a7fc1205258ac2203cbd2aa246f55be11a3109fe9b6b9",
     "https://esm.sh/sanitize-html@2.8.1?target=esnext&pin=v135": "2605687c91e08c4a1e0c0b0966dc82fe4afea18bd1560a1c1ed03d79b69882ae",
@@ -2707,6 +2708,7 @@
     "https://esm.sh/v135/postcss@8.4.31/esnext/postcss.mjs": "21318d6ed521ffd9353a20e0775021e99d4686ebaef0350976451de4ad8013a5",
     "https://esm.sh/v135/preact-render-to-string@6.3.1/X-ZS8q/denonext/preact-render-to-string.mjs": "bcaceb8c3938310aee3dd4f7b6f2136cf0b2b890988c2e6679485e052e76e920",
     "https://esm.sh/v135/prismjs@1.29.0/denonext/components/prism-bash.js": "a7fb03659c2e8e377b38879bfc24a4066dd14d5fbddf8c8ddbd9a56f9d365c25",
+    "https://esm.sh/v135/prismjs@1.29.0/denonext/components/prism-go.js": "8a7de5c199612fcfef697cda027336afda1745409392f5c78f666ee775311915",
     "https://esm.sh/v135/prismjs@1.29.0/denonext/components/prism-nix.js": "3ae19af2cff180fe9c106410277073d3562dea3f81a6e63ea8f89bda81ecad2a",
     "https://esm.sh/v135/prismjs@1.29.0/denonext/prismjs.mjs": "0ccddfab01b35eb5fd1e32ee2230809343dfec5bab2ec50039aee88c5ec1e3e7",
     "https://esm.sh/v135/sanitize-html@2.8.1/esnext/sanitize-html.mjs": "f4d7c5f3b1fbe23a23a08b8cd8e8eb60c987bce0eab6e3aeec42b6139ce11008"

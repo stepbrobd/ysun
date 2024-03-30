@@ -4,6 +4,7 @@ import { CSS, KATEX_CSS } from "$gfm";
 import { JSX } from "preact/jsx-runtime";
 
 import "prismjs/components/prism-bash?no-check";
+import "prismjs/components/prism-go?no-check";
 import "prismjs/components/prism-nix?no-check";
 
 const app = ({ Component }: PageProps): JSX.Element => {

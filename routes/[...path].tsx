@@ -1,5 +1,6 @@
 import { Recommendation } from "!components/recommendation.tsx";
 import { Layout } from "!components/layout.tsx";
+import { Head } from "$fresh/runtime.ts";
 import { FreshContext, RouteConfig } from "$fresh/server.ts";
 import { render } from "$gfm";
 import { list } from "!lib/page/list.ts";
@@ -20,8 +21,19 @@ const page = async (_req: Request, _ctx: FreshContext): Promise<JSX.Element | Re
   }
 
   return (
-    <Layout title={page.title} description={page.description}>
-      <>
+    <>
+      {page.metadata && (
+        <Head>
+          {page.metadata.map((meta) => (
+            <meta
+              name={meta.name}
+              content={meta.content}
+            />
+          ))}
+        </Head>
+      )}
+
+      <Layout title={page.title} description={page.description}>
         <h1 class="text-2xl font-bold pb-2 mb-2 border-b border-[#d8dee4] dark:border-[#21262d]">{page.title}</h1>
 
         <details class="mt-4 pb-4">
@@ -86,8 +98,8 @@ const page = async (_req: Request, _ctx: FreshContext): Promise<JSX.Element | Re
             pages={pages}
           />
         </section>
-      </>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 
