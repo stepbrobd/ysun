@@ -1,5 +1,5 @@
 ---
-title: Standing Out in the Sea of Sameness
+title: Standing Out
 description: A review of manga and anime series "The Dangers in My Heart".
 date: 2024-03-31
 ---
