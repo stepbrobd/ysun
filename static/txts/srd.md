@@ -1,5 +1,5 @@
 ---
-title: Naive Data Race Detector
+title: Static Race Detection
 description: Naive data race detector for Go based on stateful AST traversal with pre-defined structural operational semantic rules.
 date: 2023-05-11
 metadata:
