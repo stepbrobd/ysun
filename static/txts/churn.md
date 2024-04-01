@@ -9,7 +9,7 @@ metadata:
       content: ysun.co/churn https://github.com/stepbrobd/churn https://github.com/stepbrobd/churn/tree/master{/dir} https://github.com/stepbrobd/churn/blob/master{/dir}/{file}#L{line}
 ---
 
-## Description
+## Motivation
 
 Credit card churing (or simply churing) is a term commonly used in multiple
 well-known communities (e.g.
