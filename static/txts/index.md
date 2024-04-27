@@ -1,7 +1,7 @@
 ---
 title: Yifei Sun
 description: 孫 奕飛 (そん いいふぇい)
-date: 2024-02-01
+date: 2024-04-27
 image: https://static.ysun.co/imgs/og.webp
 favicon: https://static.ysun.co/imgs/favicon.ico
 nav:
