@@ -62,7 +62,7 @@ Read more about flakes:
 
 If you don't want to use flakes, there are still ways to pin your dependencies
 to a specific commit (the use of channels is not recommended). You can use
-[`niv`](https://github.com/nmattia/niv) or [`npin`](https://github.com/andir/npins)
+[`niv`](https://github.com/nmattia/niv) or [`npins`](https://github.com/andir/npins)
 to pin your dependencies.
 
 While `niv` and `npin` are good tools, IMO they are not as good as flakes.
