@@ -10,6 +10,7 @@ const src: Record<string, string> = {
   "/linkedin": "https://www.linkedin.com/in/yifei-s",
   "/orcid": "https://orcid.org/0000-0002-1591-7458",
   "/osu": "https://osu.ppy.sh/users/stepbrobd",
+  "/reddit": "https://www.reddit.com/user/stepbrobd",
   "/rss": "https://prose.ysun.co/rss",
   "/scholar": "https://scholar.google.com/citations?user=TIVaLaMAAAAJ",
   "/sourcehut": "https://git.sr.ht/~stepbrobd",
