@@ -7,6 +7,7 @@ const src: Record<string, string> = {
   "/instagram": "https://www.instagram.com/stepbrobd",
   "/linkedin": "https://www.linkedin.com/in/yifei-s",
   "/orcid": "https://orcid.org/0000-0002-1591-7458",
+  "/osu": "https://osu.ppy.sh/users/stepbrobd",
   "/rss": "https://prose.ysun.co/rss",
   "/scholar": "https://scholar.google.com/citations?user=TIVaLaMAAAAJ",
   "/threads": "https://threads.net/@stepbrobd",
