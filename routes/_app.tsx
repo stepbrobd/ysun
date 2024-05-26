@@ -18,7 +18,12 @@ const app = ({ Component }: PageProps): JSX.Element => {
         <style>{KATEX_CSS}</style>
         <link rel="icon" href={asset("/imgs/favicon.ico")} />
         <meta property="og:image" content={asset("/imgs/og.webp")} />
-        <script defer data-domain="ysun.co" src="https://stats.ysun.co/js/script.js" />
+        {/* https://plausible.io/docs/script-extensions#all-our-script-extensions */}
+        <script
+          defer
+          data-domain="ysun.co"
+          src="https://stats.ysun.co/js/script.file-downloads.hash.outbound-links.js"
+        />
       </head>
       <body
         class="selection:bg-[#aaffec] dark:selection:bg-[#f81ce5]"
