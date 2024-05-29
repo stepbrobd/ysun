@@ -14,6 +14,7 @@ const src: Record<string, string> = {
   "/rss": "https://prose.ysun.co/rss",
   "/scholar": "https://scholar.google.com/citations?user=TIVaLaMAAAAJ",
   "/sourcehut": "https://git.sr.ht/~stepbrobd",
+  "/sponsor": "https://github.com/sponsors/stepbrobd",
   "/srht": "https://git.sr.ht/~stepbrobd",
   "/threads": "https://threads.net/@stepbrobd",
   "/twitter": "https://twitter.com/stepbrobd",
