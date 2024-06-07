@@ -23,3 +23,12 @@ I'm generally interested in systems and theory ([see CV for more details](https:
 - Distributed systems related formal verifications and program analysis
 - High-performance managed runtime systems
 - Type theory and type based program analysis for modern programming languages
+
+Want to chat? Some of my socials:
+
+<ul>
+  <li><a href="/osu">osu!</a></li>
+  <li><a href="/github">GitHub</a></li>
+  <li><a href="/sponsor">Sponsor</a></li>
+  <li><a rel="me" href="https://mas.to/@ysun">Mastodon</a></li>
+</ul>
