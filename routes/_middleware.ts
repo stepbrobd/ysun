@@ -8,6 +8,7 @@ const src: Record<string, string> = {
   "/gitlab": "https://gitlab.com/stepbrobd",
   "/instagram": "https://www.instagram.com/stepbrobd",
   "/linkedin": "https://www.linkedin.com/in/yifei-s",
+  "/mastodon": "https://mas.to/@ysun",
   "/orcid": "https://orcid.org/0000-0002-1591-7458",
   "/osu": "https://osu.ppy.sh/users/stepbrobd",
   "/reddit": "https://www.reddit.com/user/stepbrobd",
