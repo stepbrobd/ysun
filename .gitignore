@@ -13,5 +13,7 @@
 .env.test.local
 .env.production.local
 .env.local
+_site
+_cache
 _fresh/
 node_modules/
