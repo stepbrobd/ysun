@@ -8,14 +8,24 @@ on:
 jobs:
   Fly:
     runs-on: "ubuntu-latest"
+
+    permissions:
+      id-token: "write"
+      contents: "read"
+
     steps:
       - uses: "actions/checkout@v4"
         name: "Checkout"
         with:
           fetch-depth: 0
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-        name: "Setup"
+
+      - name: "Setup"
+        uses: determinatesystems/nix-installer-action@main
+
+      - name: "Cache"
+        uses: determinatesystems/magic-nix-cache-action@main
+
       - name: "Deploy"
-        run: flyctl deploy --remote-only --no-cache
+        run: nix run .#deploy --option sandbox false
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
