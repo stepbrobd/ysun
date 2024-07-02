@@ -10,10 +10,11 @@
 # Deno
 .env
 .env.development.local
-.env.test.local
-.env.production.local
 .env.local
-_site
+.env.production.local
+.env.test.local
 _cache
 _fresh/
+_site
 node_modules/
+outputs/

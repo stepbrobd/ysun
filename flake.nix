@@ -11,47 +11,33 @@
     }: utils.lib.eachDefaultSystem
       (system:
       let
-        rev = self.rev or self.dirtyRev;
-        pkgs = import nixpkgs { inherit system; };
-
-        run = pkgs.writeShellApplication rec {
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        packages.default = pkgs.stdenvNoCC.mkDerivation {
           name = "ysun";
-          runtimeInputs = with pkgs; [ toybox deno ];
-          text = ''
-            pushd "$(dirname "$0")" > /dev/null
-            DENO_DEPLOYMENT_ID=${rev} deno run --allow-all main.ts
-            popd
-          '';
-        };
-
-        app = pkgs.stdenvNoCC.mkDerivation {
-          pname = "ysun";
-          version = self.shortRev or self.dirtyShortRev;
           src = ./.;
-          nativeBuildInputs = with pkgs; [ deno jq ];
           configurePhase = ''
+            runHook preConfigure
             unset HOME
             unset XDG_CACHE_HOME
             export HOME=$TMPDIR/home
             export DENO_DIR=$TMPDIR/deno
+            runHook postConfigure
           '';
+          nativeBuildInputs = with pkgs; [ deno ];
           buildPhase = ''
-            ${pkgs.deno}/bin/deno cache dev.ts main.ts
-            ${pkgs.deno}/bin/deno run --allow-all dev.ts build
+            runHook preBuild
+            deno task lume
+            runHook postBuild
           '';
           installPhase = ''
-            mkdir -p $out/bin
-            cp -r . $out/bin
+            runHook preInstall
+            mkdir -p $out/var/www/html
+            cp -r outputs/* $out/var/www/html
+            runHook postInstall
           '';
         };
-      in
-      {
-        packages.default = pkgs.symlinkJoin {
-          name = "ysun";
-          paths = [ app run ];
-        };
-
-        apps.default = utils.lib.mkApp { drv = self.packages.${system}.default; };
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [

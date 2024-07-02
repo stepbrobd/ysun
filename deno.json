@@ -1,0 +1,29 @@
+{
+  "imports": {
+    "lume/": "https://deno.land/x/lume@v2.2.2/",
+    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.5.3/",
+    "lume/plugins/markdown/": "https://deno.land/x/lume_markdown_plugins@v0.7.0/",
+    "lume/plugins/markdown/figure.ts": "jsr:@stepbrobd/figure@2024.702.1",
+    "octokit": "npm:octokit@4.0.2",
+    "shiki/": "https://deno.land/x/lume_shiki@0.0.15/"
+  },
+  "tasks": {
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
+    "build": "deno task lume",
+    "serve": "deno task lume --serve",
+    "cms": "deno task lume cms"
+  },
+  "compilerOptions": {
+    "types": [
+      "lume/types.ts"
+    ]
+  },
+  "fmt": {
+    "useTabs": false,
+    "indentWidth": 2,
+    "lineWidth": 120,
+    "semiColons": true,
+    "singleQuote": false,
+    "proseWrap": "preserve"
+  }
+}

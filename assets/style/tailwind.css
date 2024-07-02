@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-nord-0 text-nord-4 min-h-screen;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-nord-6;
+  }
+
+  a {
+    @apply text-nord-8 hover:text-nord-7;
+  }
+}
+
+@layer components {
+  .prose {
+    @apply text-nord-4;
+  }
+
+  .prose strong {
+    @apply text-nord-6;
+  }
+
+  .prose a {
+    @apply text-nord-8 hover:text-nord-7;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply text-nord-6;
+  }
+
+  .prose code {
+    @apply text-nord-13 rounded;
+  }
+
+  .prose img {
+    @apply max-w-full h-auto rounded;
+  }
+
+  .prose figcaption {
+    @apply text-nord-4 text-center;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-nord-3 text-nord-5;
+  }
+
+  .prose hr {
+    @apply border-nord-3;
+  }
+}
+
+@layer utilities {
+  .bg-primary {
+    @apply bg-nord-1;
+  }
+
+  .bg-secondary {
+    @apply bg-nord-2;
+  }
+
+  .text-primary {
+    @apply text-nord-6;
+  }
+
+  .text-secondary {
+    @apply text-nord-4;
+  }
+
+  .border-primary {
+    @apply border-nord-3;
+  }
+}

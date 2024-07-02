@@ -1,0 +1,33 @@
+---
+layout: main.vto
+---
+<article lang="en-US" class="prose container mx-auto">
+  <h1>{{ title }}</h1>
+  <small class="text-nord-9 flex flex-row items-center justify-start gap-2">
+    <time>{{ date |> date("yyyy-MM-dd") }}</time>
+    <span>&middot;</span>
+    <span>{{ readingInfo.words }} words</span>
+    <span>&middot;</span>
+    <span>{{ readingInfo.minutes }} min read</span>
+  </small>
+  {{ content }}
+  {{ if footnotes.length }}
+    <hr>
+    <strong class="text-sm">Footnotes:</strong>
+    <ol class="text-xs">
+      {{ for note of footnotes }}
+        <li id="{{ note.id }}">
+          <span class="flex flex-row items-center">
+            <span class="not-prose">{{ note.content }}</span>
+            <a href="#{{ note.refId }}" class="footnote-backref">&crarr;</a>
+          </span>
+        </li>
+      {{ /for }}
+    </ol>  
+  {{ /if }}
+  <nav class="container mx-auto">
+    <hr>
+    {{ include "list.vto" }}
+    <hr>
+  </nav>
+</article>

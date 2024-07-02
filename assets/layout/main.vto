@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <link rel="stylesheet" href="/assets/style/tailwind.css"></link>
+    <link rel="icon" href="/assets/static/img/favicon.ico"></link>
+    <script defer data-domain="ysun.co" src="https://stats.ysun.co/js/script.file-downloads.hash.outbound-links.js"></script>
+    <title>{{ title }}</title>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <div class="container mx-auto">
+      {{ include "header.vto" }}
+    </div>
+    <main class="flex-grow container mx-auto px-4 py-8">
+      {{ content }}
+    </main>
+    <div class="px-4 py-8">
+      {{ include "footer.vto" }}
+    </div>
+  </body>
+</html>
