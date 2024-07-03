@@ -14,7 +14,7 @@ Before joining Khoury College of Computer Sciences, I obtained my bachelors from
 under the guidance of Prof. [Shad Roundy](https://iss.mech.utah.edu/shad-roundy) and co-advisor Prof.
 [Tucker Hermans](https://robot-learning.cs.utah.edu/thermans).
 
-I'm generally interested in systems and theory ([see CV for more details](https://ysun.co/pdfs/cv.pdf)), topics include:
+I'm generally interested in systems and theory ([see CV for more details](/cv)), topics include:
 
 - Distributed systems related formal verifications and program analysis
 - High-performance managed runtime systems
