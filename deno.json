@@ -3,7 +3,7 @@
     "lume/": "https://deno.land/x/lume@v2.2.2/",
     "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.5.3/",
     "lume/plugins/markdown/": "https://deno.land/x/lume_markdown_plugins@v0.7.0/",
-    "lume/plugins/markdown/figure.ts": "jsr:@stepbrobd/figure@2024.702.1",
+    "lume/plugins/markdown/figure.ts": "jsr:@stepbrobd/figure@2024.704.0",
     "octokit": "npm:octokit@4.0.2",
     "shiki/": "https://deno.land/x/lume_shiki@0.0.15/"
   },
