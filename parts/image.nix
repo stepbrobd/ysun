@@ -11,21 +11,22 @@ _:
           name = "caddyfile";
           text = ''
             {
-                admin off
-                auto_https off
-                cache
+            	admin off
+            	auto_https off
+            	order rewrite before cache
+            	cache
             }
 
             :${builtins.toString port} {
-                cache
-                encode zstd gzip
-                file_server
-                root * {$SITE_ROOT}
+            	cache
+            	encode zstd gzip
+            	file_server
+            	root * {$SITE_ROOT}
 
-                handle_errors {
-                    rewrite * /
-                    file_server
-                }
+            	handle_errors {
+            		rewrite * /
+            		file_server
+            	}
             }
           '';
         };
