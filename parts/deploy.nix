@@ -1,11 +1,11 @@
 _:
 
 {
-  perSystem = { lib, pkgs, system, ... }: {
+  perSystem = { lib, pkgs, self', ... }: {
     packages.deploy =
       let
+        inherit (self'.packages) image;
         inherit (_.configs) name port;
-        inherit (_.outputs.packages.${system}) image;
 
         config = pkgs.writeTextFile {
           name = "fly.toml";

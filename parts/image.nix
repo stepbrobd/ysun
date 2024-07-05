@@ -1,11 +1,11 @@
 _:
 
 {
-  perSystem = { pkgs, system, ... }: {
+  perSystem = { pkgs, self', ... }: {
     packages.image =
       let
+        inherit (self'.packages) caddy site;
         inherit (_.configs) name port;
-        inherit (_.outputs.packages.${system}) caddy site;
 
         caddyfile = pkgs.writeTextFile {
           name = "caddyfile";
