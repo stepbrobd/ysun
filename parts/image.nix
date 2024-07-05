@@ -5,7 +5,7 @@ _:
     packages.image =
       let
         inherit (_.configs) name port;
-        inherit (_.outputs.packages.${system}) site;
+        inherit (_.outputs.packages.${system}) caddy site;
 
         caddyfile = pkgs.writeTextFile {
           name = "caddyfile";
@@ -13,12 +13,14 @@ _:
             {
                 admin off
                 auto_https off
+                cache
             }
 
             :${builtins.toString port} {
-                root * {$SITE_ROOT}
-                file_server
+                cache
                 encode zstd gzip
+                file_server
+                root * {$SITE_ROOT}
 
                 handle_errors {
                     rewrite * /
@@ -37,7 +39,7 @@ _:
             "SITE_ROOT=${site}/var/www/html"
           ];
           Cmd = [
-            "${pkgs.caddy}/bin/caddy"
+            "${caddy}/bin/caddy"
             "run"
             "--config"
             "${caddyfile}"
