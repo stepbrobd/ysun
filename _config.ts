@@ -45,10 +45,9 @@ const site = lume({ src: ".", includes: "assets/layout", dest: "./outputs" }, { 
 
 // ignore readme and license
 site
-  .ignore("caddyfile")
-  .ignore("dockerfile")
   .ignore("flake.nix")
   .ignore("flake.lock")
+  .ignore("parts")
   .ignore("license.txt")
   .ignore("readme.md");
 
