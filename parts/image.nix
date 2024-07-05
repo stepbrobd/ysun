@@ -45,7 +45,6 @@ _:
             "${caddyfile}"
             "--adapter"
             "caddyfile"
-            "--environ"
           ];
           ExposedPorts = {
             "${builtins.toString port}/tcp" = { };
