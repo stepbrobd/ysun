@@ -11,8 +11,6 @@ _:
         src = ../.;
         configurePhase = ''
           runHook preConfigure
-          unset HOME
-          unset XDG_CACHE_HOME
           export HOME=$TMPDIR/home
           export DENO_DIR=$TMPDIR/deno
           runHook postConfigure
