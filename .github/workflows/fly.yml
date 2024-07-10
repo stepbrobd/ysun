@@ -22,6 +22,9 @@ jobs:
       - name: "Setup"
         uses: determinatesystems/nix-installer-action@main
 
+      - name: "Check"
+        uses: DeterminateSystems/flake-checker-action@main
+
       - name: "Cache"
         uses: determinatesystems/magic-nix-cache-action@main
 
