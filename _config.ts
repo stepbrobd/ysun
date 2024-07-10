@@ -60,7 +60,7 @@ site.preprocess([".html"], (pages) => {
   }
 });
 
-// styling + sitemap/rss generation
+// styling
 site
   .use(katex())
   .use(shiki({ highlighter: { themes: ["nord"] }, theme: "nord" }))
@@ -131,15 +131,18 @@ site
       plugins: [typography],
     },
   }))
-  .use(postcss())
-  .use(terser())
-  .use(minifyHTML({ extensions: [".css", ".html", ".js"] }))
-  .use(sitemap())
-  .use(feed());
+  .use(postcss());
 
 // /pages/* -> /*
 site.copyRemainingFiles(
   (path: string) => (path.startsWith("/pages/") ? path.replace("/pages/", "/") : path),
 );
+
+// sitemap/rss generation
+site
+  .use(minifyHTML({ extensions: [".css", ".html", ".js"] }))
+  .use(terser())
+  .use(sitemap())
+  .use(feed());
 
 export default site;
