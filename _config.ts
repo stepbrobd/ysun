@@ -31,7 +31,9 @@ const markdown = {
 };
 
 // setup + markdown preprocessing
-const site = lume({ src: ".", includes: "assets/layout", dest: "./outputs" }, { markdown })
+const site = lume({ location: new URL("https://ysun.co"), src: ".", includes: "assets/layout", dest: "./outputs" }, {
+  markdown,
+})
   .use(redirects())
   .use(metas())
   .use(slugifyUrls({ extensions: "*" }))
