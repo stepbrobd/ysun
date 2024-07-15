@@ -19,8 +19,9 @@ _:
       '';
       installPhase = ''
         runHook preInstall
-        mkdir -p $out/var/www/html
-        cp -r outputs/* $out/var/www/html
+        mkdir -p $out/var/www/{source,rendered}
+        cp -r $src/* $out/var/www/source
+        cp -r outputs/* $out/var/www/rendered
         runHook postInstall
       '';
     };

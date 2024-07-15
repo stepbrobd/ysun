@@ -2,11 +2,13 @@ import lumeCMS from "lume/cms/mod.ts";
 import GitHub from "lume/cms/storage/github.ts";
 import { Octokit } from "octokit";
 
-const user = Deno.env.get("USER");
-const pass = Deno.env.get("PASS");
+const user = Deno.env.get("USER")!;
+const pass = Deno.env.get("PASS")!;
+const auth = Deno.env.get("AUTH")!;
 
 const cms = lumeCMS({
-  site: { name: "CMS" },
+  site: { name: "Yifei Sun", description: "Lume CMS", url: "https://ysun.co/" },
+  basePath: "/admin",
   auth: {
     method: "basic",
     users: { [user]: pass },
@@ -16,7 +18,7 @@ const cms = lumeCMS({
 cms.storage(
   "gh",
   new GitHub({
-    client: new Octokit({ auth: Deno.env.get("TOKEN") }),
+    client: new Octokit({ auth }),
     owner: "stepbrobd",
     repo: "ysun",
   }),

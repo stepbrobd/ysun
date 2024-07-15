@@ -16,6 +16,7 @@
           configs = {
             name = "ysun";
             port = 8080;
+            cms = 3000;
           };
         };
       }

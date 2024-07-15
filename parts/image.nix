@@ -5,7 +5,7 @@ _:
     packages.image =
       let
         inherit (self'.packages) caddy site;
-        inherit (_.configs) name port;
+        inherit (_.configs) name port cms;
 
         caddyfile = pkgs.writeTextFile {
           name = "caddyfile";
@@ -20,8 +20,15 @@ _:
             :${builtins.toString port} {
             	cache
             	encode zstd gzip
-            	file_server
-            	root * {$SITE_ROOT}
+
+              handle_path /cms/* {
+                reverse_proxy http://localhost:${builtins.toString cms}
+              }
+
+              handle {
+                file_server
+                root * {$SITE_ROOT}
+              }
 
             	handle_errors {
             		rewrite * /
@@ -37,7 +44,7 @@ _:
         config = {
           Env = [
             "ENABLE_TELEMETRY=false"
-            "SITE_ROOT=${site}/var/www/html"
+            "SITE_ROOT=${site}/var/www/rendered"
           ];
           Cmd = [
             "${caddy}/bin/caddy"
@@ -46,6 +53,12 @@ _:
             "${caddyfile}"
             "--adapter"
             "caddyfile"
+            "&"
+            "PWD=${site}/var/www/source"
+            "${pkgs.deno}/bin/deno"
+            "tasks"
+            "lume"
+            "cms"
           ];
           ExposedPorts = {
             "${builtins.toString port}/tcp" = { };
