@@ -1,5 +1,3 @@
-_:
-
 {
   perSystem = { pkgs, ... }: {
     formatter = pkgs.writeShellScriptBin "formatter" ''

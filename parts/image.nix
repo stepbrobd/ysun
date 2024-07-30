@@ -1,4 +1,4 @@
-_:
+{ configs, ... }:
 
 {
   perSystem = { pkgs, self', ... }: {
@@ -6,7 +6,7 @@ _:
       let
         inherit (pkgs) deno;
         inherit (self'.packages) caddy site;
-        inherit (_.configs) name port cms;
+        inherit (configs) name port cms;
 
         caddyfile = pkgs.writeTextFile {
           name = "caddyfile";

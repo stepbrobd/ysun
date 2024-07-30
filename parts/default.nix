@@ -1,5 +1,3 @@
-_:
-
 {
   imports = [
     ./caddy.nix

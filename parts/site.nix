@@ -1,9 +1,9 @@
-_:
+{ configs, ... }:
 
 {
   perSystem = { pkgs, ... }: {
     packages.site = pkgs.stdenvNoCC.mkDerivation {
-      inherit (_.configs) name;
+      inherit (configs) name;
       src = ../.;
       configurePhase = ''
         runHook preConfigure

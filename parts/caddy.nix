@@ -1,5 +1,3 @@
-_:
-
 {
   perSystem = { lib, pkgs, ... }: {
     packages.caddy =
