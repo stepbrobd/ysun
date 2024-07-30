@@ -6,22 +6,17 @@
     systems.url = "github:nix-systems/default";
   };
 
-  outputs = { self, ... } @ inputs:
-    let inherit (self) outputs; in
-    inputs.parts.lib.mkFlake
-      {
-        inherit inputs;
-        specialArgs = {
-          inherit outputs;
-          configs = {
-            name = "ysun";
-            port = 8080;
-            cms = 3000;
-          };
-        };
-      }
-      {
-        systems = import inputs.systems;
-        imports = [ ./parts ];
+  outputs = inputs: inputs.parts.lib.mkFlake
+    {
+      inherit inputs;
+      specialArgs.configs = {
+        name = "ysun";
+        port = 8080;
+        cms = 3000;
       };
+    }
+    {
+      systems = import inputs.systems;
+      imports = [ ./parts ];
+    };
 }
