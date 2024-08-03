@@ -1,5 +1,5 @@
 <nav class="flex flex-col gap-2">
-  {{ for item of nav.menu().children }}
+  {{ for item of nav.menu("/", "", "date=desc").children }}
     {{ if !item.data.hidden }}
       <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
         <time>{{ item.data.date |> date("yyyy-MM-dd") }}</time>
