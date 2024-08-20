@@ -1,7 +1,7 @@
 ---
 date: 2023-12-08
-description: Manage your system configurations + packages + ... the Nix way
-title: The Nix Way
+description: Manage your system configurations + packages + ... my Nix way
+title: My Nix Way
 ---
 
 This is a guide to my personal
