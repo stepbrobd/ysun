@@ -1,3 +1,5 @@
+# disabled: switched to cloudflare pages
+
 name: "Fly"
 on:
   push:
