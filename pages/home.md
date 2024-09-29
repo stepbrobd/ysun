@@ -1,21 +1,33 @@
 ---
-date: 2024-04-27
+date: 2024-09-29
 description: 孫 奕飛 (そん いーふぇい)
 title: Yifei Sun
 url: /index.html
 ---
 
-I'm a MSCS student at Northeastern University.
+I'm a MSCS student at Northeastern University, currently actively seeking for a PhD position.
 I have the fortune to be advised by Prof. [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
-I'm currently visiting [Computing Software Group](https://www.csg.ci.i.u-tokyo.ac.jp/en) under Prof. [Tomoharu Ugawa](https://tugawa.github.io/index-e.html).
+I visited [Computing Software Group](https://www.csg.ci.i.u-tokyo.ac.jp/en) under Prof. [Tomoharu Ugawa](https://tugawa.github.io/index-e.html) at University of Tokyo during the summer of 2024.
 
 Before joining Khoury College of Computer Sciences, I obtained my bachelors from University of Utah for my thesis
 [System and Methods to Determine ME/CFS & Long COVID Disease Severity Using Wearable Sensor & Survey Data](assets/static/doc/bt.pdf)
 under the guidance of Prof. [Shad Roundy](https://iss.mech.utah.edu/shad-roundy) and co-advisor Prof.
 [Tucker Hermans](https://robot-learning.cs.utah.edu/thermans).
 
-I'm generally interested in systems and theory ([see CV for more details](/cv)), topics include:
+I'm generally interested in system and theory ([CV](/cv)), topics include:
 
-- Distributed systems related formal verifications and program analysis
-- High-performance managed runtime systems
-- Type theory and type based program analysis for modern programming languages
+- Formal verifications on distributed systems.
+- Type theory and managed runtime systems.
+- [Reproducible build systems](https://reproducible-builds.org).
+
+To prevent spams, my contact info is hidden within the [source code of this website](https://github.com/stepbrobd/ysun/tree/master/pages).
+After clicking the link, search for the platform you want to reach me on in all lowercase (e.g. [`github`](https://github.com/stepbrobd), [`linkedin`](https://www.linkedin.com/in/yifei-s), etc.).
+
+![Weekend outing with labmates (Walden Pond)](assets/static/img/home-1.webp)
+
+I ride a Trek Fuel EX 5 for fun and commute, and I daily-drive a Framework Laptop 13 with NixOS and a 14-inch MacBook Pro on the go.
+I own and operate [AS10779](/10779) with two IP assignments from ARIN.
+I maintain 10+ packages on [`nixpkgs`](https://repology.org/maintainers/?search=ysun%40hey.com) and [actively](https://github.com/NixOS/nixpkgs/issues?q=involves%3Astepbrobd) contribute to the Nix ecosystem.
+During my free time, I enjoy swimming, cycling, archery, and playing [osu!](https://osu.ppy.sh/users/20905967) mania.
+
+![You just have to go out and touch grass once in a while (Uji Shrine)](assets/static/img/home-2.webp)
