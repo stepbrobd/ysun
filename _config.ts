@@ -145,6 +145,13 @@ site
   .use(minifyHTML({ extensions: [".css", ".html", ".js"] }))
   .use(terser())
   .use(sitemap())
-  .use(feed());
+  .use(feed({
+    output: ["feed.rss", "feed.json"],
+    limit: 25,
+    sort: "date=desc",
+    query: "hidden=false title!='Yifei Sun'",
+    info: { title: "Yifei Sun", description: "Yifei Sun", generator: false },
+    items: { title: "=title", description: "=description", published: "=date" },
+  }));
 
 export default site;
