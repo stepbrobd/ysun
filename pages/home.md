@@ -1,5 +1,5 @@
 ---
-date: 2024-09-29
+date: 2024-11-23
 description: 孫 奕飛 (そん いーふぇい)
 title: Yifei Sun
 url: /index.html
@@ -19,6 +19,9 @@ I'm generally interested in system and theory ([CV](/cv)), topics include:
 - Formal verifications on distributed systems.
 - Type theory and managed runtime systems.
 - [Reproducible build systems](https://reproducible-builds.org).
+
+I can’t stand most Lisp dialects (especially Racket), but Emacs Lisp gets a free pass (cause it's actually useful).
+I dislike Racket so much that I even made a [website](https://rkt.lol) and a [poster](https://rkt.lol/poster.pdf) about it.
 
 To prevent spams, my contact info is hidden within the [source code of this website](https://github.com/search?q=repo%3Astepbrobd%2Fysun+%22hidden%3A+true%22+%22external%3A+https%3A%2F%2F%22+%22layout%3A+redirect.vto%22&type=code).
 After clicking the link, search for the platform you want to reach me on in all lowercase (e.g. [`github`](https://github.com/stepbrobd), [`linkedin`](https://www.linkedin.com/in/yifei-s), etc.).
