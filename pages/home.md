@@ -30,7 +30,7 @@ You can reach me directly with [Matrix](/matrix), Discord (use my GitHub usernam
 ![Weekend outing with labmates (Walden Pond)](assets/static/img/home-1.webp)
 
 I ride a Trek Fuel EX 5 for fun and commute, and I daily-drive a Framework Laptop 13 with NixOS and a 14-inch MacBook Pro on the go.
-I own and operate [AS10779](/10779) with two IP assignments from ARIN.
+I own and operate [AS10779](/10779) ([PeeringDB](/peeringdb)) with two IP assignments from ARIN.
 I maintain 10+ packages on [`nixpkgs`](https://repology.org/maintainers/?search=ysun%40hey.com) and [actively](https://github.com/NixOS/nixpkgs/issues?q=involves%3Astepbrobd) contribute to the Nix ecosystem.
 During my free time, I enjoy swimming, [cycling](/strava), archery, and playing [osu!](https://osu.ppy.sh/users/20905967) mania.
 
