@@ -276,7 +276,7 @@ Presentation and Symptomatology. Medicina (Kaunas). 2021 Apr 26;57(5):418. doi:
 10.3390/medicina57050418. PMID: 33925784; PMCID: PMC8145228.
 
 [4] Lee, Jihyun et al. ‘Clinically Accessible Tools for Documenting the Impact
-of Orthostatic Intolerance on Symptoms and Function in ME/CFS’. 1 Jan. 2020 :
+of Orthostatic Intolerance on Symptoms and Function in ME/CFS'. 1 Jan. 2020 :
 257 – 263.
 
 [5] Stewart JM. Common syndromes of orthostatic intolerance. Pediatrics. 2013
