@@ -13,7 +13,6 @@ layout: main.vto
   {{ content }}
   {{ if footnotes.length }}
     <hr>
-    <strong class="text-sm">Footnotes:</strong>
     <ol class="text-xs">
       {{ for note of footnotes }}
         <li id="{{ note.id }}">
