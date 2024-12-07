@@ -7,7 +7,12 @@
     @apply bg-nord-0 text-nord-4 min-h-screen;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply text-nord-6;
   }
 
@@ -29,7 +34,12 @@
     @apply text-nord-8 hover:text-nord-7;
   }
 
-  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
     @apply text-nord-6;
   }
 
@@ -51,6 +61,22 @@
 
   .prose hr {
     @apply border-nord-3;
+  }
+
+  .prose table {
+    @apply w-full border-collapse border border-nord-3 rounded overflow-hidden;
+  }
+
+  .prose th {
+    @apply bg-nord-0 text-nord-6 font-semibold text-left px-4 py-2 border-b border-nord-3;
+  }
+
+  .prose td {
+    @apply text-nord-4 px-4 py-2 border-b border-nord-3;
+  }
+
+  .prose tr {
+    @apply bg-nord-0;
   }
 }
 
