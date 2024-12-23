@@ -1,7 +1,7 @@
 ---
 date: 2024-03-31
 description: A review of manga and anime series "The Dangers in My Heart"
-title: Standing Out
+title: Otaku rant
 ---
 
 I've caught up with the manga, and finished the second season of the anime yesterday.

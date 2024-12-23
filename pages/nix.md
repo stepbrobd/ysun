@@ -1,8 +1,10 @@
 ---
 date: 2023-12-08
 description: Manage your system configurations + packages + ... my Nix way
-title: My Nix Way
+title: My outdated Nix way
 ---
+
+Outdated and I'm too lazy to change anything here, just read my code.
 
 This is a guide to my personal
 [dotfiles repo](https://github.com/stepbrobd/dotfiles) (for NixOS and Darwin

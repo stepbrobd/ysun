@@ -1,7 +1,7 @@
 ---
 date: 2024-12-06
 description: Under Control zine for iPPL extended version
-title: Under Control
+title: Under control
 ---
 
 I took [CS 7400](https://ccs.neu.edu/~cmartens/Courses/7400-f24/index.html) (Intensive Principles of Programming Languages a.k.a iPPL) this semester under Prof. Martens.
