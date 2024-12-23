@@ -5,7 +5,7 @@ title: Under Control
 ---
 
 I took [CS 7400](https://ccs.neu.edu/~cmartens/Courses/7400-f24/index.html) (Intensive Principles of Programming Languages a.k.a iPPL) this semester under Prof. Martens.
-This blog post builds upon the ideas introduced in [my original 8-page-long Zine](../assets/static/doc/ctrl.pdf) on control stacks (well, tbh I chose Control Stacks because it's the most intuitive topic covered in this class).
+This blog post builds upon the ideas introduced in [my original 8-page-long Zine](/assets/static/doc/ctrl.pdf) on control stacks (well, tbh I chose Control Stacks because it's the most intuitive topic covered in this class).
 
 IMO control stacks help capture the evaluation states and "rest of the computation" as programs run.
 While in the Zine example, they track function calls and returns, conceptually, they stand at the intersection between type systems and operational semantics.
