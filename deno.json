@@ -1,7 +1,7 @@
 {
   "imports": {
     "lume/": "https://deno.land/x/lume@v2.4.3/",
-    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.7.5/",
+    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.7.7/",
     "lume/plugins/markdown/": "https://deno.land/x/lume_markdown_plugins@v0.7.1/",
     "lume/plugins/markdown/figure.ts": "jsr:@stepbrobd/figure@2024.704.0",
     "octokit": "npm:octokit@4.0.2",
