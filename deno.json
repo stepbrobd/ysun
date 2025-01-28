@@ -1,17 +1,14 @@
 {
   "imports": {
-    "lume/": "https://deno.land/x/lume@v2.5.0/",
-    "lume/cms/": "https://cdn.jsdelivr.net/gh/lumeland/cms@v0.8.3/",
+    "lume/": "https://deno.land/x/lume@v2.5.1/",
     "lume/plugins/markdown/": "https://deno.land/x/lume_markdown_plugins@v0.7.1/",
     "lume/plugins/markdown/figure.ts": "jsr:@stepbrobd/figure@2024.704.0",
-    "octokit": "npm:octokit@4.0.2",
     "shiki/": "https://deno.land/x/lume_shiki@0.0.16/"
   },
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
     "build": "deno task lume",
-    "serve": "deno task lume -s",
-    "cms": "deno task lume cms"
+    "serve": "deno task lume -s"
   },
   "compilerOptions": {
     "types": [

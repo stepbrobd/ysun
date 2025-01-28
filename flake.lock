@@ -1,38 +1,12 @@
 {
   "nodes": {
-    "autopilot": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "parts": [
-          "parts"
-        ],
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1734225345,
-        "narHash": "sha256-6mI7tVAMz87p/voi4nqVqR5t11CD6VbMVsdGtLQKr4U=",
-        "owner": "stepbrobd",
-        "repo": "autopilot",
-        "rev": "a5c995353efe7ecd0f79ee988ae1c3825ae47736",
-        "type": "github"
-      },
-      "original": {
-        "owner": "stepbrobd",
-        "repo": "autopilot",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1736420959,
-        "narHash": "sha256-dMGNa5UwdtowEqQac+Dr0d2tFO/60ckVgdhZU9q2E2o=",
+        "lastModified": 1738009863,
+        "narHash": "sha256-KxmFlQ2j9PpDhKRXWu85bv3R2wmfkUqdpJhEwz9JN/E=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "32af3611f6f05655ca166a0b1f47b57c762b5192",
+        "rev": "f898cbfddfab52593da301a397a17d0af801bbc3",
         "type": "github"
       },
       "original": {
@@ -64,7 +38,6 @@
     },
     "root": {
       "inputs": {
-        "autopilot": "autopilot",
         "nixpkgs": "nixpkgs",
         "parts": "parts",
         "systems": "systems"
