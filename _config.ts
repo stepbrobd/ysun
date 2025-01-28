@@ -70,8 +70,8 @@ site
     options: {
       theme: {
         extend: {
-          // https://systemfontstack.com
-          colors: (theme) => ({
+          // https://nordtheme.com
+          colors: {
             "nord-0": "#2E3440",
             "nord-1": "#3B4252",
             "nord-2": "#434C5E",
@@ -88,8 +88,8 @@ site
             "nord-13": "#EBCB8B",
             "nord-14": "#A3BE8C",
             "nord-15": "#B48EAD",
-          }),
-          // https://nordtheme.com
+          },
+          // https://systemfontstack.com
           fontFamily: {
             sans: [
               "-apple-system",
