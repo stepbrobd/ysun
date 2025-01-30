@@ -103,6 +103,10 @@
   .prose tr:nth-child(even) {
     @apply bg-nord-0;
   }
+
+  .amembed {
+    @apply relative w-full max-w-[660px] h-[450px] aspect-[660/450] mx-auto my-4;
+  }
 }
 
 @layer utilities {
