@@ -1,6 +1,6 @@
 ---
-date: 2024-12-23
-description: 孫 奕飛 (そん いーふぇい)
+date: 2024-01-29
+description: Yifei Sun - 孫 奕飛 (そん いーふぇい)
 title: Yifei Sun
 url: /index.html
 ---
@@ -18,18 +18,34 @@ I'm generally interested in system and theory ([CV](/cv)), topics include:
 - Constructive type theory and mechanized proofs.
 - [Reproducible (build) systems](https://reproducible-builds.org).
 
-To prevent spams, my contact info is hidden within the [source code of this website](https://github.com/search?q=repo%3Astepbrobd%2Fysun+%22hidden%3A+true%22+%22external%3A+https%3A%2F%2F%22+%22layout%3A+redirect.vto%22&type=code).
-After clicking the link, search for the platform you want to reach me on in all lowercase (e.g. [`github`](https://github.com/stepbrobd), [`linkedin`](https://www.linkedin.com/in/yifei-s), etc.).
+My contact info is hidden within the [source code of this site](https://github.com/search?q=repo%3Astepbrobd%2Fysun+%22hidden%3A+true%22+%22external%3A+https%3A%2F%2F%22+%22layout%3A+redirect.vto%22&type=code).
+Search for the platform you want to reach me on in all lowercase (e.g. [`github`](/github), [`linkedin`](/linkedin), etc.).
 You can reach me directly with [Matrix](/matrix), Discord (use my GitHub username), or email (`echo -n 'eXN1bkBoZXkuY29tCg==' | base64 --decode`).
 
 ![Weekend outing with labmates (Walden Pond)](/assets/static/img/home-1.webp)
 
 I ride a Trek Fuel EX 5 for fun and commute, and I daily-drive a Framework Laptop 13 with NixOS and a 14-inch MacBook Pro on the go.
 I own and operate [AS10779](/10779) ([PeeringDB](/peeringdb)) with two IP assignments from ARIN.
-I maintain 10+ packages on [`nixpkgs`](https://repology.org/maintainers/?search=ysun%40hey.com) and [actively](https://github.com/NixOS/nixpkgs/issues?q=involves%3Astepbrobd) contribute to the Nix ecosystem.
-During my free time, I enjoy swimming, [cycling](/strava), archery, and playing [osu!](https://osu.ppy.sh/users/20905967) mania.
+I maintain [about 15 packages](https://repology.org/maintainers/?search=ysun%40hey.com) and [actively](https://github.com/NixOS/nixpkgs/issues?q=involves%3Astepbrobd) contribute to the Nix ecosystem.
+During my free time, I enjoy swimming, [cycling](/strava), archery, and playing [osu!](/osu) (mostly mania and std with Wacom Intuos Pro).
+Streaming services? Apple Music all the way ([playlist](/music))!
+
+Troll: I can't stand s-expressions, but Emacs Lisp gets a free pass (cause it's actually useful).
+I dislike Racket so much that I even made a [website](https://rkt.lol) and a [poster](https://rkt.lol/poster.pdf) about it.
 
 ![You just have to go out and touch grass once in a while (Uji Shrine)](/assets/static/img/home-2.webp)
 
-Troll: I can't stand most Lisp dialects (especially Racket), but Emacs Lisp gets a free pass (cause it's actually useful).
-I dislike Racket so much that I even made a [website](https://rkt.lol) and a [poster](https://rkt.lol/poster.pdf) about it.
+Random recommendations (unordered):
+
+- Paid search engine [Kagi](https://kagi.com), you control the ranking
+- [NixOS](https://nixos.org) for your next OS
+- Self-hostable code search engine [Zoekt](https://github.com/sourcegraph/zoekt)
+- Get an amateur radio license, my callsign is KC1VZR
+- Email over radio with [Winlink](https://winlink.org) + [Pat](https://github.com/la5nta/pat)
+- [Tailscale](https://tailscale.com), [Headscale](https://github.com/juanfont/headscale), or at least [WireGuard](https://www.wireguard.com)
+- [Kanidm](https://kanidm.com) for OAuth/OIDC and read-only LDAP
+- Learn [OCaml](https://ocaml.org) with [Dune](https://dune.build)
+- Write a toy language?
+- Learn how to mechanize proofs?
+- Static site generator [Lume](https://github.com/lumeland/lume) + [Cloudflare Pages](https://pages.cloudflare.com)
+- [Cobalt](https://cobalt.tools/about/general), yet another FFmpeg wrapper, but nice
