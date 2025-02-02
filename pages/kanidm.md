@@ -6,7 +6,7 @@ title: Kanidm LDAP guide
 
 Couple months back, I met [Nick](https://nichi.co) (one of the most legendary `nixpkgs` contributors) IRL,
 and he introduced me to this fairly new and interesting CLI based [IDM](https://en.wikipedia.org/wiki/Identity_and_access_management)
-tool called [Kanidm](https://github.com/kanidm/kanidm). Fast-forward to mid-January, I got board with my
+tool called [Kanidm](https://github.com/kanidm/kanidm). Fast-forward to mid-January, I got bored with my
 research and wanted to mess around with my [Hydra](https://github.com/NixOS/hydra) build server, and I
 thought it would be cool to use Kanidm as the LDAP backend for Hydra (I was using local Hydra accounts).
 
