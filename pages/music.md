@@ -1,5 +1,5 @@
 ---
-date: 2025-01-29
+date: 2025-02-03
 hidden: true
 title: Music
 ---
@@ -14,6 +14,20 @@ title: Music
     style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;"
     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
     src="https://embed.music.apple.com/us/playlist/heavy-rotation-mix/pl.pm-8e975ad16716041c9e693d5d0af49ea1?theme=dark"
+  >
+  </iframe>
+</div>
+
+## Replay 2025
+
+<div class="amembed">
+  <iframe
+  allow="autoplay *; encrypted-media *;"
+  frameborder="0"
+  height="450"
+  style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
+  sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+  src="https://embed.music.apple.com/us/playlist/replay-2025/pl.rp-wPOPtgXAjDdA?theme=dark"
   >
   </iframe>
 </div>
