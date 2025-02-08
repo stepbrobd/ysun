@@ -1,6 +1,6 @@
 ---
 date: 2025-02-02
-description: How I setup Kanidm's read-only LDAP to work with by Hydra build server
+description: How I setup Kanidm's read-only LDAP to work with Hydra build server
 title: Kanidm LDAP guide
 ---
 
