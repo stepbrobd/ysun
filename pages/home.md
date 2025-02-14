@@ -1,9 +1,11 @@
 ---
-date: 2024-01-29
+date: 2024-02-14
 description: Yifei Sun - 孫 奕飛 (そん いーふぇい)
 title: Yifei Sun
 url: /index.html
 ---
+
+> [We shouldn't worry about getting hacked](https://otel.ysun.co/public-dashboards/55f1b79c57bb40cd96a871ec6197f02e) - that's illegal.
 
 I'm a MSCS student at Northeastern University.
 I have the fortune to be advised by Prof. [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
