@@ -8,11 +8,9 @@ url: /index.html
 > [We shouldn't worry about getting hacked](https://otel.ysun.co/public-dashboards/55f1b79c57bb40cd96a871ec6197f02e) - that's illegal.
 
 I'm a MSCS student at Northeastern University.
-I have the fortune to be advised by Prof. [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
-I visited [Computing Software Group](https://www.csg.ci.i.u-tokyo.ac.jp/en) advised by Prof. [Tomoharu Ugawa](https://tugawa.github.io/index-e.html) at University of Tokyo during the summer of 2024.
-I finished my undergrad at University of Utah for my [thesis](/assets/static/doc/bt.pdf)
-under the guidance of Prof. [Shad Roundy](https://iss.mech.utah.edu/shad-roundy) and co-advisor Prof.
-[Tucker Hermans](https://robot-learning.cs.utah.edu/thermans).
+I have the fortune to be advised by Dr. [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
+I visited [Computing Software Group](https://www.csg.ci.i.u-tokyo.ac.jp/en) advised by Dr. [Tomoharu Ugawa](https://tugawa.github.io/index-e.html) at University of Tokyo during the summer of 2024.
+I finished my undergrad at University of Utah under the guidance of Dr. [Shad Roundy](https://iss.mech.utah.edu/shad-roundy) and co-advisor Dr. [Tucker Hermans](https://robot-learning.cs.utah.edu/thermans).
 
 I'm generally interested in system and theory ([CV](/cv)), topics include:
 
