@@ -135,6 +135,9 @@ site
   }))
   .use(postcss());
 
+// geofeed
+site.copy("assets/static/geofeed.csv", "geofeed.csv");
+
 // /pages/* -> /*
 site.copyRemainingFiles(
   (path: string) => (path.startsWith("/pages/") ? path.replace("/pages/", "/") : path),
