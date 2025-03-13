@@ -1,4 +1,4 @@
-# StepBroBD, Inc. | noc@stepbrobd.com | AS10779 | 2025-03-10T00:00:00Z
+# StepBroBD, Inc. | noc@stepbrobd.com | AS10779 | 2025-03-13T00:00:00Z
 23.161.104.0/24,US,US-OR,Portland,97210
 2620:be:a000::/48,US,US-OR,Portland,97210
 # Toompea
@@ -10,3 +10,6 @@
 # Kongo
 23.161.104.130/32,JP,JP-27,Osaka,540-0001
 2620:be:a000::23:161:104:130/128,JP,JP-27,Osaka,540-0001
+# Diablo
+23.161.104.131/32,US,US-CA,San Jose,95119
+2620:be:a000::23:161:104:131/128,US,US-CA,San Jose,95119
