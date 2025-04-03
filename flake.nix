@@ -36,7 +36,9 @@
           mkdir -p $out
           cp -r outputs/* $out
         '';
-        meta.broken = true;
+        outputHashAlgo = "sha256";
+        outputHashMode = "recursive";
+        outputHash = "sha256-53brASqugrg7fwrI2P34cjhPJ4YaroMx69Y+vkeb+dE=";
       };
     };
   };
