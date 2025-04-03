@@ -56,18 +56,31 @@
       };
 
       # workaround
-      # build site and exec ad-hoc
-      # but gc might collect them
-      # while running? add to gc root?
-      packages.default = pkgs.writeShellApplication {
-        name = "ysun";
-        runtimeInputs = [ pkgs.deno pkgs.nixVersions.stable ];
-        text = ''
-          SITE=$(nix build --option sandbox false --no-link --print-out-paths ${self.outPath}\#site)
-          EXEC=$(nix build --option sandbox false --no-link --print-out-paths ${self.outPath}\#exec)/bin/exec
-          exec "$EXEC" "$SITE" "$@"
-        '';
-      };
+      # build without sandbox on gha
+      # and import as pure derivation
+      packages.default =
+        let
+          importnar = name: url: hash: import <nix/fetchurl.nix> {
+            inherit name url hash;
+            unpack = true;
+          };
+          exec = importnar
+            "exec"
+            "https://github.com/stepbrobd/ysun/releases/download/2025.04.03.18.06.19/exec.nar"
+            "sha256-0dAXdWdJPaf7Cqc3FSKKCRFdj/Wpuk4VCwjtvv2Oysk=";
+          site = importnar
+            "site"
+            "https://github.com/stepbrobd/ysun/releases/download/2025.04.03.18.06.19/site.nar"
+            "sha256-lTahzI6A9Rbuu7yF2XoQQPNQRBgSyiMWxBqBPeW/gyk=";
+        in
+        pkgs.writeShellApplication {
+          meta.platforms = [ "x86_64-linux" ];
+          name = "ysun";
+          runtimeInputs = [ exec site ];
+          text = ''
+            exec ${exec}/bin/exec ${site} "$@"
+          '';
+        };
     };
   };
 

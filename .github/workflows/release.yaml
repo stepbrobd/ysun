@@ -26,16 +26,47 @@ jobs:
 
       - name: Build
         run: |
+          TAG=$(date +%Y.%m.%d.%H.%M.%S)
+          echo "TAG=$TAG" >> ${GITHUB_ENV}
+
           nix-store --dump $(nix build --option sandbox false --no-link --print-out-paths .#site) > site.nar
           nix-store --dump $(nix build --option sandbox false --no-link --print-out-paths .#exec) > exec.nar
 
-      - name: Tag
-        run: |
-          echo "TAG=$(date +%Y.%m.%d.%H.%M.%S)" >> ${GITHUB_ENV}
+          SRI_SITE=$(nix hash file site.nar)
+          SRI_EXEC=$(nix hash file exec.nar)
+
+          cat << EOF >> ${GITHUB_ENV}
+          BODY=\```\```\```nix
+            packages.default =
+              let
+                importnar = name: url: hash: import <nix/fetchurl.nix> {
+                  inherit name url hash;
+                  unpack = true;
+                };
+                exec = importnar
+                  "exec"
+                  "https://github.com/stepbrobd/ysun/releases/download/${TAG}/exec.nar"
+                  "${SRI_EXEC}";
+                site = importnar
+                  "site"
+                  "https://github.com/stepbrobd/ysun/releases/download/${TAG}/site.nar"
+                  "${SRI_SITE}";
+              in
+              pkgs.writeShellApplication {
+                meta.platforms = [ "x86_64-linux" ];
+                name = "ysun";
+                runtimeInputs = [ exec site ];
+                text = ''
+                  exec \${exec}/bin/exec \${site} "\$@"
+                '';
+              };
+          \```\```\```
+          EOF
 
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
+          body: ${{ env.BODY }}
           tag_name: ${{ env.TAG }}
           files: |
             site.nar
