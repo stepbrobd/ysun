@@ -25,20 +25,34 @@
         ${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt .
       '';
 
-      packages.default = pkgs.denoPlatform.mkDenoDerivation {
-        name = "ysun";
+      packages.site = pkgs.denoPlatform.mkDenoDerivation {
+        name = "site";
         stdenv = pkgs.stdenvNoCC;
         src = ./.;
-        buildPhase = ''
-          deno task build
-        '';
+        buildPhase = "deno task build";
         installPhase = ''
           mkdir -p $out
           cp -r outputs/* $out
         '';
-        outputHashAlgo = "sha256";
-        outputHashMode = "recursive";
-        outputHash = "sha256-53brASqugrg7fwrI2P34cjhPJ4YaroMx69Y+vkeb+dE=";
+      };
+
+      packages.exec = pkgs.denoPlatform.mkDenoBinary rec {
+        name = "exec";
+        src = ./.;
+        unstable = true;
+        permissions.allow = {
+          env = true;
+          sys = true;
+          net = true;
+          read = true;
+        };
+        entryPoint = "_main.ts";
+        buildPhase = ''
+          deno compile ${pkgs.denoPlatform.lib.generateFlags {
+            inherit permissions unstable entryPoint;
+            additionalDenoArgs = ["--output" name];
+          }}
+        '';
       };
     };
   };
