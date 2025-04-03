@@ -25,8 +25,9 @@
         ${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt .
       '';
 
-      packages.site = pkgs.denoPlatform.mkDenoDerivation {
+      packages.site = pkgs.denoPlatform.mkDenoDerivation rec {
         name = "site";
+        pname = name;
         stdenv = pkgs.stdenvNoCC;
         src = ./.;
         buildPhase = "deno task build";
@@ -38,6 +39,7 @@
 
       packages.exec = pkgs.denoPlatform.mkDenoBinary rec {
         name = "exec";
+        pname = name;
         src = ./.;
         unstable = true;
         permissions.allow = {
