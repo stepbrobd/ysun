@@ -66,12 +66,12 @@
           };
           exec = importnar
             "exec"
-            "https://github.com/stepbrobd/ysun/releases/download/2025.04.03.18.06.19/exec.nar"
+            "https://github.com/stepbrobd/ysun/releases/download/2025.04.03.19.00.10/exec.nar"
             "sha256-0dAXdWdJPaf7Cqc3FSKKCRFdj/Wpuk4VCwjtvv2Oysk=";
           site = importnar
             "site"
-            "https://github.com/stepbrobd/ysun/releases/download/2025.04.03.18.06.19/site.nar"
-            "sha256-lTahzI6A9Rbuu7yF2XoQQPNQRBgSyiMWxBqBPeW/gyk=";
+            "https://github.com/stepbrobd/ysun/releases/download/2025.04.03.19.00.10/site.nar"
+            "sha256-2wVeHbahgbXBGsAZayUlxN+F7KyE4vKQXvrI9y3wc8o=";
         in
         pkgs.writeShellApplication {
           meta.platforms = [ "x86_64-linux" ];
