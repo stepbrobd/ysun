@@ -1,5 +1,5 @@
 {
-  outputs = { nixpkgs, parts, systems, deno, ... } @ inputs: parts.lib.mkFlake { inherit inputs; } {
+  outputs = { self, nixpkgs, parts, systems, deno } @ inputs: parts.lib.mkFlake { inherit inputs; } {
     systems = import systems;
 
     perSystem = { pkgs, system, ... }: {
@@ -52,6 +52,20 @@
             inherit permissions unstable entryPoint;
             additionalDenoArgs = ["--output" name];
           }}
+        '';
+      };
+
+      # workaround
+      # build site and exec ad-hoc
+      # but gc might collect them
+      # while running? add to gc root?
+      packages.default = pkgs.writeShellApplication {
+        name = "ysun";
+        runtimeInputs = [ pkgs.deno pkgs.nixVersions.stable ];
+        text = ''
+          SITE=$(nix build --option sandbox false --no-link --print-out-paths ${self.outPath}\#site)
+          EXEC=$(nix build --option sandbox false --no-link --print-out-paths ${self.outPath}\#exec)/bin/exec
+          exec "$EXEC" "$SITE" "$@"
         '';
       };
     };
