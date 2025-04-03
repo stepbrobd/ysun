@@ -1,5 +1,6 @@
 import lume from "lume/mod.ts";
 // builtins
+import checkUrls from "lume/plugins/check_urls.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
 import katex from "lume/plugins/katex.ts";
@@ -156,5 +157,19 @@ site
     info: { title: "Yifei Sun", description: "Yifei Sun", generator: false },
     items: { title: "=title", description: "=description", published: "=date" },
   }));
+
+// check for broken links
+site.use(checkUrls({
+  external: true,
+  output: (broken) => {
+    console.log(`Found ${broken.size} broken links:`);
+    for (const [link, pages] of broken) {
+      console.log(`+ ${link} found in:`);
+      for (const p of pages) {
+        console.log(`  - ./pages${p.slice(0, -1)}.md`);
+      }
+    }
+  },
+}));
 
 export default site;
