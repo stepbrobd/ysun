@@ -4,7 +4,8 @@
     "lume/": "https://deno.land/x/lume@v2.5.3/",
     "lume/plugins/markdown/": "https://deno.land/x/lume_markdown_plugins@v0.7.1/",
     "lume/plugins/markdown/figure.ts": "jsr:@stepbrobd/figure@2024.704.0",
-    "shiki/": "https://deno.land/x/lume_shiki@0.0.16/"
+    "shiki/": "https://deno.land/x/lume_shiki@0.0.16/",
+    "lume/jsx-runtime": "https://deno.land/x/ssx@v0.1.9/jsx-runtime.ts"
   },
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
@@ -14,7 +15,9 @@
   "compilerOptions": {
     "types": [
       "lume/types.ts"
-    ]
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "lume"
   },
   "fmt": {
     "useTabs": false,
@@ -23,5 +26,13 @@
     "semiColons": true,
     "singleQuote": false,
     "proseWrap": "preserve"
+  },
+  "unstable": [
+    "temporal"
+  ],
+  "lint": {
+    "plugins": [
+      "https://deno.land/x/lume@v2.5.3/lint.ts"
+    ]
   }
 }
