@@ -71,33 +71,33 @@ Instead of both goroutines accessing the shared data variable with no synchroniz
 To formalize the problem and above mentioned fix, we can represent the program as a set of rules that describe how the state of the system changes based on certain conditions.
 In this case, we want to model the behavior of goroutines and channels in Go, particularly focusing on the synchronization of goroutines via channels.
 
-The configuration of our program can be defined as a tuple $(G, M, C)$ where:
+The configuration of our program can be defined as a tuple _(G, M, C)_ where:
 
-- $G$ is the set of goroutines,
-- $M$ is the memory, represented as a mapping from variables to values,
-- $C$ is the set of channels, represented as a mapping from channel identifiers to lists of values.
+- _G_ is the set of goroutines,
+- _M_ is the memory, represented as a mapping from variables to values,
+- _C_ is the set of channels, represented as a mapping from channel identifiers to lists of values.
 
 We can use the following SOS rules:
 
 #### Goroutine Creation
 
-- $\frac{}{(G, M, C) \xrightarrow{\texttt{go f()}} (G \cup \{\texttt{f()}\}, M, C)}$
+- $$\frac{}{(G, M, C) \xrightarrow{\texttt{go f()}} (G \cup \{\texttt{f()}\}, M, C)}$$
 
 #### Memory Modification
 
-- $\frac{\texttt{f()}\ \text{is}\ \texttt{data++}}{(G, M, C) \xrightarrow{\texttt{go f()}} (G - \{\texttt{f()}\}, M[\texttt{data} \rightarrow M(\texttt{data}) + 1], C)}$
+- $$\frac{\texttt{f()}\ \text{is}\ \texttt{data++}}{(G, M, C) \xrightarrow{\texttt{go f()}} (G - \{\texttt{f()}\}, M[\texttt{data} \rightarrow M(\texttt{data}) + 1], C)}$$
 
 #### Channel Send
 
-- $\frac{\texttt{f()}\ \text{is}\ \texttt{done <- true}}{(G, M, C) \xrightarrow{\texttt{go f()}} (G - \{\texttt{f()}\}, M, C[\texttt{done} \rightarrow C(\texttt{done}) \cup \{\texttt{true}\}])}$
+- $$\frac{\texttt{f()}\ \text{is}\ \texttt{done <- true}}{(G, M, C) \xrightarrow{\texttt{go f()}} (G - \{\texttt{f()}\}, M, C[\texttt{done} \rightarrow C(\texttt{done}) \cup \{\texttt{true}\}])}$$
 
 #### Channel Receive
 
-- $\frac{\texttt{f()}\ \text{is}\ \texttt{<-done}}{(G, M, C) \xrightarrow{\texttt{go f()}} (G - \{\texttt{f()}\}, M, C[\texttt{done} \rightarrow C(\texttt{done}) - \{\texttt{true}\}])}$
+- $$\frac{\texttt{f()}\ \text{is}\ \texttt{<-done}}{(G, M, C) \xrightarrow{\texttt{go f()}} (G - \{\texttt{f()}\}, M, C[\texttt{done} \rightarrow C(\texttt{done}) - \{\texttt{true}\}])}$$
 
 #### Print
 
-- $\frac{\texttt{f()}\ \text{is}\ \texttt{fmt.Println(data)}}{(G, M, C) \xrightarrow{\texttt{go f()}} (G \cup \{\texttt{f()}\}, M, C)}$
+- $$\frac{\texttt{f()}\ \text{is}\ \texttt{fmt.Println(data)}}{(G, M, C) \xrightarrow{\texttt{go f()}} (G \cup \{\texttt{f()}\}, M, C)}$$
 
 Please note that this is a simplified model. In a more comprehensive model, you would want to handle cases like sending to a full channel, receiving from an empty channel, and more complicated goroutine interactions. In addition, you might want to include a scheduler in the state to control the order in which goroutines are run, and to handle the non-deterministic scheduling of goroutines by the Go runtime.
 
