@@ -1,8 +1,0 @@
-external: false
-hidden: false
-layout: page.vto
-metas:
-  description: =description
-  image: /assets/static/img/favicon.ico
-  lang: en-US
-  title: =title
