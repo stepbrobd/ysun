@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "deno": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1729525729,
-        "narHash": "sha256-YiooFGeR7+sXSkHNfSzT8GQf+xtzbDwUbfbwkCCyuUs=",
-        "owner": "nekowinston",
-        "repo": "nix-deno",
-        "rev": "e92687492a4faec48ab1eb45adbdba30c876b0e5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nekowinston",
-        "repo": "nix-deno",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1746576598,
@@ -58,7 +38,6 @@
     },
     "root": {
       "inputs": {
-        "deno": "deno",
         "nixpkgs": "nixpkgs",
         "parts": "parts",
         "systems": "systems"
