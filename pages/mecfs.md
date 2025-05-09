@@ -20,8 +20,7 @@ that can be used to diagnose and measure the severity of
 [myalgic encephalomyelitis/chronic fatigue syndrome](https://www.cdc.gov/me-cfs/about/index.html)
 (ME/CFS) and Long COVID.
 
-Before joining this study,
-[Turner Palombo](https://iss.mech.utah.edu/2019/06/25/turner-palombo/) already
+Before joining this study,Turner Palombo already
 did his master's thesis titled
 "[Development of an Inertial Measurement-Based Assessment of Disease Severity in Chronic Fatigue Syndrome](https://iss.mech.utah.edu/wp-content/uploads/sites/103/2021/06/TurnerPalomboThesis.pdf)"
 [1] and a large portion of my work is based on his.
@@ -48,11 +47,11 @@ self-reporting, which is not ideal for medical diagnosis.
 ## About Long COVID and it's Correlation with ME/CFS
 
 If you don't know what Long COVID is,
-[this article](https://www.cdc.gov/coronavirus/2019-ncov/long-term-effects.html)
+[this article](https://web.archive.org/web/20220813002017/https://www.cdc.gov/coronavirus/2019-ncov/long-term-effects/index.html?CDC_AA_refVal=https%3A%2F%2Fwww.cdc.gov%2Fcoronavirus%2F2019-ncov%2Flong-term-effects.html)
 from CDC is a good overview of it.
 
 In a recent
-[post](https://covid19.nih.gov/news-and-stories/studying-long-covid-might-help-others-post-viral-fatigue-ailments)
+[post](https://web.archive.org/web/20220811021248/https://covid19.nih.gov/news-and-stories/studying-long-covid-might-help-others-post-viral-fatigue-ailments)
 (August 8, 2022) published by the National Institute of Health, they mentioned:
 
 > In 2015, researchers estimated that ME/CFS affected between 900,000 and 2.5

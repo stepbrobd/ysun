@@ -11,9 +11,9 @@ title: Churn
 
 Credit card churing (or simply churing) is a term commonly used in multiple
 well-known communities (e.g.
-[r/churing](https://www.reddit.com/r/churning") on Reddit,
-[The Points Guy](https://thepointsguy.com"),
-[Doctor of Credit](https://www.doctorofcredit.com"), etc.). Simply put, it
+[r/churing](https://www.reddit.com/r/churning) on Reddit,
+[The Points Guy](https://thepointsguy.com),
+[Doctor of Credit](https://www.doctorofcredit.com), etc.). Simply put, it
 refers to the process of consumers applying for credit cards to take advantage
 of sign-up bonuses (or other promotions) to maximize the amount of "cash back"
 or "points" they can get. Many fears that churing is illegal or unethical.

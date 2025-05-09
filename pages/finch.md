@@ -9,7 +9,7 @@ title: Finch
 
 ## Credit
 
-Idea from [Boltzmann Brain](https://github.com/pehringer/Boltzmann_Brain) by [@pehringer](https://github.com/pehringer).
+Idea from Boltzmann Brain (deleted) by [@pehringer](https://github.com/pehringer).
 
 ## Installation & Usage
 
