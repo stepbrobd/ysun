@@ -2,24 +2,24 @@
   outputs = { self, nixpkgs, parts, systems } @ inputs: parts.lib.mkFlake { inherit inputs; } {
     systems = import systems;
 
-    perSystem = { pkgs, system, ... }: {
+    perSystem = { lib, pkgs, system, ... }: {
       _module.args = {
-        lib = builtins // nixpkgs.lib // parts.lib;
+        lib = builtins // parts.lib // nixpkgs.lib;
         pkgs = import nixpkgs { inherit system; };
       };
 
       devShells.default = pkgs.mkShell {
-        packages = [
-          pkgs.deno
-          pkgs.direnv
-          pkgs.git
-          pkgs.nix-direnv
+        packages = with pkgs; [
+          deno
+          direnv
+          git
+          nix-direnv
         ];
       };
 
       formatter = pkgs.writeShellScriptBin "formatter" ''
-        ${pkgs.deno}/bin/deno fmt .
-        ${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt .
+        ${lib.getExe pkgs.deno} fmt .
+        ${lib.getExe pkgs.nixpkgs-fmt} .
       '';
     };
   };
