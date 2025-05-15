@@ -42,7 +42,7 @@ I'm putting "The Dangers in My Heart" in my top 10 list.
 It's a series that stands out in the sea of sameness,
 an example of what can be achieved when the balance of plot, character development, and emotional depth is just right.
 
-![Apple Books](/assets/static/img/bokuyaba.webp)
+![Apple Books](/assets/static/img/bokuyaba.avif)
 
 Please support the artists and creators:
 

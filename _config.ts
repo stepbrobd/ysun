@@ -58,7 +58,7 @@ site
     lang: "en-US",
     title: "=title",
     description: "=description",
-    image: "/assets/static/img/og.webp",
+    image: "/assets/static/img/og.avif",
   });
 
 // /pages/* -> /*

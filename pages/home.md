@@ -23,7 +23,7 @@ My contact info is hidden within the [source code of this site](https://github.c
 Search for the platform you want to reach me on in all lowercase (e.g. [`github`](/github), [`linkedin`](/linkedin), etc.).
 You can reach me directly with [Matrix](/matrix), Discord (use my GitHub username), or email (`echo -n 'eXN1bkBoZXkuY29tCg==' | base64 --decode`).
 
-![Weekend outing with labmates (Walden Pond)](/assets/static/img/home-1.webp)
+![Weekend outing with labmates (Walden Pond)](/assets/static/img/home-1.avif)
 
 I ride a Trek Fuel EX 5 for fun and commute, and I daily-drive a Framework Laptop 13 with NixOS and a 14-inch MacBook Pro on the go.
 I own and operate [AS10779](/10779) ([PeeringDB](/peeringdb), [looking glass](https://bgp.tools/lg/10779)) with two IP assignments from ARIN.
@@ -34,7 +34,7 @@ Streaming services? Apple Music all the way ([playlist](/music))!
 Troll: I can't stand s-expressions, but Emacs Lisp gets a free pass (cause it's actually useful).
 I dislike Racket so much that I even made a [website](https://rkt.lol) and a [poster](https://rkt.lol/poster.pdf) about it.
 
-![You just have to go out and touch grass once in a while (Uji Shrine)](/assets/static/img/home-2.webp)
+![You just have to go out and touch grass once in a while (Uji Shrine)](/assets/static/img/home-2.avif)
 
 Random recommendations (unordered):
 
