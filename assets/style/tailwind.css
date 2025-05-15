@@ -47,7 +47,7 @@
   }
 
   .katex {
-    @apply overflow-auto;
+    @apply overflow-scroll;
   }
 }
 
