@@ -5,7 +5,7 @@
     "lume/jsx-runtime": "https://deno.land/x/ssx@v0.1.10/jsx-runtime.ts",
     "lume/plugins/markdown/": "https://deno.land/x/lume_markdown_plugins@v0.7.1/",
     "lume/plugins/markdown/figure.ts": "https://raw.githubusercontent.com/stepbrobd/figure/2024.704.0/mod.ts",
-    "shiki/": "https://raw.githubusercontent.com/stepbrobd/shiki/2025.508.0/"
+    "shiki/": "https://raw.githubusercontent.com/stepbrobd/shiki/2025.515.0/"
   },
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
