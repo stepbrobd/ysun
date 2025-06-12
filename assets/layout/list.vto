@@ -3,7 +3,7 @@
     {{ if !item.data.hidden }}
       <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
         <time>{{ item.data.date |> date("yyyy-MM-dd") }}</time>
-        <a href={{ item.data.url }} class="col-span-2 md:col-span-4">{{ item.data.title }}</a>
+        <a href="{{ item.data.url }}" class="col-span-2 md:col-span-4">{{ item.data.title }}</a>
       </div>
     {{ /if }}
   {{ /for }}

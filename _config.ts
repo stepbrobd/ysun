@@ -87,7 +87,7 @@ site
 site
   .use(katex())
   .use(shiki({ highlighter: { themes: ["nord"] }, theme: "nord" }))
-  .use(tailwindcss())
+  .use(tailwindcss({ minify: true }))
   .add("/assets/style/tailwind.css");
 
 // sitemap/rss generation
