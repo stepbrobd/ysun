@@ -26,7 +26,7 @@ You can reach me directly with [Matrix](/matrix), Discord (use my GitHub usernam
 
 I ride a Trek Fuel EX 5 for fun and commute, and I daily-drive a Framework Laptop 13 with NixOS and a 14-inch MacBook Pro on the go.
 I own and operate [AS10779](/10779) ([PeeringDB](/peeringdb), [looking glass](https://bgp.tools/lg/10779)) with two IP assignments from ARIN.
-I maintain [about 15 packages](https://repology.org/maintainers/?search=ysun%40hey.com) and [actively](https://github.com/NixOS/nixpkgs/issues?q=involves%3Astepbrobd) contribute to the Nix ecosystem.
+I maintain [about 150 packages](https://repology.org/maintainers/?search=ysun%40hey.com) and [actively](https://github.com/NixOS/nixpkgs/issues?q=involves%3Astepbrobd) contribute to the Nix ecosystem.
 During my free time, I enjoy swimming, [cycling](/strava), archery, and playing [osu!](/osu) (mostly mania and std with Wacom Intuos Pro).
 Streaming services? Apple Music all the way ([playlist](/music))!
 
