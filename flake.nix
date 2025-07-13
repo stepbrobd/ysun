@@ -21,6 +21,28 @@
         ${lib.getExe pkgs.deno} fmt .
         ${lib.getExe pkgs.nixpkgs-fmt} .
       '';
+
+      packages.default = pkgs.stdenvNoCC.mkDerivation {
+        pname = "ysun";
+        version = "0-git";
+        src = ./.;
+        outputHashAlgo = "sha256";
+        outputHashMode = "recursive";
+        outputHash = "sha256-jihGZCDG/uQWmn3bUORlJ8RVH323UY/grMJdePK95Zo=";
+        nativeBuildInputs = [ pkgs.deno ];
+        buildPhase = ''
+          runHook preBuild
+          export HOME=$TMPDIR
+          deno task build
+          runHook postBuild
+        '';
+        installPhase = ''
+          runHook preInstall
+          mkdir -p $out/var/www/html
+          cp -r outputs/* $out/var/www/html/
+          runHook postInstall
+        '';
+      };
     };
   };
 
