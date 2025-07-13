@@ -95,7 +95,8 @@ site
   .use(minifyHTML({ extensions: [".css", ".html", ".js"] }))
   .use(sitemap())
   .use(feed({
-    output: ["feed.rss", "feed.json"],
+    published: new Date(0),
+    output: ["feed.json"],
     limit: 25,
     sort: "date=desc",
     query: "hidden=false title!='Yifei Sun'",
