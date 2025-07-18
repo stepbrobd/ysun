@@ -28,7 +28,7 @@
         src = ./.;
         outputHashAlgo = "sha256";
         outputHashMode = "recursive";
-        outputHash = "sha256-H5kd0je/6DDLJTQM1y0PeYZA8B0YRu5cb/pU6KHd3sw=";
+        outputHash = "sha256-tU/zzbNRsN0dpRfuV1d+pZ1urbmvHFp+L6Q22qzA54g=";
         nativeBuildInputs = [ pkgs.deno ];
         buildPhase = ''
           runHook preBuild
