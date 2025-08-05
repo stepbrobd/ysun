@@ -1,11 +1,20 @@
 ---
-date: 2025-07-05
+date: 2025-08-05
 description: Yifei Sun - 孫 奕飛 (そん いーふぇい)
 title: Yifei Sun
 url: /index.html
 ---
 
 > [We shouldn't worry about getting hacked](https://otel.ysun.co/public-dashboards/55f1b79c57bb40cd96a871ec6197f02e) - that's illegal.
+
+Before you read on, here's my weird flex: I own 3 `.arpa` zones (1 `.ip6.arpa` and 2 `.in-addr.arpa`). Typically, these are delegated by [RIRs](https://en.wikipedia.org/wiki/Regional_Internet_registry) to ISPs, but I got them for networking experiments. This site is served through [anycast](https://en.wikipedia.org/wiki/Anycast) on my homemade CDN built on top of NixOS.
+Since TLS certs for `.arpa` zones are generally not issued by public CAs ([though there are exceptions](https://vojk.au/posts/how_to_get_a_ip6_arpa_tls_certificate/)), this site runs over plain HTTP at (but HTTPS is available for main domains):
+
+- [0.0.0.a.e.b.0.0.0.2.6.2.ip6.arpa](http://0.0.0.a.e.b.0.0.0.2.6.2.ip6.arpa)
+- [104.161.23.in-addr.arpa](http://104.161.23.in-addr.arpa)
+- [136.104.192.in-addr.arpa](http://136.104.192.in-addr.arpa)
+
+---
 
 I am a PhD student at [INRIA](https://www.inria.fr) [DataMove Team](https://team.inria.fr/datamove) under [Olivier Richard](https://datamove.imag.fr/olivier.richard) and co-advised by [Christian Perez](https://graal.ens-lyon.fr/~cperez/web/doku.php/start) ([Avalon Team](https://avalon.ens-lyon.fr)).
 I graduated from Northeastern University with MSCS where I had the fortune to be advised by [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
