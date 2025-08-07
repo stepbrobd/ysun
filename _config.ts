@@ -107,19 +107,19 @@ site
     items: { title: "=title", description: "=description", published: "=date" },
   }));
 
-// import checkUrls from "lume/plugins/check_urls.ts";
 // check for broken links
-// site.use(checkUrls({
-//   external: true,
-//   output: (broken) => {
-//     console.log(`Found ${broken.size} broken links:`);
-//     for (const [link, pages] of broken) {
-//       console.log(`+ ${link} found in:`);
-//       for (const p of pages) {
-//         console.log(`  - ./pages${p.slice(0, -1)}.md`);
-//       }
-//     }
-//   },
-// }));
+import checkUrls from "lume/plugins/check_urls.ts";
+site.use(checkUrls({
+  external: true,
+  output: (broken) => {
+    console.log(`Found ${broken.size} broken links:`);
+    for (const [link, pages] of broken) {
+      console.log(`+ ${link} found in:`);
+      for (const p of pages) {
+        console.log(`  - ./pages${p.slice(0, -1)}.md`);
+      }
+    }
+  },
+}));
 
 export default site;

@@ -1,11 +1,20 @@
 ---
-title: What happened?
-description: I have no clue how you got here...
 date: 2025-05-14
+description: I have no clue how you got here...
 hidden: true
-layout: error.vto
+title: What happened?
 ---
 
-![('-_-)](/assets/static/img/error-jerry.avif)
-
-![(-_-')](/assets/static/img/error-tom.avif)
+```shell
+$ nix run nixpkgs#cowsay -- -f kitty bruh
+ ______
+< bruh >
+ ------
+     \
+      \
+       ("`-'  '-/") .___..--' ' "`-._
+         ` *_ *  )    `-.   (      ) .`-.__. `)
+         (_Y_.) ' ._   )   `._` ;  `` -. .-'
+      _.. `--'_..-_/   /--' _ .' ,4
+   ( i l ),-''  ( l i),'  ( ( ! .-'
+```
