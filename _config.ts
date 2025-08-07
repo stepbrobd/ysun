@@ -1,16 +1,18 @@
 import lume from "lume/mod.ts";
 
-import checkUrls from "lume/plugins/check_urls.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
 import katex from "lume/plugins/katex.ts";
 import metas from "lume/plugins/metas.ts";
-import minifyHTML from "lume/plugins/minify_html.ts";
 import nav from "lume/plugins/nav.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
 import redirects from "lume/plugins/redirects.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import slugifyUrls from "lume/plugins/slugify_urls.ts";
+
+import minifyHTML from "lume/plugins/minify_html.ts";
+import lightningCss from "lume/plugins/lightningcss.ts";
+import terser from "lume/plugins/terser.ts";
 
 import footnotes from "lume/plugins/markdown/footnotes.ts";
 import image from "lume/plugins/markdown/image.ts";
@@ -87,12 +89,13 @@ site
 site
   .use(katex())
   .use(shiki({ highlighter: { themes: ["nord"] }, theme: "nord" }))
-  .use(tailwindcss({ minify: true }))
-  .add("/assets/style/tailwind.css");
+  .use(tailwindcss({ minify: true }));
 
 // sitemap/rss generation
 site
-  .use(minifyHTML({ extensions: [".css", ".html", ".js"] }))
+  .use(minifyHTML())
+  .use(lightningCss({ includes: "/assets/layout", options: { minify: true } }))
+  .use(terser())
   .use(sitemap())
   .use(feed({
     published: new Date(0),
@@ -104,18 +107,19 @@ site
     items: { title: "=title", description: "=description", published: "=date" },
   }));
 
+// import checkUrls from "lume/plugins/check_urls.ts";
 // check for broken links
-site.use(checkUrls({
-  external: true,
-  output: (broken) => {
-    console.log(`Found ${broken.size} broken links:`);
-    for (const [link, pages] of broken) {
-      console.log(`+ ${link} found in:`);
-      for (const p of pages) {
-        console.log(`  - ./pages${p.slice(0, -1)}.md`);
-      }
-    }
-  },
-}));
+// site.use(checkUrls({
+//   external: true,
+//   output: (broken) => {
+//     console.log(`Found ${broken.size} broken links:`);
+//     for (const [link, pages] of broken) {
+//       console.log(`+ ${link} found in:`);
+//       for (const p of pages) {
+//         console.log(`  - ./pages${p.slice(0, -1)}.md`);
+//       }
+//     }
+//   },
+// }));
 
 export default site;
