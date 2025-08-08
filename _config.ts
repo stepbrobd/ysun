@@ -49,6 +49,7 @@ site
   .ignore("license.txt")
   .ignore("readme.md")
   .add("/assets/static/geofeed.csv", "/geofeed.csv")
+  .add("/assets/static/img/favicon.ico", "/favicon.ico")
   .add("/assets", "/assets");
 
 // metadata
