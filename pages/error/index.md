@@ -1,6 +1,7 @@
 ---
 date: 2025-05-14
 description: I have no clue how you got here...
+title: What happened?
 hidden: true
 layout: error/generic.vto
 ---
