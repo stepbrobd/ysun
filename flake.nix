@@ -14,6 +14,7 @@
           direnv
           git
           nix-direnv
+          wrangler
         ];
       };
 
@@ -28,7 +29,7 @@
         src = ./.;
         outputHashAlgo = "sha256";
         outputHashMode = "recursive";
-        outputHash = "sha256-1buWjMaC4TveVlRp10V2obaoY0GT0FRNoz9vBTnoVpc=";
+        outputHash = "sha256-bVbbfnsPmM0Zx7oucJgMpM7nV6kiJPtQMb33NhmSbB0=";
         nativeBuildInputs = [ pkgs.deno ];
         buildPhase = ''
           runHook preBuild
