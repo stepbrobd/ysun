@@ -39,9 +39,6 @@ I maintain [about 150 packages](https://repology.org/maintainers/?search=ysun%40
 During my free time, I enjoy swimming, [cycling](/strava), archery, and playing [osu!](/osu) (mostly mania and std with Wacom Intuos Pro).
 Streaming services? Apple Music all the way ([playlist](/music))!
 
-Troll: I can't stand s-expressions, but Emacs Lisp gets a free pass (cause it's actually useful).
-I dislike Racket so much that I even made a [website](https://rkt.lol) and a [poster](https://rkt.lol/poster.pdf) about it.
-
 ![You just have to go out and touch grass once in a while (Uji Shrine)](/assets/static/img/home-2.avif)
 
 Cloudflare generously sponsors me an [Enterprise plan](https://www.cloudflare.com/plans/enterprise/) under [Project Alexandria](https://www.cloudflare.com/lp/project-alexandria/).
