@@ -11,29 +11,6 @@ Either you f*cked up or I did (tbh unlikely).
 But here's some random cow (or not) to cheer you up:
 
 ```shell
-nix run nixpkgs#neo-cowsay -- --random idc how u got here
- ____________________
-< idc how u got here >
- --------------------
- \     ____________
-  \    |__________|
-      /           /\
-     /           /  \
-    /___________/___/|
-    |          |     |
-    |  ==\ /== |     |
-    |   O   O  | \ \ |
-    |     <    |  \ \|
-   /|          |   \ \
-  / |  \_____/ |   / /
- / /|          |  / /|
-/||\|          | /||\/
-    -------------|
-        | |    | |
-       <__/    \__>
-```
-
-```shell
 $ nix run nixpkgs#neo-cowsay -- --random ur at the wrong place
  _______________________
 < ur at the wrong place >

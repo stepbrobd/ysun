@@ -11,29 +11,6 @@ You must've done something really sketchy stuff to get here...
 Holy cow (or not) is here to cleanse your soul:
 
 ```shell
-$ nix run nixpkgs#neo-cowsay -- --random u def at the wrong place
- __________________________
-< u def at the wrong place >
- --------------------------
-      \                    / \  //\
-       \    |\___/|      /   \//  \\
-            /0  0  \__  /    //  | \ \
-           /     /  \/_/    //   |  \  \
-           @_^_@'/   \/_   //    |   \   \
-           //_^_/     \/_ //     |    \    \
-        ( //) |        \///      |     \     \
-      ( / /) _|_ /   )  //       |      \     _\
-    ( // /) '/,_ _ _/  ( ; -.    |    _ _\.-~        .-~~~^-.
-  (( / / )) ,-{        _      `-.|.-~-.           .~         `.
- (( // / ))  '/\      /                 ~-. _ .-~      .-~^-.  \
- (( /// ))      `.   {            }                   /      \  \
-  (( / ))     .----~-.\        \-'                 .~         \  `. \^-.
-             ///.----..>        \             _ -~             `.  ^-`  ^-_
-               ///-._ _ _ _ _ _ _}^ - - - - ~                     ~-- ,.-~
-                                                                  /.-~
-```
-
-```shell
 $ nix run nixpkgs#neo-cowsay -- --random pax vobiscum sinner
  _____________________
 < pax vobiscum sinner >
