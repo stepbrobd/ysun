@@ -44,6 +44,10 @@ I dislike Racket so much that I even made a [website](https://rkt.lol) and a [po
 
 ![You just have to go out and touch grass once in a while (Uji Shrine)](/assets/static/img/home-2.avif)
 
+Cloudflare generously sponsors me an [Enterprise plan](https://www.cloudflare.com/plans/enterprise/) under [Project Alexandria](https://www.cloudflare.com/lp/project-alexandria/).
+Go check it out if you have open source projects!
+But... I host a backup of this site on Fastly [ysun.global.ssl.fastly.net](https://ysun.global.ssl.fastly.net) ;)
+
 Random recommendations (unordered):
 
 - Paid search engine [Kagi](https://kagi.com), you control the ranking
@@ -58,3 +62,5 @@ Random recommendations (unordered):
 - Learn how to mechanize proofs?
 - Static site generator [Lume](https://github.com/lumeland/lume) + [Cloudflare Pages](https://pages.cloudflare.com)
 - [Cobalt](https://cobalt.tools/about/general), yet another FFmpeg wrapper, but nice
+- Cloudflare's [public RTR server](https://github.com/cloudflare/rpki-rtr-client) for route filtering
+- Secure NTP (NTS) with [`ntpd-rs`](https://github.com/pendulum-project/ntpd-rs), and Cloudflare's [NTS capable](https://developers.cloudflare.com/time-services/nts/) NTP server
