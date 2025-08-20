@@ -10,7 +10,7 @@ url: /index.html
 Before you read on, here's my weird flex: I own 3 `.arpa` zones (1 `.ip6.arpa` and 2 `.in-addr.arpa`). Typically, these are delegated by [RIRs](https://en.wikipedia.org/wiki/Regional_Internet_registry) to ISPs, but I got them for networking experiments. This site is served through [anycast](https://en.wikipedia.org/wiki/Anycast) on my homemade CDN built on top of NixOS.
 Since TLS certs for `.arpa` zones are generally not issued by public CAs ([though there are exceptions](https://vojk.au/posts/how_to_get_a_ip6_arpa_tls_certificate/)), this site runs over plain HTTP at (but HTTPS is available for main domains):
 
-- [0.0.0.a.e.b.0.0.0.2.6.2.ip6.arpa](http://0.0.0.a.e.b.0.0.0.2.6.2.ip6.arpa)
+- [0.0.9.5.f.2.0.6.2.ip6.arpa](http://0.0.9.5.f.2.0.6.2.ip6.arpa)
 - [104.161.23.in-addr.arpa](http://104.161.23.in-addr.arpa)
 - [136.104.192.in-addr.arpa](http://136.104.192.in-addr.arpa)
 
