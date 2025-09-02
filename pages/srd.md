@@ -2,8 +2,8 @@
 date: 2023-05-11
 description: Naive data race detector for Go based on stateful AST traversal with pre-defined structural operational semantic rules
 metas:
-    go-import: ysun.co/srd git https://github.com/stepbrobd/srd.git
-    go-source: ysun.co/srd https://github.com/stepbrobd/srd https://github.com/stepbrobd/srd/tree/master{/dir} https://github.com/stepbrobd/srd/blob/master{/dir}/{file}#L{line}
+  go-import: ysun.co/srd git https://github.com/stepbrobd/srd.git
+  go-source: ysun.co/srd https://github.com/stepbrobd/srd https://github.com/stepbrobd/srd/tree/master{/dir} https://github.com/stepbrobd/srd/blob/master{/dir}/{file}#L{line}
 title: Static race detection
 ---
 
