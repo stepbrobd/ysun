@@ -34,7 +34,12 @@
   "lint": {
     "plugins": [
       "https://deno.land/x/lume@v3.0.8/lint.ts"
-    ]
+    ],
+    "rules": {
+      "exclude": [
+        "no-import-prefix"
+      ]
+    }
   },
   "nodeModulesDir": "auto"
 }
