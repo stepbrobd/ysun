@@ -4,6 +4,11 @@ description: How I setup Kanidm's read-only LDAP to work with Hydra build server
 title: Kanidm LDAP guide
 ---
 
+> If you are reading this to setup SSO for Hydra,
+> it might be better to follow the [Hydra OIDC guide](/hydra) instead.
+> Since... you know... this is LDAP...
+> But if you just want to read about Kanidm's read-only LDAP setup, go ahead!
+
 Couple months back, I met [Nick](https://nichi.co) (one of the most legendary `nixpkgs` contributors) IRL,
 and he introduced me to this fairly new and interesting CLI based [IDM](https://en.wikipedia.org/wiki/Identity_and_access_management)
 tool called [Kanidm](https://github.com/kanidm/kanidm). Fast-forward to mid-January, I got bored with my
