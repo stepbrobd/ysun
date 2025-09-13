@@ -3,16 +3,24 @@
     id="access"
     name="access"
     onchange="if(this.value) window.open(this.value, '_self')"
-    class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-nord-1 py-1 pr-4 pl-2 text-sm text-nord-4 outline-1 -outline-offset-1 outline-nord-3 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-nord-8"
+    class="col-start-1 row-start-1 w-20 appearance-none rounded-md bg-nord-1 py-1 pr-4 pl-2 text-sm text-nord-4 outline-1 -outline-offset-1 outline-nord-3 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-nord-8"
   >
-    <option value="">Access</option>
-    <option value="https://read.ysun.co/login?next=%2F">Calibre</option>
-    <option value="https://home.ysun.co">Glance</option>
-    <option value="https://otel.ysun.co/login">Grafana</option>
-    <option value="https://hydra.ysun.co/project/stepbrobd">Hydra</option>
-    <option value="https://meet.ysun.co">Jitsi</option>
-    <option value="https://stats.ysun.co/login">Plausible</option>
-    <option value="https://sso.ysun.co/ui/login">SSO</option>
+    <option selected disabled hidden>Access</option>
+    <optgroup label="Public">
+      <option value="https://home.ysun.co">Glance</option>
+      <option value="https://meet.ysun.co">Jitsi</option>
+    </optgroup>
+    <optgroup label="External">
+      <option value="https://read.ysun.co/login?next=%2F">Calibre</option>
+      <option value="https://otel.ysun.co/login">Grafana</option>
+      <option value="https://hydra.ysun.co/project/stepbrobd">Hydra</option>
+      <option value="https://sso.ysun.co/ui/login">Kanidm</option>
+      <option value="https://stats.ysun.co/login">Plausible</option>
+    </optgroup>
+    <optgroup label="Internal">
+      <option value="http://go">GoLink</option>
+      <option value="http://go/ha">Home Assistant</option>
+    </optgroup>
   </select>
   <svg
     viewBox="0 0 16 16"
