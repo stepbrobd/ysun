@@ -4,14 +4,28 @@ hidden: true
 title: Music
 ---
 
-## On Repeat
+## New Music Mix
 
 <div class="amembed">
   <iframe
     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
     frameborder="0"
     height="450"
-    style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;"
+    style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
+    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+    src="https://embed.music.apple.com/us/playlist/new-music-mix/pl.pm-8e975ad16716041c2649d6c171a8668a?theme=dark"
+  >
+  </iframe>
+</div>
+
+## Heavy Rotation Mix
+
+<div class="amembed">
+  <iframe
+    allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+    frameborder="0"
+    height="450"
+    style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
     src="https://embed.music.apple.com/us/playlist/heavy-rotation-mix/pl.pm-8e975ad16716041c9e693d5d0af49ea1?theme=dark"
   >
@@ -22,12 +36,12 @@ title: Music
 
 <div class="amembed">
   <iframe
-  allow="autoplay *; encrypted-media *;"
-  frameborder="0"
-  height="450"
-  style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
-  sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-  src="https://embed.music.apple.com/us/playlist/replay-2025/pl.rp-wPOPtgXAjDdA?theme=dark"
+    allow="autoplay *; encrypted-media *;"
+    frameborder="0"
+    height="450"
+    style="width:100%;max-width:660px;overflow:hidden;background:transparent;"
+    sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+    src="https://embed.music.apple.com/us/playlist/replay-2025/pl.rp-wPOPtgXAjDdA?theme=dark"
   >
   </iframe>
 </div>
