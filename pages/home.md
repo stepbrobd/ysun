@@ -7,12 +7,18 @@ url: /index.html
 
 > [We shouldn't worry about getting hacked](https://otel.ysun.co/public-dashboards/55f1b79c57bb40cd96a871ec6197f02e) - that's illegal.
 
-Before you read on, here's my weird flex: I own 3 `.arpa` zones (1 `.ip6.arpa` and 2 `.in-addr.arpa`). Typically, these are delegated by [RIRs](https://en.wikipedia.org/wiki/Regional_Internet_registry) to ISPs, but I got them for networking experiments. This site is served through [anycast](https://en.wikipedia.org/wiki/Anycast) on my homemade CDN built on top of NixOS.
-Since TLS certs for `.arpa` zones are generally not issued by public CAs ([though there are exceptions](https://vojk.au/posts/how_to_get_a_ip6_arpa_tls_certificate/)), this site runs over plain HTTP at (but HTTPS is available for main domains):
+Before you read on, here's my weird flex: I have 3 `.arpa` zones (1 `.ip6.arpa` and 2 `.in-addr.arpa`).
+These are typically delegated by [RIRs](https://en.wikipedia.org/wiki/Regional_Internet_registry) to ISPs, but Im using them for various networking experiments.
+This site is served via [anycast](https://en.wikipedia.org/wiki/Anycast) on my homemade CDN built on top of [couple NixOS servers](https://bsky.app/profile/stepbrobd.com/post/3m25pwp26q223).
 
-- [0.0.9.5.f.2.0.6.2.ip6.arpa](http://0.0.9.5.f.2.0.6.2.ip6.arpa)
-- [104.161.23.in-addr.arpa](http://104.161.23.in-addr.arpa)
-- [136.104.192.in-addr.arpa](http://136.104.192.in-addr.arpa)
+Since TLS certs for `.arpa` zones are generally not issued by public CAs, I configured [Caddy](https://github.com/caddyserver/caddy) to serve the site over plain HTTP.
+After following [this guide](https://vojk.au/posts/how_to_get_a_ip6_arpa_tls_certificate/), I managed to get Cloudflare to issue trusted certs [^1] on their end (tho I can't download them) and proxy traffic on top of my own CDN (AS10779 --(HTTP)--> AS13335 --(HTTPS)--> You).
+
+- [0.0.9.5.f.2.0.6.2.ip6.arpa](https://0.0.9.5.f.2.0.6.2.ip6.arpa)
+- [104.161.23.in-addr.arpa](https://104.161.23.in-addr.arpa)
+- [136.104.192.in-addr.arpa](https://136.104.192.in-addr.arpa)
+
+[^1]: Cloudflare [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) will only work for `.ip6.arpa` zones. If you have `.in-addr.arpa` zones and want to get certs with Cloudflare, you need to enroll in [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) (paid feature) as `.in-addr.arpa` certs are not covered under Universal SSL.
 
 ---
 
