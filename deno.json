@@ -1,16 +1,25 @@
 {
   "imports": {
     "config": "./_config.ts",
-    "lume/": "https://deno.land/x/lume@v3.0.11/",
-    "lume/jsx-runtime": "https://deno.land/x/ssx@v0.1.12/jsx-runtime.ts",
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.1.0/",
+    "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.12/jsx-runtime.ts",
     "lume/plugins/markdown/": "https://deno.land/x/lume_markdown_plugins@v0.7.1/",
     "lume/plugins/markdown/figure.ts": "https://raw.githubusercontent.com/stepbrobd/figure/2024.704.0/mod.ts",
     "shiki/": "https://deno.land/x/lume_shiki@0.0.18/"
   },
   "tasks": {
-    "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
-    "build": "deno task lume",
-    "serve": "deno task lume -s"
+    "lume": {
+      "description": "Run Lume command",
+      "command": "deno run -P=lume lume/cli.ts"
+    },
+    "build": {
+      "description": "Build the site for production",
+      "command": "deno task lume"
+    },
+    "serve": {
+      "description": "Run and serve the site for development",
+      "command": "deno task lume -s"
+    }
   },
   "compilerOptions": {
     "types": [
@@ -33,7 +42,7 @@
   ],
   "lint": {
     "plugins": [
-      "https://deno.land/x/lume@v3.0.11/lint.ts"
+      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.1.0/lint.ts"
     ],
     "rules": {
       "exclude": [
@@ -41,5 +50,25 @@
       ]
     }
   },
-  "nodeModulesDir": "auto"
+  "nodeModulesDir": "auto",
+  "permissions": {
+    "lume": {
+      "read": true,
+      "write": [
+        "./"
+      ],
+      "net": [
+        "0.0.0.0",
+        "jsr.io:443",
+        "cdn.jsdelivr.net:443",
+        "data.jsdelivr.com:443",
+        "registry.npmjs.org:443"
+      ],
+      "env": true,
+      "run": true,
+      "ffi": true,
+      "sys": true
+    }
+  },
+  "lock": false
 }
