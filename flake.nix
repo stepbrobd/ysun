@@ -29,7 +29,7 @@
         src = ./.;
         outputHashAlgo = "sha256";
         outputHashMode = "recursive";
-        outputHash = "sha256-rMMWjELZS/8NzYWyDPelADI/oDVJFc+MWQ0wxtJdOds=";
+        outputHash = "sha256-RD41eIG4NAfmavyHi73vV+wpnn0RZ2sZYbzyXppwpd8=";
         nativeBuildInputs = [ pkgs.deno ];
         buildPhase = ''
           runHook preBuild
