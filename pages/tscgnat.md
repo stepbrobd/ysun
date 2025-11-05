@@ -76,7 +76,7 @@ Whereas rule generation for `ts-forward` is normalized by the call of [netip.Pre
 func createDropOutgoingPacketFromCGNATRangeRuleWithTunname(table *nftables.Table, chain *nftables.Chain, tunname string) (*nftables.Rule, error) {
 	_, ipNet, err := net.ParseCIDR(tsaddr.CGNATRange().String())
 //                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-// ...                             netip.Prefix
+// ...                             netip.Prefix   ->   string
 ```
 
 In theory, I could just get rid of the normalization and put `"100.100.1.0/10"` there and get what I wanted but I'm already here :<, why not just go along with the momentum...
