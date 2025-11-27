@@ -5,8 +5,6 @@ title: Yifei Sun
 url: /index.html
 ---
 
-> [We shouldn't worry about getting hacked](https://otel.ysun.co/public-dashboards/55f1b79c57bb40cd96a871ec6197f02e) - that's illegal.
-
 Before you read on, here's my weird flex: I have 3 `.arpa` zones (1 `.ip6.arpa` and 2 `.in-addr.arpa`).
 These are typically delegated by [RIRs](https://en.wikipedia.org/wiki/Regional_Internet_registry) to ISPs, but Im using them for various networking experiments.
 This site is served via [anycast](https://en.wikipedia.org/wiki/Anycast) on my homemade CDN built on top of [couple NixOS servers](https://bsky.app/profile/stepbrobd.com/post/3m25pwp26q223).
