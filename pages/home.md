@@ -20,14 +20,14 @@ After following [this guide](https://vojk.au/posts/how_to_get_a_ip6_arpa_tls_cer
 
 ---
 
-I am a PhD student at [INRIA](https://www.inria.fr) [DataMove Team](https://team.inria.fr/datamove) under [Olivier Richard](https://datamove.imag.fr/olivier.richard) and co-advised by [Christian Perez](https://graal.ens-lyon.fr/~cperez/web/doku.php/start) ([Avalon Team](https://avalon.ens-lyon.fr)).
-I graduated from Northeastern University with MSCS where I had the fortune to be advised by [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
+I am a PhD student at [INRIA](https://www.inria.fr) [DataMove Team](https://team.inria.fr/datamove) under [Olivier Richard](https://datamove.imag.fr/olivier.richard) and [Christian Perez](https://avalon.ens-lyon.fr/~cperez/web/doku.php/start) ([Avalon Team](https://avalon.ens-lyon.fr)).
+I got my master's from Northeastern University advised by [Ji-Yong Shin](https://www.jiyongshin.info) at [Systems Research Group](https://srg.khoury.northeastern.edu).
 I visited [Computing Software Group](https://www.csg.ci.i.u-tokyo.ac.jp/en) advised by [Tomoharu Ugawa](https://tugawa.github.io/index-e.html) at University of Tokyo during the summer of 2024.
-I finished my undergrad at University of Utah under the guidance of [Shad Roundy](https://iss.mech.utah.edu/shad-roundy) and co-advisor [Tucker Hermans](https://robot-learning.cs.utah.edu/thermans).
+I finished my undergrad at University of Utah advised by [Shad Roundy](https://iss.mech.utah.edu/shad-roundy) and co-advisor [Tucker Hermans](https://robot-learning.cs.utah.edu/thermans).
 
 I'm generally interested in system and theory ([CV](/cv)), topics include:
 
-- Verifications on consistency semantical constraints in distributed systems.
+- Verifications on consistency semantic constraints in distributed systems.
 - Constructive type theory and mechanized proofs.
 - [Reproducible (build) system](https://reproducible-builds.org) in HPC environments.
 
