@@ -99,8 +99,7 @@ site
   .use(terser())
   .use(sitemap())
   .use(feed({
-    published: new Date(0),
-    output: ["feed.json"],
+    output: ["feed.json", "feed.rss"],
     limit: 25,
     sort: "date=desc",
     query: "hidden=false title!='Yifei Sun'",

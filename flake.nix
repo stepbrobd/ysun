@@ -29,12 +29,12 @@
         src = ./.;
         outputHashAlgo = "sha256";
         outputHashMode = "recursive";
-        outputHash = "sha256-DYdq6d9Lo4nKF2Q6HEEdWzs/PALkSbFiP0zQEq1VR7Q=";
-        nativeBuildInputs = [ pkgs.deno ];
+        outputHash = "sha256-KUG02/8tDxBgrXxXOFvUetDAISIij7shCKCLXyz3GO4=";
+        nativeBuildInputs = [ pkgs.deno pkgs.libfaketime ];
         buildPhase = ''
           runHook preBuild
           export HOME=$TMPDIR
-          deno task build
+          faketime -f '1970-01-01 00:00:00' deno task nix
           runHook postBuild
         '';
         installPhase = ''

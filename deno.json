@@ -8,6 +8,9 @@
     "shiki/": "https://deno.land/x/lume_shiki@0.0.18/"
   },
   "tasks": {
+    "nix": {
+      "command": "deno run --unsafely-ignore-certificate-errors -P=lume lume/cli.ts"
+    },
     "lume": {
       "description": "Run Lume command",
       "command": "deno run -P=lume lume/cli.ts"
