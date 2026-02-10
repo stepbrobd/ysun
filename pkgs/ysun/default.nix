@@ -26,7 +26,6 @@ buildDunePackage (finalAttrs: {
       ./dune-project
       ./lib
       ./static
-      ./test
     ];
   };
 
