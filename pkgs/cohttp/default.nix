@@ -18,13 +18,13 @@
 
 buildDunePackage (finalAttrs: {
   pname = "cohttp";
-  version = "6.1.1";
+  version = "6.2.1";
 
   src = fetchFromGitHub {
     owner = "mirage";
     repo = "ocaml-cohttp";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-KtGEztKU9vZi0mGP1pJCSZSSrbqgpWVFAuogoUc3KdI=";
+    hash = "sha256-3cFSnhaQHlQcVMbEA6wSPvzp/6C5OTBepyz/6ksKJLM=";
   };
 
   env.DUNE_CACHE = "disabled";

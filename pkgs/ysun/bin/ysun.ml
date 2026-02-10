@@ -132,7 +132,7 @@ let index =
   let man =
     [ `S Manpage.s_description; `P description; `S Manpage.s_bugs; `P bug_report ]
   in
-  let info = Cmd.info "dune exec bin/ring.exe" ~version ~doc ~man in
+  let info = Cmd.info "dune exec bin/ysun.exe" ~version ~doc ~man in
   let default = Term.(ret (const (`Help (`Pager, None)))) in
   Cmd.group info ~default [ build; watch ]
 ;;

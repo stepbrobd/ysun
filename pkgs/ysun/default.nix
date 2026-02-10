@@ -11,7 +11,7 @@
 }:
 
 buildDunePackage (finalAttrs: {
-  pname = "ring";
+  pname = "ysun";
   version = with lib; pipe ./dune-project [
     readFile
     (match ".*\\(version ([^\n]+)\\).*")
@@ -19,7 +19,7 @@ buildDunePackage (finalAttrs: {
   ];
 
   src = with lib.fileset; toSource {
-    root = ../../.;
+    root = ./.;
     fileset = unions [
       ./bin
       ./data
