@@ -52,7 +52,7 @@ module type RESOLVER = sig
         that the template exists. *)
     val template : Yocaml.Path.fragment -> Yocaml.Path.t
 
-    val static_images : Yocaml.Path.t
+    val images : Yocaml.Path.t
   end
 
   (** {1 Target}
@@ -72,7 +72,6 @@ module type RESOLVER = sig
     val images : Yocaml.Path.t
     val members : Yocaml.Path.t
     val member_redirection : id:string -> [ `Pred | `Succ ] -> Yocaml.Path.t
-    val frame : id:string -> Yocaml.Path.t
     val member : id:string -> Yocaml.Path.t
     val avatars : Yocaml.Path.t
     val blog : Yocaml.Path.t

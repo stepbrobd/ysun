@@ -422,33 +422,6 @@ footer nav a {
   margin-right: 16px;
 }
 
-div.frame {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-div.frame aside {
-  padding: 1.5rem;
-  background: var(--bg-secondary);
-}
-
-div.frame aside nav {
-  margin-top: 0.5rem;
-}
-
-div.frame aside nav a {
-  display: inline-block;
-  margin-right: 1rem;
-  font-weight: 700;
-}
-
-div.frame > iframe {
-  flex: 1;
-  background-color: #fff;
-  border: none;
-}
-
 @media all and (max-width: 1024px) {
   .members {
     grid-template-columns: repeat(2, 1fr);
