@@ -12,13 +12,13 @@
 
 buildDunePackage (finalAttrs: {
   pname = "carton";
-  version = "1.1.0";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "robur-coop";
     repo = "carton";
     tag = finalAttrs.version;
-    hash = "sha256-IBmiXKwzw7nNuPO6MLoUuYBfTi0LBZPRDsSbragJQYs=";
+    hash = "sha256-mBSkO8spcwfu+WUWNPbkPBMJ2DKQQ1Ec6DXjhjHWcV8=";
   };
 
   env.DUNE_CACHE = "disabled";
