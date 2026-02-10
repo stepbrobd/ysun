@@ -29,7 +29,7 @@ let exits = Cmd.Exit.defaults
 let version =
   match Build_info.V1.version () with
   | Some v -> Build_info.V1.Version.to_string v
-  | None -> "git"
+  | None -> raise (Failure "incorrect dune-build-info setup")
 ;;
 
 let path_conv =
@@ -62,53 +62,47 @@ let log_level_conv =
         | _ -> Result.ok `Debug)
     , fun ppf -> function
         | `App -> Format.fprintf ppf "app"
-        | `Debug -> Format.fprintf ppf "debug"
         | `Info -> Format.fprintf ppf "info"
         | `Error -> Format.fprintf ppf "error"
-        | `Warning -> Format.fprintf ppf "warning" )
+        | `Warning -> Format.fprintf ppf "warning"
+        | `Debug -> Format.fprintf ppf "debug" )
 ;;
 
 let target_arg =
-  let default = Yocaml.Path.rel [ "_build"; "www" ] in
-  let doc = "The directory where the ring will be built" in
+  let default = Yocaml.Path.rel [ "outputs" ] in
+  let doc = "the directory where the site will be generated to" in
   let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "target"; "output" ] in
   Arg.(value (opt path_conv default arg))
 ;;
 
 let source_arg =
   let default = Yocaml.Path.rel [] in
-  let doc = "The directory used as source" in
+  let doc = "source directory" in
   let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "source"; "input" ] in
   Arg.(value (opt path_conv default arg))
 ;;
 
 let port_arg =
-  let default = 8888 in
-  let doc = "The port used to serve the development server" in
+  let default = 3000 in
+  let doc = "dev server port" in
   let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "port"; "listen" ] in
   Arg.(value (opt port_conv default arg))
 ;;
 
 let log_level_arg default =
-  let doc = "The log-level (app | info | debug | error | warning), by default" in
+  let doc = "log level (app | info | debug | error | warning)" in
   let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "log-level" ] in
   Arg.(value (opt log_level_conv default arg))
 ;;
 
 let bug_report =
-  "The application's source code is published on <https://github.com/muhokama/ring>. \
-   Feel free to contribute or report bugs on <https://github.com/muhokama/ring/issues>."
+  "forked from <https://github.com/muhokama/ring>, do not report issues to upstream"
 ;;
 
-let description =
-  "ring.muhokama is free software that lets you build a static site that describes a \
-   webring, in homage to the webrings of the 1990s, a return to the small-web."
-;;
+let description = "forked from <https://github.com/muhokama/ring>, but for personal site"
 
 let build =
-  let doc =
-    "Build the ring in a given TARGET, based on a given SOURCE with a given LOG_LEVEL"
-  in
+  let doc = "build to TARGET from SOURCE with LOG_LEVEL" in
   let man =
     [ `S Manpage.s_description; `P description; `S Manpage.s_bugs; `P bug_report ]
   in
@@ -119,8 +113,7 @@ let build =
 
 let watch =
   let doc =
-    "Build the ring and launch the dev-server in a given TARGET, based on a given SOURCE \
-     with a given LOG_LEVEL listen to a dedicated PORT"
+    "build to TARGET from SOURCE with LOG_LEVEL and launch a web server listening at PORT"
   in
   let man =
     [ `S Manpage.s_description; `P description; `S Manpage.s_bugs; `P bug_report ]
@@ -133,11 +126,11 @@ let watch =
 ;;
 
 let index =
-  let doc = "ring.muhokama" in
+  let doc = "ysun" in
   let man =
     [ `S Manpage.s_description; `P description; `S Manpage.s_bugs; `P bug_report ]
   in
-  let info = Cmd.info "dune exec bin/ysun.exe" ~version ~doc ~man in
+  let info = Cmd.info "ysun" ~version ~doc ~man in
   let default = Term.(ret (const (`Help (`Pager, None)))) in
   Cmd.group info ~default [ build; watch ]
 ;;
