@@ -43,11 +43,19 @@ const site = lume({
 });
 // ignore and add
 site
-  .ignore("flake.nix")
+  .ignore(".envrc")
+  .ignore(".git")
+  .ignore(".gitattributes")
+  .ignore(".github")
+  .ignore(".gitignore")
+  .ignore(".mailmap")
+  .ignore("dune-workspace")
   .ignore("flake.lock")
-  .ignore("parts")
+  .ignore("flake.nix")
   .ignore("license.txt")
+  .ignore("pkgs")
   .ignore("readme.md")
+  .ignore("wrangler.toml")
   .add("/assets/static/geofeed.csv", "/geofeed.csv")
   .add("/assets/static/img/favicon.ico", "/favicon.ico")
   .add("/assets", "/assets");

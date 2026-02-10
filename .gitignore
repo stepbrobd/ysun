@@ -1,20 +1,30 @@
-# Nix
-**/.direnv/
-**/result/
-**/result-*/
-
-# Editor
-**/.idea/
-**/.vscode/
-
-# Deno
+*.a
+*.annot
+*.byte
+*.cma
+*.cmi
+*.cmo
+*.cmx
+*.cmxa
+*.cmxs
+*.install
+*.native
+*.o
+.direnv
 .env
 .env.development.local
 .env.local
 .env.production.local
 .env.test.local
+.merlin
+_build/
 _cache
 _fresh/
+_opam/
 _site
 node_modules/
 outputs/
+result
+result-*
+setup.data
+setup.log

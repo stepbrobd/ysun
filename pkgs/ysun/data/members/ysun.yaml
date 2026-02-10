@@ -1,0 +1,17 @@
+id: ysun
+display_name: Yifei Sun
+location: Grenoble, France
+avatar: "ysun.avif"
+bio: im under ur bed ;)
+main_link:
+  url: https://ysun.co
+main_feed:
+  url: https://ysun.co/feed.rss
+additional_links:
+  - url: https://ysun.co/bsky
+  - url: https://ysun.co/codeberg
+  - url: https://ysun.co/github
+  - url: https://ysun.co/gitlab
+  - url: https://ysun.co/matrix
+  - url: https://ysun.co/peeringdb
+  - url: https://ysun.co/sourcehut

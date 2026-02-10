@@ -3,47 +3,73 @@
     systems = import systems;
 
     perSystem = { lib, pkgs, system, ... }: {
-      _module.args = {
-        lib = builtins // parts.lib // nixpkgs.lib;
-        pkgs = import nixpkgs { inherit system; };
+      _module.args.pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          (final: prev: {
+            ocamlPackages = prev.ocaml-ng.ocamlPackages_latest.overrideScope (ocamlFinal: ocamlPrev:
+              (with lib; genAttrs
+                (attrNames (builtins.readDir ./pkgs))
+                (name: ocamlFinal.callPackage ./pkgs/${name} { }))
+              //
+              {
+                dune = ocamlPrev.dune_3;
+              });
+          })
+        ];
       };
 
       devShells.default = pkgs.mkShell {
+        inputsFrom = [ self.packages.${system}.ysun ];
         packages = with pkgs; [
           deno
           direnv
           git
           nix-direnv
           wrangler
-        ];
+        ] ++ (with ocamlPackages; [
+          ocaml-lsp
+          ocaml-print-intf
+          ocamlformat
+          utop
+        ]);
       };
 
       formatter = pkgs.writeShellScriptBin "formatter" ''
         ${lib.getExe pkgs.deno} fmt .
         ${lib.getExe pkgs.nixpkgs-fmt} .
+        ${lib.getExe pkgs.ocamlPackages.dune} fmt
       '';
 
-      packages.default = pkgs.stdenvNoCC.mkDerivation {
-        pname = "ysun";
-        version = "0-git";
-        src = ./.;
-        outputHashAlgo = "sha256";
-        outputHashMode = "recursive";
-        outputHash = "sha256-RxyqBB52e5528h0VXqgTqGgUyBEcgkiODlvB5r9fm4o=";
-        nativeBuildInputs = [ pkgs.deno pkgs.libfaketime ];
-        buildPhase = ''
-          runHook preBuild
-          export HOME=$TMPDIR
-          faketime -f '1970-01-01 00:00:00' deno task nix
-          runHook postBuild
-        '';
-        installPhase = ''
-          runHook preInstall
-          mkdir -p $out/var/www/html
-          cp -r outputs/* $out/var/www/html/
-          runHook postInstall
-        '';
-      };
+      packages = with lib; fix (self: (
+        (genAttrs
+          (attrNames (builtins.readDir ./pkgs))
+          (name: pkgs.ocamlPackages.${name}))
+        //
+        {
+          default = pkgs.stdenvNoCC.mkDerivation {
+            pname = "ysun";
+            version = "0-git";
+            src = ./.;
+            outputHashAlgo = "sha256";
+            outputHashMode = "recursive";
+            outputHash = "sha256-RxyqBB52e5528h0VXqgTqGgUyBEcgkiODlvB5r9fm4o=";
+            nativeBuildInputs = [ pkgs.deno pkgs.libfaketime ];
+            buildPhase = ''
+              runHook preBuild
+              export HOME=$TMPDIR
+              faketime -f '1970-01-01 00:00:00' deno task nix
+              runHook postBuild
+            '';
+            installPhase = ''
+              runHook preInstall
+              mkdir -p $out/var/www/html
+              cp -r outputs/* $out/var/www/html/
+              runHook postInstall
+            '';
+          };
+        }
+      ));
     };
   };
 
