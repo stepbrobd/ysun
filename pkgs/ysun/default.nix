@@ -53,7 +53,7 @@ buildDunePackage (finalAttrs: {
     runHook preInstall
     dune install --prefix $out --libdir $OCAMLFIND_DESTDIR ${finalAttrs.pname}
     mkdir -p $out/var/www/html
-    cp -r _build/www/* $out/var/www/html/
+    cp -r outputs/* $out/var/www/html/
     runHook postInstall
   '';
 })
