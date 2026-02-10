@@ -5,6 +5,7 @@
 , yocaml
 , yocaml_eio
 , yocaml_jingoo
+, yocaml_liquid
 , yocaml_omd
 , yocaml_syndication
 , yocaml_yaml
@@ -37,6 +38,7 @@ buildDunePackage (finalAttrs: {
     yocaml
     yocaml_eio
     yocaml_jingoo
+    yocaml_liquid
     yocaml_omd
     yocaml_syndication
     yocaml_yaml

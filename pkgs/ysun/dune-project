@@ -15,9 +15,11 @@
   (depends
    ocaml
    cmdliner
+   dune-build-info
    yocaml
    yocaml_eio
    yocaml_jingoo
+   yocaml_liquid
    yocaml_omd
    yocaml_syndication
    yocaml_yaml))
