@@ -25,13 +25,13 @@
 
 buildDunePackage (finalAttrs: {
   pname = "git-kv";
-  version = "0.2.0";
+  version = "0.2.1";
 
   src = fetchFromGitHub {
     owner = "robur-coop";
     repo = "git-kv";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-kpJBcv2jY2EdE5AjRNRDF4ujCCVS712lMMu7e6tAhtQ=";
+    hash = "sha256-KzWeRsmm9U5wSJMn9xFtic9VJKtYa9bNQq31NPFFv88=";
   };
 
   env.DUNE_CACHE = "disabled";
