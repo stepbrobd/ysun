@@ -1,16 +1,16 @@
 let run_build target source log_level =
   let module Resolver =
-    Gem.Resolver.Make (struct
+    Ysun.Resolver.Make (struct
       let source = source
       let target = target
     end)
   in
-  Yocaml_eio.run ~level:log_level (Gem.Action.All.run (module Resolver))
+  Yocaml_eio.run ~level:log_level (Ysun.Action.All.run (module Resolver))
 ;;
 
 let run_watch target source log_level port =
   let module Resolver =
-    Gem.Resolver.Make (struct
+    Ysun.Resolver.Make (struct
       let source = source
       let target = target
     end)
@@ -19,7 +19,7 @@ let run_watch target source log_level port =
     ~target:Resolver.target
     ~level:log_level
     ~port
-    (Gem.Action.All.run (module Resolver))
+    (Ysun.Action.All.run (module Resolver))
 ;;
 
 open Cmdliner
