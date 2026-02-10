@@ -25,7 +25,12 @@ let run_watch target source log_level port =
 open Cmdliner
 
 let exits = Cmd.Exit.defaults
-let version = "dev"
+
+let version =
+  match Build_info.V1.version () with
+  | Some v -> Build_info.V1.Version.to_string v
+  | None -> "git"
+;;
 
 let path_conv =
   Arg.conv

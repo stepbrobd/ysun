@@ -3,17 +3,15 @@
 (generate_opam_files false)
 (executables_implicit_empty_intf true)
 
-(name ring)
-(version dev)
-(source (github muhokama/ring))
+(name ysun)
+(version 2026.210.0)
+(source (github stepbrobd/ysun))
 (license GPL-3.0-or-later)
-(authors "Xavier Van de Woestyne <xaviervdw@gmail.com>")
-(maintainers "Xavier Van de Woestyne <xaviervdw@gmail.com>")
+(authors "Yifei Sun <ysun@hey.com>")
+(maintainers "Yifei Sun <ysun@hey.com>")
 
 (package
-  (name ring)
-  (synopsis "A dead-simple webring")
-  (description "A webring for fans of mechanics and functional programming")
+  (name ysun)
   (depends
    ocaml
    cmdliner
@@ -22,5 +20,4 @@
    yocaml_jingoo
    yocaml_omd
    yocaml_syndication
-   yocaml_yaml
-   (ppx_expect :with-test)))
+   yocaml_yaml))

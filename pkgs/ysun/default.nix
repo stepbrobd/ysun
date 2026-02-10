@@ -1,13 +1,13 @@
 { lib
 , buildDunePackage
 , cmdliner
+, dune-build-info
 , yocaml
 , yocaml_eio
 , yocaml_jingoo
 , yocaml_omd
 , yocaml_syndication
 , yocaml_yaml
-, ppx_expect
 }:
 
 buildDunePackage (finalAttrs: {
@@ -34,7 +34,7 @@ buildDunePackage (finalAttrs: {
 
   buildInputs = [
     cmdliner
-    ppx_expect
+    dune-build-info
     yocaml
     yocaml_eio
     yocaml_jingoo
@@ -46,7 +46,7 @@ buildDunePackage (finalAttrs: {
   buildPhase = ''
     runHook preBuild
     dune build -p ${finalAttrs.pname} ''${enableParallelBuilding:+-j $NIX_BUILD_CORES}
-    dune exec bin/ring.exe -- build
+    dune exec bin/ysun.exe -- build
     runHook postBuild
   '';
 

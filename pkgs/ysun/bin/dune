@@ -1,4 +1,4 @@
 (executable
  (name ysun)
  (public_name ysun)
- (libraries cmdliner yocaml yocaml_eio gem))
+ (libraries cmdliner dune-build-info yocaml yocaml_eio gem))
