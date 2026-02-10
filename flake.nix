@@ -10,11 +10,7 @@
             ocamlPackages = prev.ocaml-ng.ocamlPackages.overrideScope (ocamlFinal: ocamlPrev:
               (with lib; genAttrs
                 (attrNames (builtins.readDir ./pkgs))
-                (name: ocamlFinal.callPackage ./pkgs/${name} { }))
-              //
-              {
-                dune = ocamlPrev.dune_3;
-              });
+                (name: ocamlFinal.callPackage ./pkgs/${name} { })));
           })
         ];
       };
