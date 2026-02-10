@@ -17,7 +17,6 @@ let run (module R : Sigs.RESOLVER) () =
   >>= Images.run (module R)
   >>= Articles.run (module R) chain
   >>= Atom.run (module R) chain
-  >>= Opml.run (module R) chain
   >>= Chain.run (module R) chain
   >>= Index.run (module R) chain
   >>= Yocaml.Action.store_cache R.Target.cache

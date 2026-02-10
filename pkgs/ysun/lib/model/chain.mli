@@ -27,9 +27,6 @@ val fold : ('a -> pred:Member.t -> curr:Member.t -> succ:Member.t -> 'a) -> 'a -
 (** [to_list chain] returns a chain into a list of [curr, (pred, succ)]. *)
 val to_list : t -> (Member.t * (Member.t * Member.t)) list
 
-(** [to_opml] An arrow that lift a chain into an OPML file. *)
-val to_opml : (t, string) Yocaml.Task.t
-
 val as_author : t -> string -> Yocaml_syndication.Person.t
 val to_authors : t -> Yocaml_syndication.Person.t Yocaml.Nel.t
 val is_empty : t -> bool

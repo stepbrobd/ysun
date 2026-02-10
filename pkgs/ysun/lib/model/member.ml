@@ -114,37 +114,6 @@ let equal
   && Option.equal String.equal location other.location
 ;;
 
-let feed_to_outline ?main_link title description feed_url =
-  Yocaml_syndication.Opml.subscription
-    ~language:(feed_url |> Link.lang |> Lang.to_string)
-    ~title
-    ~description
-    ?html_url:(main_link |> Option.map (fun x -> x |> Link.url |> Url.to_string))
-    ~feed_url:(feed_url |> Link.url |> Url.to_string)
-    ()
-;;
-
-let to_outline member =
-  let display_name = display_name member in
-  let main_feed =
-    let description = "Main feed of " ^ display_name in
-    let title = member.main_link |> Link.title in
-    member.main_feed
-    |> Option.map (feed_to_outline ~main_link:member.main_link title description)
-    |> Option.to_list
-  in
-  let additional_feeds =
-    member.additional_feeds
-    |> List.mapi (fun index feed ->
-      let title = feed |> Link.title in
-      let description =
-        "Additional feed " ^ string_of_int (succ index) ^ " of " ^ display_name
-      in
-      feed_to_outline title description feed)
-  in
-  main_feed @ additional_feeds
-;;
-
 let as_author m =
   Yocaml_syndication.Person.make
     ~uri:(m.main_link |> Link.url |> Url.url)

@@ -65,9 +65,7 @@ module type RESOLVER = sig
     val root : Yocaml.Path.t
     val cache : Yocaml.Path.t
     val css : Yocaml.Path.t
-    val opml : Yocaml.Path.t
     val atom : Yocaml.Path.t
-    val ring_opml : Yocaml.Path.t
     val index : Yocaml.Path.t
     val images : Yocaml.Path.t
     val members : Yocaml.Path.t

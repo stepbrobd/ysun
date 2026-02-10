@@ -44,8 +44,3 @@ include Yocaml.Required.DATA_INJECTABLE with type t := t
 val id : t -> string
 
 val display_name : t -> string
-
-(** {1 OPML generation} *)
-
-(** [to_outline m] transform a member to a list of OPML outlines. *)
-val to_outline : t -> Yocaml_syndication.Opml.outline list
