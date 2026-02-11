@@ -1,6 +1,6 @@
 <nav class="flex flex-col gap-2">
   {% for item in pages %}
-    <div class="list-grid">
+    <div class="grid grid-cols-3 md:grid-cols-5 gap-4">
       <time>{{ item.date }}</time>
       <a href="{{ item.url }}" class="col-span-2 md:col-span-4">{{ item.title }}</a>
     </div>

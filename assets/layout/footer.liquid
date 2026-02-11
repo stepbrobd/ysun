@@ -1,10 +1,12 @@
-<footer>
+<footer class="prose">
   <div class="grid grid-cols-3 items-center">
     <div class="justify-self-start">
-      <small>&copy; {{ "now" | date: "%Y" }}</small>
+      <small>&copy; <script>
+          document.write(new Date().getFullYear());
+        </script></small>
     </div>
     <div class="justify-self-center">
-      {% include "pkgs/ysun/static/templates/access" %}
+      {% include "assets/layout/access" %}
     </div>
     <div class="justify-self-end">
       <a

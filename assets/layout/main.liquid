@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/style/style.css">
+    <link rel="stylesheet" href="/assets/style/tailwind.css">
     <link rel="icon" href="/favicon.ico">
     <script
       defer
@@ -12,15 +12,15 @@
     ></script>
     <title>{{ title }}</title>
   </head>
-  <body>
-    <div class="prose container">
-      {% include "pkgs/ysun/static/templates/header" %}
+  <body class="flex flex-col min-h-screen p-4 gap-8">
+    <div class="prose container mx-auto">
+      {% include "assets/layout/header" %}
     </div>
-    <main class="prose flex-grow container">
+    <main class="prose flex-grow container mx-auto">
       {{ content }}
     </main>
-    <div class="prose container">
-      {% include "pkgs/ysun/static/templates/footer" %}
+    <div class="prose container mx-auto">
+      {% include "assets/layout/footer" %}
     </div>
   </body>
 </html>

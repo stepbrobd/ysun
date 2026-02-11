@@ -1,4 +1,4 @@
-<article class="prose">
+<article lang="en-US" class="prose container mx-auto">
   <h1>{{ title }}</h1>
   <small class="text-nord-9 flex flex-row items-center justify-start gap-2">
     <time>{{ date }}</time>
@@ -12,7 +12,7 @@
   {% if pages %}
     <nav>
       <hr>
-      {% include "pkgs/ysun/static/templates/list" %}
+      {% include "assets/layout/list" %}
       <hr>
     </nav>
   {% endif %}
