@@ -1,11 +1,6 @@
 let run (module R : Sigs.RESOLVER) cache =
-  (* We pass [cache] in order to add more rules. *)
-  let extensions = [ "avif"; "jpg"; "jpeg"; "png"; "svg" ] in
-  let open Yocaml.Eff in
+  let src = R.Source.img in
+  let dst = R.Target.img in
   cache
-  |> Batch_copy.run ~extension:extensions ~source:R.Source.images ~target:R.Target.images
-  >>= Batch_copy.run
-        ~extension:extensions
-        ~source:R.Source.avatars
-        ~target:R.Target.avatars
+  |> Batch_copy.run ~extension:[ "avif"; "png"; "jpg"; "svg" ] ~source:src ~target:dst
 ;;

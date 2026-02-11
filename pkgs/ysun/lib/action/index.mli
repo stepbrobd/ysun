@@ -1,3 +1,4 @@
-(** An action that builds the webring index. *)
-
-val run : (module Sigs.RESOLVER) -> Model.Chain.t -> Yocaml.Action.t
+val run
+  :  (module Sigs.RESOLVER)
+  -> Yocaml.Cache.t
+  -> (Yocaml.Cache.t * (Model.Page.t * string * Yocaml.Path.t) list) Yocaml.Eff.t

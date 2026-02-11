@@ -11,13 +11,12 @@ let init_message (module R : Sigs.RESOLVER) =
 let run (module R : Sigs.RESOLVER) () =
   let open Yocaml.Eff in
   let* () = init_message (module R) in
-  let* cache, chain = Init.run (module R) in
+  let* cache = Init.run (module R) in
   return cache
   >>= Css.run (module R)
+  >>= Assets.run (module R)
   >>= Images.run (module R)
-  >>= Articles.run (module R) chain
-  >>= Atom.run (module R) chain
-  >>= Chain.run (module R) chain
-  >>= Index.run (module R) chain
+  >>= Index.run (module R)
+  >>= Build_pages.run (module R)
   >>= Yocaml.Action.store_cache R.Target.cache
 ;;

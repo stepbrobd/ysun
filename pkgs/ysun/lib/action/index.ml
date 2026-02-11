@@ -1,16 +1,30 @@
-let run (module R : Sigs.RESOLVER) chain =
-  Yocaml.Action.Static.write_file_with_metadata
-    R.Target.index
-    (let open Yocaml.Task in
-     R.track_common_dependencies
-     >>> Yocaml.Pipeline.track_file R.Source.members
-     >>> Yocaml_yaml.Pipeline.read_file_with_metadata (module Model.Index) R.Source.index
-     >>> first @@ Model.Index.merge_chain chain
-     >>> Yocaml_omd.content_to_html ()
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Model.Index)
-           (R.Source.template "index.html")
-     >>> Yocaml_jingoo.Pipeline.as_template
-           (module Model.Index)
-           (R.Source.template "layout.html"))
+let run (module R : Sigs.RESOLVER) cache =
+  let open Yocaml.Eff in
+  let where path = Yocaml.Path.has_extension "md" path in
+  let* cache, page_list =
+    Yocaml.Action.fold
+      ~only:`Files
+      ~where
+      ~state:[]
+      R.Source.pages
+      (fun file state cache ->
+         let* meta, content =
+           Yocaml_yaml.Eff.read_file_with_metadata (module Model.Page) ~on:`Source file
+         in
+         let url = Model.Page.get_url file in
+         let words = Model.Page.count_words content in
+         let minutes = max 1 (words / 200) in
+         let meta = { meta with words = Some words; minutes = Some minutes } in
+         return (cache, (meta, url, file) :: state))
+      cache
+  in
+  let sorted_pages =
+    page_list
+    |> Stdlib.List.sort (fun (a, _, _) (b, _, _) ->
+      let open Model.Page in
+      let da = Option.value ~default:"" a.date in
+      let db = Option.value ~default:"" b.date in
+      String.compare db da)
+  in
+  return (cache, sorted_pages)
 ;;

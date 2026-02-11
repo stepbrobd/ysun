@@ -3,42 +3,37 @@ module Make (R : Sigs.RESOLVABLE) = struct
   open Yocaml
 
   module Source = struct
+    (* - *)
     let root = R.source
-    let binary = Path.rel [ Sys.argv.(0) ]
-    let data = Path.(R.source / "data")
-    let static = Path.(R.source / "static")
-    let css = Path.(static / "css")
-    let templates = Path.(static / "templates")
-    let template file = Path.(templates / file)
-    let members = Path.(data / "members")
-    let articles = Path.(data / "articles")
-    let chain = Path.(data / "chain.yaml")
-    let common_deps = [ binary; chain ]
-    let index = Path.(data / "index.md")
-    let blog = Path.(data / "blog.md")
-    let images = Path.(static / "images")
-    let avatars = Path.(data / "avatars")
+    let executable = Path.rel [ Sys.argv.(0) ]
+
+    (* - *)
+    let pages = Path.rel [ "pages" ]
+    let assets = Path.rel [ "assets" ]
+
+    (* - *)
+    let css = Path.(assets / "style" / "tailwind.css")
+
+    (* - *)
+    let static = Path.(assets / "static")
+    let doc = Path.(static / "doc")
+    let img = Path.(static / "img")
+
+    (* - *)
+    let layouts = Path.(assets / "layout")
+    let template file = Path.(layouts / file)
   end
 
   module Target = struct
     let root = R.target
     let cache = Path.(R.target / "cache")
-    let atom = Path.(R.target / "atom.xml")
-    let members = Path.(R.target / "u")
-    let css = Path.(R.target / "css" / "style.css")
+    let assets = Path.(R.target / "assets")
+    let static = Path.(assets / "static")
+    let doc = Path.(static / "doc")
+    let img = Path.(static / "img")
+    let css = Path.(assets / "style" / "tailwind.css")
     let index = Path.(R.target / "index.html")
-    let images = Path.(R.target / "images")
-    let avatars = Path.(images / "avatars")
-    let member ~id = Path.(members / id / "index.html")
-    let blog = Path.(R.target / "blog.html")
-
-    let member_redirection ~id pred_or_succ =
-      let target = Path.(members / id) in
-      match pred_or_succ with
-      | `Pred -> Path.(target / "pred" / "index.html")
-      | `Succ -> Path.(target / "succ" / "index.html")
-    ;;
   end
 
-  let track_common_dependencies = Yocaml.Pipeline.track_files Source.common_deps
+  let track_common_dependencies = Yocaml.Pipeline.track_file Source.executable
 end
