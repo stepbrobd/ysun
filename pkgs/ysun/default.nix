@@ -2,6 +2,7 @@
 , buildDunePackage
 , cmdliner
 , dune-build-info
+, tailwindcss_4
 , yocaml
 , yocaml_eio
 , yocaml_jingoo
@@ -23,7 +24,6 @@ buildDunePackage (finalAttrs: {
     root = ./.;
     fileset = unions [
       ./bin
-      ./data
       ./dune-project
       ./lib
       ./static
@@ -31,6 +31,8 @@ buildDunePackage (finalAttrs: {
   };
 
   env.DUNE_CACHE = "disabled";
+
+  nativeBuildInputs = [ tailwindcss_4 ];
 
   buildInputs = [
     cmdliner
