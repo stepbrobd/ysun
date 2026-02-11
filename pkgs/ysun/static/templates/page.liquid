@@ -1,0 +1,19 @@
+<article class="prose">
+  <h1>{{ title }}</h1>
+  <small class="text-nord-9 flex flex-row items-center justify-start gap-2">
+    <time>{{ date }}</time>
+    <span>&middot;</span>
+    <span>{{ words }} words</span>
+    <span>&middot;</span>
+    <span>{{ minutes }} min read</span>
+  </small>
+  {{ content }}
+  
+  {% if pages %}
+    <nav>
+      <hr>
+      {% include "pkgs/ysun/static/templates/list" %}
+      <hr>
+    </nav>
+  {% endif %}
+</article>

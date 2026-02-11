@@ -1,0 +1,38 @@
+<nav class="access-nav">
+  <select
+    id="access"
+    name="access"
+    onchange="if(this.value) window.open(this.value, '_self')"
+    class="access-select"
+  >
+    <option selected disabled hidden>Access</option>
+    <optgroup label="Public">
+      <option value="https://home.ysun.co">Glance</option>
+      <option value="https://meet.ysun.co">Jitsi</option>
+    </optgroup>
+    <optgroup label="External">
+      <option value="https://read.ysun.co/login?next=%2F">Calibre</option>
+      <option value="https://otel.ysun.co/login">Grafana</option>
+      <option value="https://hydra.ysun.co/project/stepbrobd">Hydra</option>
+      <option value="https://sso.ysun.co/ui/login">Kanidm</option>
+      <option value="https://stats.ysun.co/login">Plausible</option>
+    </optgroup>
+    <optgroup label="Internal">
+      <option value="http://go">GoLink</option>
+      <option value="http://go/vw">Vaultwarden</option>
+      <option value="http://go/ha">Home Assistant</option>
+    </optgroup>
+  </select>
+  <svg
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    aria-hidden="true"
+    class="access-icon"
+  >
+    <path
+      d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+    />
+  </svg>
+</nav>

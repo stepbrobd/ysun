@@ -1,0 +1,8 @@
+<nav class="flex flex-col gap-2">
+  {% for item in pages %}
+    <div class="list-grid">
+      <time>{{ item.date }}</time>
+      <a href="{{ item.url }}" class="col-span-2 md:col-span-4">{{ item.title }}</a>
+    </div>
+  {% endfor %}
+</nav>

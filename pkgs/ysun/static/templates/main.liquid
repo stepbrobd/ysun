@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style/style.css">
+    <link rel="icon" href="/favicon.ico">
+    <script
+      defer
+      data-domain="ysun.co"
+      src="https://stats.ysun.co/js/script.file-downloads.hash.outbound-links.js"
+    ></script>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <div class="prose container">
+      {% include "pkgs/ysun/static/templates/header" %}
+    </div>
+    <main class="prose flex-grow container">
+      {{ content }}
+    </main>
+    <div class="prose container">
+      {% include "pkgs/ysun/static/templates/footer" %}
+    </div>
+  </body>
+</html>
