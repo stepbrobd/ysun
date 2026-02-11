@@ -3,11 +3,10 @@
  (public_name ysun.lib)
  (modules_without_implementation sigs)
  (libraries
-  yocaml
-  yocaml_jingoo
-  yocaml_liquid
-  yocaml_omd
-  yocaml_syndication
-  yocaml_yaml))
+   yocaml
+   yocaml_liquid
+   yocaml_omd
+   yocaml_syndication
+   yocaml_yaml))
 
 (include_subdirs qualified)

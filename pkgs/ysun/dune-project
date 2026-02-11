@@ -13,12 +13,11 @@
 (package
   (name ysun)
   (depends
-   ocaml
    cmdliner
    dune-build-info
+   ocaml
    yocaml
    yocaml_eio
-   yocaml_jingoo
    yocaml_liquid
    yocaml_omd
    yocaml_syndication
