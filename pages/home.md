@@ -31,7 +31,7 @@ I'm generally interested in system and theory ([CV](/cv)), topics include:
 - Constructive type theory and mechanized proofs.
 - [Reproducible (build) system](https://reproducible-builds.org) in HPC environments.
 
-My contact info is hidden within the [source code of this site](https://github.com/search?q=repo%3Astepbrobd%2Fysun+%22hidden%3A+true%22+%22external%3A+https%3A%2F%2F%22+%22layout%3A+redirect.vto%22&type=code).
+My contact info is hidden within the [source code of this site](https://github.com/search?q=repo%3Astepbrobd%2Fysun+%22hidden%3A+true%22+%22redirect%3A+https%3A%2F%2F%22+%22layout%3A+redirect.vto%22&type=code).
 Search for the platform you want to reach me on in all lowercase (e.g. [`github`](/github), [`linkedin`](/linkedin), etc.).
 You can reach me directly with [Matrix](/matrix), Discord (use my GitHub username), or email (`echo -n 'eXN1bkBoZXkuY29tCg==' | base64 --decode`).
 
