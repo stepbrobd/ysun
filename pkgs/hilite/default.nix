@@ -11,7 +11,7 @@ buildDunePackage (finalAttrs: {
 
   src = fetchzip {
     url = "https://github.com/patricoferris/hilite/releases/download/v${finalAttrs.version}/hilite-${finalAttrs.version}.tbz";
-    hash = "sha256-4/Y//do8w8+fcagWno+5dpACbb0iq3zgqHiR/rgFh2U=";
+    hash = "sha256-By9WlYCUr0whYOdFCIkICwCqclmsKGQ+X9WOsUA13yg=";
   };
 
   env.DUNE_CACHE = "disabled";
