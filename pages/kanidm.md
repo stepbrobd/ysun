@@ -4,24 +4,21 @@ description: How I setup Kanidm's read-only LDAP to work with Hydra build server
 title: Kanidm LDAP guide
 ---
 
-> If you are reading this to setup SSO for Hydra, it might be better to follow
-> the [Hydra OIDC guide](/hydra) instead. Since... you know... this is LDAP...
+> If you are reading this to setup SSO for Hydra,
+> it might be better to follow the [Hydra OIDC guide](/hydra) instead.
+> Since... you know... this is LDAP...
 > But if you just want to read about Kanidm's read-only LDAP setup, go ahead!
 
-Couple months back, I met [Nick](https://nichi.co) (one of the most legendary
-`nixpkgs` contributors) IRL, and he introduced me to this fairly new and
-interesting CLI based
-[IDM](https://en.wikipedia.org/wiki/Identity_and_access_management) tool called
-[Kanidm](https://github.com/kanidm/kanidm). Fast-forward to mid-January, I got
-bored with my research and wanted to mess around with my
-[Hydra](https://github.com/NixOS/hydra) build server, and I thought it would be
-cool to use Kanidm as the LDAP backend for Hydra (I was using local Hydra
-accounts).
+Couple months back, I met [Nick](https://nichi.co) (one of the most legendary `nixpkgs` contributors) IRL,
+and he introduced me to this fairly new and interesting CLI based [IDM](https://en.wikipedia.org/wiki/Identity_and_access_management)
+tool called [Kanidm](https://github.com/kanidm/kanidm). Fast-forward to mid-January, I got bored with my
+research and wanted to mess around with my [Hydra](https://github.com/NixOS/hydra) build server, and I
+thought it would be cool to use Kanidm as the LDAP backend for Hydra (I was using local Hydra accounts).
 
 ## Installation (with NixOS of course)
 
-I'll skip the NixOS introduction here, go look for the manual and wiki if you're
-not already familiar with it. Here's the base config:
+I'll skip the NixOS introduction here, go look for the manual and wiki if you're not already familiar with it.
+Here's the base config:
 
 ```nix
 { config, pkgs, ... }:
@@ -54,21 +51,17 @@ not already familiar with it. Here's the base config:
 }
 ```
 
-I want to use Caddy to proxy the Kanidm web interface, and since Caddy handles
-HTTP traffic, LDAP won't be proxied by Caddy, so opening port 636 is required
-for LDAP(s) requests. Also since we'll be proxing the web interface (and I
-usually proxy all my web services behind Cloudflare), we need to rename the
-`CF-Connecting-IP` header to `X-Real-IP` so Kanidm can get the real IP of the
-client.
+I want to use Caddy to proxy the Kanidm web interface, and since Caddy handles HTTP traffic,
+LDAP won't be proxied by Caddy, so opening port 636 is required for LDAP(s) requests.
+Also since we'll be proxing the web interface (and I usually proxy all my web services behind Cloudflare),
+we need to rename the `CF-Connecting-IP` header to `X-Real-IP` so Kanidm can get the real IP of the client.
 
-The
-[Kanidm options](https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=kanidm)
-gave a pretty obvious hint that you'll need a trusted certificate to expose the
-web interface and LDAP server, but I want to use
-[Caddy](https://github.com/caddyserver/caddy) to proxy all my services. So I
-opted for an ACME cert and importing the cert into Caddy instead of having Caddy
-generate a separate one. As both Caddy and Kanidm require access to ACME certs,
-we need to create a group to share access for the two users:
+The [Kanidm options](https://search.nixos.org/options?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=kanidm)
+gave a pretty obvious hint that you'll need a trusted certificate to expose the web interface and LDAP server,
+but I want to use [Caddy](https://github.com/caddyserver/caddy) to proxy all my services. So I opted for an
+ACME cert and importing the cert into Caddy instead of having Caddy generate a separate one.
+As both Caddy and Kanidm require access to ACME certs, we need to create a group to share access
+for the two users:
 
 ```nix
 {
@@ -82,13 +75,11 @@ we need to create a group to share access for the two users:
 }
 ```
 
-With the above config, ACME will generate a cert for `sso.ysun.co` and
-`ldap.ysun.co` (important!), and after a renewal, `caddy` and `kanidm` services
-will be reloaded to pick up the new cert. The reason why I'm creating a cert
-with two FQDNs is that Cloudflare only proxy some specific ports, LDAP(s) port
-636 is not one of them, so I'll be proxying the web frontend through Cloudflare
-on `sso.ysun.co` and the LDAP server directly (without Cloudflare) on
-`ldap.ysun.co`.
+With the above config, ACME will generate a cert for `sso.ysun.co` and `ldap.ysun.co` (important!),
+and after a renewal, `caddy` and `kanidm` services will be reloaded to pick up the new cert.
+The reason why I'm creating a cert with two FQDNs is that Cloudflare only proxy some specific ports,
+LDAP(s) port 636 is not one of them, so I'll be proxying the web frontend through Cloudflare on
+`sso.ysun.co` and the LDAP server directly (without Cloudflare) on `ldap.ysun.co`.
 
 Now we've got to get the path of the ACME cert for Caddy and Kanidm to use:
 
@@ -115,10 +106,9 @@ in
 }
 ```
 
-The last thing we need is to set two admin passwords for Kanidm, one for `admin`
-(system admin) and one for `idm_admin` (account and group admin). I'm using SOPS
-to manage secrets, and I'm lazy, so I'm just going to use the same password for
-both:
+The last thing we need is to set two admin passwords for Kanidm,
+one for `admin` (system admin) and one for `idm_admin` (account and group admin).
+I'm using SOPS to manage secrets, and I'm lazy, so I'm just going to use the same password for both:
 
 ```nix
 { config, pkgs, ... }:
@@ -142,9 +132,9 @@ both:
 
 ## Provisioning users and groups
 
-The NixOS module we are using allows users to provision users and groups
-declaratively, but only for regular users and groups (we'll be using service
-accounts, but the module can't manage those, more on this later).
+The NixOS module we are using allows users to provision users and groups declaratively,
+but only for regular users and groups (we'll be using service accounts, but the
+module can't manage those, more on this later).
 
 ```nix
 {
@@ -168,20 +158,17 @@ accounts, but the module can't manage those, more on this later).
 }
 ```
 
-After this step, create a temporary password in the CLI, and send it to the
-user. Users can change their password through the web interface. After this, you
-should be able to access the Kanidm web interface at whatever domain you set up
-and the LDAP query interface will also be available with anonymous read-only
-access:
+After this step, create a temporary password in the CLI, and send it to the user.
+Users can change their password through the web interface. After this,
+you should be able to access the Kanidm web interface at whatever domain you set up
+and the LDAP query interface will also be available with anonymous read-only access:
 `nix shell nixpkgs#openldap -c ldapsearch -H ldaps://<fqdn> -x -b "spn=<username>@<server settings domain>,dc=<second level>,dc=<top level>"`
 
 ## POSIX accounts
 
-Don't rush! The LDAP server is still non-functional. Since
-[Kanidms LDAP](https://kanidm.github.io/kanidm/stable/integrations/ldap.html)
+Don't rush! The LDAP server is still non-functional. Since [Kanidms LDAP](https://kanidm.github.io/kanidm/stable/integrations/ldap.html)
 does not have 2FA, and it's read-only, you'll need to hop on the server and
-migrate the account you created to a
-[POSIX account](https://kanidm.github.io/kanidm/stable/accounts/posix_accounts_and_groups.html)
+migrate the account you created to a [POSIX account](https://kanidm.github.io/kanidm/stable/accounts/posix_accounts_and_groups.html)
 (can't do it through the web interface nor declaratively).
 
 ```console
@@ -189,14 +176,13 @@ $ kanidm login -D idm_admin
 $ kanidm person posix set <username> --shell <full path to login shell>
 ```
 
-You should be prompted to set a password for the user (can be different from the
-web password), and you can also set the user's home directory.
+You should be prompted to set a password for the user (can be different from the web password),
+and you can also set the user's home directory.
 
 ## Service accounts
 
-Kanidm's LDAP anonymous queries have limited access to user/group information,
-so you'll need to create a
-[service account](https://kanidm.github.io/kanidm/stable/accounts/service_accounts.html)
+Kanidm's LDAP anonymous queries have limited access to user/group information, so you'll need to
+create a [service account](https://kanidm.github.io/kanidm/stable/accounts/service_accounts.html)
 and token under `idm_admin` to allow Hydra or any other service to query LDAP.
 
 ```console
@@ -214,9 +200,8 @@ search@<fqdn>
 
 ## Give search user email read permission
 
-Almost there, but not quite. The service account can't read email addresses by
-default, and Hydra needs to read the email address. So we need to
-[give the service account read permission](https://kanidm.github.io/kanidm/stable/access_control/intro.html?highlight=mail#:~:text=read%20mail%20attributes%20needed%20to%20be%20a%20mail%20server)
+Almost there, but not quite. The service account can't read email addresses by default,
+and Hydra needs to read the email address. So we need to [give the service account read permission](https://kanidm.github.io/kanidm/stable/access_control/intro.html?highlight=mail#:~:text=read%20mail%20attributes%20needed%20to%20be%20a%20mail%20server)
 to user email addresses.
 
 ```console
@@ -234,8 +219,7 @@ sso.example.com   CNAME  abc.example.com # proxied by Cloudflare
 ldap.example.com  CNAME  abc.example.com # not proxied by Cloudflare
 ```
 
-Example LDAP consumer config
-([Hydra](https://github.com/NixOS/hydra/blob/master/doc/manual/src/configuration.md)):
+Example LDAP consumer config ([Hydra](https://github.com/NixOS/hydra/blob/master/doc/manual/src/configuration.md)):
 
 ```nix
 { config, ... }:

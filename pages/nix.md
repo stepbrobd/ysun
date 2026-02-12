@@ -15,8 +15,8 @@ systems), use it as a reference to create your own.
 I suggest anyone that wants to try out Nix not to use the official installer,
 but to use the
 [Nix Installer](https://github.com/determinatesystems/nix-installer) by
-Determinate Systems. It installs Nix, while providing a way to easily remove it
-from your system.
+Determinate Systems. It installs Nix, while providing a way to easily remove it from
+your system.
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm
@@ -32,13 +32,14 @@ commands are [channel based](https://nixos.wiki/wiki/Nix_channels), while
 channels to a specific commit, so you can get the same result every time if the
 same flake inputs are given.
 
-While Nix Flakes are still marked as "experimental", but
+While Nix Flakes are still marked as
+"experimental", but
 [it does not mean it's unstable](https://determinate.systems/posts/experimental-does-not-mean-unstable).
 Members of the Nix community are already using flakes at scale, I don't really
 see any way of flakes being removed from Nix.
 
-If you installed Nix using the DetSys Nix Installer, you should already have
-flakes enabled. If not, prefix all `nix` commands with
+If you installed Nix using the DetSys Nix Installer, you should already have flakes
+enabled. If not, prefix all `nix` commands with
 `nix --extra-experimental-features "nix-command flakes"`. If you see something
 like
 `echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf` in
@@ -63,23 +64,21 @@ Read more about flakes:
 
 If you don't want to use flakes, there are still ways to pin your dependencies
 to a specific commit (the use of channels is not recommended). You can use
-[`niv`](https://github.com/nmattia/niv) or
-[`npins`](https://github.com/andir/npins) to pin your dependencies.
+[`niv`](https://github.com/nmattia/niv) or [`npins`](https://github.com/andir/npins)
+to pin your dependencies.
 
-While `niv` and `npin` are good tools, IMO they are not as good as flakes. You
-can achieve similar results with `niv` and `npin`, but you'll have to install
-more tools and (potentially) write more code.
+While `niv` and `npin` are good tools, IMO they are not as good as flakes.
+You can achieve similar results with `niv` and `npin`, but you'll have to
+install more tools and (potentially) write more code.
 
-Similar effects can also be achieved with
-[`flake-compat`](https://github.com/edolstra/flake-compat), but you are still
-using flakes, just in a different way.
+Similar effects can also be achieved with [`flake-compat`](https://github.com/edolstra/flake-compat),
+but you are still using flakes, just in a different way.
 
 ## Basics
 
 Update (2024-02-01):
 
-Before diving into system configurations, you should understand the following
-concepts:
+Before diving into system configurations, you should understand the following concepts:
 
 - derivations and closures
 - nix store
@@ -87,8 +86,8 @@ concepts:
 - development shell
 
 I prepared a short slide with examples to help you understand these concepts,
-you can find it [here](https://github.com/stepbrobd/nixology) and more resources
-at the end of this guide.
+you can find it [here](https://github.com/stepbrobd/nixology)
+and more resources at the end of this guide.
 
 ## Modules
 

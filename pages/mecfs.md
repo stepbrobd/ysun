@@ -20,7 +20,8 @@ that can be used to diagnose and measure the severity of
 [myalgic encephalomyelitis/chronic fatigue syndrome](https://www.cdc.gov/me-cfs/about/index.html)
 (ME/CFS) and Long COVID.
 
-Before joining this study,Turner Palombo already did his master's thesis titled
+Before joining this study,Turner Palombo already
+did his master's thesis titled
 "[Development of an Inertial Measurement-Based Assessment of Disease Severity in Chronic Fatigue Syndrome](https://iss.mech.utah.edu/wp-content/uploads/sites/103/2021/06/TurnerPalomboThesis.pdf)"
 [1] and a large portion of my work is based on his.
 

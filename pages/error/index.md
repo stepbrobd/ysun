@@ -8,8 +8,8 @@ layout: error/generic.vto
 
 # What happened?
 
-Either you f*cked up or I did (tbh unlikely). But here's some random cow (or
-not) to cheer you up:
+Either you f*cked up or I did (tbh unlikely).
+But here's some random cow (or not) to cheer you up:
 
 ```shell
 $ nix run nixpkgs#neo-cowsay -- --random ur at the wrong place

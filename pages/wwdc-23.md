@@ -6,8 +6,8 @@ title: WWDC 2023
 
 Photo dump from WWDC 2023 at Apple Park, Cupertino, CA.
 
-The day before the event, I went the Apple Park Visitor Center. They have an
-Apple Park sandbox, you can use an iPad to see the AR version of the campus.
+The day before the event, I went the Apple Park Visitor Center.
+They have an Apple Park sandbox, you can use an iPad to see the AR version of the campus.
 
 ![Apple Park Visitor Center](/assets/static/img/wwdc-23-1.avif)
 

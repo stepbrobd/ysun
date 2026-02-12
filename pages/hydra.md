@@ -4,16 +4,13 @@ description: Use Kanidm as the OIDC backend for Hydra
 title: Hydra OIDC guide
 ---
 
-[Previously](/kanidm), we covered how to set up Kanidm's read-only LDAP
-interface and get SSO working on Hydra. That's great and all, but LADP is a bit
-too old school. In [this patch](https://github.com/nixos/hydra/pull/1298),
-[@lheckemann](https://github.com/lheckemann) and
-[@ners](https://github.com/ners) added support for OpenID Connect to Hydra.
+[Previously](/kanidm), we covered how to set up Kanidm's read-only LDAP interface and get SSO working on Hydra.
+That's great and all, but LADP is a bit too old school. In [this patch](https://github.com/nixos/hydra/pull/1298),
+[@lheckemann](https://github.com/lheckemann) and [@ners](https://github.com/ners) added support for OpenID Connect to Hydra.
 
 ## Hydra setup
 
-Since the PR is not merged yet, bring in the patch manually (ignore this step if
-it is merged by the time you read this):
+Since the PR is not merged yet, bring in the patch manually (ignore this step if it is merged by the time you read this):
 
 ```nix
 # in flake.nix
@@ -35,9 +32,10 @@ it is merged by the time you read this):
 
 ## Kanidm config
 
-Assuming your login user name is `somebody`, the Hydra user and admin groups are
-`hydra.users` and `hydra.admins`, and your Hydra instance is at
-`https://hydra.example.com`, the Kanidm config should looks like this:
+Assuming your login user name is `somebody`,
+the Hydra user and admin groups are `hydra.users` and `hydra.admins`,
+and your Hydra instance is at `https://hydra.example.com`,
+the Kanidm config should looks like this:
 
 ```nix
 {
@@ -82,8 +80,8 @@ Assuming your login user name is `somebody`, the Hydra user and admin groups are
 }
 ```
 
-At the time of writing, Hydra OIDC implementation does not support PKCE, so
-`allowInsecureClientDisablePkce` must be set to prevent login failure.
+At the time of writing, Hydra OIDC implementation does not support PKCE,
+so `allowInsecureClientDisablePkce` must be set to prevent login failure.
 
 ## Hydra config
 
