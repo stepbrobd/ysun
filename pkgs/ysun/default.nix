@@ -2,7 +2,6 @@
 , buildDunePackage
 , cmdliner
 , dune-build-info
-, hilite
 , minhtml
 , tailwindcss_4
 , yocaml
@@ -45,7 +44,6 @@ buildDunePackage (finalAttrs: {
   buildInputs = [
     cmdliner
     dune-build-info
-    hilite
     yocaml
     yocaml_eio
     yocaml_liquid

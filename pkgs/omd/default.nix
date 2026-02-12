@@ -1,6 +1,7 @@
 { lib
 , buildDunePackage
 , dune-build-info
+, hilite
 , imagemagick
 , ppx_expect
 , uucp
@@ -32,6 +33,7 @@ buildDunePackage (finalAttrs: {
 
   propagatedBuildInputs = [
     dune-build-info
+    hilite
     uucp
     uunf
     uutf
