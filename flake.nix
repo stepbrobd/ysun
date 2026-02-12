@@ -2,7 +2,7 @@
   outputs = { self, nixpkgs, parts, systems } @ inputs: parts.lib.mkFlake { inherit inputs; } {
     systems = import systems;
 
-    perSystem = { lib, pkgs, system, ... }: {
+    perSystem = { lib, pkgs, system, self', ... }: {
       _module.args.pkgs = import nixpkgs {
         inherit system;
         overlays = [
@@ -16,7 +16,7 @@
       };
 
       devShells.default = pkgs.mkShell {
-        inputsFrom = [ self.packages.${system}.ysun ];
+        inputsFrom = with self'.packages; [ omd ysun ];
         packages = with pkgs; [
           deno
           direnv

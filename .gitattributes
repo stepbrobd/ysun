@@ -73,3 +73,6 @@ assets/style/katex.css linguist-vendored
 
 # Geofeed
 assets/static/geofeed.csv text eol=lf
+
+# Vendored
+pkgs/omd linguist-vendored
