@@ -4,39 +4,25 @@ type t =
   ; date : string option
   ; words : int option
   ; minutes : int option
-  ; list : bool
+  ; url : string option
   ; layout : string option
-  ; external_ : string option
   ; hidden : bool
+  ; redirect : string option
+  ; metas : (string * string) list
   }
-
-val empty : t
-
-val make
-  :  ?title:string
-  -> ?description:string
-  -> ?date:string
-  -> ?words:int
-  -> ?minutes:int
-  -> ?list:bool
-  -> ?layout:string
-  -> ?external_:string
-  -> ?hidden:bool
-  -> unit
-  -> t
-
-val validate_underlying_page
-  :  (string * Yocaml.Data.t) list
-  -> t Yocaml.Data.Validation.validated_record
 
 include Yocaml.Required.DATA_READABLE with type t := t
 include Yocaml.Required.DATA_INJECTABLE with type t := t
 
-val get_url : Yocaml.Path.t -> string
+val get_url : pages_prefix:Yocaml.Path.t -> Yocaml.Path.t -> string
+val url_to_path : string -> string
 val count_words : string -> int
 
 type template_type =
   | Page
   | Other of string
+  | Standalone of string
+  | Error of string
 
 val resolve_template : t -> template_type * string
+val inject_og_metas : t -> string -> t

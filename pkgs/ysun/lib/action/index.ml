@@ -1,9 +1,12 @@
 let run (module R : Sigs.RESOLVER) cache =
   let open Yocaml.Eff in
-  let where path = Yocaml.Path.has_extension "md" path in
+  let where kind path =
+    match kind with
+    | `File -> Yocaml.Path.has_extension "md" path
+    | `Directory -> true
+  in
   let* cache, page_list =
-    Yocaml.Action.fold
-      ~only:`Files
+    Yocaml.Batch.fold_tree
       ~where
       ~state:[]
       R.Source.pages
@@ -11,7 +14,11 @@ let run (module R : Sigs.RESOLVER) cache =
          let* meta, content =
            Yocaml_yaml.Eff.read_file_with_metadata (module Model.Page) ~on:`Source file
          in
-         let url = Model.Page.get_url file in
+         let url =
+           match meta.Model.Page.url with
+           | Some u -> Model.Page.url_to_path u
+           | None -> Model.Page.get_url ~pages_prefix:R.Source.pages file
+         in
          let words = Model.Page.count_words content in
          let minutes = max 1 (words / 200) in
          let meta = { meta with words = Some words; minutes = Some minutes } in

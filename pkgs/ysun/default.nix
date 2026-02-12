@@ -2,10 +2,10 @@
 , buildDunePackage
 , cmdliner
 , dune-build-info
+, imagemagick
 , tailwindcss_4
 , yocaml
 , yocaml_eio
-, yocaml_jingoo
 , yocaml_liquid
 , yocaml_omd
 , yocaml_syndication
@@ -31,14 +31,16 @@ buildDunePackage (finalAttrs: {
 
   env.DUNE_CACHE = "disabled";
 
-  nativeBuildInputs = [ tailwindcss_4 ];
+  nativeBuildInputs = [
+    imagemagick
+    tailwindcss_4
+  ];
 
   buildInputs = [
     cmdliner
     dune-build-info
     yocaml
     yocaml_eio
-    yocaml_jingoo
     yocaml_liquid
     yocaml_omd
     yocaml_syndication

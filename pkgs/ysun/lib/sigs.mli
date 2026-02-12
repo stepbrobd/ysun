@@ -17,6 +17,7 @@ module type RESOLVER = sig
     val static : Yocaml.Path.t
     val doc : Yocaml.Path.t
     val img : Yocaml.Path.t
+    val favicon : Yocaml.Path.t
     val template : Yocaml.Path.fragment -> Yocaml.Path.t
   end
 
@@ -29,5 +30,8 @@ module type RESOLVER = sig
     val img : Yocaml.Path.t
     val css : Yocaml.Path.t
     val index : Yocaml.Path.t
+    val feed : Yocaml.Path.t
+    val geofeed : Yocaml.Path.t
+    val favicon : Yocaml.Path.t
   end
 end

@@ -59,7 +59,7 @@ let log_level_conv =
         | "info" -> Result.ok `Info
         | "error" -> Result.ok `Error
         | "warning" -> Result.ok `Warning
-        | _ -> Result.ok `Debug)
+        | s -> Error (`Msg (Printf.sprintf "%S is not a valid log level" s)))
     , fun ppf -> function
         | `App -> Format.fprintf ppf "app"
         | `Info -> Format.fprintf ppf "info"
