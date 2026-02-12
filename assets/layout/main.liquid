@@ -12,7 +12,7 @@
     ></script>
     <title>{{ title }}</title>
     {% for meta in metas %}
-    <meta name="{{ meta.name }}" content="{{ meta.content }}">
+    <meta {{ meta.attr }}="{{ meta.name }}" content="{{ meta.content }}">
     {% endfor %}
   </head>
   <body class="flex flex-col min-h-screen p-4 gap-8">
