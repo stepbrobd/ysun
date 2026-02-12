@@ -2,7 +2,6 @@
 , buildDunePackage
 , cmdliner
 , dune-build-info
-, imagemagick
 , tailwindcss_4
 , yocaml
 , yocaml_eio
@@ -32,7 +31,6 @@ buildDunePackage (finalAttrs: {
   env.DUNE_CACHE = "disabled";
 
   nativeBuildInputs = [
-    imagemagick
     tailwindcss_4
   ];
 
