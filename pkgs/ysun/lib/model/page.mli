@@ -24,5 +24,5 @@ type template_type =
   | Standalone of string
   | Error of string
 
-val resolve_template : t -> template_type * string
+val resolve_template : available_templates:string list -> t -> template_type * string
 val inject_og_metas : t -> string -> t

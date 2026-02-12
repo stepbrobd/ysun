@@ -3,5 +3,5 @@ date: 2025-06-27
 hidden: true
 title: AS10779 BGP Looking Glass
 redirect: https://bgp.tools/lg/10779
-layout: redirect.vto
+layout: redirect
 ---

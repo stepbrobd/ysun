@@ -14,6 +14,22 @@ let normalize_page_item (meta, url) =
     ]
 ;;
 
+let discover_templates layout_dir =
+  let rec walk prefix dir =
+    Sys.readdir dir
+    |> Array.to_list
+    |> List.concat_map (fun entry ->
+      let path = Filename.concat dir entry in
+      let name = if prefix = "" then entry else prefix ^ "/" ^ entry in
+      if Sys.is_directory path
+      then walk name path
+      else if Filename.check_suffix entry ".liquid"
+      then [ Filename.remove_extension name ]
+      else [])
+  in
+  walk "" layout_dir
+;;
+
 let apply_template (module R : Sigs.RESOLVER) name =
   let open Yocaml.Task in
   lift (fun (data, html) ->
@@ -41,10 +57,18 @@ let template_chain (module R : Sigs.RESOLVER) tmpl_type template_name =
   | Error _ -> apply template_name >>> apply "error/generic.liquid"
 ;;
 
-let process_file (module R : Sigs.RESOLVER) menu_pages (pre_meta, url, file) cache =
+let process_file
+      (module R : Sigs.RESOLVER)
+      ~available_templates
+      menu_pages
+      (pre_meta, url, file)
+      cache
+  =
   let open Yocaml.Task in
   let target = url_to_target (module R) url in
-  let tmpl_type, template_name = Model.Page.resolve_template pre_meta in
+  let tmpl_type, template_name =
+    Model.Page.resolve_template ~available_templates pre_meta
+  in
   let chain = template_chain (module R) tmpl_type template_name in
   Yocaml.Action.Static.write_file
     target
@@ -65,6 +89,7 @@ let process_file (module R : Sigs.RESOLVER) menu_pages (pre_meta, url, file) cac
 
 let run (module R : Sigs.RESOLVER) (cache, all_pages) =
   let open Yocaml.Eff in
+  let available_templates = discover_templates "assets/layout" in
   let menu_pages =
     all_pages
     |> Stdlib.List.filter (fun (meta, url, _) ->
@@ -75,7 +100,7 @@ let run (module R : Sigs.RESOLVER) (cache, all_pages) =
     match fs with
     | [] -> return c
     | item :: rest ->
-      let* next_c = process_file (module R) menu_pages item c in
+      let* next_c = process_file (module R) ~available_templates menu_pages item c in
       aux rest next_c
   in
   aux all_pages cache

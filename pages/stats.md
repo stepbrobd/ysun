@@ -2,7 +2,7 @@
 date: 2023-05-30
 description: Site analytics with self-hosted Plausible
 hidden: true
-layout: embed.vto
+layout: embed
 title: Site Analytics
 ---
 

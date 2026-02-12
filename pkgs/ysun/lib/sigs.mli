@@ -32,6 +32,8 @@ module type RESOLVER = sig
     val index : Yocaml.Path.t
     val feed : Yocaml.Path.t
     val geofeed : Yocaml.Path.t
+    val sitemap : Yocaml.Path.t
+    val robots : Yocaml.Path.t
     val favicon : Yocaml.Path.t
   end
 end

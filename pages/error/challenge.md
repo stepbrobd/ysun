@@ -3,7 +3,7 @@ date: 2025-08-08
 description: Interactive challenge required
 title: Interactive challenge required
 hidden: true
-layout: error/waf.vto
+layout: error/waf
 ---
 
 # Interactive challenge required

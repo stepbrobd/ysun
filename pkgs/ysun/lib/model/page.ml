@@ -158,21 +158,30 @@ type template_type =
   | Standalone of string
   | Error of string
 
-let resolve_template meta =
-  let default = "page.liquid" in
+let resolve_template ~available_templates meta =
+  let resolve name =
+    if List.mem name available_templates
+    then name ^ ".liquid"
+    else
+      failwith
+        (Printf.sprintf
+           "unknown template %S (available: %s)"
+           name
+           (String.concat ", " available_templates))
+  in
   match meta.layout with
-  | None -> Page, default
-  | Some l ->
-    let base = Filename.remove_extension l in
-    let ext = Filename.extension l in
-    let resolved = if ext = ".vto" then base ^ ".liquid" else l in
-    if resolved = "page.liquid"
-    then Page, resolved
-    else if resolved = "error/generic.liquid"
-    then Standalone resolved, resolved
-    else if String.length resolved > 6 && String.sub resolved 0 6 = "error/"
-    then Error resolved, resolved
-    else Other resolved, resolved
+  | None | Some "page" ->
+    let f = resolve "page" in
+    Page, f
+  | Some name when name = "error/generic" ->
+    let f = resolve name in
+    Standalone f, f
+  | Some name when String.starts_with ~prefix:"error/" name ->
+    let f = resolve name in
+    Error f, f
+  | Some name ->
+    let f = resolve name in
+    Other f, f
 ;;
 
 let inject_og_metas meta url =

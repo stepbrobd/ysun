@@ -36,6 +36,8 @@ module Make (R : Sigs.RESOLVABLE) = struct
     let index = Path.(R.target / "index.html")
     let feed = Path.(R.target / "atom.xml")
     let geofeed = Path.(R.target / "geofeed.csv")
+    let sitemap = Path.(R.target / "sitemap.xml")
+    let robots = Path.(R.target / "robots.txt")
     let favicon = Path.(R.target / "favicon.ico")
   end
 
