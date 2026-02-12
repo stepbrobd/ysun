@@ -1,5 +1,5 @@
 { buildDunePackage
-, fetchFromGitHub
+, fetchzip
 , alcotest
 , bstr
 , ca-certs
@@ -19,11 +19,9 @@ buildDunePackage (finalAttrs: {
   pname = "httpcats";
   version = "0.1.0";
 
-  src = fetchFromGitHub {
-    owner = "robur-coop";
-    repo = "httpcats";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-t3gSfv73XYntle1dd4k9bv893pGStk1NHz62mAvcHAs=";
+  src = fetchzip {
+    url = "https://github.com/robur-coop/httpcats/releases/download/v${finalAttrs.version}/httpcats-${finalAttrs.version}.tbz";
+    hash = "sha256-DqnG6oEOqvkl+Z30KvHyRYyo3mXEDFs7sNtde4rwLbg=";
   };
 
   env.DUNE_CACHE = "disabled";

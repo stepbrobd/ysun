@@ -1,5 +1,5 @@
 { buildDunePackage
-, fetchFromGitHub
+, fetchzip
 , alcotest
 , base64
 , bstr
@@ -27,11 +27,9 @@ buildDunePackage (finalAttrs: {
   pname = "git-kv";
   version = "0.2.1";
 
-  src = fetchFromGitHub {
-    owner = "robur-coop";
-    repo = "git-kv";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-KzWeRsmm9U5wSJMn9xFtic9VJKtYa9bNQq31NPFFv88=";
+  src = fetchzip {
+    url = "https://github.com/robur-coop/git-kv/releases/download/v${finalAttrs.version}/git-kv-${finalAttrs.version}.tbz";
+    hash = "sha256-S0pVEBO3SU7W4Je5pQStHg1FerWDkGxro7YDinTTWr4=";
   };
 
   env.DUNE_CACHE = "disabled";

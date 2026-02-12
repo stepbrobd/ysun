@@ -1,5 +1,5 @@
 { buildDunePackage
-, fetchFromGitHub
+, fetchzip
 , base64
 , eio
 , eio_main
@@ -13,11 +13,9 @@ buildDunePackage (finalAttrs: {
   pname = "plist-xml";
   version = "0.5.1";
 
-  src = fetchFromGitHub {
-    owner = "alan-j-hu";
-    repo = "ocaml-plist-xml";
-    tag = finalAttrs.version;
-    hash = "sha256-y89TwblEZdzAlOvikRX+78a2cm5GXlIwmzmriYpQH0A=";
+  src = fetchzip {
+    url = "https://github.com/alan-j-hu/ocaml-plist-xml/releases/download/${finalAttrs.version}/plist-xml-${finalAttrs.version}.tbz";
+    hash = "sha256-rHPIQHCJKuiHmdPBrnIG12oLlv16j82hBQtt4Yr282E=";
   };
 
   env.DUNE_CACHE = "disabled";
