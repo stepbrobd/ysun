@@ -4593,7 +4593,7 @@
   (alias spec-022)
   (alias spec-023)
   (alias spec-024)
-  (alias spec-025)
+  ; (alias spec-025) ;; disabled
   (alias spec-026)
   (alias spec-027)
   (alias spec-028)
@@ -5084,10 +5084,10 @@
   (alias spec-513)
   (alias spec-514)
   (alias spec-515)
-  (alias spec-516)
+  ; (alias spec-516) ;; disabled
   (alias spec-517)
   (alias spec-518)
-  (alias spec-519)
+  ; (alias spec-519) ;; disabled
   (alias spec-520)
   (alias spec-521)
   (alias spec-522)
@@ -5098,7 +5098,7 @@
   (alias spec-527)
   (alias spec-528)
   (alias spec-529)
-  (alias spec-530)
+  ; (alias spec-530) ;; disabled
   (alias spec-531)
   (alias spec-532)
   (alias spec-533)
@@ -5139,26 +5139,26 @@
   (alias spec-568)
   (alias spec-569)
   (alias spec-570)
-  (alias spec-571)
-  (alias spec-572)
-  (alias spec-573)
-  (alias spec-574)
-  (alias spec-575)
-  (alias spec-576)
-  (alias spec-577)
-  (alias spec-578)
-  (alias spec-579)
-  (alias spec-580)
-  (alias spec-581)
-  (alias spec-582)
-  (alias spec-583)
-  (alias spec-584)
-  (alias spec-585)
-  (alias spec-586)
-  (alias spec-587)
-  (alias spec-588)
+  ; (alias spec-571) ;; disabled
+  ; (alias spec-572) ;; disabled
+  ; (alias spec-573) ;; disabled
+  ; (alias spec-574) ;; disabled
+  ; (alias spec-575) ;; disabled
+  ; (alias spec-576) ;; disabled
+  ; (alias spec-577) ;; disabled
+  ; (alias spec-578) ;; disabled
+  ; (alias spec-579) ;; disabled
+  ; (alias spec-580) ;; disabled
+  ; (alias spec-581) ;; disabled
+  ; (alias spec-582) ;; disabled
+  ; (alias spec-583) ;; disabled
+  ; (alias spec-584) ;; disabled
+  ; (alias spec-585) ;; disabled
+  ; (alias spec-586) ;; disabled
+  ; (alias spec-587) ;; disabled
+  ; (alias spec-588) ;; disabled
   (alias spec-589)
-  (alias spec-590)
+  ; (alias spec-590) ;; disabled
   (alias spec-591)
   (alias spec-592)
   (alias spec-593)

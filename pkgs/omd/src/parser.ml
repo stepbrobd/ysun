@@ -1893,7 +1893,7 @@ let rec inline defs st =
           (* Printf.sprintf "#fn:%s" reference*)
           let attr =
             match link_kind with
-            | Footnote { label; _ } -> ("id", "fnref:" ^ label) :: attr
+            | Footnote { label; _ } -> ("id", "fnref-" ^ label) :: attr
             | Reference -> attr
           in
           let destination =
@@ -2146,24 +2146,53 @@ let link_reference_definition st : attributes link_def =
     | _ -> raise Fail
   in
   ignore (sp3 st);
-  let is_footnote label = String.get label 0 = '^' in
+  let is_footnote label = String.length label > 0 && String.get label 0 = '^' in
+  let footnote_content st =
+    (* read everything until the next link/footnote definition or end of input
+       block parser's trim_left strips leading whitespace from continuation lines,
+       so we can't rely on indentation, instead, read greedily and stop when we
+       see a newline followed by '[' (potential new definition) *)
+    let buf = Buffer.create 64 in
+    let rec loop () =
+      match peek st with
+      | None -> Buffer.contents buf
+      | Some '\n' ->
+        let saved = pos st in
+        junk st;
+        (match peek st with
+         | Some '[' ->
+           set_pos st saved;
+           Buffer.contents buf
+         | _ ->
+           Buffer.add_char buf '\n';
+           loop ())
+      | Some c ->
+        junk st;
+        Buffer.add_char buf c;
+        loop ()
+    in
+    let result = loop () in
+    let result = String.trim result in
+    if String.length result = 0 then raise Fail;
+    result
+  in
   let label = link_label false st in
   if next st <> ':' then raise Fail;
   ws st;
-  let destination = link_destination st in
-  let attributes = inline_attribute_string st in
-  let kind =
-    match is_footnote label with
-    | true ->
-      let label = String.sub label 1 (String.length label - 1) in
-      Footnote { id = Printf.sprintf "fn:%s" label; label }
-    | false -> Reference
-  in
-  match protect (ws1 >>> link_title <<< sp <<< eol) st with
-  | title -> { label; destination; title = Some title; attributes; kind }
-  | exception Fail ->
-    (sp >>> eol) st;
-    { label; destination; title = None; attributes; kind }
+  if is_footnote label
+  then (
+    let destination = footnote_content st in
+    let fn_label = String.sub label 1 (String.length label - 1) in
+    let kind = Footnote { id = Printf.sprintf "fn:%s" fn_label; label = fn_label } in
+    { label; destination; title = None; attributes = []; kind })
+  else (
+    let destination = link_destination st in
+    let attributes = inline_attribute_string st in
+    match protect (ws1 >>> link_title <<< sp <<< eol) st with
+    | title -> { label; destination; title = Some title; attributes; kind = Reference }
+    | exception Fail ->
+      (sp >>> eol) st;
+      { label; destination; title = None; attributes; kind = Reference })
 ;;
 
 let link_reference_definitions st =

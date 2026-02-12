@@ -1,6 +1,7 @@
 { lib
 , buildDunePackage
 , dune-build-info
+, imagemagick
 , ppx_expect
 , uucp
 , uunf
@@ -34,6 +35,10 @@ buildDunePackage (finalAttrs: {
     uucp
     uunf
     uutf
+  ];
+
+  propagatedNativeBuildInputs = [
+    imagemagick
   ];
 
   doCheck = true;

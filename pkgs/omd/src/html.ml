@@ -204,6 +204,35 @@ let to_plain_text t =
   Buffer.contents buf
 ;;
 
+(* call on imagemagick at build time to get image size *)
+let get_dimensions path =
+  let local_path =
+    if String.length path > 0 && path.[0] = '/'
+    then String.sub path 1 (String.length path - 1)
+    else path
+  in
+  if not (Sys.file_exists local_path)
+  then None
+  else (
+    let cmd =
+      Printf.sprintf
+        "identify -format \"%%w %%h\" %s"
+        (Filename.quote (local_path ^ "[0]"))
+    in
+    try
+      let ic = Unix.open_process_in cmd in
+      let line = input_line ic in
+      let _ = Unix.close_process_in ic in
+      match String.split_on_char ' ' (String.trim line) with
+      | [ w; h ] ->
+        (match int_of_string_opt w, int_of_string_opt h with
+         | Some _, Some _ -> Some (w, h)
+         | _ -> None)
+      | _ -> None
+    with
+    | _ -> None)
+;;
+
 let nl = Raw "\n"
 
 let rec url label destination title attrs =
@@ -221,8 +250,28 @@ and img label destination title attrs =
     | None -> attrs
     | Some title -> ("title", title) :: attrs
   in
-  let attrs = ("src", escape_uri destination) :: ("alt", to_plain_text label) :: attrs in
+  let attrs =
+    match get_dimensions destination with
+    | Some (w, h) -> ("width", w) :: ("height", h) :: attrs
+    | None -> attrs
+  in
+  let attrs =
+    ("src", escape_uri destination)
+    :: ("alt", to_plain_text label)
+    :: ("loading", "lazy")
+    :: ("decoding", "async")
+    :: attrs
+  in
   elt Inline "img" attrs None
+
+(* wrap img with figure and caption *)
+and figure label destination title attrs =
+  let img_el = img label destination title attrs in
+  let alt = to_plain_text label in
+  let caption =
+    if String.trim alt = "" then Null else elt Block "figcaption" [] (Some (text alt))
+  in
+  elt Block "figure" [] (Some (concat img_el caption))
 
 and sup attrs child = elt Inline "sup" attrs (Some child)
 
@@ -295,8 +344,9 @@ let footnote_block content =
     (Some (concat (elt Inline "hr" [] None) content))
 ;;
 
+(* changed from : to - to match deno lume's behavior *)
 let footnote_list footnotes =
-  let backlink label = url (Text ([], "↩")) ("#fnref:" ^ label) None [] in
+  let backlink label = url (Text ([], "↩")) ("#fnref-" ^ label) None [] in
   let p footnote =
     elt Block "p" [] (Some (concat (inline footnote.content) (backlink footnote.label)))
   in
@@ -317,6 +367,8 @@ let rec block ~auto_identifiers = function
       "blockquote"
       attr
       (Some (concat nl (concat_map (block ~auto_identifiers) q)))
+  | Paragraph (_, Ast.Impl.Image (attr, { label; destination; title })) ->
+    figure label destination title attr
   | Paragraph (attr, md) -> elt Block "p" attr (Some (inline md))
   | List (attr, ty, sp, bl) ->
     let name =
@@ -358,7 +410,17 @@ let rec block ~auto_identifiers = function
       | 6 -> "h6"
       | _ -> "p"
     in
-    elt Block name attr (Some (inline text))
+    (* when a heading has an id, prepend a "#" anchor link and add
+       tabindex="-1" for accessibility match deno lume behavior *)
+    (match List.assoc_opt "id" attr with
+     | Some id ->
+       let anchor =
+         elt Inline "a" [ "class", "header-anchor"; "href", "#" ^ id ] (Some (raw "#"))
+       in
+       let attr' = ("tabindex", "-1") :: attr in
+       let content = concat anchor (concat (raw " ") (inline text)) in
+       elt Block name attr' (Some content)
+     | None -> elt Block name attr (Some (inline text)))
   | Definition_list (attr, l) ->
     let f { term; defs } =
       concat
