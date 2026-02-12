@@ -4,23 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/style/tailwind.css">
-    <link rel="icon" href="/favicon.ico">
-    <script
-      defer
-      data-domain="ysun.co"
-      src="https://stats.ysun.co/js/script.file-downloads.hash.outbound-links.js"
-    ></script>
+    <link rel="icon" href="https://ysun.co/favicon.ico">
     <title>{{ title }}</title>
-    {% for meta in metas %}
-    <meta name="{{ meta.name }}" content="{{ meta.content }}">
-    {% endfor %}
   </head>
   <body class="flex flex-col min-h-screen p-4 gap-8">
     <div class="prose container mx-auto">
       {% include "assets/layout/header" %}
     </div>
     <main class="prose flex-grow container mx-auto">
-      {{ content }}
+      <article lang="en-US" class="prose container mx-auto">
+        {{ content }}
+      </article>
     </main>
     <div class="prose container mx-auto">
       {% include "assets/layout/footer" %}
