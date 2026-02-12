@@ -4,7 +4,8 @@ description: NixCon 2025 at OST, Rapperswil-Jona, Switzerland
 title: NixCon 2025
 ---
 
-Photo dump from NixCon 2025 at [OST](https://www.ost.ch/en/), Rapperswil-Jona, Switzerland.
+Photo dump from NixCon 2025 at [OST](https://www.ost.ch/en/), Rapperswil-Jona,
+Switzerland.
 
 ![The event venue](/assets/static/img/nixcon-25-1.avif)
 

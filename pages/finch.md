@@ -9,7 +9,8 @@ title: Finch
 
 ## Credit
 
-Idea from Boltzmann Brain (deleted) by [@pehringer](https://github.com/pehringer).
+Idea from Boltzmann Brain (deleted) by
+[@pehringer](https://github.com/pehringer).
 
 ## Installation & Usage
 
@@ -79,7 +80,8 @@ finch -input=20 -output=19 -hidden=6,6,6,6 -population=32768 -mutation=0.01 -exa
 
 `-input=784 -output=10 -hidden=16,16`
 
-784 input neurons (28x28 greyscale images), 10 output neurons (numbers 1-10), 2 hidden layers with 16 neurons each
+784 input neurons (28x28 greyscale images), 10 output neurons (numbers 1-10), 2
+hidden layers with 16 neurons each
 
 `-population=4096 -mutation=0.1`
 
@@ -93,4 +95,5 @@ dataset paths
 finch -input=784 -output=10 -hidden=16,16 -population=4096 -mutation=0.1 -example=./data/mnist/mnist_pixel_data_{32,64,128,256,512,1024,2048,4096,8192}.csv -expected=./data/mnist/mnist_label_data_{32,64,128,256,512,1024,2048,4096,8192}.csv
 ```
 
-Remember to change the size of MNIST dataset: 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192.
+Remember to change the size of MNIST dataset: 32, 64, 128, 256, 512, 1024, 2048,
+4096, 8192.

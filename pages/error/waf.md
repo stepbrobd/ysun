@@ -8,8 +8,8 @@ layout: error/waf.vto
 
 # You've been WAFed
 
-You must've done something really sketchy stuff to get here...
-Holy cow (or not) is here to cleanse your soul:
+You must've done something really sketchy stuff to get here... Holy cow (or not)
+is here to cleanse your soul:
 
 ```shell
 $ nix run nixpkgs#neo-cowsay -- --random pax vobiscum sinner
