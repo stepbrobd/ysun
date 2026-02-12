@@ -42,7 +42,7 @@
           (attrNames (builtins.readDir ./pkgs))
           (name: pkgs.ocamlPackages.${name}))
         //
-        { default = ysun; }
+        { default = self.ysun; }
       ));
     };
   };
