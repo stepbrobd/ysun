@@ -3,12 +3,14 @@
 
 @theme {
   --font-sans:
-    -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Cantarell, Ubuntu, roboto, noto,
-    helvetica, arial, sans-serif;
+    -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica
+    neue, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
   --font-serif:
-    Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple
-    Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-  --font-mono: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+    Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif,
+    Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI
+    Symbol;
+  --font-mono:
+    Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
   --color-nord-0: #2e3440;
   --color-nord-1: #3b4252;
   --color-nord-2: #434c5e;
@@ -113,7 +115,8 @@
   }
 
   .prose table {
-    @apply w-full border border-nord-3 rounded overflow-hidden border-separate border-spacing-0;
+    @apply w-full border border-nord-3 rounded overflow-hidden border-separate
+      border-spacing-0;
   }
 
   .prose th,
@@ -154,6 +157,7 @@
   }
 
   .amembed {
-    @apply relative w-full max-w-[660px] h-[450px] aspect-[660/450] mx-auto my-4;
+    @apply relative w-full max-w-[660px] h-[450px] aspect-[660/450] mx-auto
+      my-4;
   }
 }

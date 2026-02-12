@@ -32,7 +32,7 @@
       };
 
       formatter = pkgs.writeShellScriptBin "formatter" ''
-        ${lib.getExe pkgs.deno} fmt .
+        ${lib.getExe pkgs.deno} fmt --permit-no-files --ignore=**/*.md .
         ${lib.getExe pkgs.nixpkgs-fmt} .
         ${lib.getExe pkgs.ocamlPackages.dune} fmt
       '';
@@ -42,29 +42,7 @@
           (attrNames (builtins.readDir ./pkgs))
           (name: pkgs.ocamlPackages.${name}))
         //
-        {
-          default = pkgs.stdenvNoCC.mkDerivation {
-            pname = "ysun";
-            version = "0-git";
-            src = ./.;
-            outputHashAlgo = "sha256";
-            outputHashMode = "recursive";
-            outputHash = "sha256-yLDmL14Hz33ixJUUsok2te56Jb/zPWDLWxd+MJW73rU=";
-            nativeBuildInputs = [ pkgs.deno pkgs.libfaketime ];
-            buildPhase = ''
-              runHook preBuild
-              export HOME=$TMPDIR
-              faketime -f '1970-01-01 00:00:00' deno task nix
-              runHook postBuild
-            '';
-            installPhase = ''
-              runHook preInstall
-              mkdir -p $out/var/www/html
-              cp -r outputs/* $out/var/www/html/
-              runHook postInstall
-            '';
-          };
-        }
+        { default = ysun; }
       ));
     };
   };
