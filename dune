@@ -1,0 +1,3 @@
+(subdir
+ pkgs
+ (data_only_dirs omd))
