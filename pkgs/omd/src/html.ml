@@ -346,7 +346,7 @@ let footnote_block content =
 
 (* changed from : to - to match deno lume's behavior *)
 let footnote_list footnotes =
-  let backlink label = url (Text ([], "↩")) ("#fnref-" ^ label) None [] in
+  let backlink label = url (Text ([], "↩︎")) ("#fnref-" ^ label) None [] in
   let p footnote =
     elt Block "p" [] (Some (concat (inline footnote.content) (backlink footnote.label)))
   in
