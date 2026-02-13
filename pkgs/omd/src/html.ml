@@ -428,11 +428,31 @@ let rec block ~auto_identifiers = function
     in
     elt Block name attr (Some (concat nl (concat_map li bl)))
   | Code_block (attr, label, code) ->
-    let code_attr =
-      if String.trim label = "" then [] else [ "class", "language-" ^ label ]
-    in
-    let c = text code in
-    elt Block "pre" attr (Some (elt Inline "code" code_attr (Some c)))
+    let lang = String.trim label in
+    if lang <> ""
+    then (
+      match Hilite.src_code_to_pairs ~lang code with
+      | Ok pairs ->
+        let rec drop_trailing_empty = function
+          | [] -> []
+          | [ line ] when List.for_all (fun (_, s) -> String.trim s = "") line -> []
+          | line :: rest -> line :: drop_trailing_empty rest
+        in
+        let spans =
+          drop_trailing_empty pairs
+          |> List.concat
+          |> List.map (fun (cls, content) ->
+            raw ("<span class='" ^ cls ^ "'>" ^ content ^ "</span>"))
+        in
+        let inner = List.fold_left (fun acc s -> concat acc s) Null spans in
+        elt Block "pre" attr (Some (elt Inline "code" [] (Some inner)))
+      | Error _ ->
+        let code_attr = [ "class", "language-" ^ lang ] in
+        let c = text code in
+        elt Block "pre" attr (Some (elt Inline "code" code_attr (Some c))))
+    else (
+      let c = text code in
+      elt Block "pre" attr (Some (elt Inline "code" [] (Some c))))
   | Thematic_break attr -> elt Block "hr" attr None
   | Html_block (_, body) -> raw body
   | Heading (attr, level, text) ->

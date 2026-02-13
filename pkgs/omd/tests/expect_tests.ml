@@ -101,7 +101,10 @@ let%expect_test "construct code blocks" =
     Omd.Ctor.
       [ code_bl ~attrs:[ "class", "my-code" ] ~lang:"ocaml" "let foo = bar + bing" ];
   [%expect
-    {| <pre class="my-code"><code class="language-ocaml">let foo = bar + bing</code></pre> |}]
+    {|
+    <pre class="my-code"><code><span class='ocaml-keyword'>let</span><span class='ocaml-source'> </span><span class='ocaml-entity-name-function-binding'>foo</span><span class='ocaml-source'> </span><span class='ocaml-keyword-operator'>=</span><span class='ocaml-source'> </span><span class='ocaml-source'>bar</span><span class='ocaml-source'> </span><span class='ocaml-keyword-operator'>+</span><span class='ocaml-source'> </span><span class='ocaml-source'>bing</span><span class='ocaml-source'>
+    </span></code></pre>
+    |}]
 ;;
 
 let%expect_test "construct html blocks" =
