@@ -161,3 +161,11 @@
       my-4;
   }
 }
+
+.gskring {
+  @apply no-underline text-nord-6 font-black;
+}
+
+.gskring span {
+  @apply text-nord-8;
+}
