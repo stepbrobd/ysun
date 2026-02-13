@@ -1,0 +1,166 @@
+type error = [ `Unknown_lang of string ]
+
+let langs = [ "ocaml"; "dune"; "opam"; "sh"; "shell"; "diff"; "bash" ]
+
+let filteri p l =
+  let rec aux i acc = function
+    | [] -> List.rev acc
+    | x :: l -> aux (i + 1) (if p i x then x :: acc else acc) l
+  in
+  aux 0 [] l
+;;
+
+(* The following HTML escaping logic is borrowed from Cmarkit_html.
+   
+   Copyright (c) 2021 The cmarkit programmers. All rights reserved.
+   SPDX-License-Identifier: ISC *)
+
+let buffer_add_html_escaped_string b s =
+  let string = Buffer.add_string in
+  let len = String.length s in
+  let max_idx = len - 1 in
+  let flush b start i = if start < len then Buffer.add_substring b s start (i - start) in
+  let rec loop start i =
+    if i > max_idx
+    then flush b start i
+    else (
+      let next = i + 1 in
+      match String.get s i with
+      | '\x00' ->
+        flush b start i;
+        Buffer.add_utf_8_uchar b Uchar.rep;
+        loop next next
+      | '&' ->
+        flush b start i;
+        string b "&amp;";
+        loop next next
+      | '<' ->
+        flush b start i;
+        string b "&lt;";
+        loop next next
+      | '>' ->
+        flush b start i;
+        string b "&gt;";
+        loop next next
+      (*    | '\'' -> flush c start i; string c "&apos;"; loop next next *)
+      | '\"' ->
+        flush b start i;
+        string b "&quot;";
+        loop next next
+      | _c -> loop start next)
+  in
+  loop 0 0
+;;
+
+let span ?(escape = true) class_gen t =
+  let drop_last lst =
+    let l = List.length lst in
+    filteri (fun i _ -> i < l - 1) lst
+  in
+  let span_gen c s =
+    let s =
+      let buf = Buffer.create 128 in
+      if escape then buffer_add_html_escaped_string buf s else Buffer.add_string buf s;
+      Buffer.contents buf
+    in
+    class_gen c, s
+  in
+  span_gen (String.concat "-" (drop_last t))
+;;
+
+let mk_block ?escape lang =
+  List.map
+    (List.map (fun (scope, str) -> (span ?escape (fun c -> lang ^ "-" ^ c) scope) str))
+;;
+
+let rec highlight_tokens i spans line = function
+  | [] -> List.rev spans
+  | tok :: toks ->
+    let j = TmLanguage.ending tok in
+    assert (j > i);
+    let text = String.sub line i (j - i) in
+    let scope =
+      match TmLanguage.scopes tok with
+      | [] -> []
+      | scope :: _ -> String.split_on_char '.' scope
+    in
+    highlight_tokens j ((scope, text) :: spans) line toks
+;;
+
+let highlight_string t grammar stack str =
+  let lines = String.split_on_char '\n' str in
+  let rec loop stack acc = function
+    | [] -> List.rev acc
+    | line :: lines ->
+      (* Some patterns don't work if there isn't a newline *)
+      let line = line ^ "\n" in
+      let tokens, stack = TmLanguage.tokenize_exn t grammar stack line in
+      let spans = highlight_tokens 0 [] line tokens in
+      loop stack (spans :: acc) lines
+  in
+  loop stack [] lines
+;;
+
+let add_name name = function
+  | `Assoc assoc -> `Assoc (("name", `String name) :: assoc)
+  | _ -> failwith "Failed to add name, object not given"
+;;
+
+let lang_to_plists s =
+  match String.lowercase_ascii s with
+  | "ocaml" -> [ Jsons.ocaml_interface; Jsons.ocaml ]
+  | "dune" -> [ Jsons.dune ]
+  | "opam" -> [ Jsons.opam ]
+  | "sh" -> [ Jsons.shell |> add_name "sh" ]
+  | "shell" -> [ Jsons.shell |> add_name "shell" ]
+  | "bash" -> [ Jsons.shell |> add_name "bash" ]
+  | "diff" -> [ Jsons.diff |> add_name "diff" ]
+  | _ -> []
+;;
+
+type tm_lookup_method =
+  [ `Name
+  | `Scope_name
+  | `Filetype
+  ]
+
+let find_grammar_fun = function
+  | `Name -> TmLanguage.find_by_name
+  | `Scope_name -> TmLanguage.find_by_scope_name
+  | `Filetype -> TmLanguage.find_by_filetype
+;;
+
+let src_code_to_pairs ?escape ?(lookup_method = `Name) ?tm ~lang src =
+  let t =
+    match tm with
+    | Some tm -> tm
+    | None ->
+      let t = TmLanguage.create () in
+      let plist = lang_to_plists lang in
+      let grammars = List.map TmLanguage.of_yojson_exn plist in
+      List.iter (TmLanguage.add_grammar t) grammars;
+      t
+  in
+  match (find_grammar_fun lookup_method) t lang with
+  | None -> Error (`Unknown_lang lang)
+  | Some grammar ->
+    Ok (highlight_string t grammar TmLanguage.empty src |> mk_block ?escape lang)
+;;
+
+let src_code_to_html ?escape ?lookup_method ?tm ~lang src =
+  let pair_to_span (class_, content) =
+    "<span class='" ^ class_ ^ "'>" ^ content ^ "</span>"
+  in
+  src_code_to_pairs ?escape ?lookup_method ?tm ~lang src
+  |> function
+  | Ok pairs ->
+    Ok
+      ("<pre><code>"
+       ^ (String.concat "" @@ List.map pair_to_span @@ List.concat pairs)
+       ^ "</code></pre>")
+  | Error _ as e -> e
+;;
+
+module Grammars = struct
+  include Jsons
+end

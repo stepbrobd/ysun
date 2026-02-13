@@ -1,3 +1,3 @@
 (subdir
  pkgs
- (data_only_dirs omd))
+ (data_only_dirs hilite omd))
