@@ -1,6 +1,19 @@
 type error = [ `Unknown_lang of string ]
 
-let langs = [ "ocaml"; "dune"; "opam"; "sh"; "shell"; "diff"; "bash" ]
+let langs =
+  [ "ocaml"
+  ; "dune"
+  ; "opam"
+  ; "sh"
+  ; "shell"
+  ; "diff"
+  ; "bash"
+  ; "go"
+  ; "nix"
+  ; "html"
+  ; "console"
+  ]
+;;
 
 let filteri p l =
   let rec aux i acc = function
@@ -77,14 +90,16 @@ let rec highlight_tokens i spans line = function
   | [] -> List.rev spans
   | tok :: toks ->
     let j = TmLanguage.ending tok in
-    assert (j > i);
-    let text = String.sub line i (j - i) in
-    let scope =
-      match TmLanguage.scopes tok with
-      | [] -> []
-      | scope :: _ -> String.split_on_char '.' scope
-    in
-    highlight_tokens j ((scope, text) :: spans) line toks
+    if j <= i
+    then highlight_tokens i spans line toks
+    else (
+      let text = String.sub line i (j - i) in
+      let scope =
+        match TmLanguage.scopes tok with
+        | [] -> []
+        | scope :: _ -> String.split_on_char '.' scope
+      in
+      highlight_tokens j ((scope, text) :: spans) line toks)
 ;;
 
 let highlight_string t grammar stack str =
@@ -115,6 +130,10 @@ let lang_to_plists s =
   | "shell" -> [ Jsons.shell |> add_name "shell" ]
   | "bash" -> [ Jsons.shell |> add_name "bash" ]
   | "diff" -> [ Jsons.diff |> add_name "diff" ]
+  | "go" -> [ Jsons.go ]
+  | "nix" -> [ Jsons.nix ]
+  | "html" -> [ Jsons.html ]
+  | "console" -> [ Jsons.shell |> add_name "console" ]
   | _ -> []
 ;;
 

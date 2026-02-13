@@ -50,4 +50,7 @@ module Grammars : sig
   val opam : TmLanguage.yojson
   val shell : TmLanguage.yojson
   val diff : TmLanguage.yojson
+  val go : TmLanguage.yojson
+  val nix : TmLanguage.yojson
+  val html : TmLanguage.yojson
 end
