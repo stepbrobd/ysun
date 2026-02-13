@@ -1,8 +1,3 @@
-## Todo
-
-- Broken syntax highlighting
-- Broken math
-
 # License
 
 The contents inside this repository, excluding submodules, are licensed under the [CC BY-NC License](license.txt).
