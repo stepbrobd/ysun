@@ -2097,6 +2097,42 @@ let rec inline defs st =
         | None -> f ' ' n st
       in
       aux 0
+    | '$' ->
+      let off0 = pos st in
+      junk st;
+      let display = peek st = Some '$' in
+      if display then junk st;
+      let math_buf = Buffer.create 64 in
+      let rec scan_math () =
+        match peek st with
+        | None -> None
+        | Some '$' ->
+          junk st;
+          if display
+          then (
+            match peek st with
+            | Some '$' ->
+              junk st;
+              Some (Buffer.contents math_buf)
+            | _ ->
+              Buffer.add_char math_buf '$';
+              scan_math ())
+          else Some (Buffer.contents math_buf)
+        | Some c ->
+          junk st;
+          Buffer.add_char math_buf c;
+          scan_math ()
+      in
+      (match scan_math () with
+       | Some content when String.length (String.trim content) > 0 ->
+         let acc = text acc in
+         let display_type = if display then "display" else "inline" in
+         loop ~seen_link (Pre.R (Math ([], display_type, content)) :: acc) st
+       | _ ->
+         set_pos st off0;
+         junk st;
+         Buffer.add_char buf '$';
+         loop ~seen_link acc st)
     | _ as c ->
       junk st;
       Buffer.add_char buf c;

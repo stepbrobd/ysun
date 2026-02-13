@@ -199,6 +199,7 @@ let to_plain_text t =
     | Hard_break _ | Soft_break _ -> Buffer.add_char buf ' '
     | Html _ -> ()
     | Sup (_, i) -> go i
+    | Math (_, _, t) -> Buffer.add_string buf t
   in
   go t;
   Buffer.contents buf
@@ -231,6 +232,31 @@ let get_dimensions path =
       | _ -> None
     with
     | _ -> None)
+;;
+
+(* call tex2svg at build time to get tex to svg *)
+let tex2svg ~display content =
+  let flag = if display then "" else "--inline" in
+  let cmd =
+    Printf.sprintf
+      "tex2svg --speech false %s %s 2>/dev/null"
+      flag
+      (Filename.quote content)
+  in
+  try
+    let ic = Unix.open_process_in cmd in
+    let buf = Buffer.create 1024 in
+    (try
+       while true do
+         Buffer.add_char buf (input_char ic)
+       done
+     with
+     | End_of_file -> ());
+    let _ = Unix.close_process_in ic in
+    let svg = Buffer.contents buf in
+    if String.length svg > 0 then Some svg else None
+  with
+  | _ -> None
 ;;
 
 let nl = Raw "\n"
@@ -287,6 +313,16 @@ and inline = function
   | Link (attr, { label; destination; title }) -> url label destination title attr
   | Image (attr, { label; destination; title }) -> img label destination title attr
   | Sup (attrs, il) -> sup attrs (inline il)
+  | Math (_, display_type, content) ->
+    let display = display_type = "display" in
+    (match tex2svg ~display content with
+     | Some svg ->
+       if display
+       then elt Block "div" [ "class", "math-display" ] (Some (raw svg))
+       else raw svg
+     | None ->
+       let delim = if display then "$$" else "$" in
+       elt Inline "code" [] (Some (text (delim ^ content ^ delim))))
 ;;
 
 let alignment_attributes = function

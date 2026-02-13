@@ -3,6 +3,7 @@
 , dune-build-info
 , hilite
 , imagemagick
+, mathjax-node-cli
 , ppx_expect
 , uucp
 , uunf
@@ -41,6 +42,7 @@ buildDunePackage (finalAttrs: {
 
   propagatedNativeBuildInputs = [
     imagemagick
+    mathjax-node-cli
   ];
 
   doCheck = true;

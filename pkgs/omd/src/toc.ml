@@ -7,7 +7,7 @@ let rec remove_links inline =
   | Strong (attr, inline) -> Emph (attr, remove_links inline)
   | Link (_, link) -> link.label
   | Image (attr, link) -> Image (attr, { link with label = remove_links link.label })
-  | Hard_break _ | Soft_break _ | Html _ | Code _ | Text _ -> inline
+  | Hard_break _ | Soft_break _ | Html _ | Code _ | Text _ | Math _ -> inline
   | Sup (_, child) -> remove_links child
 ;;
 
