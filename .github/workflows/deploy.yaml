@@ -22,5 +22,7 @@ jobs:
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          preCommands: nix build -L
+          preCommands: |
+            npm install wrangler@latest
+            nix build -L
           command: deploy --assets ./result/var/www/html/
