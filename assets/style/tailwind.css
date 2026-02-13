@@ -47,8 +47,8 @@
     @apply text-nord-8 hover:text-nord-7;
   }
 
-  .katex {
-    @apply overflow-scroll;
+  .math-display {
+    @apply overflow-x-scroll;
   }
 }
 
