@@ -169,3 +169,61 @@
 .gskring span {
   @apply text-nord-8;
 }
+
+pre > code > [class*="-keyword"] {
+  color: var(--color-nord-9);
+}
+pre > code > [class*="-storage"] {
+  color: var(--color-nord-9);
+}
+pre > code > [class*="-string"] {
+  color: var(--color-nord-14);
+}
+pre > code > [class*="-comment"] {
+  color: var(--color-nord-3);
+  font-style: italic;
+}
+pre > code > [class*="-constant"] {
+  color: var(--color-nord-15);
+}
+pre > code > [class*="-entity-name-function"] {
+  color: var(--color-nord-8);
+}
+pre > code > [class*="-entity-name-type"] {
+  color: var(--color-nord-7);
+}
+pre > code > [class*="-entity-name-tag"] {
+  color: var(--color-nord-9);
+}
+pre > code > [class*="-entity-name-import"] {
+  color: var(--color-nord-7);
+}
+pre > code > [class*="-entity-other-attribute-name"] {
+  color: var(--color-nord-7);
+}
+pre > code > [class*="-variable"] {
+  color: var(--color-nord-4);
+}
+pre > code > [class*="-support"] {
+  color: var(--color-nord-8);
+}
+pre > code > [class*="-punctuation"] {
+  color: var(--color-nord-6);
+}
+pre > code > [class*="-markup-inserted"] {
+  color: var(--color-nord-14);
+}
+pre > code > [class*="-markup-deleted"] {
+  color: var(--color-nord-11);
+}
+pre > code > [class*="-meta-diff"] {
+  color: var(--color-nord-9);
+  font-style: italic;
+}
+pre > code > [class*="-meta-toc-list"] {
+  color: var(--color-nord-9);
+  font-weight: bold;
+}
+pre > code > [class*="-invalid"] {
+  color: var(--color-nord-11);
+}
