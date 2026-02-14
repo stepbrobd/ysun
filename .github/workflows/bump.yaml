@@ -26,4 +26,4 @@ jobs:
         uses: "gepbird/nix-update-action@v2"
         with:
           pr-reviewers: stepbrobd
-          blacklist: "default,dune,omd,ysun"
+          blacklist: "default,dune,hilite,omd,ysun"
