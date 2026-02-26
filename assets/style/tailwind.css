@@ -94,6 +94,10 @@
     @apply text-nord-6;
   }
 
+  .prose p {
+    @apply text-pretty text-justify;
+  }
+
   .prose code {
     @apply text-nord-13 rounded;
   }
