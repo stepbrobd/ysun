@@ -2,7 +2,7 @@ let make_url_node (meta, url, _file) =
   let open Model.Page in
   let open Yocaml_syndication.Xml in
   let loc = leaf ~name:"loc" (escape (Config.site_url ^ url)) in
-  let lastmod = may_leaf ~name:"lastmod" ~finalize:escape Fun.id meta.date in
+  let lastmod = may_leaf ~name:"lastmod" ~finalize:escape Fun.id meta.updated in
   node ~name:"url" [ loc; lastmod ]
 ;;
 

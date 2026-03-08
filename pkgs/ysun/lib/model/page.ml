@@ -1,7 +1,8 @@
 type t =
   { title : string option
   ; description : string option
-  ; date : string option
+  ; created : string option
+  ; updated : string option
   ; words : int option
   ; minutes : int option
   ; url : string option
@@ -14,7 +15,8 @@ type t =
 let make
       ?title
       ?description
-      ?date
+      ?created
+      ?updated
       ?words
       ?minutes
       ?url
@@ -24,7 +26,18 @@ let make
       ?(metas = [])
       ()
   =
-  { title; description; date; words; minutes; url; layout; hidden; redirect; metas }
+  { title
+  ; description
+  ; created
+  ; updated
+  ; words
+  ; minutes
+  ; url
+  ; layout
+  ; hidden
+  ; redirect
+  ; metas
+  }
 ;;
 
 let entity_name = "Page"
@@ -49,7 +62,8 @@ let validate_underlying_page fields =
   let open Yocaml.Data.Validation in
   let+ title = optional fields "title" string
   and+ description = optional fields "description" string
-  and+ date = optional fields "date" string
+  and+ created = optional fields "created" string
+  and+ updated = optional fields "updated" string
   and+ url = optional fields "url" string
   and+ layout = optional fields "layout" string
   and+ hidden = optional fields "hidden" bool
@@ -59,7 +73,8 @@ let validate_underlying_page fields =
   let metas = Option.value ~default:[] metas in
   { title
   ; description
-  ; date
+  ; created
+  ; updated
   ; words = None
   ; minutes = None
   ; url
@@ -75,7 +90,8 @@ let validate = Yocaml.Data.Validation.record validate_underlying_page
 let normalize
       { title
       ; description
-      ; date
+      ; created
+      ; updated
       ; words
       ; minutes
       ; url = _
@@ -88,7 +104,8 @@ let normalize
   let open Yocaml.Data in
   [ "title", option string title
   ; "description", option string description
-  ; "date", option string date
+  ; "created", option string created
+  ; "updated", option string updated
   ; "words", option int words
   ; "minutes", option int minutes
   ; "layout", option string layout

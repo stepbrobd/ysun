@@ -29,9 +29,15 @@ let run (module R : Sigs.RESOLVER) cache =
     page_list
     |> Stdlib.List.sort (fun (a, _, _) (b, _, _) ->
       let open Model.Page in
-      let da = Option.value ~default:"" a.date in
-      let db = Option.value ~default:"" b.date in
-      String.compare db da)
+      let ca = Option.value ~default:"" a.created in
+      let cb = Option.value ~default:"" b.created in
+      let created_cmp = String.compare cb ca in
+      if created_cmp <> 0
+      then created_cmp
+      else (
+        let ua = Option.value ~default:"" a.updated in
+        let ub = Option.value ~default:"" b.updated in
+        String.compare ub ua))
   in
   return (cache, sorted_pages)
 ;;

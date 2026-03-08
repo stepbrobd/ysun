@@ -1,7 +1,8 @@
 type t =
   { title : string option
   ; description : string option
-  ; date : string option
+  ; created : string option
+  ; updated : string option
   ; words : int option
   ; minutes : int option
   ; url : string option

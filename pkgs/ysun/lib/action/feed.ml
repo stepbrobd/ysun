@@ -23,7 +23,7 @@ let make_entry (meta, url, _file) =
   in
   let id = Config.site_url ^ url in
   let updated =
-    match meta.date with
+    match meta.updated with
     | Some d -> Option.value ~default:default_datetime (parse_date d)
     | None -> default_datetime
   in

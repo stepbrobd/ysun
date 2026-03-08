@@ -9,7 +9,7 @@ let normalize_page_item (meta, url) =
   let open Model.Page in
   record
     [ "title", option string meta.title
-    ; "date", option string meta.date
+    ; "created", option string meta.created
     ; "url", string url
     ]
 ;;
