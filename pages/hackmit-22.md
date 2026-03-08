@@ -1,7 +1,7 @@
 ---
 title: HackMIT 2022
 description: HackMIT 2022 at MIT, Cambridge, MA
-created: 2024-07-02
+created: 2022-10-13
 updated: 2025-05-14
 ---
 

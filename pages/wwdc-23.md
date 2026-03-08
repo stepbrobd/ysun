@@ -1,7 +1,7 @@
 ---
 title: WWDC 2023
 description: WWDC 2023 at Apple Park, Cupertino, CA
-created: 2024-07-02
+created: 2023-06-06
 updated: 2026-02-12
 ---
 

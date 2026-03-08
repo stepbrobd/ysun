@@ -1,7 +1,7 @@
 ---
 title: XDG
 description: Tired of cluttered home directory? A call to action to follow the XDG Base Directory Specification
-created: 2024-03-01
+created: 2023-04-26
 updated: 2024-07-03
 ---
 

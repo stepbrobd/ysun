@@ -1,7 +1,7 @@
 ---
 title: Finch
 description: A simple neural net framework and visualizer that uses genetic networks to train
-created: 2024-03-30
+created: 2023-09-15
 updated: 2026-02-12
 metas:
   go-import: ysun.co/finch git https://github.com/stepbrobd/finch.git

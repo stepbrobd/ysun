@@ -1,7 +1,7 @@
 ---
 title: NixCon 2025
 description: NixCon 2025 at OST, Rapperswil-Jona, Switzerland
-created: 2026-01-21
+created: 2025-09-07
 updated: 2026-02-12
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: PyCon 2023
 description: PyCon 2023 at Salt Palace Convention Center, Salt Lake City, UT
-created: 2024-03-03
+created: 2023-04-24
 updated: 2026-02-12
 ---
 
