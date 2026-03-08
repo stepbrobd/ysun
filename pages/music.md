@@ -1,8 +1,8 @@
 ---
-hidden: true
 title: Music
 created: 2025-01-29
 updated: 2026-03-08
+hidden: true
 ---
 
 ## Perfection

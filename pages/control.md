@@ -1,6 +1,6 @@
 ---
-description: Under Control zine for iPPL extended version
 title: Under control
+description: Under Control zine for iPPL extended version
 created: 2024-12-06
 updated: 2026-02-12
 ---

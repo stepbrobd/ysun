@@ -1,6 +1,6 @@
 ---
-description: Use Kanidm as the OIDC backend for Hydra
 title: Hydra OIDC guide
+description: Use Kanidm as the OIDC backend for Hydra
 created: 2025-09-11
 updated: 2026-02-12
 ---

@@ -1,6 +1,6 @@
 ---
-description: HackZurich 2023 at Zurich, Switzerland
 title: HackZurich 2023
+description: HackZurich 2023 at Zurich, Switzerland
 created: 2024-07-02
 updated: 2025-05-14
 ---

@@ -1,8 +1,8 @@
 ---
-description: You are either too fast, too suspicious, or just unlucky, it's rate limit, our 5xx error, or Cloudflare's 1xxx error
 title: Something is not right...
-hidden: true
-layout: error/widget
+description: You are either too fast, too suspicious, or just unlucky, it's rate limit, our 5xx error, or Cloudflare's 1xxx error
 created: 2025-08-08
 updated: 2026-02-12
+layout: error/widget
+hidden: true
 ---

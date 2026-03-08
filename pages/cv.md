@@ -1,8 +1,8 @@
 ---
-hidden: true
 title: Curriculum Vitae
 created: 2024-07-02
 updated: 2026-02-12
+hidden: true
 ---
 
 <p id="cv">Loading CV...</p>

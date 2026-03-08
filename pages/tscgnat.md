@@ -1,6 +1,6 @@
 ---
-description: How to workaround Tailscale dropping the entire CGNAT range if you want to keep traffic to some addresses within CGNAT IPv4 range
 title: De-escalating Tailscale CGNAT conflict
+description: How to workaround Tailscale dropping the entire CGNAT range if you want to keep traffic to some addresses within CGNAT IPv4 range
 created: 2025-11-01
 updated: 2026-02-12
 ---

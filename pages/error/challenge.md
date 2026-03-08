@@ -1,10 +1,10 @@
 ---
-description: Interactive challenge required
 title: Interactive challenge required
-hidden: true
-layout: error/waf
+description: Interactive challenge required
 created: 2025-08-08
 updated: 2026-02-12
+layout: error/waf
+hidden: true
 ---
 
 # Interactive challenge required

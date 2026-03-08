@@ -1,6 +1,6 @@
 ---
-description: A review of manga and anime series "The Dangers in My Heart"
 title: Otaku rant
+description: A review of manga and anime series "The Dangers in My Heart"
 created: 2024-03-31
 updated: 2026-02-12
 ---

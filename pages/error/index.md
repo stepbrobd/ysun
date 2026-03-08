@@ -1,10 +1,10 @@
 ---
-description: I have no clue how you got here...
 title: What happened?
-hidden: true
-layout: error/generic
+description: I have no clue how you got here...
 created: 2025-08-08
 updated: 2026-02-12
+layout: error/generic
+hidden: true
 ---
 
 # What happened?

@@ -1,10 +1,10 @@
 ---
-description: You are blocked by Cloudflare Web Application Firewall (WAF)
 title: You've been WAFed
-hidden: true
-layout: error/waf
+description: You are blocked by Cloudflare Web Application Firewall (WAF)
 created: 2025-08-08
 updated: 2026-02-12
+layout: error/waf
+hidden: true
 ---
 
 # You've been WAFed

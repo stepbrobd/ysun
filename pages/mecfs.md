@@ -1,6 +1,6 @@
 ---
-description: A summary of research related to ME/CFS and Long COVID
 title: ME/CFS & Long COVID
+description: A summary of research related to ME/CFS and Long COVID
 created: 2024-03-01
 updated: 2026-02-12
 ---

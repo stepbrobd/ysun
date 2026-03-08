@@ -1,11 +1,11 @@
 ---
+title: Static race detection
 description: Naive data race detector for Go based on stateful AST traversal with pre-defined structural operational semantic rules
+created: 2024-03-30
+updated: 2026-02-13
 metas:
   go-import: ysun.co/srd git https://github.com/stepbrobd/srd.git
   go-source: ysun.co/srd https://github.com/stepbrobd/srd https://github.com/stepbrobd/srd/tree/master{/dir} https://github.com/stepbrobd/srd/blob/master{/dir}/{file}#L{line}
-title: Static race detection
-created: 2024-03-30
-updated: 2026-02-13
 ---
 
 ## Problem
