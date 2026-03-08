@@ -1,7 +1,8 @@
 ---
-date: 2023-12-08
 description: Manage your system configurations + packages + ... my Nix way
 title: My outdated Nix way
+created: 2023-12-10
+updated: 2026-02-12
 ---
 
 Outdated and I'm too lazy to change anything here, just read my code.

@@ -1,7 +1,8 @@
 ---
-date: 2023-06-06
 description: WWDC 2023 at Apple Park, Cupertino, CA
 title: WWDC 2023
+created: 2024-07-02
+updated: 2026-02-12
 ---
 
 Photo dump from WWDC 2023 at Apple Park, Cupertino, CA.

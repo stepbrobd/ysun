@@ -1,7 +1,8 @@
 ---
-date: 2024-03-31
 description: A review of manga and anime series "The Dangers in My Heart"
 title: Otaku rant
+created: 2024-03-31
+updated: 2026-02-12
 ---
 
 I've caught up with the manga, and finished the second season of the anime yesterday.

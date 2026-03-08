@@ -1,7 +1,8 @@
 ---
-date: 2025-02-02
 description: How I setup Kanidm's read-only LDAP to work with Hydra build server
 title: Kanidm LDAP guide
+created: 2025-02-02
+updated: 2026-02-12
 ---
 
 > If you are reading this to setup SSO for Hydra,

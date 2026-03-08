@@ -1,7 +1,8 @@
 ---
-date: 2025-09-09
 description: Use Kanidm as the OIDC backend for Hydra
 title: Hydra OIDC guide
+created: 2025-09-11
+updated: 2026-02-12
 ---
 
 [Previously](/kanidm), we covered how to set up Kanidm's read-only LDAP interface and get SSO working on Hydra.

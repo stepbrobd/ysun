@@ -1,7 +1,8 @@
 ---
-date: 2022-12-07
 description: A summary of research related to ME/CFS and Long COVID
 title: ME/CFS & Long COVID
+created: 2024-03-01
+updated: 2026-02-12
 ---
 
 This post is an introduction to my bachelor's thesis background information,

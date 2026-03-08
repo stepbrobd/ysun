@@ -1,10 +1,11 @@
 ---
-date: 2024-03-30
 description: Churn, baby, churn!
 metas:
   go-import: ysun.co/churn git https://github.com/stepbrobd/churn.git
   go-source: ysun.co/churn https://github.com/stepbrobd/churn https://github.com/stepbrobd/churn/tree/master{/dir} https://github.com/stepbrobd/churn/blob/master{/dir}/{file}#L{line}
 title: Churn
+created: 2024-03-30
+updated: 2026-02-12
 ---
 
 ## Motivation

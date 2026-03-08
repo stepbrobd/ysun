@@ -1,10 +1,11 @@
 ---
-date: 2023-09-15
 description: A simple neural net framework and visualizer that uses genetic networks to train
 metas:
   go-import: ysun.co/finch git https://github.com/stepbrobd/finch.git
   go-source: ysun.co/finch https://github.com/stepbrobd/finch https://github.com/stepbrobd/finch/tree/master{/dir} https://github.com/stepbrobd/finch/blob/master{/dir}/{file}#L{line}
 title: Finch
+created: 2024-03-30
+updated: 2026-02-12
 ---
 
 ## Credit

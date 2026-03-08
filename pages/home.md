@@ -1,8 +1,9 @@
 ---
-date: 2026-03-07
 description: Yifei Sun - 孫 奕飛 (そん いーふぇい)
 title: Yifei Sun
 url: /index.html
+created: 2024-03-01
+updated: 2026-03-08
 ---
 
 I am a PhD student at ENS de Lyon [Avalon Team](https://avalon.ens-lyon.fr) and Inria [DataMove Team](https://team.inria.fr/datamove) co-supervised under [Olivier Richard](https://datamove.imag.fr/olivier.richard) and [Christian Perez](https://avalon.ens-lyon.fr/~cperez/web/doku.php/start).

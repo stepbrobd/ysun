@@ -1,7 +1,8 @@
 ---
-date: 2022-04-27
 description: PyCon 2022 at Salt Palace Convention Center, Salt Lake City, UT
 title: PyCon 2022
+created: 2024-03-03
+updated: 2026-02-12
 ---
 
 Photo dump from PyCon 2022 at Salt Palace Convention Center, Salt Lake City, UT.

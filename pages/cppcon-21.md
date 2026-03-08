@@ -1,7 +1,8 @@
 ---
-date: 2021-11-03
 description: CppCon 2021 at Gaylord Rockies, Aurora, CO
 title: CppCon 2021
+created: 2024-07-02
+updated: 2025-05-14
 ---
 
 Photo dump from CppCon 2021 at Gaylord Rockies, Aurora, CO.
