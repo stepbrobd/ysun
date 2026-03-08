@@ -2,7 +2,8 @@
 title: Why do I have the second largest Nix monorepo?
 description: Why do I have the second largest Nix monorepo? I'll cover how I setup a weird configuration structure that allowed me to override arbitrary nixpkgs.lib functions and any nix packages.
 created: 2026-03-03
-updated: 2026-03-03
+updated: 2026-03-08
+hidden: true
 ---
 
 So... First of all, clickbait title ;) I'm certain there are larger Nix monorepo
