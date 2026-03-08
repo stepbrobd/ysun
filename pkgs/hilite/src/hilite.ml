@@ -4,6 +4,7 @@ let langs =
   [ "ocaml"
   ; "dune"
   ; "opam"
+  ; "toml"
   ; "sh"
   ; "shell"
   ; "diff"
@@ -126,6 +127,7 @@ let lang_to_plists s =
   | "ocaml" -> [ Jsons.ocaml_interface; Jsons.ocaml ]
   | "dune" -> [ Jsons.dune ]
   | "opam" -> [ Jsons.opam ]
+  | "toml" -> [ Jsons.toml ]
   | "sh" -> [ Jsons.shell |> add_name "sh" ]
   | "shell" -> [ Jsons.shell |> add_name "shell" ]
   | "bash" -> [ Jsons.shell |> add_name "bash" ]

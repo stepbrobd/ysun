@@ -561,6 +561,19 @@ let extract_signature_doc (s : Signature.t) =
          [include] items. *)
       expansion.content.doc
   | doc, _ -> doc
+
+```
+
+```toml
+[platform.github]
+origin = true
+domain = "github.com"
+user = "stepbrobd"
+
+[repo."miroir"]
+description = "repo manager wannabe?"
+visibility = "public"
+archived = false
 ```
 |}
 ;;

@@ -284,6 +284,441 @@ let ocaml_interface =
     ]
 ;;
 
+let toml =
+`Assoc
+  [   "fileTypes", `List
+    [ `String "toml"
+    ]
+  ;   "repository", `Assoc
+    [     "invalid", `Assoc
+      [       "match", `String "\\S+(\\s*(?=\\S))?"
+      ;       "name", `String "invalid.illegal.not-allowed-here.toml"
+      ]
+    ;     "primatives", `Assoc
+      [       "patterns", `List
+        [ `Assoc
+          [           "begin", `String "\\G\"\"\""
+          ;           "endCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.string.end.toml"
+              ]
+            ]
+          ;           "end", `String "\"{3,5}"
+          ;           "patterns", `List
+            [ `Assoc
+              [               "match", `String "\\\\([btnfr\"\\\\]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
+              ;               "name", `String "constant.character.escape.toml"
+              ]
+            ; `Assoc
+              [               "match", `String "\\\\[^btnfr\"\\\\\\n]"
+              ;               "name", `String "invalid.illegal.escape.toml"
+              ]
+            ]
+          ;           "name", `String "string.quoted.triple.double.toml"
+          ;           "beginCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.string.begin.toml"
+              ]
+            ]
+          ]
+        ; `Assoc
+          [           "begin", `String "\\G\""
+          ;           "endCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.string.end.toml"
+              ]
+            ]
+          ;           "end", `String "\""
+          ;           "patterns", `List
+            [ `Assoc
+              [               "match", `String "\\\\([btnfr\"\\\\]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
+              ;               "name", `String "constant.character.escape.toml"
+              ]
+            ; `Assoc
+              [               "match", `String "\\\\[^btnfr\"\\\\]"
+              ;               "name", `String "invalid.illegal.escape.toml"
+              ]
+            ]
+          ;           "name", `String "string.quoted.double.toml"
+          ;           "beginCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.string.begin.toml"
+              ]
+            ]
+          ]
+        ; `Assoc
+          [           "begin", `String "\\G'''"
+          ;           "endCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.string.end.toml"
+              ]
+            ]
+          ;           "end", `String "'{3,5}"
+          ;           "name", `String "string.quoted.triple.single.toml"
+          ;           "beginCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.string.begin.toml"
+              ]
+            ]
+          ]
+        ; `Assoc
+          [           "begin", `String "\\G'"
+          ;           "endCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.string.end.toml"
+              ]
+            ]
+          ;           "end", `String "'"
+          ;           "name", `String "string.quoted.single.toml"
+          ;           "beginCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.string.begin.toml"
+              ]
+            ]
+          ]
+        ; `Assoc
+          [           "match", `String "\\G(?x)\n\t\t\t\t\t\t[0-9]{4}\n\t\t\t\t\t\t-\n\t\t\t\t\t\t(0[1-9]|1[012])\n\t\t\t\t\t\t-\n\t\t\t\t\t\t(?!00|3[2-9])[0-3][0-9]\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t[Tt ]\n\t\t\t\t\t\t\t(?!2[5-9])[0-2][0-9]\n\t\t\t\t\t\t\t:\n\t\t\t\t\t\t\t[0-5][0-9]\n\t\t\t\t\t\t\t:\n\t\t\t\t\t\t\t(?!6[1-9])[0-6][0-9]\n\t\t\t\t\t\t\t(\\.[0-9]+)?\n\t\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\tZ\n\t\t\t\t\t\t\t  | [+-](?!2[5-9])[0-2][0-9]:[0-5][0-9]\n\t\t\t\t\t\t\t)?\n\t\t\t\t\t\t)?\n\t\t\t\t\t"
+          ;           "name", `String "constant.other.date.toml"
+          ]
+        ; `Assoc
+          [           "match", `String "\\G(?x)\n\t\t\t\t\t\t(?!2[5-9])[0-2][0-9]\n\t\t\t\t\t\t:\n\t\t\t\t\t\t[0-5][0-9]\n\t\t\t\t\t\t:\n\t\t\t\t\t\t(?!6[1-9])[0-6][0-9]\n\t\t\t\t\t\t(\\.[0-9]+)?\n\t\t\t\t\t"
+          ;           "name", `String "constant.other.time.toml"
+          ]
+        ; `Assoc
+          [           "match", `String "\\G(true|false)"
+          ;           "name", `String "constant.language.boolean.toml"
+          ]
+        ; `Assoc
+          [           "match", `String "\\G0x\\h(\\h|_\\h)*"
+          ;           "name", `String "constant.numeric.hex.toml"
+          ]
+        ; `Assoc
+          [           "match", `String "\\G0o[0-7]([0-7]|_[0-7])*"
+          ;           "name", `String "constant.numeric.octal.toml"
+          ]
+        ; `Assoc
+          [           "match", `String "\\G0b[01]([01]|_[01])*"
+          ;           "name", `String "constant.numeric.binary.toml"
+          ]
+        ; `Assoc
+          [           "match", `String "\\G[+-]?(inf|nan)"
+          ;           "name", `String "constant.numeric.toml"
+          ]
+        ; `Assoc
+          [           "match", `String "(?x)\n\t\t\t\t\t\t\\G\n\t\t\t\t\t\t(\n\t\t\t\t\t\t    [+-]?\n\t\t\t\t\t\t    (\n\t\t\t\t\t\t\t\t0\n\t\t\t\t\t\t\t  | ([1-9](([0-9]|_[0-9])+)?)\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t)\n\t\t\t\t\t\t(?=[.eE])\n\t\t\t\t\t\t(\n\t\t\t\t\t\t    \\.\n\t\t\t\t\t\t    ([0-9](([0-9]|_[0-9])+)?)\n\t\t\t\t\t\t)?\n\t\t\t\t\t\t(\n\t\t\t\t\t\t    [eE]\n\t\t\t\t\t\t    ([+-]?[0-9](([0-9]|_[0-9])+)?)\n\t\t\t\t\t\t)?\n\t\t\t\t\t"
+          ;           "name", `String "constant.numeric.float.toml"
+          ]
+        ; `Assoc
+          [           "match", `String "(?x)\n\t\t\t\t\t\t\\G\n\t\t\t\t\t\t(\n\t\t\t\t\t\t    [+-]?\n\t\t\t\t\t\t    (\n\t\t\t\t\t\t\t\t0\n\t\t\t\t\t\t\t  | ([1-9](([0-9]|_[0-9])+)?)\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t)\n\t\t\t\t\t"
+          ;           "name", `String "constant.numeric.integer.toml"
+          ]
+        ; `Assoc
+          [           "begin", `String "\\G\\["
+          ;           "endCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.array.end.toml"
+              ]
+            ]
+          ;           "end", `String "\\]"
+          ;           "patterns", `List
+            [ `Assoc
+              [               "begin", `String "(?=[\"'']|[+-]?[0-9]|[+-]?(inf|nan)|true|false|\\[|\\{)"
+              ;               "endCaptures", `Assoc
+                [                 "0", `Assoc
+                  [                   "name", `String "punctuation.separator.array.toml"
+                  ]
+                ]
+              ;               "end", `String ",|(?=])"
+              ;               "patterns", `List
+                [ `Assoc
+                  [                   "include", `String "#primatives"
+                  ]
+                ; `Assoc
+                  [                   "include", `String "#comments"
+                  ]
+                ; `Assoc
+                  [                   "include", `String "#invalid"
+                  ]
+                ]
+              ]
+            ; `Assoc
+              [               "include", `String "#comments"
+              ]
+            ; `Assoc
+              [               "include", `String "#invalid"
+              ]
+            ]
+          ;           "name", `String "meta.array.toml"
+          ;           "beginCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.array.begin.toml"
+              ]
+            ]
+          ]
+        ; `Assoc
+          [           "begin", `String "\\G\\{"
+          ;           "endCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.inline-table.end.toml"
+              ]
+            ]
+          ;           "end", `String "\\}"
+          ;           "patterns", `List
+            [ `Assoc
+              [               "begin", `String "(?=\\S)"
+              ;               "endCaptures", `Assoc
+                [                 "0", `Assoc
+                  [                   "name", `String "punctuation.separator.inline-table.toml"
+                  ]
+                ]
+              ;               "end", `String ",|(?=})"
+              ;               "patterns", `List
+                [ `Assoc
+                  [                   "include", `String "#key_pair"
+                  ]
+                ]
+              ]
+            ; `Assoc
+              [               "include", `String "#comments"
+              ]
+            ]
+          ;           "name", `String "meta.inline-table.toml"
+          ;           "beginCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.inline-table.begin.toml"
+              ]
+            ]
+          ]
+        ]
+      ]
+    ;     "groups", `Assoc
+      [       "patterns", `List
+        [ `Assoc
+          [           "match", `String "^\\s*(\\[)([^\\[\\]]*)(\\])"
+          ;           "name", `String "meta.group.toml"
+          ;           "captures", `Assoc
+            [             "1", `Assoc
+              [               "name", `String "punctuation.definition.section.begin.toml"
+              ]
+            ;             "2", `Assoc
+              [               "patterns", `List
+                [ `Assoc
+                  [                   "match", `String "[^\\s.]+"
+                  ;                   "name", `String "entity.name.section.toml"
+                  ]
+                ]
+              ]
+            ;             "3", `Assoc
+              [               "name", `String "punctuation.definition.section.begin.toml"
+              ]
+            ]
+          ]
+        ; `Assoc
+          [           "match", `String "^\\s*(\\[\\[)([^\\[\\]]*)(\\]\\])"
+          ;           "name", `String "meta.group.double.toml"
+          ;           "captures", `Assoc
+            [             "1", `Assoc
+              [               "name", `String "punctuation.definition.section.begin.toml"
+              ]
+            ;             "2", `Assoc
+              [               "patterns", `List
+                [ `Assoc
+                  [                   "match", `String "[^\\s.]+"
+                  ;                   "name", `String "entity.name.section.toml"
+                  ]
+                ]
+              ]
+            ;             "3", `Assoc
+              [               "name", `String "punctuation.definition.section.begin.toml"
+              ]
+            ]
+          ]
+        ]
+      ]
+    ;     "comments", `Assoc
+      [       "begin", `String "(^[ \\t]+)?(?=#)"
+      ;       "end", `String "(?!\\G)"
+      ;       "patterns", `List
+        [ `Assoc
+          [           "begin", `String "#"
+          ;           "end", `String "\\n"
+          ;           "name", `String "comment.line.number-sign.toml"
+          ;           "beginCaptures", `Assoc
+            [             "0", `Assoc
+              [               "name", `String "punctuation.definition.comment.toml"
+              ]
+            ]
+          ]
+        ]
+      ;       "beginCaptures", `Assoc
+        [         "1", `Assoc
+          [           "name", `String "punctuation.whitespace.comment.leading.toml"
+          ]
+        ]
+      ]
+    ;     "key_pair", `Assoc
+      [       "patterns", `List
+        [ `Assoc
+          [           "begin", `String "([A-Za-z0-9_-]+)\\s*(=)\\s*"
+          ;           "end", `String "(?<=\\S)(?<!=)|$"
+          ;           "patterns", `List
+            [ `Assoc
+              [               "include", `String "#primatives"
+              ]
+            ]
+          ;           "captures", `Assoc
+            [             "1", `Assoc
+              [               "name", `String "variable.other.key.toml"
+              ]
+            ;             "2", `Assoc
+              [               "name", `String "punctuation.separator.key-value.toml"
+              ]
+            ]
+          ]
+        ; `Assoc
+          [           "begin", `String "((\")(.*?)(\"))\\s*(=)\\s*"
+          ;           "end", `String "(?<=\\S)(?<!=)|$"
+          ;           "patterns", `List
+            [ `Assoc
+              [               "include", `String "#primatives"
+              ]
+            ]
+          ;           "captures", `Assoc
+            [             "3", `Assoc
+              [               "patterns", `List
+                [ `Assoc
+                  [                   "match", `String "\\\\([btnfr\"\\\\]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
+                  ;                   "name", `String "constant.character.escape.toml"
+                  ]
+                ; `Assoc
+                  [                   "match", `String "\\\\[^btnfr\"\\\\]"
+                  ;                   "name", `String "invalid.illegal.escape.toml"
+                  ]
+                ; `Assoc
+                  [                   "match", `String "\""
+                  ;                   "name", `String "invalid.illegal.not-allowed-here.toml"
+                  ]
+                ]
+              ]
+            ;             "1", `Assoc
+              [               "name", `String "variable.other.key.toml"
+              ]
+            ;             "4", `Assoc
+              [               "name", `String "punctuation.definition.variable.end.toml"
+              ]
+            ;             "2", `Assoc
+              [               "name", `String "punctuation.definition.variable.begin.toml"
+              ]
+            ;             "5", `Assoc
+              [               "name", `String "punctuation.separator.key-value.toml"
+              ]
+            ]
+          ]
+        ; `Assoc
+          [           "begin", `String "((')([^']*)('))\\s*(=)\\s*"
+          ;           "end", `String "(?<=\\S)(?<!=)|$"
+          ;           "patterns", `List
+            [ `Assoc
+              [               "include", `String "#primatives"
+              ]
+            ]
+          ;           "captures", `Assoc
+            [             "1", `Assoc
+              [               "name", `String "variable.other.key.toml"
+              ]
+            ;             "4", `Assoc
+              [               "name", `String "punctuation.definition.variable.end.toml"
+              ]
+            ;             "2", `Assoc
+              [               "name", `String "punctuation.definition.variable.begin.toml"
+              ]
+            ;             "5", `Assoc
+              [               "name", `String "punctuation.separator.key-value.toml"
+              ]
+            ]
+          ]
+        ; `Assoc
+          [           "begin", `String "(?x)\n\t\t\t\t\t\t(\n\t\t\t\t\t\t\t(\n\t\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t\t[A-Za-z0-9_-]+\t\t\t\t# Bare key\n\t\t\t\t\t\t\t\t  | \"  (?:[^\"\\\\]|\\\\.)* \"\t\t# Double quoted key\n\t\t\t\t\t\t\t\t  | ' [^']*          '\t\t# Sindle quoted key\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t(?:\n\t\t\t\t\t\t\t\t\t\\s* \\. \\s*\t\t\t\t\t# Dot\n\t\t\t\t\t\t\t\t  | (?= \\s* =)\t\t\t\t\t#   or look-ahead for equals\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t){2,}\t\t\t\t\t\t\t\t# Ensure at least one dot\n\t\t\t\t\t\t)\n\t\t\t\t\t\t\\s*(=)\\s*\n\t\t\t\t\t"
+          ;           "end", `String "(?<=\\S)(?<!=)|$"
+          ;           "comment", `String "Dotted key"
+          ;           "patterns", `List
+            [ `Assoc
+              [               "include", `String "#primatives"
+              ]
+            ]
+          ;           "captures", `Assoc
+            [             "1", `Assoc
+              [               "name", `String "variable.other.key.toml"
+              ;               "patterns", `List
+                [ `Assoc
+                  [                   "match", `String "\\."
+                  ;                   "name", `String "punctuation.separator.variable.toml"
+                  ]
+                ; `Assoc
+                  [                   "match", `String "(\")((?:[^\"\\\\]|\\\\.)*)(\")"
+                  ;                   "captures", `Assoc
+                    [                     "1", `Assoc
+                      [                       "name", `String "punctuation.definition.variable.begin.toml"
+                      ]
+                    ;                     "2", `Assoc
+                      [                       "patterns", `List
+                        [ `Assoc
+                          [                           "match", `String "\\\\([btnfr\"\\\\]|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
+                          ;                           "name", `String "constant.character.escape.toml"
+                          ]
+                        ; `Assoc
+                          [                           "match", `String "\\\\[^btnfr\"\\\\]"
+                          ;                           "name", `String "invalid.illegal.escape.toml"
+                          ]
+                        ]
+                      ]
+                    ;                     "3", `Assoc
+                      [                       "name", `String "punctuation.definition.variable.end.toml"
+                      ]
+                    ]
+                  ]
+                ; `Assoc
+                  [                   "match", `String "(')[^']*(')"
+                  ;                   "captures", `Assoc
+                    [                     "1", `Assoc
+                      [                       "name", `String "punctuation.definition.variable.begin.toml"
+                      ]
+                    ;                     "2", `Assoc
+                      [                       "name", `String "punctuation.definition.variable.end.toml"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ;             "3", `Assoc
+              [               "name", `String "punctuation.separator.key-value.toml"
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ;   "keyEquivalent", `String "^~T"
+  ;   "uuid", `String "7DEF2EDB-5BB7-4DD2-9E78-3541A26B7923"
+  ;   "patterns", `List
+    [ `Assoc
+      [       "include", `String "#comments"
+      ]
+    ; `Assoc
+      [       "include", `String "#groups"
+      ]
+    ; `Assoc
+      [       "include", `String "#key_pair"
+      ]
+    ; `Assoc
+      [       "include", `String "#invalid"
+      ]
+    ]
+  ;   "name", `String "TOML"
+  ;   "scopeName", `String "source.toml"
+  ]
+;;
+
 let ocaml =
   `Assoc
     [ "name", `String "OCaml"

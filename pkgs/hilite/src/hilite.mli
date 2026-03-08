@@ -48,6 +48,7 @@ module Grammars : sig
   val ocaml_interface : TmLanguage.yojson
   val dune : TmLanguage.yojson
   val opam : TmLanguage.yojson
+  val toml : TmLanguage.yojson
   val shell : TmLanguage.yojson
   val diff : TmLanguage.yojson
   val go : TmLanguage.yojson
