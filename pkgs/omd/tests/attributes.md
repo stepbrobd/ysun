@@ -296,7 +296,7 @@ Footnotes:
 [^footnote]: link
 .
 <p><sup><a href="#fn:footnote" id="fnref-footnote">footnote</a></sup></p>
-<div class="footnotes"><hr /><ol><li id="fn:footnote"><p>link<a href="#fnref-footnote">↩</a></p></li>
+<div class="footnotes"><hr /><ol><li id="fn:footnote"><p>link<sup><a href="#fnref-footnote">↩</a></sup></p></li>
 </ol>
 </div>
 ```
@@ -311,7 +311,7 @@ Footnote with inline link on continuation line:
 .
 <p><sup><a href="#fn:1" id="fnref-1">1</a></sup></p>
 <div class="footnotes"><hr /><ol><li id="fn:1"><p>text with
-<a href="http://example.com">inline link</a> inside<a href="#fnref-1">↩︎</a></p>
+<a href="http://example.com">inline link</a> inside<sup><a href="#fnref-1">↩︎</a></sup></p>
 </li>
 </ol>
 </div>
@@ -329,7 +329,7 @@ Footnote with multiple links across continuation lines:
 <p><sup><a href="#fn:1" id="fnref-1">1</a></sup></p>
 <div class="footnotes"><hr /><ol><li id="fn:1"><p>multi-line with
 <a href="http://a.com">link one</a> and
-<a href="http://b.com">link two</a> and more<a href="#fnref-1">↩︎</a></p>
+<a href="http://b.com">link two</a> and more<sup><a href="#fnref-1">↩︎</a></sup></p>
 </li>
 </ol>
 </div>
