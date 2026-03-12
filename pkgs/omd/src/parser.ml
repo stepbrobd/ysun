@@ -2184,10 +2184,12 @@ let link_reference_definition st : attributes link_def =
   ignore (sp3 st);
   let is_footnote label = String.length label > 0 && String.get label 0 = '^' in
   let footnote_content st =
-    (* read everything until the next link/footnote definition or end of input
+    (* read everything until the next link/footnote definition or end of input.
        block parser's trim_left strips leading whitespace from continuation lines,
-       so we can't rely on indentation, instead, read greedily and stop when we
-       see a newline followed by '[' (potential new definition) *)
+       so we can't rely on indentation. instead, read greedily and stop only when
+       we see a newline followed by a definition pattern [label]: — inline links
+       like [text](url) or [text][ref] on continuation lines are not definitions
+       and should be included in the footnote content. *)
     let buf = Buffer.create 64 in
     let rec loop () =
       match peek st with
@@ -2197,8 +2199,30 @@ let link_reference_definition st : attributes link_def =
         junk st;
         (match peek st with
          | Some '[' ->
-           set_pos st saved;
-           Buffer.contents buf
+           (* look ahead: only stop if this is a new [label]: definition *)
+           let bracket_pos = pos st in
+           junk st;
+           let is_definition =
+             let rec scan_label () =
+               match peek st with
+               | None | Some '\n' -> false
+               | Some ']' ->
+                 junk st;
+                 peek st = Some ':'
+               | Some _ ->
+                 junk st;
+                 scan_label ()
+             in
+             scan_label ()
+           in
+           set_pos st bracket_pos;
+           if is_definition
+           then (
+             set_pos st saved;
+             Buffer.contents buf)
+           else (
+             Buffer.add_char buf '\n';
+             loop ())
          | _ ->
            Buffer.add_char buf '\n';
            loop ())

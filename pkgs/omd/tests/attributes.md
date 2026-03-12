@@ -300,3 +300,37 @@ Footnotes:
 </ol>
 </div>
 ```
+
+Footnote with inline link on continuation line:
+
+```example
+[^1]
+
+[^1]: text with
+[inline link](http://example.com) inside
+.
+<p><sup><a href="#fn:1" id="fnref-1">1</a></sup></p>
+<div class="footnotes"><hr /><ol><li id="fn:1"><p>text with
+<a href="http://example.com">inline link</a> inside<a href="#fnref-1">↩︎</a></p>
+</li>
+</ol>
+</div>
+```
+
+Footnote with multiple links across continuation lines:
+
+```example
+[^1]
+
+[^1]: multi-line with
+[link one](http://a.com) and
+[link two](http://b.com) and more
+.
+<p><sup><a href="#fn:1" id="fnref-1">1</a></sup></p>
+<div class="footnotes"><hr /><ol><li id="fn:1"><p>multi-line with
+<a href="http://a.com">link one</a> and
+<a href="http://b.com">link two</a> and more<a href="#fnref-1">↩︎</a></p>
+</li>
+</ol>
+</div>
+```
