@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/style/tailwind.css">
-    <link rel="icon" href="/favicon.ico">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/style/tailwind.css" />
+    <link rel="icon" href="/favicon.ico" />
     <script
-      defer
+      defer="defer"
       data-domain="ysun.co"
       src="https://stats.ysun.co/js/script.file-downloads.hash.outbound-links.js"
     ></script>
     <title>{{ title }}</title>
     {% for meta in metas %}
-    <meta {{ meta.attr }}="{{ meta.name }}" content="{{ meta.content }}">
+    <meta {{ meta.attr }}="{{ meta.name }}" content="{{ meta.content }}" />
     {% endfor %}
   </head>
   <body class="flex flex-col min-h-screen p-4 gap-8">
