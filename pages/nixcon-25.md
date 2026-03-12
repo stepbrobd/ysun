@@ -5,7 +5,8 @@ created: 2025-09-07
 updated: 2026-02-12
 ---
 
-Photo dump from NixCon 2025 at [OST](https://www.ost.ch/en/), Rapperswil-Jona, Switzerland.
+Photo dump from NixCon 2025 at [OST](https://www.ost.ch/en/), Rapperswil-Jona,
+Switzerland.
 
 ![The event venue](/assets/static/img/nixcon-25-1.avif)
 

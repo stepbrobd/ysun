@@ -11,8 +11,8 @@ hidden: true
 
 <div>::CF_WIDGET_BOX::</div>
 
-You must've done something really sketchy stuff to get here...
-Holy cow (or not) is here to cleanse your soul:
+You must've done something really sketchy stuff to get here... Holy cow (or not)
+is here to cleanse your soul:
 
 ```shell
 $ nix run nixpkgs#neo-cowsay -- --random pax vobiscum sinner

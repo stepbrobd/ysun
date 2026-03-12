@@ -31,7 +31,7 @@
       };
 
       formatter = pkgs.writeShellScriptBin "formatter" ''
-        ${lib.getExe pkgs.deno} fmt --permit-no-files --ignore=**/*.md .
+        ${lib.getExe pkgs.deno} fmt pages
         ${lib.getExe pkgs.nixpkgs-fmt} .
         ${lib.getExe pkgs.ocamlPackages.dune} fmt
       '';
