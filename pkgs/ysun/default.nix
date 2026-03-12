@@ -2,7 +2,6 @@
 , buildDunePackage
 , cmdliner
 , dune-build-info
-, minhtml
 , tailwindcss_4
 , yocaml
 , yocaml_eio
@@ -36,10 +35,7 @@ buildDunePackage (finalAttrs: {
 
   env.DUNE_CACHE = "disabled";
 
-  nativeBuildInputs = [
-    minhtml
-    tailwindcss_4
-  ];
+  nativeBuildInputs = [ tailwindcss_4 ];
 
   buildInputs = [
     cmdliner
@@ -67,7 +63,6 @@ buildDunePackage (finalAttrs: {
     dune install --prefix $out --libdir $OCAMLFIND_DESTDIR ${finalAttrs.pname}
 
     rm outputs/cache
-    (shopt -s globstar; minhtml --minify-css --minify-js outputs/**/*.html)
     mkdir -p $out/var/www/html
     cp -r outputs/* $out/var/www/html/
 
