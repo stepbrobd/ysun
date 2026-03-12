@@ -13,9 +13,9 @@ I finished my undergrad at University of Utah advised under [Shad Roundy](https:
 
 I'm generally interested in systems and theory ([CV](/cv)), topics include:
 
-- Reproducible HPC testbed infrastructure: experiment description, configuration and reconfiguration formalization, and programmable networking via eBPF/XDP.
-- Formal verification of consistency and safety properties in distributed systems.
-- Constructive type theory and mechanized proofs.
+- Reproducible HPC testbed infrastructure, experiment description, configuration and reconfiguration formalization, and programmable networking via eBPF/XDP
+- Formal verification of consistency and safety properties in distributed systems
+- Constructive type theory and mechanized proofs
 
 My contact info is hidden within the [source code of this site](https://github.com/search?q=repo%3Astepbrobd%2Fysun+%22hidden%3A+true%22+%22redirect%3A+https%3A%2F%2F%22+%22layout%3A+redirect%22&type=code).
 Search for the platform you want to reach me on in all lowercase (e.g. [`github`](/github), [`linkedin`](/linkedin), etc.).
