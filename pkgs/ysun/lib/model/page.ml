@@ -87,6 +87,23 @@ let validate_underlying_page fields =
 
 let validate = Yocaml.Data.Validation.record validate_underlying_page
 
+(* it seems like omd and other upper layer libs are not escaping chars *)
+(* this shit broke my go vanity import setup so these needs to be added *)
+(* these are not full escape but it kinda worked for my usage *)
+let escape s =
+  let b = Buffer.create (String.length s) in
+  String.iter
+    (fun c ->
+       match c with
+       | '"' -> Buffer.add_string b "&quot;"
+       | '&' -> Buffer.add_string b "&amp;"
+       | '<' -> Buffer.add_string b "&lt;"
+       | '>' -> Buffer.add_string b "&gt;"
+       | c -> Buffer.add_char b c)
+    s;
+  Buffer.contents b
+;;
+
 let normalize
       { title
       ; description
@@ -120,7 +137,8 @@ let normalize
                 then "property"
                 else "name"
               in
-              record [ "attr", string attr; "name", string k; "content", string v ])
+              record
+                [ "attr", string attr; "name", string k; "content", string (escape v) ])
            metas) )
   ]
 ;;
