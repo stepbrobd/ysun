@@ -1,6 +1,7 @@
 { lib
 , buildDunePackage
 , cmdliner
+, deno
 , dune-build-info
 , tailwindcss_4
 , yocaml
@@ -35,7 +36,10 @@ buildDunePackage (finalAttrs: {
 
   env.DUNE_CACHE = "disabled";
 
-  nativeBuildInputs = [ tailwindcss_4 ];
+  nativeBuildInputs = [
+    deno
+    tailwindcss_4
+  ];
 
   buildInputs = [
     cmdliner
@@ -63,6 +67,7 @@ buildDunePackage (finalAttrs: {
     dune install --prefix $out --libdir $OCAMLFIND_DESTDIR ${finalAttrs.pname}
 
     rm outputs/cache
+    DENO_DIR=$(mktemp -d) deno fmt outputs
     mkdir -p $out/var/www/html
     cp -r outputs/* $out/var/www/html/
 
