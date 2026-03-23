@@ -7,7 +7,7 @@ type entry =
   }
 
 let header =
-  "# StepBroBD, Inc. | noc@stepbrobd.com | AS10779, AS18932 | 2025-12-18T00:00:00Z"
+  "# StepBroBD, Inc. | noc@stepbrobd.com | AS10779, AS18932 | 2026-03-23T00:00:00Z"
 ;;
 
 let entries =
@@ -149,6 +149,70 @@ let nodes =
         ; region = "FR-ARA"
         ; city = "Grenoble"
         ; postal = "38000"
+        }
+    }
+  ; { name = "Halti"
+    ; v4 =
+        { prefix = "23.161.104.134/32"
+        ; country = "FI"
+        ; region = "FI-18"
+        ; city = "Helsinki"
+        ; postal = "00100"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:134/128"
+        ; country = "FI"
+        ; region = "FI-18"
+        ; city = "Helsinki"
+        ; postal = "00100"
+        }
+    }
+  ; { name = "Lagern"
+    ; v4 =
+        { prefix = "23.161.104.135/32"
+        ; country = "CH"
+        ; region = "CH-ZH"
+        ; city = "Zurich"
+        ; postal = "8001"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:135/128"
+        ; country = "CH"
+        ; region = "CH-ZH"
+        ; city = "Zurich"
+        ; postal = "8001"
+        }
+    }
+  ; { name = "Odake"
+    ; v4 =
+        { prefix = "23.161.104.136/32"
+        ; country = "JP"
+        ; region = "JP-13"
+        ; city = "Tokyo"
+        ; postal = "100-0001"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:136/128"
+        ; country = "JP"
+        ; region = "JP-13"
+        ; city = "Tokyo"
+        ; postal = "100-0001"
+        }
+    }
+  ; { name = "Walberla"
+    ; v4 =
+        { prefix = "23.161.104.137/32"
+        ; country = "DE"
+        ; region = "DE-SN"
+        ; city = "Falkenstein"
+        ; postal = "08223"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:137/128"
+        ; country = "DE"
+        ; region = "DE-SN"
+        ; city = "Falkenstein"
+        ; postal = "08223"
         }
     }
   ]
