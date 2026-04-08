@@ -54,12 +54,6 @@ digital art class). Streaming services? Apple Music all the way
 
 ![You just have to go out and touch grass once in a while (Uji Shrine)](/assets/static/img/home-2.avif)
 
-Cloudflare generously sponsors me an
-[Enterprise plan](https://www.cloudflare.com/plans/enterprise/) under
-[Project Alexandria](https://www.cloudflare.com/lp/project-alexandria/). But...
-I host a backup of this site on Fastly
-[ysun.global.ssl.fastly.net](https://ysun.global.ssl.fastly.net) ;)
-
 Turns out [.arpa zones](https://en.wikipedia.org/wiki/.arpa) can serve HTTP
 (tried HTTPS but CAs won't issue for .arpa) and many more ;) Who knew:
 
@@ -89,3 +83,5 @@ Random recommendations:
   [public RTR server](https://github.com/cloudflare/rpki-rtr-client) for route
   filtering
 - Secure NTP with [`ntpd-rs`](https://github.com/pendulum-project/ntpd-rs) NTS
+- Tailscale doesn't cut it? Try [ranet](https://github.com/nickcao/ranet) IPec
+  full mesh
