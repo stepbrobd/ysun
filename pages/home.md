@@ -2,7 +2,7 @@
 title: Yifei Sun
 description: Yifei Sun - 孫 奕飛 (そん いーふぇい)
 created: 2019-08-11
-updated: 2026-03-08
+updated: 2026-04-08
 url: /index.html
 ---
 
@@ -85,3 +85,13 @@ Random recommendations:
 - Secure NTP with [`ntpd-rs`](https://github.com/pendulum-project/ntpd-rs) NTS
 - Tailscale doesn't cut it? Try [ranet](https://github.com/nickcao/ranet) IPsec
   full mesh
+
+Huge thanks to the following sponsors! They were warned (or not?) and chose to
+proceed anyway ;)
+
+| Sponsor                                  | Support              | Since      |
+| ---------------------------------------- | -------------------- | ---------- |
+| [NetActuate](https://netactuate.com)     | VMs, transit         | Pending    |
+| [Oxide Computer](https://oxide.computer) | Silo access, compute | 2026-04-03 |
+| [Fastly](https://fastly.com)             | Service credit       | 2026-02-16 |
+| [Cloudflare](https://cloudflare.com)     | Enterprise plan      | 2025-08-07 |
