@@ -21,6 +21,7 @@
           direnv
           git
           nix-direnv
+          nixpkgs-fmt
           wrangler
         ] ++ (with ocamlPackages; [
           ocaml-lsp
