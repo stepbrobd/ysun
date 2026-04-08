@@ -64,8 +64,6 @@ buildDunePackage (finalAttrs: {
   installPhase = ''
     runHook preInstall
 
-    dune install --prefix $out --libdir $OCAMLFIND_DESTDIR ${finalAttrs.pname}
-
     rm outputs/cache
     DENO_DIR=$(mktemp -d) deno fmt outputs
     mkdir -p $out/var/www/html
