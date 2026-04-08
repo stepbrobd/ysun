@@ -83,5 +83,5 @@ Random recommendations:
   [public RTR server](https://github.com/cloudflare/rpki-rtr-client) for route
   filtering
 - Secure NTP with [`ntpd-rs`](https://github.com/pendulum-project/ntpd-rs) NTS
-- Tailscale doesn't cut it? Try [ranet](https://github.com/nickcao/ranet) IPec
+- Tailscale doesn't cut it? Try [ranet](https://github.com/nickcao/ranet) IPsec
   full mesh
