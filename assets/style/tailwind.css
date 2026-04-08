@@ -124,22 +124,6 @@
     @apply border border-nord-3 px-4 py-2;
   }
 
-  .prose table tr:first-child th:first-child {
-    @apply rounded-tl;
-  }
-
-  .prose table tr:first-child th:last-child {
-    @apply rounded-tr;
-  }
-
-  .prose table tr:last-child td:first-child {
-    @apply rounded-bl;
-  }
-
-  .prose table tr:last-child td:last-child {
-    @apply rounded-br;
-  }
-
   .prose th {
     @apply bg-nord-0 text-nord-6 font-semibold text-left;
   }
