@@ -2,13 +2,13 @@
 title: Why do I have the second largest Nix monorepo?
 description: Why do I have the second largest Nix monorepo? I'll cover how I setup a weird configuration structure that allowed me to override arbitrary nixpkgs.lib functions and any nix packages.
 created: 2026-03-03
-updated: 2026-03-08
+updated: 2026-04-10
 hidden: true
 ---
 
 So... First of all, clickbait title ;) I'm certain there are larger Nix monorepo
-than what I have here, but still, 14k LoC of Nix for config is still kinda
-insane!
+than what I have here, but still, 17k LoC of Nix (at the time of writing) for
+config is still kinda insane!
 
 ## Philosophy
 
@@ -70,7 +70,7 @@ And a sample `flake.nix` (with `inputs` stripped to save some space):
 }
 ```
 
-In the most simple case, I want the repo to look like this:
+In the simplest case, I want the repo to look like this:
 
 ```
 - flake.nix
@@ -96,3 +96,47 @@ Where:
   };
 }
 ```
+
+The above is from the users' perspective, under the hood:
+
+## Fixpoint?
+
+The whole thing is one `extend` call in autopilot with a specific merge order:
+
+```nix
+finalLib = cfg.lib.extender.extend (final: prev: mergeAttrsList (
+  # builtins minus whatever's already in the extender
+  [ (removeAttrs builtins (intersectLists
+      (attrNames cfg.lib.extender)
+      (attrNames builtins))) ]
+  # user provided extensions e.g. colmena.lib, parts.lib, terranix.lib, ...
+  ++ cfg.lib.extensions
+  # user's own ./lib/*.nix, loaded with `{ lib = final; }`
+  ++ [ (loadAll {
+        dir = cfg.lib.path;
+        transformer = kebabToCamel;
+        args = { lib = final; };
+      }) ]
+));
+```
+
+`mergeAttrsList` precedence goes `builtins` and `nixpkgs.lib` (the default
+extender) < extensions < my stuff, e.g. if user defined a `lib/map.nix` that
+does something weird, the newly defined function will shadow `builtins.map` and
+`nixpkgs.lib.map`.
+
+Note that every file under `./lib/` is loaded with `{ lib = final; }`, not
+`{ lib = prev; }`. This way `lib/has-tag.nix` can reach into
+`lib.blueprint.hosts.${hostName}` even though `lib/blueprint/default.nix` is a
+sibling file loaded in the same pass.
+
+Once `finalLib` exists, autopilot glues it onto `flake-parts`'s `specialArgs`:
+
+```nix
+finalArgs = recursiveUpdate args { specialArgs.lib = finalLib; };
+```
+
+From this point on, every `{ lib, ... }:` inside any flake-parts module or
+`perSystem` or via `importApplyWithArgs` (to be covered below) (i.e. every
+NixOS/darwin/home-manager/ terranix module) gets _my_ `lib` instead of whatever
+downstream module system wanted to hand me.
