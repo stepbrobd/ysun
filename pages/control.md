@@ -23,7 +23,7 @@ computations.
 
 In my original Zine, I focused on the intuitive idea of control stacks without
 diving into the nitty-gritty details of how we know a program is "well-typed" or
-what “well-typed” even means. But as soon as you start working with formal
+what "well-typed" even means. But as soon as you start working with formal
 semantics, you realize the typing rules you choose play a huge role in what
 kinds of computations your stack machines can handle (well also congruence
 rules, but we'll cover that later).
