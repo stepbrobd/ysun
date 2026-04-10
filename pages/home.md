@@ -12,8 +12,8 @@ Inria [DataMove Team](https://team.inria.fr/datamove) co-supervised under
 [Christian Perez](https://avalon.ens-lyon.fr/~cperez/web/doku.php/start). I got
 my master's from Northeastern University advised by
 [Ji-Yong Shin](https://www.jiyongshin.info) at
-[Systems Research Group](https://srg.khoury.northeastern.edu). I was a research
-intern advised by [Tomoharu Ugawa](https://tugawa.github.io/index-e.html) at
+[Systems Research Group](https://srg.khoury.northeastern.edu). I was a visiting
+researcher advised by [Tomoharu Ugawa](https://tugawa.github.io/index-e.html) at
 University of Tokyo
 [Computing Software Group](https://www.csg.ci.i.u-tokyo.ac.jp/en). I finished my
 undergrad at University of Utah advised under
