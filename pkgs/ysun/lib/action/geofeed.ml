@@ -215,6 +215,102 @@ let nodes =
         ; postal = "08223"
         }
     }
+  ; { name = "Oxide"
+    ; v4 =
+        { prefix = "23.161.104.138/32"
+        ; country = "US"
+        ; region = "US-CA"
+        ; city = "Fremont"
+        ; postal = "94536"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:138/128"
+        ; country = "US"
+        ; region = "US-CA"
+        ; city = "Fremont"
+        ; postal = "94536"
+        }
+    }
+  ; { name = "Baldy"
+    ; v4 =
+        { prefix = "23.161.104.139/32"
+        ; country = "US"
+        ; region = "US-CA"
+        ; city = "Los Angeles"
+        ; postal = "90009"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:139/128"
+        ; country = "US"
+        ; region = "US-CA"
+        ; city = "Los Angeles"
+        ; postal = "90009"
+        }
+    }
+  ; { name = "Cradle"
+    ; v4 =
+        { prefix = "23.161.104.140/32"
+        ; country = "AU"
+        ; region = "AU-NSW"
+        ; city = "Sydney"
+        ; postal = "2000"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:140/128"
+        ; country = "AU"
+        ; region = "AU-NSW"
+        ; city = "Sydney"
+        ; postal = "2000"
+        }
+    }
+  ; { name = "Lantau"
+    ; v4 =
+        { prefix = "23.161.104.141/32"
+        ; country = "HK"
+        ; region = "HK"
+        ; city = "Hong Kong"
+        ; postal = "999077"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:141/128"
+        ; country = "HK"
+        ; region = "HK"
+        ; city = "Hong Kong"
+        ; postal = "999077"
+        }
+    }
+  ; { name = "Roraima"
+    ; v4 =
+        { prefix = "23.161.104.142/32"
+        ; country = "BR"
+        ; region = "BR-SP"
+        ; city = "Sao Paulo"
+        ; postal = "01311-000"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:142/128"
+        ; country = "BR"
+        ; region = "BR-SP"
+        ; city = "Sao Paulo"
+        ; postal = "01311-000"
+        }
+    }
+  ; { name = "Rysy"
+    ; v4 =
+        { prefix = "23.161.104.143/32"
+        ; country = "PL"
+        ; region = "PL-14"
+        ; city = "Warsaw"
+        ; postal = "00-001"
+        }
+    ; v6 =
+        { prefix = "2602:f590::23:161:104:143/128"
+        ; country = "PL"
+        ; region = "PL-14"
+        ; city = "Warsaw"
+        ; postal = "00-001"
+        }
+    }
   ]
 ;;
 
