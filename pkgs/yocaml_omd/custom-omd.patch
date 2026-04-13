@@ -1,0 +1,41 @@
+--- a/plugins/yocaml_omd/yocaml_omd.ml
++++ b/plugins/yocaml_omd/yocaml_omd.ml
+@@ -19,10 +19,11 @@
+ let to_text elt =
+   let rec aux acc = function
+     | Omd.Text (_, value) | Omd.Code (_, value) -> acc ^ value
+-    | Omd.Emph (_, inline) | Omd.Strong (_, inline) -> aux acc inline
++    | Omd.Emph (_, inline) | Omd.Strong (_, inline) | Omd.Sup (_, inline) -> aux acc inline
+     | Omd.Link (_, { label; _ }) | Omd.Image (_, { label; _ }) -> aux acc label
+     | Omd.Hard_break _ | Omd.Soft_break _ -> "\n"
+     | Omd.Html _ -> acc
++    | Omd.Math (_, _, content) -> acc ^ content
+     | Omd.Concat (_, inlines) -> List.fold_left aux acc inlines
+   in
+   aux "" elt
+@@ -37,10 +38,12 @@
+     | Omd.Code (_, value) -> acc ^ tag "code" value
+     | Omd.Emph (_, value) -> acc ^ tag "em" (aux "" value)
+     | Omd.Strong (_, value) -> acc ^ tag "strong" (aux "" value)
++    | Omd.Sup (_, value) -> acc ^ tag "sup" (aux "" value)
+     | Omd.Link (_, { label; _ }) -> acc ^ aux "" label
+     | Omd.Hard_break _ -> acc ^ "<br />"
+     | Omd.Soft_break _ -> acc ^ "\n"
+     | Omd.Html _ | Omd.Image _ -> acc
++    | Omd.Math (_, _, content) -> acc ^ content
+     | Omd.Concat (_, inlines) -> List.fold_left aux acc inlines
+   in
+   aux "" elt
+@@ -52,10 +55,11 @@
+       Omd.Concat (attr, List.map without_links inlines)
+   | Omd.Emph (attr, inline) -> Omd.Emph (attr, without_links inline)
+   | Omd.Strong (attr, inline) -> Omd.Strong (attr, without_links inline)
++  | Omd.Sup (attr, inline) -> Omd.Sup (attr, without_links inline)
+   | Omd.Link (_, link) -> link.label
+   | Omd.Image (attr, link) ->
+       Omd.Image (attr, Omd.{ link with label = without_links link.label })
+-  | Omd.(Hard_break _ | Soft_break _ | Html _ | Code _ | Text _) as inline ->
++  | Omd.(Hard_break _ | Soft_break _ | Html _ | Code _ | Text _ | Math _) as inline ->
+       inline
+
+ let collect_headers doc =

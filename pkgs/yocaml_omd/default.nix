@@ -11,6 +11,8 @@ buildDunePackage {
 
   inherit (yocaml) version src;
 
+  patches = [ ./custom-omd.patch ];
+
   env.DUNE_CACHE = "disabled";
 
   propagatedBuildInputs = [
