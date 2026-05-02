@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  Bump:
+  Deploy:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout"
@@ -17,12 +17,19 @@ jobs:
           extra_nix_config: |
             trusted-public-keys = cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g= cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=
             substituters = https://cache.garnix.io https://cache.nixos.org/
+      - name: "Build"
+        run: nix build -L
+      - name: "Node"
+        if: github.ref == 'refs/heads/master'
+        uses: "actions/setup-node@v6"
+        with:
+          node-version: "latest"
       - name: "Deploy"
+        if: github.ref == 'refs/heads/master'
         uses: "cloudflare/wrangler-action@v3"
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           preCommands: |
             npm install wrangler@latest
-            nix build -L
           command: deploy --assets ./result/var/www/html/
