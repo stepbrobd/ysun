@@ -2,7 +2,7 @@
 , buildDunePackage
 , dune-build-info
 , hilite
-, imagemagick
+, imgmeta
 , mathjax-node-cli
 , ppx_expect
 , uucp
@@ -35,13 +35,13 @@ buildDunePackage (finalAttrs: {
   propagatedBuildInputs = [
     dune-build-info
     hilite
+    imgmeta
     uucp
     uunf
     uutf
   ];
 
   propagatedNativeBuildInputs = [
-    imagemagick
     mathjax-node-cli
   ];
 
