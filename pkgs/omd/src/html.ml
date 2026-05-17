@@ -205,33 +205,16 @@ let to_plain_text t =
   Buffer.contents buf
 ;;
 
-(* call on imagemagick at build time to get image size *)
+(* call imgmeta at build time to get image size *)
 let get_dimensions path =
   let local_path =
     if String.length path > 0 && path.[0] = '/'
     then String.sub path 1 (String.length path - 1)
     else path
   in
-  if not (Sys.file_exists local_path)
-  then None
-  else (
-    let cmd =
-      Printf.sprintf
-        "identify -format \"%%w %%h\" %s"
-        (Filename.quote (local_path ^ "[0]"))
-    in
-    try
-      let ic = Unix.open_process_in cmd in
-      let line = input_line ic in
-      let _ = Unix.close_process_in ic in
-      match String.split_on_char ' ' (String.trim line) with
-      | [ w; h ] ->
-        (match int_of_string_opt w, int_of_string_opt h with
-         | Some _, Some _ -> Some (w, h)
-         | _ -> None)
-      | _ -> None
-    with
-    | _ -> None)
+  match Imgmeta.of_file local_path with
+  | Ok { width; height; _ } -> Some (string_of_int width, string_of_int height)
+  | Error _ -> None
 ;;
 
 (* call tex2svg at build time to get tex to svg *)

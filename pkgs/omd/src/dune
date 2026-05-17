@@ -1,7 +1,7 @@
 (library
  (name omd)
  (public_name omd)
- (libraries unix uutf uucp uunf hilite))
+ (libraries unix uutf uucp uunf hilite imgmeta))
 
 (rule
  (with-stdout-to
