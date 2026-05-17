@@ -3,6 +3,7 @@
 , cmdliner
 , deno
 , dune-build-info
+, imgmeta
 , tailwindcss_4
 , yocaml
 , yocaml_eio
@@ -44,6 +45,7 @@ buildDunePackage (finalAttrs: {
   buildInputs = [
     cmdliner
     dune-build-info
+    imgmeta
     yocaml
     yocaml_eio
     yocaml_liquid
