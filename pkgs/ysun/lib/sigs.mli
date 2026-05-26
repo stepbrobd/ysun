@@ -1,6 +1,7 @@
 module type RESOLVABLE = sig
   val source : Yocaml.Path.t
   val target : Yocaml.Path.t
+  val root : string
 end
 
 module type RESOLVER = sig
@@ -35,5 +36,18 @@ module type RESOLVER = sig
     val sitemap : Yocaml.Path.t
     val robots : Yocaml.Path.t
     val favicon : Yocaml.Path.t
+  end
+
+  module Url : sig
+    (** Canonical site URL with all trailing slashes stripped. Suitable for
+        concatenation with absolute paths beginning with [/]. *)
+    val site : string
+
+    (** [absolute path] returns [site ^ path]. The caller is responsible for
+        ensuring [path] starts with ['/']. *)
+    val absolute : string -> string
+
+    (** Absolute URL of the default Open Graph image. *)
+    val og_image : string
   end
 end

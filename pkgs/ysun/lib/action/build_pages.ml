@@ -76,11 +76,18 @@ let process_file
      >>> Yocaml.Pipeline.track_file file
      >>> Yocaml_yaml.Pipeline.read_file_with_metadata (module Model.Page) file
      >>> lift (fun (_, content) ->
-       let meta = Model.Page.inject_og_metas pre_meta url in
+       let meta =
+         Model.Page.inject_og_metas
+           ~site_url:R.Url.site
+           ~og_image:R.Url.og_image
+           pre_meta
+           url
+       in
        let data = Model.Page.normalize meta in
        let pages_data = [ "pages", Yocaml.Data.list_of normalize_page_item menu_pages ] in
        let url_data = [ "url", Yocaml.Data.string url ] in
-       data @ pages_data @ url_data, content)
+       let canonical_data = [ "canonical", Yocaml.Data.string (R.Url.absolute url) ] in
+       data @ pages_data @ url_data @ canonical_data, content)
      >>> Yocaml_omd.content_to_html ()
      >>> chain
      >>> lift snd)

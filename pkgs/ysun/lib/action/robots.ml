@@ -1,15 +1,12 @@
-let generate () =
-  String.concat
-    "\n"
-    [ "User-agent: *"
-    ; "Allow: /"
-    ; ""
-    ; "Sitemap: " ^ Config.site_url ^ "/sitemap.xml"
-    ; ""
-    ]
+let generate ~sitemap_url =
+  String.concat "\n" [ "User-agent: *"; "Allow: /"; ""; "Sitemap: " ^ sitemap_url; "" ]
 ;;
 
 let run (module R : Sigs.RESOLVER) cache =
   let open Yocaml.Task in
-  Yocaml.Action.Static.write_file R.Target.robots (lift (fun () -> generate ())) cache
+  let sitemap_url = R.Url.absolute "/sitemap.xml" in
+  Yocaml.Action.Static.write_file
+    R.Target.robots
+    (lift (fun () -> generate ~sitemap_url))
+    cache
 ;;

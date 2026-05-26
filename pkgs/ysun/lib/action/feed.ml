@@ -16,18 +16,18 @@ let default_datetime =
   | Error _ -> failwith "invalid default datetime"
 ;;
 
-let make_entry (meta, url, _file) =
+let make_entry ~site_url (meta, url, _file) =
   let open Model.Page in
   let title =
     Yocaml_syndication.Atom.text (Option.value ~default:"Untitled" meta.title)
   in
-  let id = Config.site_url ^ url in
+  let id = site_url ^ url in
   let updated =
     match meta.updated with
     | Some d -> Option.value ~default:default_datetime (parse_date d)
     | None -> default_datetime
   in
-  let links = [ Yocaml_syndication.Atom.alternate (Config.site_url ^ url) ] in
+  let links = [ Yocaml_syndication.Atom.alternate (site_url ^ url) ] in
   let summary = Option.map Yocaml_syndication.Atom.text meta.description in
   Yocaml_syndication.Atom.entry ~title ~id ~updated ~links ?summary ()
 ;;
@@ -50,6 +50,7 @@ let run (module R : Sigs.RESOLVER) (cache, sorted_pages) =
   let authors =
     Yocaml.Nel.singleton (Yocaml_syndication.Person.make Config.author_name)
   in
+  let site_url = R.Url.site in
   Yocaml.Action.Static.write_file
     R.Target.feed
     (lift (fun () -> feed_pages)
@@ -58,8 +59,8 @@ let run (module R : Sigs.RESOLVER) (cache, sorted_pages) =
              ~updated:(updated_from_entries ~default_value:default_datetime ())
              ~title:(text Config.author_name)
              ~authors
-             ~id:(Config.site_url ^ "/")
-             ~links:[ self (Config.site_url ^ "/atom.xml"); alternate Config.site_url ]
-             make_entry))
+             ~id:(R.Url.absolute "/")
+             ~links:[ self (R.Url.absolute "/atom.xml"); alternate site_url ]
+             (make_entry ~site_url)))
     cache
 ;;

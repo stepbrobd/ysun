@@ -1,16 +1,18 @@
-let run_build target source log_level =
+let run_build target source root log_level =
   let module Resolver = Ysun.Resolver.Make (struct
       let source = source
       let target = target
+      let root = root
     end)
   in
   Yocaml_eio.run ~level:log_level (Ysun.Action.All.run (module Resolver))
 ;;
 
-let run_watch target source log_level port =
+let run_watch target source root log_level port =
   let module Resolver = Ysun.Resolver.Make (struct
       let source = source
       let target = target
+      let root = root
     end)
   in
   Yocaml_eio.serve
@@ -80,6 +82,18 @@ let source_arg =
   Arg.(value (opt path_conv default arg))
 ;;
 
+let root_arg =
+  let default = "https://ysun.co" in
+  let doc =
+    "canonical site root URL, used to build per-page <link rel=\"canonical\"> tags as \
+     well as absolute URLs in the sitemap, atom feed and robots.txt. trailing slashes \
+     are stripped, so https://example.com and https://example.com/ are equivalent. \
+     supports subpath roots like https://sdf.org/~ysun"
+  in
+  let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "root"; "canonical" ] in
+  Arg.(value (opt string default arg))
+;;
+
 let port_arg =
   let default = 3000 in
   let doc = "dev server port" in
@@ -105,7 +119,9 @@ let build =
     [ `S Manpage.s_description; `P description; `S Manpage.s_bugs; `P bug_report ]
   in
   let info = Cmd.info "build" ~version ~doc ~exits ~man in
-  let term = Term.(const run_build $ target_arg $ source_arg $ log_level_arg `Debug) in
+  let term =
+    Term.(const run_build $ target_arg $ source_arg $ root_arg $ log_level_arg `Debug)
+  in
   Cmd.v info term
 ;;
 
@@ -118,7 +134,13 @@ let watch =
   in
   let info = Cmd.info "watch" ~version ~doc ~exits ~man in
   let term =
-    Term.(const run_watch $ target_arg $ source_arg $ log_level_arg `Info $ port_arg)
+    Term.(
+      const run_watch
+      $ target_arg
+      $ source_arg
+      $ root_arg
+      $ log_level_arg `Info
+      $ port_arg)
   in
   Cmd.v info term
 ;;

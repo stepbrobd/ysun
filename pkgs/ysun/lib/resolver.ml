@@ -41,5 +41,19 @@ module Make (R : Sigs.RESOLVABLE) = struct
     let favicon = Path.(R.target / "favicon.ico")
   end
 
+  module Url = struct
+    (* strip every trailing '/' so concatenation with paths beginning with '/'
+       never produces "//" — works for "https://ysun.co/", "https://ysun.co//",
+       "https://sdf.org/~ysun/", etc. *)
+    let strip_trailing_slashes s =
+      let rec find_end i = if i > 0 && s.[i - 1] = '/' then find_end (i - 1) else i in
+      String.sub s 0 (find_end (String.length s))
+    ;;
+
+    let site = strip_trailing_slashes R.root
+    let absolute path = site ^ path
+    let og_image = absolute "/assets/static/img/og.avif"
+  end
+
   let track_common_dependencies = Yocaml.Pipeline.track_file Source.executable
 end

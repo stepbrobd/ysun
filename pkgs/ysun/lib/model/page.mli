@@ -26,4 +26,4 @@ type template_type =
   | Error of string
 
 val resolve_template : available_templates:string list -> t -> template_type * string
-val inject_og_metas : t -> string -> t
+val inject_og_metas : site_url:string -> og_image:string -> t -> string -> t

@@ -219,13 +219,13 @@ let resolve_template ~available_templates meta =
     Other f, f
 ;;
 
-let inject_og_metas meta url =
+let inject_og_metas ~site_url ~og_image meta url =
   let og =
     [ "og:type", "website"
     ; "og:locale", "en_US"
     ; "og:title", Option.value ~default:"" meta.title
-    ; "og:url", Config.site_url ^ url
-    ; "og:image", Config.og_image
+    ; "og:url", site_url ^ url
+    ; "og:image", og_image
     ; "twitter:card", "summary_large_image"
     ]
   in
