@@ -2,8 +2,13 @@
 title: Hydra OIDC guide
 description: Use Kanidm as the OIDC backend for Hydra
 created: 2025-09-09
-updated: 2026-02-12
+updated: 2026-05-30
 ---
+
+> I've dropped Hydra as of May 30, 2026 and fully switched to my new toy
+> [atelier](https://github.com/stepbrobd/atelier). It (at least partially)
+> replicates the Garnix experience (rip btw) and pushes built closures to my
+> cache server.
 
 [Previously](/kanidm), we covered how to set up Kanidm's read-only LDAP
 interface and get SSO working on Hydra. That's great and all, but LADP is a bit
