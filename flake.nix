@@ -22,7 +22,7 @@
           git
           nix-direnv
           nixpkgs-fmt
-          wrangler
+          # wrangler
         ] ++ (with ocamlPackages; [
           ocaml-lsp
           ocaml-print-intf
