@@ -7,7 +7,7 @@ type entry =
   }
 
 let header =
-  "# StepBroBD, Inc. | noc@stepbrobd.com | AS10779, AS18932 | 2026-03-23T00:00:00Z"
+  "# StepBroBD, Inc. | noc@stepbrobd.com | AS10779, AS18932 | 2026-06-23T00:00:00Z"
 ;;
 
 let entries =
@@ -151,20 +151,20 @@ let nodes =
         ; postal = "38000"
         }
     }
-  ; { name = "Halti"
+  ; { name = "Morasko"
     ; v4 =
         { prefix = "23.161.104.134/32"
-        ; country = "FI"
-        ; region = "FI-18"
-        ; city = "Helsinki"
-        ; postal = "00100"
+        ; country = "PL"
+        ; region = "PL-30"
+        ; city = "Poznan"
+        ; postal = "61-101"
         }
     ; v6 =
         { prefix = "2602:f590::23:161:104:134/128"
-        ; country = "FI"
-        ; region = "FI-18"
-        ; city = "Helsinki"
-        ; postal = "00100"
+        ; country = "PL"
+        ; region = "PL-30"
+        ; city = "Poznan"
+        ; postal = "61-101"
         }
     }
   ; { name = "Lagern"
