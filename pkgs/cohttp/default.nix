@@ -18,11 +18,11 @@
 
 buildDunePackage (finalAttrs: {
   pname = "cohttp";
-  version = "6.2.1";
+  version = "6.2.2";
 
   src = fetchzip {
     url = "https://github.com/mirage/ocaml-cohttp/releases/download/v${finalAttrs.version}/cohttp-${finalAttrs.version}.tbz";
-    hash = "sha256-ARJJriopBU3qm1D3KInEuue9k8T0KEfXZXsDExXoxr4=";
+    hash = "sha256-BhtJJlwV6Y7O854U8j4ZPgBNU3Yx3cxkKc9KJva2JK8=";
   };
 
   env.DUNE_CACHE = "disabled";
