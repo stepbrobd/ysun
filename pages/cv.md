@@ -44,29 +44,29 @@ Implementation:
 <p id="cv">Loading CV...</p>
 
 <script>
-  document.addEventListener("DOMContentLoaded", async () => {
-    try {
-      const res = await fetch(
-        "https://api.github.com/repos/stepbrobd/cv/releases/latest",
-      );
-      if (!res.ok) throw new Error("fetch failed");
-      const rel = await res.json();
-      const date = new Date(rel.published_at).toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
-      const tgt = document.getElementById("cv");
-      tgt.innerHTML =
-        `Last updated on ${date}: <a href="https://drive.google.com/viewerng/viewer?embedded=true&url=${
-          encodeURIComponent(rel.assets[0].browser_download_url)
-        }" target="_blank">preview</a> | <a href="${
-          rel.assets[0].browser_download_url
-        }" target="_blank">download</a>`;
-    } catch (err) {
-      document.getElementById("cv").innerHTML =
-        `Error loading CV: ${err.message}`;
-    }
-  });
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch(
+      "https://api.github.com/repos/stepbrobd/cv/releases/latest",
+    );
+    if (!res.ok) throw new Error("fetch failed");
+    const rel = await res.json();
+    const date = new Date(rel.published_at).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    const tgt = document.getElementById("cv");
+    tgt.innerHTML =
+      `Last updated on ${date}: <a href="https://drive.google.com/viewerng/viewer?embedded=true&url=${
+        encodeURIComponent(rel.assets[0].browser_download_url)
+      }" target="_blank">preview</a> | <a href="${
+        rel.assets[0].browser_download_url
+      }" target="_blank">download</a>`;
+  } catch (err) {
+    document.getElementById("cv").innerHTML =
+      `Error loading CV: ${err.message}`;
+  }
+});
 </script>
 ```
