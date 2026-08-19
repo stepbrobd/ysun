@@ -4,7 +4,6 @@ module Make (R : Sigs.RESOLVABLE) = struct
 
   module Source = struct
     (* - *)
-    let root = R.source
     let executable = Path.rel [ Sys.argv.(0) ]
 
     (* - *)

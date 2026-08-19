@@ -1,11 +1,5 @@
 let init_message (module R : Sigs.RESOLVER) =
-  Yocaml.Eff.logf
-    ~level:`Debug
-    "source: `%a`, target: `%a`"
-    Yocaml.Path.pp
-    R.source
-    Yocaml.Path.pp
-    R.target
+  Yocaml.Eff.logf ~level:`Debug "target: `%a`" Yocaml.Path.pp R.target
 ;;
 
 let run (module R : Sigs.RESOLVER) () =

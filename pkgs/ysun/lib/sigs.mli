@@ -1,5 +1,4 @@
 module type RESOLVABLE = sig
-  val source : Yocaml.Path.t
   val target : Yocaml.Path.t
   val root : string
 end
@@ -10,7 +9,6 @@ module type RESOLVER = sig
   val track_common_dependencies : (unit, unit) Yocaml.Task.t
 
   module Source : sig
-    val root : Yocaml.Path.t
     val executable : Yocaml.Path.t
     val pages : Yocaml.Path.t
     val assets : Yocaml.Path.t

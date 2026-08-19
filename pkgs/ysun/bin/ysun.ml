@@ -1,6 +1,5 @@
-let run_build target source root log_level =
+let run_build target root log_level =
   let module Resolver = Ysun.Resolver.Make (struct
-      let source = source
       let target = target
       let root = root
     end)
@@ -8,9 +7,8 @@ let run_build target source root log_level =
   Yocaml_eio.run ~level:log_level (Ysun.Action.All.run (module Resolver))
 ;;
 
-let run_watch target source root log_level port =
+let run_watch target root log_level port =
   let module Resolver = Ysun.Resolver.Make (struct
-      let source = source
       let target = target
       let root = root
     end)
@@ -50,35 +48,14 @@ let port_conv =
     , fun ppf -> Format.fprintf ppf "%04d" )
 ;;
 
-let log_level_conv =
-  Arg.conv
-    ~docv:"LEVEL"
-    ( (fun str ->
-        match String.(str |> trim |> lowercase_ascii) with
-        | "app" -> Result.ok `App
-        | "info" -> Result.ok `Info
-        | "error" -> Result.ok `Error
-        | "warning" -> Result.ok `Warning
-        | s -> Error (`Msg (Printf.sprintf "%S is not a valid log level" s)))
-    , fun ppf -> function
-        | `App -> Format.fprintf ppf "app"
-        | `Info -> Format.fprintf ppf "info"
-        | `Error -> Format.fprintf ppf "error"
-        | `Warning -> Format.fprintf ppf "warning"
-        | `Debug -> Format.fprintf ppf "debug" )
+let log_levels =
+  [ "app", `App; "info", `Info; "debug", `Debug; "warning", `Warning; "error", `Error ]
 ;;
 
 let target_arg =
   let default = Yocaml.Path.rel [ "outputs" ] in
   let doc = "the directory where the site will be generated to" in
   let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "target"; "output" ] in
-  Arg.(value (opt path_conv default arg))
-;;
-
-let source_arg =
-  let default = Yocaml.Path.rel [] in
-  let doc = "source directory" in
-  let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "source"; "input" ] in
   Arg.(value (opt path_conv default arg))
 ;;
 
@@ -102,9 +79,9 @@ let port_arg =
 ;;
 
 let log_level_arg default =
-  let doc = "log level (app | info | debug | error | warning)" in
+  let doc = Printf.sprintf "log level, %s" (Arg.doc_alts_enum log_levels) in
   let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "log-level" ] in
-  Arg.(value (opt log_level_conv default arg))
+  Arg.(value (opt (enum log_levels) default arg))
 ;;
 
 let bug_report =
@@ -114,33 +91,23 @@ let bug_report =
 let description = "forked from <https://github.com/muhokama/ring>, but for personal site"
 
 let build =
-  let doc = "build to TARGET from SOURCE with LOG_LEVEL" in
+  let doc = "build to TARGET with LOG_LEVEL" in
   let man =
     [ `S Manpage.s_description; `P description; `S Manpage.s_bugs; `P bug_report ]
   in
   let info = Cmd.info "build" ~version ~doc ~exits ~man in
-  let term =
-    Term.(const run_build $ target_arg $ source_arg $ root_arg $ log_level_arg `Debug)
-  in
+  let term = Term.(const run_build $ target_arg $ root_arg $ log_level_arg `Debug) in
   Cmd.v info term
 ;;
 
 let watch =
-  let doc =
-    "build to TARGET from SOURCE with LOG_LEVEL and launch a web server listening at PORT"
-  in
+  let doc = "build to TARGET with LOG_LEVEL and launch a web server listening at PORT" in
   let man =
     [ `S Manpage.s_description; `P description; `S Manpage.s_bugs; `P bug_report ]
   in
   let info = Cmd.info "watch" ~version ~doc ~exits ~man in
   let term =
-    Term.(
-      const run_watch
-      $ target_arg
-      $ source_arg
-      $ root_arg
-      $ log_level_arg `Info
-      $ port_arg)
+    Term.(const run_watch $ target_arg $ root_arg $ log_level_arg `Info $ port_arg)
   in
   Cmd.v info term
 ;;
