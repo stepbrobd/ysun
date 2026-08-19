@@ -119,15 +119,16 @@ let normalize
       }
   =
   let open Yocaml.Data in
-  [ "title", option string title
-  ; "description", option string description
-  ; "created", option string created
-  ; "updated", option string updated
+  let escaped v = option string (Option.map escape v) in
+  [ "title", escaped title
+  ; "description", escaped description
+  ; "created", escaped created
+  ; "updated", escaped updated
   ; "words", option int words
   ; "minutes", option int minutes
   ; "layout", option string layout
   ; "hidden", bool hidden
-  ; "redirect", option string redirect
+  ; "redirect", escaped redirect
   ; ( "metas"
     , list
         (List.map

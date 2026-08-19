@@ -3,6 +3,7 @@
 , cmdliner
 , deno
 , dune-build-info
+, libxml2
 , tailwindcss_4
 , yocaml
 , yocaml_eio
@@ -38,6 +39,7 @@ buildDunePackage (finalAttrs: {
 
   nativeBuildInputs = [
     deno
+    libxml2
     tailwindcss_4
   ];
 
@@ -66,6 +68,7 @@ buildDunePackage (finalAttrs: {
 
     rm outputs/cache
     DENO_DIR=$(mktemp -d) deno fmt outputs
+    find outputs \( -name '*.html' -o -name '*.xml' \) -exec xmllint --noout {} +
     mkdir -p $out/var/www/html
     cp -r outputs/* $out/var/www/html/
 

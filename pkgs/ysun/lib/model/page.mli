@@ -15,6 +15,7 @@ type t =
 include Yocaml.Required.DATA_READABLE with type t := t
 include Yocaml.Required.DATA_INJECTABLE with type t := t
 
+val escape : string -> string
 val get_url : pages_prefix:Yocaml.Path.t -> Yocaml.Path.t -> string
 val url_to_path : string -> string
 val count_words : string -> int

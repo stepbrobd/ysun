@@ -8,8 +8,8 @@ let normalize_page_item (meta, url) =
   let open Yocaml.Data in
   let open Model.Page in
   record
-    [ "title", option string meta.title
-    ; "created", option string meta.created
+    [ "title", option string (Option.map escape meta.title)
+    ; "created", option string (Option.map escape meta.created)
     ; "url", string url
     ]
 ;;

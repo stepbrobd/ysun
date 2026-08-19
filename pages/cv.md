@@ -1,7 +1,7 @@
 ---
 title: Curriculum Vitae
 created: 2024-07-02
-updated: 2026-02-12
+updated: 2026-08-19
 hidden: true
 ---
 
@@ -20,7 +20,7 @@ hidden: true
       });
       const tgt = document.getElementById("cv");
       tgt.innerHTML =
-        `Last updated on ${date}: <a href="https://drive.google.com/viewerng/viewer?embedded=true&url=${
+        `Last updated on ${date}: <a href="https://drive.google.com/viewerng/viewer?embedded=true\u0026url=${
           encodeURIComponent(rel.assets[0].browser_download_url)
         }" target="_blank">preview</a> | <a href="${
           rel.assets[0].browser_download_url
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     const tgt = document.getElementById("cv");
     tgt.innerHTML =
-      `Last updated on ${date}: <a href="https://drive.google.com/viewerng/viewer?embedded=true&url=${
+      `Last updated on ${date}: <a href="https://drive.google.com/viewerng/viewer?embedded=true\u0026url=${
         encodeURIComponent(rel.assets[0].browser_download_url)
       }" target="_blank">preview</a> | <a href="${
         rel.assets[0].browser_download_url
