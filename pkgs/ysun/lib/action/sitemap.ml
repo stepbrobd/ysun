@@ -26,8 +26,11 @@ let generate ~site_url sorted_pages =
 
 let run (module R : Sigs.RESOLVER) (cache, sorted_pages) =
   let open Yocaml.Task in
+  let page_files = List.map (fun (e : Index.entry) -> e.file) sorted_pages in
   Yocaml.Action.Static.write_file
     R.Target.sitemap
-    (lift (fun () -> generate ~site_url:R.Url.site sorted_pages))
+    (R.track_common_dependencies
+     >>> Yocaml.Pipeline.track_files page_files
+     >>> lift (fun () -> generate ~site_url:R.Url.site sorted_pages))
     cache
 ;;

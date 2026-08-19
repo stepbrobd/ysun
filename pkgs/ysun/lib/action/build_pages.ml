@@ -57,9 +57,16 @@ let template_chain (module R : Sigs.RESOLVER) tmpl_type template_name =
   | Error _ -> apply template_name >>> apply "error/generic.liquid"
 ;;
 
-let process_file (module R : Sigs.RESOLVER) ~available_templates menu_pages entry cache =
+let process_file
+      (module R : Sigs.RESOLVER)
+      ~available_templates
+      ~deps
+      menu_pages
+      entry
+      cache
+  =
   let open Yocaml.Task in
-  let { Index.meta = pre_meta; url; file; content } = entry in
+  let { Index.meta = pre_meta; url; file = _; content } = entry in
   let target = url_to_target (module R) url in
   let tmpl_type, template_name =
     Model.Page.resolve_template ~available_templates pre_meta
@@ -68,7 +75,7 @@ let process_file (module R : Sigs.RESOLVER) ~available_templates menu_pages entr
   Yocaml.Action.Static.write_file
     target
     (R.track_common_dependencies
-     >>> Yocaml.Pipeline.track_file file
+     >>> Yocaml.Pipeline.track_files deps
      >>> lift (fun () ->
        let meta =
          Model.Page.inject_og_metas
@@ -88,9 +95,9 @@ let process_file (module R : Sigs.RESOLVER) ~available_templates menu_pages entr
     cache
 ;;
 
-let run (module R : Sigs.RESOLVER) (cache, all_pages) =
+let run (module R : Sigs.RESOLVER) ~templates ~deps (cache, all_pages) =
   let open Yocaml.Eff in
-  let available_templates = discover_templates "assets/layout" in
+  let available_templates = templates in
   let menu_pages =
     all_pages
     |> Stdlib.List.filter (fun e ->
@@ -101,7 +108,9 @@ let run (module R : Sigs.RESOLVER) (cache, all_pages) =
     match fs with
     | [] -> return c
     | item :: rest ->
-      let* next_c = process_file (module R) ~available_templates menu_pages item c in
+      let* next_c =
+        process_file (module R) ~available_templates ~deps menu_pages item c
+      in
       aux rest next_c
   in
   aux all_pages cache

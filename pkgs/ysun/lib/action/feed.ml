@@ -50,9 +50,12 @@ let run (module R : Sigs.RESOLVER) (cache, sorted_pages) =
     Yocaml.Nel.singleton (Yocaml_syndication.Person.make Config.author_name)
   in
   let site_url = R.Url.site in
+  let page_files = List.map (fun (e : Index.entry) -> e.file) sorted_pages in
   Yocaml.Action.Static.write_file
     R.Target.feed
-    (lift (fun () -> feed_pages)
+    (R.track_common_dependencies
+     >>> Yocaml.Pipeline.track_files page_files
+     >>> lift (fun () -> feed_pages)
      >>> Yocaml_syndication.Atom.(
            from
              ~updated:(updated_from_entries ~default_value:default_datetime ())

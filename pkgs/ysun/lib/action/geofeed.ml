@@ -346,5 +346,8 @@ let generate () =
 
 let run (module R : Sigs.RESOLVER) cache =
   let open Yocaml.Task in
-  Yocaml.Action.Static.write_file R.Target.geofeed (lift (fun () -> generate ())) cache
+  Yocaml.Action.Static.write_file
+    R.Target.geofeed
+    (R.track_common_dependencies >>> lift (fun () -> generate ()))
+    cache
 ;;

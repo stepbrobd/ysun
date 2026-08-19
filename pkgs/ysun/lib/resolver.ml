@@ -4,7 +4,8 @@ module Make (R : Sigs.RESOLVABLE) = struct
 
   module Source = struct
     (* - *)
-    let executable = Path.rel [ Sys.argv.(0) ]
+    (* argv 0 may not name a real file under PATH lookup which makes mtime tracking inert *)
+    let executable = Path.from_string Sys.executable_name
 
     (* - *)
     let pages = Path.rel [ "pages" ]

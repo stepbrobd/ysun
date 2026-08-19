@@ -7,6 +7,6 @@ let run (module R : Sigs.RESOLVER) cache =
   let sitemap_url = R.Url.absolute "/sitemap.xml" in
   Yocaml.Action.Static.write_file
     R.Target.robots
-    (lift (fun () -> generate ~sitemap_url))
+    (R.track_common_dependencies >>> lift (fun () -> generate ~sitemap_url))
     cache
 ;;
