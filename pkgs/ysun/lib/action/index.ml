@@ -1,3 +1,10 @@
+type entry =
+  { meta : Model.Page.t
+  ; url : string
+  ; file : Yocaml.Path.t
+  ; content : string
+  }
+
 let run (module R : Sigs.RESOLVER) cache =
   let open Yocaml.Eff in
   let where kind path =
@@ -5,7 +12,7 @@ let run (module R : Sigs.RESOLVER) cache =
     | `File -> Yocaml.Path.has_extension "md" path
     | `Directory -> true
   in
-  let* cache, page_list =
+  let* cache, entries =
     Yocaml.Batch.fold_tree
       ~where
       ~state:[]
@@ -22,22 +29,22 @@ let run (module R : Sigs.RESOLVER) cache =
          let words = Model.Page.count_words content in
          let minutes = max 1 (words / 200) in
          let meta = { meta with words = Some words; minutes = Some minutes } in
-         return (cache, (meta, url, file) :: state))
+         return (cache, { meta; url; file; content } :: state))
       cache
   in
-  let sorted_pages =
-    page_list
-    |> Stdlib.List.sort (fun (a, _, _) (b, _, _) ->
+  let sorted =
+    entries
+    |> Stdlib.List.sort (fun a b ->
       let open Model.Page in
-      let ca = Option.value ~default:"" a.created in
-      let cb = Option.value ~default:"" b.created in
+      let ca = Option.value ~default:"" a.meta.created in
+      let cb = Option.value ~default:"" b.meta.created in
       let created_cmp = String.compare cb ca in
       if created_cmp <> 0
       then created_cmp
       else (
-        let ua = Option.value ~default:"" a.updated in
-        let ub = Option.value ~default:"" b.updated in
+        let ua = Option.value ~default:"" a.meta.updated in
+        let ub = Option.value ~default:"" b.meta.updated in
         String.compare ub ua))
   in
-  return (cache, sorted_pages)
+  return (cache, sorted)
 ;;

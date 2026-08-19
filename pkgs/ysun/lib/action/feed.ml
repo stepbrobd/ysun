@@ -16,19 +16,19 @@ let default_datetime =
   | Error _ -> failwith "invalid default datetime"
 ;;
 
-let make_entry ~site_url (meta, url, _file) =
+let make_entry ~site_url (e : Index.entry) =
   let open Model.Page in
   let title =
-    Yocaml_syndication.Atom.text (Option.value ~default:"Untitled" meta.title)
+    Yocaml_syndication.Atom.text (Option.value ~default:"Untitled" e.meta.title)
   in
-  let id = site_url ^ url in
+  let id = site_url ^ e.url in
   let updated =
-    match meta.updated with
+    match e.meta.updated with
     | Some d -> Option.value ~default:default_datetime (parse_date d)
     | None -> default_datetime
   in
-  let links = [ Yocaml_syndication.Atom.alternate (site_url ^ url) ] in
-  let summary = Option.map Yocaml_syndication.Atom.text meta.description in
+  let links = [ Yocaml_syndication.Atom.alternate (site_url ^ e.url) ] in
+  let summary = Option.map Yocaml_syndication.Atom.text e.meta.description in
   Yocaml_syndication.Atom.entry ~title ~id ~updated ~links ?summary ()
 ;;
 
@@ -36,9 +36,8 @@ let run (module R : Sigs.RESOLVER) (cache, sorted_pages) =
   let open Yocaml.Task in
   let feed_pages =
     sorted_pages
-    |> List.filter (fun (meta, _, _) ->
-      let open Model.Page in
-      (not meta.hidden) && meta.title <> Some Config.author_name)
+    |> List.filter (fun (e : Index.entry) ->
+      (not e.meta.Model.Page.hidden) && e.meta.Model.Page.title <> Some Config.author_name)
     |> fun l ->
     let rec take n = function
       | [] -> []

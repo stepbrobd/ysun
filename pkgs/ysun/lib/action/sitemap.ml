@@ -1,8 +1,9 @@
-let make_url_node ~site_url (meta, url, _file) =
-  let open Model.Page in
+let make_url_node ~site_url (e : Index.entry) =
   let open Yocaml_syndication.Xml in
-  let loc = leaf ~name:"loc" (escape (site_url ^ url)) in
-  let lastmod = may_leaf ~name:"lastmod" ~finalize:escape Fun.id meta.updated in
+  let loc = leaf ~name:"loc" (escape (site_url ^ e.url)) in
+  let lastmod =
+    may_leaf ~name:"lastmod" ~finalize:escape Fun.id e.meta.Model.Page.updated
+  in
   node ~name:"url" [ loc; lastmod ]
 ;;
 
@@ -10,9 +11,8 @@ let generate ~site_url sorted_pages =
   let open Yocaml_syndication.Xml in
   let entries =
     sorted_pages
-    |> List.filter (fun (meta, _, _) ->
-      let open Model.Page in
-      (not meta.hidden) && meta.redirect = None)
+    |> List.filter (fun (e : Index.entry) ->
+      (not e.meta.Model.Page.hidden) && e.meta.Model.Page.redirect = None)
     |> List.map (make_url_node ~site_url)
   in
   let urlset =

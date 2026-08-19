@@ -57,14 +57,9 @@ let template_chain (module R : Sigs.RESOLVER) tmpl_type template_name =
   | Error _ -> apply template_name >>> apply "error/generic.liquid"
 ;;
 
-let process_file
-      (module R : Sigs.RESOLVER)
-      ~available_templates
-      menu_pages
-      (pre_meta, url, file)
-      cache
-  =
+let process_file (module R : Sigs.RESOLVER) ~available_templates menu_pages entry cache =
   let open Yocaml.Task in
+  let { Index.meta = pre_meta; url; file; content } = entry in
   let target = url_to_target (module R) url in
   let tmpl_type, template_name =
     Model.Page.resolve_template ~available_templates pre_meta
@@ -74,8 +69,7 @@ let process_file
     target
     (R.track_common_dependencies
      >>> Yocaml.Pipeline.track_file file
-     >>> Yocaml_yaml.Pipeline.read_file_with_metadata (module Model.Page) file
-     >>> lift (fun (_, content) ->
+     >>> lift (fun () ->
        let meta =
          Model.Page.inject_og_metas
            ~site_url:R.Url.site
@@ -99,9 +93,9 @@ let run (module R : Sigs.RESOLVER) (cache, all_pages) =
   let available_templates = discover_templates "assets/layout" in
   let menu_pages =
     all_pages
-    |> Stdlib.List.filter (fun (meta, url, _) ->
-      (not meta.Model.Page.hidden) && url <> "/")
-    |> Stdlib.List.map (fun (meta, url, _) -> meta, url)
+    |> Stdlib.List.filter (fun e ->
+      (not e.Index.meta.Model.Page.hidden) && e.Index.url <> "/")
+    |> Stdlib.List.map (fun e -> e.Index.meta, e.Index.url)
   in
   let rec aux fs c =
     match fs with
