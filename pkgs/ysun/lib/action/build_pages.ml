@@ -52,9 +52,9 @@ let template_chain (module R : Sigs.RESOLVER) tmpl_type template_name =
   let apply = apply_template (module R) in
   match (tmpl_type : Model.Page.template_type) with
   | Page -> apply "page.liquid" >>> apply "main.liquid"
-  | Other _ -> apply template_name >>> apply "page.liquid" >>> apply "main.liquid"
-  | Standalone _ -> apply template_name
-  | Error _ -> apply template_name >>> apply "error/generic.liquid"
+  | Other -> apply template_name >>> apply "page.liquid" >>> apply "main.liquid"
+  | Standalone -> apply template_name
+  | Error -> apply template_name >>> apply "error/generic.liquid"
 ;;
 
 let process_file

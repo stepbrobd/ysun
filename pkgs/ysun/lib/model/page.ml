@@ -156,16 +156,22 @@ let url_to_path u =
 ;;
 
 let count_words str =
-  let regexp = Str.regexp "[ \n\r\t]+" in
-  let words = Str.split regexp str in
-  List.length words
+  let is_space c = c = ' ' || c = '\n' || c = '\r' || c = '\t' in
+  let count, _ =
+    String.fold_left
+      (fun (n, in_word) c ->
+         if is_space c then n, false else if in_word then n, true else n + 1, true)
+      (0, false)
+      str
+  in
+  count
 ;;
 
 type template_type =
   | Page
-  | Other of string
-  | Standalone of string
-  | Error of string
+  | Other
+  | Standalone
+  | Error
 
 let resolve_template ~available_templates meta =
   let resolve name =
@@ -179,18 +185,10 @@ let resolve_template ~available_templates meta =
            (String.concat ", " available_templates))
   in
   match meta.layout with
-  | None | Some "page" ->
-    let f = resolve "page" in
-    Page, f
-  | Some name when name = "error/generic" ->
-    let f = resolve name in
-    Standalone f, f
-  | Some name when String.starts_with ~prefix:"error/" name ->
-    let f = resolve name in
-    Error f, f
-  | Some name ->
-    let f = resolve name in
-    Other f, f
+  | None | Some "page" -> Page, resolve "page"
+  | Some name when name = "error/generic" -> Standalone, resolve name
+  | Some name when String.starts_with ~prefix:"error/" name -> Error, resolve name
+  | Some name -> Other, resolve name
 ;;
 
 let inject_og_metas ~site_url ~og_image meta url =

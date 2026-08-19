@@ -36,14 +36,8 @@ let run (module R : Sigs.RESOLVER) (cache, sorted_pages) =
   let feed_pages =
     sorted_pages
     |> List.filter (fun (e : Index.entry) ->
-      (not e.meta.Model.Page.hidden) && e.meta.Model.Page.title <> Config.author_name)
-    |> fun l ->
-    let rec take n = function
-      | [] -> []
-      | _ when n <= 0 -> []
-      | x :: xs -> x :: take (n - 1) xs
-    in
-    take 25 l
+      (not e.meta.Model.Page.hidden) && e.url <> "/")
+    |> List.take 25
   in
   let authors =
     Yocaml.Nel.singleton (Yocaml_syndication.Person.make Config.author_name)

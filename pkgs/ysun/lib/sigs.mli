@@ -33,7 +33,6 @@ module type RESOLVER = sig
     val geofeed : Yocaml.Path.t
     val sitemap : Yocaml.Path.t
     val robots : Yocaml.Path.t
-    val favicon : Yocaml.Path.t
   end
 
   module Url : sig
