@@ -1,9 +1,7 @@
 let make_url_node ~site_url (e : Index.entry) =
   let open Yocaml_syndication.Xml in
   let loc = leaf ~name:"loc" (escape (site_url ^ e.url)) in
-  let lastmod =
-    may_leaf ~name:"lastmod" ~finalize:escape Fun.id e.meta.Model.Page.updated
-  in
+  let lastmod = leaf ~name:"lastmod" (escape e.meta.Model.Page.updated) in
   node ~name:"url" [ loc; lastmod ]
 ;;
 

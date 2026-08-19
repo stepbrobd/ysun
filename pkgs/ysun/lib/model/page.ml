@@ -1,8 +1,8 @@
 type t =
-  { title : string option
+  { title : string
   ; description : string option
-  ; created : string option
-  ; updated : string option
+  ; created : string
+  ; updated : string
   ; words : int option
   ; minutes : int option
   ; url : string option
@@ -12,37 +12,10 @@ type t =
   ; metas : (string * string) list
   }
 
-let make
-      ?title
-      ?description
-      ?created
-      ?updated
-      ?words
-      ?minutes
-      ?url
-      ?layout
-      ?(hidden = false)
-      ?redirect
-      ?(metas = [])
-      ()
-  =
-  { title
-  ; description
-  ; created
-  ; updated
-  ; words
-  ; minutes
-  ; url
-  ; layout
-  ; hidden
-  ; redirect
-  ; metas
-  }
-;;
-
 let entity_name = "Page"
-let empty = make ()
-let neutral = Ok empty
+
+(* frontmatter is mandatory so a page without it fails the build *)
+let neutral = Error (Yocaml.Required.Required_metadata { entity = entity_name })
 
 let validate_string_pairs =
   Yocaml.Data.Validation.record (fun fields ->
@@ -60,10 +33,10 @@ let validate_string_pairs =
 
 let validate_underlying_page fields =
   let open Yocaml.Data.Validation in
-  let+ title = optional fields "title" string
+  let+ title = required fields "title" string
   and+ description = optional fields "description" string
-  and+ created = optional fields "created" string
-  and+ updated = optional fields "updated" string
+  and+ created = required fields "created" string
+  and+ updated = required fields "updated" string
   and+ url = optional fields "url" string
   and+ layout = optional fields "layout" string
   and+ hidden = optional fields "hidden" bool
@@ -120,10 +93,10 @@ let normalize
   =
   let open Yocaml.Data in
   let escaped v = option string (Option.map escape v) in
-  [ "title", escaped title
+  [ "title", string (escape title)
   ; "description", escaped description
-  ; "created", escaped created
-  ; "updated", escaped updated
+  ; "created", string (escape created)
+  ; "updated", string (escape updated)
   ; "words", option int words
   ; "minutes", option int minutes
   ; "layout", option string layout
@@ -224,7 +197,7 @@ let inject_og_metas ~site_url ~og_image meta url =
   let og =
     [ "og:type", "website"
     ; "og:locale", "en_US"
-    ; "og:title", Option.value ~default:"" meta.title
+    ; "og:title", meta.title
     ; "og:url", site_url ^ url
     ; "og:image", og_image
     ; "twitter:card", "summary_large_image"

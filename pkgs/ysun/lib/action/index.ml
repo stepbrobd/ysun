@@ -36,15 +36,10 @@ let run (module R : Sigs.RESOLVER) cache =
     entries
     |> Stdlib.List.sort (fun a b ->
       let open Model.Page in
-      let ca = Option.value ~default:"" a.meta.created in
-      let cb = Option.value ~default:"" b.meta.created in
-      let created_cmp = String.compare cb ca in
+      let created_cmp = String.compare b.meta.created a.meta.created in
       if created_cmp <> 0
       then created_cmp
-      else (
-        let ua = Option.value ~default:"" a.meta.updated in
-        let ub = Option.value ~default:"" b.meta.updated in
-        String.compare ub ua))
+      else String.compare b.meta.updated a.meta.updated)
   in
   return (cache, sorted)
 ;;

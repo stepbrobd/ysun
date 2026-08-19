@@ -1,8 +1,8 @@
 type t =
-  { title : string option
+  { title : string
   ; description : string option
-  ; created : string option
-  ; updated : string option
+  ; created : string
+  ; updated : string
   ; words : int option
   ; minutes : int option
   ; url : string option

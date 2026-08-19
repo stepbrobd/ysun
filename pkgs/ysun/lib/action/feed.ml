@@ -18,14 +18,13 @@ let default_datetime =
 
 let make_entry ~site_url (e : Index.entry) =
   let open Model.Page in
-  let title =
-    Yocaml_syndication.Atom.text (Option.value ~default:"Untitled" e.meta.title)
-  in
+  let title = Yocaml_syndication.Atom.text e.meta.title in
   let id = site_url ^ e.url in
   let updated =
-    match e.meta.updated with
-    | Some d -> Option.value ~default:default_datetime (parse_date d)
-    | None -> default_datetime
+    match parse_date e.meta.updated with
+    | Some d -> d
+    | None ->
+      failwith (Printf.sprintf "invalid updated date %S in %s" e.meta.updated e.url)
   in
   let links = [ Yocaml_syndication.Atom.alternate (site_url ^ e.url) ] in
   let summary = Option.map Yocaml_syndication.Atom.text e.meta.description in
@@ -37,7 +36,7 @@ let run (module R : Sigs.RESOLVER) (cache, sorted_pages) =
   let feed_pages =
     sorted_pages
     |> List.filter (fun (e : Index.entry) ->
-      (not e.meta.Model.Page.hidden) && e.meta.Model.Page.title <> Some Config.author_name)
+      (not e.meta.Model.Page.hidden) && e.meta.Model.Page.title <> Config.author_name)
     |> fun l ->
     let rec take n = function
       | [] -> []
