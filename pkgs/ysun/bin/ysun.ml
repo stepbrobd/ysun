@@ -65,7 +65,7 @@ let root_arg =
     "canonical site root URL, used to build per-page <link rel=\"canonical\"> tags as \
      well as absolute URLs in the sitemap, atom feed and robots.txt. trailing slashes \
      are stripped, so https://example.com and https://example.com/ are equivalent. \
-     supports subpath roots like https://sdf.org/~ysun"
+     subpath roots are not supported because asset and page links are root absolute"
   in
   let arg = Arg.info ~doc ~docs:Manpage.s_common_options [ "root"; "canonical" ] in
   Arg.(value (opt string default arg))
