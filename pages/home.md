@@ -54,13 +54,6 @@ digital art class). Streaming services? Apple Music all the way
 
 ![You just have to go out and touch grass once in a while (Uji Shrine)](/assets/static/img/home-2.avif)
 
-Turns out [.arpa zones](https://en.wikipedia.org/wiki/.arpa) can serve HTTP
-(tried HTTPS but CAs won't issue for .arpa) and many more ;) Who knew:
-
-- <http://0.0.9.5.f.2.0.6.2.ip6.arpa>
-- <http://104.161.23.in-addr.arpa>
-- <http://136.104.192.in-addr.arpa>
-
 Random recommendations:
 
 - Paid search engine [Kagi](https://kagi.com), you control the ranking
