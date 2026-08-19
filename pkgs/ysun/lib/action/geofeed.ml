@@ -7,7 +7,7 @@ type entry =
   }
 
 let header =
-  "# StepBroBD, Inc. | noc@stepbrobd.com | AS10779, AS18932 | 2026-06-23T00:00:00Z"
+  "# StepBroBD, Inc. | noc@stepbrobd.com | AS10779, AS18932 | 2026-08-19T00:00:00Z"
 ;;
 
 let entries =
@@ -107,14 +107,14 @@ let nodes =
     ; v4 =
         { prefix = "23.161.104.131/32"
         ; country = "SG"
-        ; region = "SG"
+        ; region = ""
         ; city = "Singapore"
         ; postal = "139963"
         }
     ; v6 =
         { prefix = "2602:f590::23:161:104:131/128"
         ; country = "SG"
-        ; region = "SG"
+        ; region = ""
         ; city = "Singapore"
         ; postal = "139963"
         }
@@ -267,14 +267,14 @@ let nodes =
     ; v4 =
         { prefix = "23.161.104.141/32"
         ; country = "HK"
-        ; region = "HK"
+        ; region = ""
         ; city = "Hong Kong"
         ; postal = "999077"
         }
     ; v6 =
         { prefix = "2602:f590::23:161:104:141/128"
         ; country = "HK"
-        ; region = "HK"
+        ; region = ""
         ; city = "Hong Kong"
         ; postal = "999077"
         }
