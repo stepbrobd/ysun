@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
     const tgt = document.getElementById("cv");
     tgt.innerHTML =
-      `Last updated on ${date}: <a href="https://drive.google.com/viewerng/viewer?embedded=true\u0026url=${
+      `Last updated on ${date}: <a href="https://drive.google.com/viewerng/viewer?embedded=true&url=${
         encodeURIComponent(rel.assets[0].browser_download_url)
       }" target="_blank">preview</a> | <a href="${
         rel.assets[0].browser_download_url
