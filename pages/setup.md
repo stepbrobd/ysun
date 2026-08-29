@@ -31,7 +31,7 @@ Use this cache for a single Nix command:
 nix run \
   --substituters 'https://cache.ysun.co' \
   --trusted-public-keys 'cache.ysun.co-1:WxPYwT5g3kt9XhUhHPpNLZKI9HIOsVVAuqSHpok8Qt4=' \
-  nixpkgs#osu-lazer-bin
+  github:stepbrobd/inc#nixvim
 ```
 
 ## Option 2: Nix Configuration (Persistent)
