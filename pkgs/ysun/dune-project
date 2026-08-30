@@ -4,11 +4,11 @@
 (executables_implicit_empty_intf true)
 
 (name ysun)
-(version 2026.210.0)
+(version 2026.830.0)
 (source (github stepbrobd/ysun))
 (license GPL-3.0-or-later)
-(authors "Yifei Sun <ysun@hey.com>")
-(maintainers "Yifei Sun <ysun@hey.com>")
+(authors "Yifei Sun <ysun@duck.com>")
+(maintainers "Yifei Sun <ysun@duck.com>")
 
 (package
   (name ysun)

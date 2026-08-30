@@ -88,7 +88,12 @@ let process_file
        let pages_data = [ "pages", Yocaml.Data.list_of normalize_page_item menu_pages ] in
        let url_data = [ "url", Yocaml.Data.string url ] in
        let canonical_data = [ "canonical", Yocaml.Data.string (R.Url.absolute url) ] in
-       data @ pages_data @ url_data @ canonical_data, content)
+       let outpath_data =
+         [ "outpath", Yocaml.Data.string Config.outpath
+         ; "narinfo", Yocaml.Data.string Config.narinfo
+         ]
+       in
+       data @ pages_data @ url_data @ canonical_data @ outpath_data, content)
      >>> Yocaml_omd.content_to_html ()
      >>> chain
      >>> lift snd)

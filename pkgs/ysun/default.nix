@@ -59,7 +59,7 @@ buildDunePackage (finalAttrs: {
 
     dune build -p ${finalAttrs.pname} ''${enableParallelBuilding:+-j $NIX_BUILD_CORES}
     mkdir -p outputs
-    dune exec pkgs/ysun/bin/ysun.exe -- build
+    OUTPATH=$out dune exec pkgs/ysun/bin/ysun.exe -- build
 
     runHook postBuild
   '';
