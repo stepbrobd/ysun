@@ -91,6 +91,7 @@ let process_file
        let outpath_data =
          [ "outpath", Yocaml.Data.string Config.outpath
          ; "narinfo", Yocaml.Data.string Config.narinfo
+         ; "cache", Yocaml.Data.string Config.cache
          ]
        in
        data @ pages_data @ url_data @ canonical_data @ outpath_data, content)

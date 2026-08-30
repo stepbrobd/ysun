@@ -1,4 +1,4 @@
-<footer>
+<footer class="flex flex-col gap-4">
   <div class="grid grid-cols-3 items-center">
     <div class="justify-self-start">
       <small>&#xA9; <script>document.write(new Date().getFullYear());</script></small>
@@ -32,4 +32,5 @@
       </a>
     </div>
   </div>
+  <pre class="my-0"><code>nix path-info <a href="{{ narinfo }}">{{ outpath }}</a> --store <a href="{{ cache }}">{{ cache }}</a> --json-format 2 --json</code></pre>
 </footer>
