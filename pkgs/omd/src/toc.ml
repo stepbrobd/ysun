@@ -4,7 +4,7 @@ let rec remove_links inline =
   match inline with
   | Concat (attr, inlines) -> Concat (attr, List.map remove_links inlines)
   | Emph (attr, inline) -> Emph (attr, remove_links inline)
-  | Strong (attr, inline) -> Emph (attr, remove_links inline)
+  | Strong (attr, inline) -> Strong (attr, remove_links inline)
   | Link (_, link) -> link.label
   | Image (attr, link) -> Image (attr, { link with label = remove_links link.label })
   | Hard_break _ | Soft_break _ | Html _ | Code _ | Text _ | Math _ -> inline
