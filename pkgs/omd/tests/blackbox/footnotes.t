@@ -47,3 +47,17 @@ A footnote body may contain an inline link without ending the definition.
   </li>
   </ol>
   </div>
+
+A label referenced more than once gets one id per reference, and the backlink
+returns to the first.
+
+  $ omd << "MD"
+  > Once[^a], twice[^a] and inside emphasis *a third time[^a]*.
+  > 
+  > [^a]: the note
+  > MD
+  <p>Once<sup><a href="#fn:a" id="fnref-a">a</a></sup>, twice<sup><a href="#fn:a" id="fnref-a-2">a</a></sup> and inside emphasis <em>a third time<sup><a href="#fn:a" id="fnref-a-3">a</a></sup></em>.</p>
+  <div class="footnotes"><hr /><ol><li id="fn:a"><p>the note<sup><a href="#fnref-a">↩︎</a></sup></p>
+  </li>
+  </ol>
+  </div>

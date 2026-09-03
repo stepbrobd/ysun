@@ -13,7 +13,7 @@ let toc = Toc.toc
 
 (* Conversion *)
 
-let parse_inline defs s = Parser.inline defs (Parser.P.of_string s)
+let parse_inline ~fnrefs defs s = Parser.inline ~fnrefs defs (Parser.P.of_string s)
 
 let footnotes defs =
   let footnote_defs =
@@ -37,7 +37,9 @@ let parse_inlines (md, defs) : doc =
     List.map f defs
   in
   let blocks = md @ [ footnotes defs ] in
-  List.map (Ast_block.Mapper.map (parse_inline defs)) blocks
+  (* one table per document so a label referenced twice gets two distinct ids *)
+  let fnrefs = Hashtbl.create 8 in
+  List.map (Ast_block.Mapper.map (parse_inline ~fnrefs defs)) blocks
 ;;
 
 let escape_html_entities = Html.htmlentities

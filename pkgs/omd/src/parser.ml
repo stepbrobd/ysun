@@ -1871,7 +1871,19 @@ let inline_pre buf acc st =
   gobble_open_backtick 0
 ;;
 
-let rec inline defs st =
+(* every reference to a footnote carries the anchor its backlink returns to, so a
+   label referenced more than once must not emit the same id twice *)
+let fnref_id fnrefs label =
+  let seen =
+    match Hashtbl.find_opt fnrefs label with
+    | Some n -> n
+    | None -> 0
+  in
+  Hashtbl.replace fnrefs label (seen + 1);
+  if seen = 0 then "fnref-" ^ label else Printf.sprintf "fnref-%s-%d" label (seen + 1)
+;;
+
+let rec inline ~fnrefs defs st =
   let buf = Buffer.create 0 in
   let text acc = text buf acc in
   let rec reference_link kind acc st =
@@ -1893,7 +1905,7 @@ let rec inline defs st =
           (* Printf.sprintf "#fn:%s" reference*)
           let attr =
             match link_kind with
-            | Footnote { label; _ } -> ("id", "fnref-" ^ label) :: attr
+            | Footnote { label; _ } -> ("id", fnref_id fnrefs label) :: attr
             | Reference -> attr
           in
           let destination =
@@ -1901,7 +1913,7 @@ let rec inline defs st =
             | Footnote { id; _ } -> "#" ^ id
             | Reference -> destination
           in
-          let lab1 = inline defs (of_string lab) in
+          let lab1 = inline ~fnrefs defs (of_string lab) in
           let r =
             let def = { label = lab1; destination; title } in
             match kind with
