@@ -2194,7 +2194,6 @@ let link_reference_definition st : attributes link_def =
       match peek st with
       | None -> Buffer.contents buf
       | Some '\n' ->
-        let saved = pos st in
         junk st;
         (match peek st with
          | Some '[' ->
@@ -2214,11 +2213,11 @@ let link_reference_definition st : attributes link_def =
              in
              scan_label ()
            in
+           (* stop on the bracket rather than on the newline. the caller reads
+              the next definition from here, and its sp3 does not skip a newline *)
            set_pos st bracket_pos;
            if is_definition
-           then (
-             set_pos st saved;
-             Buffer.contents buf)
+           then Buffer.contents buf
            else (
              Buffer.add_char buf '\n';
              loop ())
