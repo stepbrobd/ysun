@@ -484,8 +484,9 @@ let rec block ~auto_identifiers ~image_root = function
            in
            drop_trailing_empty pairs
            |> List.concat
+           (* content is already html escaped by hilite, the class is not *)
            |> List.map (fun (cls, content) ->
-             raw ("<span class='" ^ cls ^ "'>" ^ content ^ "</span>"))
+             elt Inline "span" [ "class", cls ] (Some (raw content)))
            |> List.fold_left (fun acc s -> concat acc s) Null
          | Error _ -> text code)
     in
