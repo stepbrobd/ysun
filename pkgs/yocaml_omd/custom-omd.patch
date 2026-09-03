@@ -37,5 +37,29 @@
 -  | Omd.(Hard_break _ | Soft_break _ | Html _ | Code _ | Text _) as inline ->
 +  | Omd.(Hard_break _ | Soft_break _ | Html _ | Code _ | Text _ | Math _) as inline ->
        inline
-
+ 
  let collect_headers doc =
+@@ -80,16 +84,20 @@
+   in
+   (List.rev headers, List.rev doc)
+ 
++(* the generator runs from the source root, so that is where a site absolute
++   image destination resolves. passing it makes omd fill in width and height,
++   and makes an image that does not resolve stop the build *)
++let to_html_string doc = Omd.to_html ~image_root:(Sys.getcwd ()) doc
++
+ let to_html_with_toc =
+   let open Yocaml.Task in
+   lift (fun content -> content |> Omd.of_string |> collect_headers)
+   >>> first
+         (lift Yocaml.Markup.Toc.from_list
+         >>| Yocaml.Markup.Toc.to_html inline_to_html)
+-  >>> second (lift Omd.to_html)
++  >>> second (lift to_html_string)
+ 
+-let to_html =
+-  Yocaml.Task.lift (fun content -> content |> Omd.of_string |> Omd.to_html)
++let to_html = Yocaml.Task.lift (fun content -> content |> Omd.of_string |> to_html_string)
+ 
+ let content_to_html () = Yocaml.Task.second to_html
+ 

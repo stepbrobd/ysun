@@ -34,5 +34,16 @@ val of_string : string -> doc
     reporting success. *)
 exception Math_error of string
 
-val to_html : ?auto_identifiers:bool -> doc -> string
+(** Raised by {!to_html} when [image_root] is given and a site local image
+    cannot be read or decoded. Without [image_root] no image is opened at all,
+    so rendering stays a function of the document alone. *)
+exception Image_error of string
+
+(** [to_html ?image_root doc] renders [doc]. [image_root] is the directory a
+    site absolute image destination is resolved against; give it to have
+    [width] and [height] filled in from the file on disk, and to have a
+    destination that does not resolve raise {!Image_error} rather than silently
+    render without them. Remote destinations are never opened. *)
+val to_html : ?auto_identifiers:bool -> ?image_root:string -> doc -> string
+
 val to_sexp : doc -> string

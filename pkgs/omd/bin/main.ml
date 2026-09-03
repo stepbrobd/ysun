@@ -20,9 +20,9 @@ let with_open_out fn f =
     raise e
 ;;
 
-let process ?auto_identifiers ic oc =
+let process ?auto_identifiers ?image_root ic oc =
   let md = Omd.of_channel ic in
-  output_string oc (Omd.to_html ?auto_identifiers md)
+  output_string oc (Omd.to_html ?auto_identifiers ?image_root md)
 ;;
 
 let print_version () =
@@ -38,12 +38,17 @@ let print_version () =
 let input = ref []
 let output = ref ""
 let auto_identifiers = ref None
+let image_root = ref None
 
 let spec =
   [ "-o", Arg.Set_string output, " file.html Specify the output file (default is stdout)."
   ; ( "--auto-identifiers"
     , Arg.Bool (fun x -> auto_identifiers := Some x)
     , " Should identifiers be automatically assigned to headings." )
+  ; ( "--image-root"
+    , Arg.String (fun s -> image_root := Some s)
+    , " dir Resolve site local image destinations against dir to fill in width and \
+       height. Without it no image file is opened." )
   ; ( "--version"
     , Arg.Unit print_version
     , " Display the version of the currently installed omd." )
@@ -60,12 +65,15 @@ let main () =
     "omd [options] [inputfile1 .. inputfileN] [options]";
   let with_output f = if !output = "" then f stdout else with_open_out !output f in
   let auto_identifiers = !auto_identifiers in
+  let image_root = !image_root in
   with_output
   @@ fun oc ->
   if !input = []
-  then process ?auto_identifiers stdin oc
+  then process ?auto_identifiers ?image_root stdin oc
   else (
-    let f filename = with_open_in filename @@ fun ic -> process ?auto_identifiers ic oc in
+    let f filename =
+      with_open_in filename @@ fun ic -> process ?auto_identifiers ?image_root ic oc
+    in
     List.(iter f (rev !input)))
 ;;
 

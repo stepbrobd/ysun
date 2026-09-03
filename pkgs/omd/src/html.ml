@@ -205,16 +205,60 @@ let to_plain_text t =
   Buffer.contents buf
 ;;
 
-(* call imgmeta at build time to get image size *)
-let get_dimensions path =
-  let local_path =
-    if String.length path > 0 && path.[0] = '/'
-    then String.sub path 1 (String.length path - 1)
-    else path
+exception Image_error of string
+
+let () =
+  Printexc.register_printer (function
+    | Image_error msg -> Some (Printf.sprintf "Omd.Image_error(%s)" msg)
+    | _ -> None)
+;;
+
+(* a destination that names a scheme, or is protocol relative, points somewhere
+   this process cannot read *)
+let is_remote destination =
+  let starts_with_scheme () =
+    let n = String.length destination in
+    let rec loop i =
+      if i >= n
+      then false
+      else (
+        match destination.[i] with
+        | 'A' .. 'Z' | 'a' .. 'z' | '0' .. '9' | '+' | '-' | '.' -> loop (i + 1)
+        | ':' -> true
+        | _ -> false)
+    in
+    match destination.[0] with
+    | 'A' .. 'Z' | 'a' .. 'z' -> loop 1
+    | _ -> false
   in
-  match Imgmeta.of_file local_path with
-  | Ok { width; height; _ } -> Some (string_of_int width, string_of_int height)
-  | Error _ -> None
+  String.length destination > 0
+  && (starts_with_scheme ()
+      || (String.length destination > 1 && destination.[0] = '/' && destination.[1] = '/')
+     )
+;;
+
+(* image dimensions come from the file on disk, so they are read only when the
+   caller says which directory a site absolute path is relative to. without that
+   the result would depend on the process working directory. a local path that
+   does not resolve stops the build, because the alternative is shipping an img
+   with no width and height while the build reports success *)
+let get_dimensions ~image_root destination =
+  match image_root with
+  | None -> None
+  | Some _ when is_remote destination -> None
+  | Some root ->
+    let path =
+      if String.length destination > 0 && destination.[0] = '/'
+      then String.sub destination 1 (String.length destination - 1)
+      else destination
+    in
+    let path = Filename.concat root path in
+    (match Imgmeta.of_file path with
+     | Ok { width; height; _ } -> Some (string_of_int width, string_of_int height)
+     | Error e ->
+       raise
+         (Image_error
+            (Format.asprintf "%a for %S at %S" Imgmeta.pp_error e destination path)))
 ;;
 
 exception Math_error of string
@@ -238,23 +282,23 @@ let tex2mathml ~display content =
 
 let nl = Raw "\n"
 
-let rec url label destination title attrs =
+let rec url ~image_root label destination title attrs =
   let attrs =
     match title with
     | None -> attrs
     | Some title -> ("title", title) :: attrs
   in
   let attrs = ("href", escape_uri destination) :: attrs in
-  elt Inline "a" attrs (Some (inline label))
+  elt Inline "a" attrs (Some (inline ~image_root label))
 
-and img ?alt label destination title attrs =
+and img ~image_root ?alt label destination title attrs =
   let attrs =
     match title with
     | None -> attrs
     | Some title -> ("title", title) :: attrs
   in
   let attrs =
-    match get_dimensions destination with
+    match get_dimensions ~image_root destination with
     | Some (w, h) -> ("width", w) :: ("height", h) :: attrs
     | None -> attrs
   in
@@ -273,31 +317,33 @@ and img ?alt label destination title attrs =
   elt Inline "img" attrs None
 
 (* wrap img with figure and caption *)
-and figure label destination title attrs =
+and figure ~image_root label destination title attrs =
   let alt = to_plain_text label in
   if String.trim alt = ""
-  then elt Block "figure" [] (Some (img label destination title attrs))
+  then elt Block "figure" [] (Some (img ~image_root label destination title attrs))
   else (
     (* the caption already carries the description, so repeating it in alt only
        makes a screen reader read it twice *)
-    let img_el = img ~alt:"" label destination title attrs in
+    let img_el = img ~image_root ~alt:"" label destination title attrs in
     let caption = elt Block "figcaption" [] (Some (text alt)) in
     elt Block "figure" [] (Some (concat img_el caption)))
 
 and sup attrs child = elt Inline "sup" attrs (Some child)
 
-and inline = function
-  | Ast.Impl.Concat (_, l) -> concat_map inline l
+and inline ~image_root = function
+  | Ast.Impl.Concat (_, l) -> concat_map (inline ~image_root) l
   | Text (_, t) -> text t
-  | Emph (attr, il) -> elt Inline "em" attr (Some (inline il))
-  | Strong (attr, il) -> elt Inline "strong" attr (Some (inline il))
+  | Emph (attr, il) -> elt Inline "em" attr (Some (inline ~image_root il))
+  | Strong (attr, il) -> elt Inline "strong" attr (Some (inline ~image_root il))
   | Code (attr, s) -> elt Inline "code" attr (Some (text s))
   | Hard_break attr -> concat (elt Inline "br" attr None) nl
   | Soft_break _ -> nl
   | Html (_, body) -> raw body
-  | Link (attr, { label; destination; title }) -> url label destination title attr
-  | Image (attr, { label; destination; title }) -> img label destination title attr
-  | Sup (attrs, il) -> sup attrs (inline il)
+  | Link (attr, { label; destination; title }) ->
+    url ~image_root label destination title attr
+  | Image (attr, { label; destination; title }) ->
+    img ~image_root label destination title attr
+  | Sup (attrs, il) -> sup attrs (inline ~image_root il)
   (* math reached here is inside a paragraph, so it renders inline. a paragraph
      that is nothing but math is handled as a block below *)
   | Math (_, content) -> raw (tex2mathml ~display:Camlmath.Inline content)
@@ -310,7 +356,7 @@ let alignment_attributes = function
   | Centre -> [ "align", "center" ]
 ;;
 
-let table_header headers =
+let table_header ~image_root headers =
   elt
     Table
     "thead"
@@ -324,11 +370,11 @@ let table_header headers =
              (concat_map
                 (fun (header, alignment) ->
                    let attrs = alignment_attributes alignment in
-                   elt Block "th" attrs (Some (inline header)))
+                   elt Block "th" attrs (Some (inline ~image_root header)))
                 headers))))
 ;;
 
-let table_body headers rows =
+let table_body ~image_root headers rows =
   elt
     Table
     "tbody"
@@ -344,7 +390,7 @@ let table_body headers rows =
                   (concat_map2
                      (fun (_, alignment) cell ->
                         let attrs = alignment_attributes alignment in
-                        elt Block "td" attrs (Some (inline cell)))
+                        elt Block "td" attrs (Some (inline ~image_root cell)))
                      headers
                      row)))
           rows))
@@ -359,10 +405,16 @@ let footnote_block attr content =
 ;;
 
 (* changed from : to - to match deno lume's behavior *)
-let footnote_list footnotes =
-  let backlink label = sup [] (url (Text ([], "↩︎")) ("#fnref-" ^ label) None []) in
+let footnote_list ~image_root footnotes =
+  let backlink label =
+    sup [] (url ~image_root (Text ([], "↩︎")) ("#fnref-" ^ label) None [])
+  in
   let p footnote =
-    elt Block "p" [] (Some (concat (inline footnote.content) (backlink footnote.label)))
+    elt
+      Block
+      "p"
+      []
+      (Some (concat (inline ~image_root footnote.content) (backlink footnote.label)))
   in
   elt
     Block
@@ -374,15 +426,15 @@ let footnote_list footnotes =
           footnotes))
 ;;
 
-let rec block ~auto_identifiers = function
+let rec block ~auto_identifiers ~image_root = function
   | Blockquote (attr, q) ->
     elt
       Block
       "blockquote"
       attr
-      (Some (concat nl (concat_map (block ~auto_identifiers) q)))
+      (Some (concat nl (concat_map (block ~auto_identifiers ~image_root) q)))
   | Paragraph (_, Ast.Impl.Image (attr, { label; destination; title })) ->
-    figure label destination title attr
+    figure ~image_root label destination title attr
   (* a paragraph that holds nothing but math becomes the display block itself.
      wrapping it in <p> instead would put a <div> inside a <p>, which no html
      parser keeps *)
@@ -392,7 +444,7 @@ let rec block ~auto_identifiers = function
       "div"
       [ "class", "math-display" ]
       (Some (raw (tex2mathml ~display:Camlmath.Block content)))
-  | Paragraph (attr, md) -> elt Block "p" attr (Some (inline md))
+  | Paragraph (attr, md) -> elt Block "p" attr (Some (inline ~image_root md))
   | List (attr, ty, sp, bl) ->
     let name =
       match ty with
@@ -407,8 +459,8 @@ let rec block ~auto_identifiers = function
     let li t =
       let block' t =
         match t, sp with
-        | Paragraph (_, t), Tight -> concat (inline t) nl
-        | _ -> block ~auto_identifiers t
+        | Paragraph (_, t), Tight -> concat (inline ~image_root t) nl
+        | _ -> block ~auto_identifiers ~image_root t
       in
       let nl = if sp = Tight then Null else nl in
       elt Block "li" [] (Some (concat nl (concat_map block' t)))
@@ -469,28 +521,31 @@ let rec block ~auto_identifiers = function
            (Some (raw "#"))
        in
        let attr' = ("tabindex", "-1") :: attr in
-       let content = concat anchor (concat (raw " ") (inline text)) in
+       let content = concat anchor (concat (raw " ") (inline ~image_root text)) in
        elt Block name attr' (Some content)
-     | None -> elt Block name attr (Some (inline text)))
+     | None -> elt Block name attr (Some (inline ~image_root text)))
   | Definition_list (attr, l) ->
     let f { term; defs } =
       concat
-        (elt Block "dt" [] (Some (inline term)))
-        (concat_map (fun s -> elt Block "dd" [] (Some (inline s))) defs)
+        (elt Block "dt" [] (Some (inline ~image_root term)))
+        (concat_map (fun s -> elt Block "dd" [] (Some (inline ~image_root s))) defs)
     in
     elt Block "dl" attr (Some (concat_map f l))
-  | Table (attr, headers, []) -> elt Table "table" attr (Some (table_header headers))
+  | Table (attr, headers, []) ->
+    elt Table "table" attr (Some (table_header ~image_root headers))
   | Table (attr, headers, rows) ->
     elt
       Table
       "table"
       attr
-      (Some (concat (table_header headers) (table_body headers rows)))
+      (Some
+         (concat (table_header ~image_root headers) (table_body ~image_root headers rows)))
   | Footnote_list (_, []) -> Null
-  | Footnote_list (attr, footnotes) -> footnote_block attr (footnote_list footnotes)
+  | Footnote_list (attr, footnotes) ->
+    footnote_block attr (footnote_list ~image_root footnotes)
 ;;
 
-let of_doc ?(auto_identifiers = true) doc =
+let of_doc ?(auto_identifiers = true) ?image_root doc =
   let identifiers = Identifiers.empty in
   let f identifiers = function
     | Heading (attr, level, text) ->
@@ -512,7 +567,7 @@ let of_doc ?(auto_identifiers = true) doc =
     List.fold_left
       (fun (accu, ids) x ->
          let x', ids = f ids x in
-         let el = concat accu (block ~auto_identifiers x') in
+         let el = concat accu (block ~auto_identifiers ~image_root x') in
          el, ids)
       (Null, identifiers)
       doc

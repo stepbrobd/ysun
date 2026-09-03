@@ -18,6 +18,11 @@ type t =
     from. *)
 exception Math_error of string
 
+(** Raised when an image destination is site local, an [image_root] was given,
+    and the file cannot be read or decoded. The payload names the failure, the
+    destination as written and the path it resolved to. *)
+exception Image_error of string
+
 val htmlentities : string -> string
-val of_doc : ?auto_identifiers:bool -> attributes block list -> t
+val of_doc : ?auto_identifiers:bool -> ?image_root:string -> attributes block list -> t
 val to_string : t -> string

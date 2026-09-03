@@ -49,6 +49,10 @@ let of_channel ic : doc = parse_inlines (Block_parser.Pre.of_channel ic)
 let of_string s = parse_inlines (Block_parser.Pre.of_string s)
 
 exception Math_error = Html.Math_error
+exception Image_error = Html.Image_error
 
-let to_html ?auto_identifiers doc = Html.to_string (Html.of_doc ?auto_identifiers doc)
+let to_html ?auto_identifiers ?image_root doc =
+  Html.to_string (Html.of_doc ?auto_identifiers ?image_root doc)
+;;
+
 let to_sexp ast = Format.asprintf "@[%a@]@." Sexp.print (Sexp.create ast)
