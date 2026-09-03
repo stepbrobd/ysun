@@ -1,4 +1,4 @@
-_Note on the Omd implementation:_ Table specification excerpted from
+*Note on the Omd implementation:* Table specification excerpted from
 [this commit][0] in the GitHub-Flavored Markdown repository. There is
 one alteration (noted below), where the GFM spec appears to contradict
 the CommonMark spec (and itself) on the treatment of escape characters
@@ -16,16 +16,16 @@ single header row, a [delimiter row] separating the header from the data, and
 zero or more data rows.
 
 Each row consists of cells containing arbitrary text, in which [inlines] are
-parsed, separated by pipes (`|`). A leading and trailing pipe is also
+parsed, separated by pipes (`|`).  A leading and trailing pipe is also
 recommended for clarity of reading, and if there's otherwise parsing ambiguity.
-Spaces between pipes and cell content are trimmed. Block-level elements cannot
+Spaces between pipes and cell content are trimmed.  Block-level elements cannot
 be inserted in a table.
 
 The [delimiter row](@) consists of cells whose only content are hyphens (`-`),
 and optionally, a leading or trailing colon (`:`), or both, to indicate left,
 right, or center alignment respectively.
 
-```example table
+```````````````````````````````` example table
 | foo | bar |
 | --- | --- |
 | baz | bim |
@@ -44,12 +44,12 @@ right, or center alignment respectively.
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
 
 Cells in one column don't need to match length, though it's easier to read if
 they are. Likewise, use of leading and trailing pipes may be inconsistent:
 
-```example table
+```````````````````````````````` example table
 | abc | defghi |
 :-: | -----------:
 bar | baz
@@ -68,7 +68,7 @@ bar | baz
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
 
 Include a pipe in a cell's content by escaping it, including inside other
 inline spans:
@@ -77,7 +77,7 @@ inline spans:
 in accordance with the rules for code spans in the CommonMark and GFM
 specs.
 
-```example table
+```````````````````````````````` example table
 | f\|oo  |
 | ------ |
 | b `\|` az |
@@ -98,12 +98,12 @@ specs.
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
 
 The table is broken at the first empty line, or beginning of another
 block-level structure:
 
-```example table
+```````````````````````````````` example table
 | abc | def |
 | --- | --- |
 | bar | baz |
@@ -126,9 +126,9 @@ block-level structure:
 <blockquote>
 <p>bar</p>
 </blockquote>
-```
+````````````````````````````````
 
-```example table
+```````````````````````````````` example table
 | abc | def |
 | --- | --- |
 | bar | baz |
@@ -155,12 +155,12 @@ bar
 </tbody>
 </table>
 <p>bar</p>
-```
+````````````````````````````````
 
-The header row must match the [delimiter row] in the number of cells. If not,
+The header row must match the [delimiter row] in the number of cells.  If not,
 a table will not be recognized:
 
-```example table
+```````````````````````````````` example table
 | abc | def |
 | --- |
 | bar |
@@ -168,13 +168,13 @@ a table will not be recognized:
 <p>| abc | def |
 | --- |
 | bar |</p>
-```
+````````````````````````````````
 
-The remainder of the table's rows may vary in the number of cells. If there
+The remainder of the table's rows may vary in the number of cells.  If there
 are a number of cells fewer than the number of cells in the header row, empty
-cells are inserted. If there are greater, the excess is ignored:
+cells are inserted.  If there are greater, the excess is ignored:
 
-```example table
+```````````````````````````````` example table
 | abc | def |
 | --- | --- |
 | bar |
@@ -198,11 +198,11 @@ cells are inserted. If there are greater, the excess is ignored:
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
 
 If there are no rows in the body, no `<tbody>` is generated in HTML output:
 
-```example table
+```````````````````````````````` example table
 | abc | def |
 | --- | --- |
 .
@@ -214,4 +214,4 @@ If there are no rows in the body, no `<tbody>` is generated in HTML output:
 </tr>
 </thead>
 </table>
-```
+````````````````````````````````

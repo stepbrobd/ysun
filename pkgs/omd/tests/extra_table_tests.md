@@ -2,7 +2,7 @@
 
 Complete table
 
-```example
+```````````````````````````````` example
 | abc | def   | **ghi**   |
 |:----|:-----:|----------:|
 | 1   | 2     | [link][0] |
@@ -37,21 +37,22 @@ Complete table
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
+
 
 Not a table (no delimiter)
 
-```example
+```````````````````````````````` example
 | abc |
 | def |
 .
 <p>| abc |
 | def |</p>
-```
+````````````````````````````````
 
 Too few columns in a row gets expanded
 
-```example
+```````````````````````````````` example
 | a | b |
 |---|---|
 | 1 |
@@ -70,21 +71,21 @@ Too few columns in a row gets expanded
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
 
 Table with no columns not allowed
 
-```example
+````````````````````````````````example
 |
 |
 .
 <p>|
 |</p>
-```
+````````````````````````````````
 
 Minimal table 1
 
-```example
+```````````````````````````````` example
 h|
 -|
 .
@@ -95,11 +96,11 @@ h|
 </tr>
 </thead>
 </table>
-```
+````````````````````````````````
 
 Minimal table 2
 
-```example
+```````````````````````````````` example
 |h
 |-
 .
@@ -110,11 +111,11 @@ Minimal table 2
 </tr>
 </thead>
 </table>
-```
+````````````````````````````````
 
 Minimal table 3
 
-```example
+```````````````````````````````` example
 ||
 ||
 .
@@ -125,11 +126,11 @@ Minimal table 3
 </tr>
 </thead>
 </table>
-```
+````````````````````````````````
 
 Escaped `|` characters
 
-```example
+```````````````````````````````` example
 \||\|
 -|-
 |
@@ -148,11 +149,11 @@ Escaped `|` characters
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
 
 `|` characters inside code spans without escaping
 
-```example
+```````````````````````````````` example
 abc | `|` | def
 ----|-----|-------------
 ghi |     | `` `| ``jkl
@@ -173,11 +174,11 @@ ghi |     | `` `| ``jkl
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
 
 Cells starting with numbers
 
-```example
+```````````````````````````````` example
 0 | 1
 --|--
 3 | 4
@@ -196,12 +197,12 @@ Cells starting with numbers
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
 
 Setext headings or cells? A setext heading marker isn't a start of a
 new block, so it gets treated as if it were a single element row.
 
-```example
+```````````````````````````````` example
 = | b
 --|--
 =
@@ -220,11 +221,11 @@ new block, so it gets treated as if it were a single element row.
 </tr>
 </tbody>
 </table>
-```
+````````````````````````````````
 
 Tables in a list
 
-```example
+```````````````````````````````` example
 1. abc | def
    ----|----
    1   | 2
@@ -263,4 +264,4 @@ Tables in a list
 </tbody>
 </table></li>
 </ol>
-```
+````````````````````````````````

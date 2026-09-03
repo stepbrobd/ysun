@@ -10,8 +10,7 @@ let protect ~finally f =
 ;;
 
 let disabled =
-  [ 25 (* pre-existing: &ClockwiseContourIntegral; entity not in omd's table *)
-  ; 516 (* img inside <a>: loading/decoding attrs added *)
+  [ 516 (* img inside <a>: loading/decoding attrs added *)
   ; 519 (* standalone img: figure wrapping + loading/decoding *)
   ; 530 (* img inside <a>: loading/decoding attrs added *)
   ; 571 (* standalone img: figure wrapping + loading/decoding *)

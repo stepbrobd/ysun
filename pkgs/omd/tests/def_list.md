@@ -1,6 +1,6 @@
 ## Definition lists
 
-```example
+```````````````````````````````` example
 First Term
 : This is the definition of the first term.
 
@@ -19,4 +19,4 @@ which is multiline
 which is multiline</dd>
 </dl>
 <p>: This is not a correct definition list</p>
-```
+````````````````````````````````

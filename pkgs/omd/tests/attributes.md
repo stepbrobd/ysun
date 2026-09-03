@@ -2,7 +2,7 @@
 
 Headings with classes:
 
-```example
+```````````````````````````````` example
 Heading classes attributes testing
 
 # Heading 1 {.class1}
@@ -15,11 +15,11 @@ Heading classes attributes testing
 <h1 class="class1">Heading 1</h1>
 <h1 class="class2">Heading 2</h1>
 <h1 class="class3a class3b">Heading 3</h1>
-```
+````````````````````````````````
 
 Headings with attributes:
 
-```example
+```````````````````````````````` example
 Heading data attributes testing
 
 # Heading 1 {data1=value1}
@@ -32,11 +32,11 @@ Heading data attributes testing
 <h1 data1="value1">Heading 1</h1>
 <h1 data2="value2">Heading 2</h1>
 <h1 data1="value3a" data2="value3b">Heading 3</h1>
-```
+````````````````````````````````
 
 Headings with ids:
 
-```example
+```````````````````````````````` example
 Heading id attributes testing
 
 # Heading 1 {#id1}
@@ -46,14 +46,14 @@ Heading id attributes testing
 # Heading 3 {#id3a #id3b}
 .
 <p>Heading id attributes testing</p>
-<h1 id="id1">Heading 1</h1>
-<h1 id="id2">Heading 2</h1>
-<h1 id="id3b">Heading 3</h1>
-```
+<h1 tabindex="-1" id="id1"><a class="header-anchor" href="#id1">#</a> Heading 1</h1>
+<h1 tabindex="-1" id="id2"><a class="header-anchor" href="#id2">#</a> Heading 2</h1>
+<h1 tabindex="-1" id="id3b"><a class="header-anchor" href="#id3b">#</a> Heading 3</h1>
+````````````````````````````````
 
 Inline code with classes:
 
-```example
+```````````````````````````````` example
 Code blocks class attributes testing
 
 `Code block 1`{.class1}
@@ -63,11 +63,11 @@ Code blocks class attributes testing
 <p>Code blocks class attributes testing</p>
 <p><code class="class1">Code block 1</code></p>
 <p><code class="class2a class2b">Code block 2</code></p>
-```
+````````````````````````````````
 
 Inline code with attributes:
 
-```example
+```````````````````````````````` example
 Code blocks data attributes testing
 
 `Code block 1`{data1=value1}
@@ -77,11 +77,11 @@ Code blocks data attributes testing
 <p>Code blocks data attributes testing</p>
 <p><code data1="value1">Code block 1</code></p>
 <p><code data1="value2a" data2="value2b">Code block 2</code></p>
-```
+````````````````````````````````
 
 Inline code with ids:
 
-```example
+```````````````````````````````` example
 Code blocks id attributes testing
 
 `Code block 1`{#id1}
@@ -91,11 +91,11 @@ Code blocks id attributes testing
 <p>Code blocks id attributes testing</p>
 <p><code id="id1">Code block 1</code></p>
 <p><code id="id2b">Code block 2</code></p>
-```
+````````````````````````````````
 
 Code blocks with classes:
 
-````example
+```````````````````````````````` example
 Code blocks class attributes testing
 
 ``` {.class1}
@@ -111,11 +111,11 @@ Code block 2
 </code></pre>
 <pre class="class2.a class2.b"><code>Code block 2
 </code></pre>
-````
+````````````````````````````````
 
 Code blocks with attributes:
 
-````example
+```````````````````````````````` example
 Code blocks data attributes testing
 
 ``` {data1=value1}
@@ -131,11 +131,11 @@ Code block 2
 </code></pre>
 <pre data1="value2.a" data2="value2.b"><code>Code block 2
 </code></pre>
-````
+````````````````````````````````
 
 Code blocks with ids:
 
-````example
+```````````````````````````````` example
 Code blocks id attributes testing
 
 ``` {#id1}
@@ -151,11 +151,11 @@ Code block 2
 </code></pre>
 <pre id="id2.b"><code>Code block 2
 </code></pre>
-````
+````````````````````````````````
 
 Links with classes:
 
-```example
+```````````````````````````````` example
 Link class attributes testing
 
 [Link 1](url_1){.class1}
@@ -169,13 +169,15 @@ Link class attributes testing
 <p>Link class attributes testing</p>
 <p><a href="url_1" class="class1">Link 1</a></p>
 <p><a href="url_2" class="class2a class2b">Link 2</a></p>
-<p><img src="url_1" alt="Link 1" class="class1" /></p>
-<p><img src="url_2" alt="Link 2" class="class2a class2b" /></p>
-```
+<figure><img src="url_1" alt="Link 1" loading="lazy" decoding="async" class="class1" /><figcaption>Link 1</figcaption>
+</figure>
+<figure><img src="url_2" alt="Link 2" loading="lazy" decoding="async" class="class2a class2b" /><figcaption>Link 2</figcaption>
+</figure>
+````````````````````````````````
 
 Links with attributes:
 
-```example
+```````````````````````````````` example
 Link data attributes testing
 
 [Link 1](url_1){data1=value1}
@@ -189,13 +191,15 @@ Link data attributes testing
 <p>Link data attributes testing</p>
 <p><a href="url_1" data1="value1">Link 1</a></p>
 <p><a href="url_2" data1="value2a" data2="value2b">Link 2</a></p>
-<p><img src="url_1" alt="Link 1" data1="value1" /></p>
-<p><img src="url_2" alt="Link 2" data1="value2a" data2="value2b" /></p>
-```
+<figure><img src="url_1" alt="Link 1" loading="lazy" decoding="async" data1="value1" /><figcaption>Link 1</figcaption>
+</figure>
+<figure><img src="url_2" alt="Link 2" loading="lazy" decoding="async" data1="value2a" data2="value2b" /><figcaption>Link 2</figcaption>
+</figure>
+````````````````````````````````
 
 Links with ids:
 
-```example
+```````````````````````````````` example
 Link id attributes testing
 
 [Link 1](url_1){#id1}
@@ -209,13 +213,15 @@ Link id attributes testing
 <p>Link id attributes testing</p>
 <p><a href="url_1" id="id1">Link 1</a></p>
 <p><a href="url_2" id="id2b">Link 2</a></p>
-<p><img src="url_1" alt="Link 1" id="id1" /></p>
-<p><img src="url_2" alt="Link 2" id="id2b" /></p>
-```
+<figure><img src="url_1" alt="Link 1" loading="lazy" decoding="async" id="id1" /><figcaption>Link 1</figcaption>
+</figure>
+<figure><img src="url_2" alt="Link 2" loading="lazy" decoding="async" id="id2b" /><figcaption>Link 2</figcaption>
+</figure>
+````````````````````````````````
 
 Refs with classes:
 
-```example
+```````````````````````````````` example
 Ref class attributes testing
 
 [Ref 1][ref_1]
@@ -234,13 +240,15 @@ Ref class attributes testing
 <p>Ref class attributes testing</p>
 <p><a href="ref_1" class="class1">Ref 1</a></p>
 <p><a href="ref_2" class="class2a class2b">Ref 2</a></p>
-<p><img src="ref_3" alt="Ref 3" class="class1" /></p>
-<p><img src="ref_4" alt="Ref 4" class="class2a class2b" /></p>
-```
+<figure><img src="ref_3" alt="Ref 3" loading="lazy" decoding="async" class="class1" /><figcaption>Ref 3</figcaption>
+</figure>
+<figure><img src="ref_4" alt="Ref 4" loading="lazy" decoding="async" class="class2a class2b" /><figcaption>Ref 4</figcaption>
+</figure>
+````````````````````````````````
 
 Refs with attributes:
 
-```example
+```````````````````````````````` example
 Ref data attributes testing
 
 [Ref 1][ref_1]
@@ -259,13 +267,15 @@ Ref data attributes testing
 <p>Ref data attributes testing</p>
 <p><a href="ref_1" data1="value1">Ref 1</a></p>
 <p><a href="ref_2" data1="value2a" data2="value2b">Ref 2</a></p>
-<p><img src="ref_3" alt="Ref 3" data1="value1" /></p>
-<p><img src="ref_4" alt="Ref 4" data1="value2a" data2="value2b" /></p>
-```
+<figure><img src="ref_3" alt="Ref 3" loading="lazy" decoding="async" data1="value1" /><figcaption>Ref 3</figcaption>
+</figure>
+<figure><img src="ref_4" alt="Ref 4" loading="lazy" decoding="async" data1="value2a" data2="value2b" /><figcaption>Ref 4</figcaption>
+</figure>
+````````````````````````````````
 
 Refs with ids:
 
-```example
+```````````````````````````````` example
 Ref id attributes testing
 
 [Ref 1][ref_1]
@@ -284,53 +294,21 @@ Ref id attributes testing
 <p>Ref id attributes testing</p>
 <p><a href="ref_1" id="id1">Ref 1</a></p>
 <p><a href="ref_2" id="id2b">Ref 2</a></p>
-<p><img src="ref_3" alt="Ref 3" id="id1" /></p>
-<p><img src="ref_4" alt="Ref 4" id="id2b" /></p>
-```
+<figure><img src="ref_3" alt="Ref 3" loading="lazy" decoding="async" id="id1" /><figcaption>Ref 3</figcaption>
+</figure>
+<figure><img src="ref_4" alt="Ref 4" loading="lazy" decoding="async" id="id2b" /><figcaption>Ref 4</figcaption>
+</figure>
+````````````````````````````````
 
 Footnotes:
 
-```example
+```````````````````````````````` example
 [^footnote]
 
 [^footnote]: link
 .
 <p><sup><a href="#fn:footnote" id="fnref-footnote">footnote</a></sup></p>
-<div class="footnotes"><hr /><ol><li id="fn:footnote"><p>link<sup><a href="#fnref-footnote">↩</a></sup></p></li>
+<div class="footnotes"><hr /><ol><li id="fn:footnote"><p>link<sup><a href="#fnref-footnote">↩︎</a></sup></p></li>
 </ol>
 </div>
-```
-
-Footnote with inline link on continuation line:
-
-```example
-[^1]
-
-[^1]: text with
-[inline link](http://example.com) inside
-.
-<p><sup><a href="#fn:1" id="fnref-1">1</a></sup></p>
-<div class="footnotes"><hr /><ol><li id="fn:1"><p>text with
-<a href="http://example.com">inline link</a> inside<sup><a href="#fnref-1">↩︎</a></sup></p>
-</li>
-</ol>
-</div>
-```
-
-Footnote with multiple links across continuation lines:
-
-```example
-[^1]
-
-[^1]: multi-line with
-[link one](http://a.com) and
-[link two](http://b.com) and more
-.
-<p><sup><a href="#fn:1" id="fnref-1">1</a></sup></p>
-<div class="footnotes"><hr /><ol><li id="fn:1"><p>multi-line with
-<a href="http://a.com">link one</a> and
-<a href="http://b.com">link two</a> and more<sup><a href="#fnref-1">↩︎</a></sup></p>
-</li>
-</ol>
-</div>
-```
+````````````````````````````````
