@@ -43,6 +43,7 @@ let parse_inlines (md, defs) : doc =
 let escape_html_entities = Html.htmlentities
 let of_channel ic : doc = parse_inlines (Block_parser.Pre.of_channel ic)
 let of_string s = parse_inlines (Block_parser.Pre.of_string s)
+
 exception Math_error = Html.Math_error
 
 let to_html ?auto_identifiers doc = Html.to_string (Html.of_doc ?auto_identifiers doc)
