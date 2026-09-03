@@ -308,7 +308,8 @@ Footnotes:
 [^footnote]: link
 .
 <p><sup><a href="#fn:footnote" id="fnref-footnote">footnote</a></sup></p>
-<div class="footnotes"><hr /><ol><li id="fn:footnote"><p>link<sup><a href="#fnref-footnote">↩︎</a></sup></p></li>
+<div class="footnotes"><hr />
+<ol><li id="fn:footnote"><p>link<sup><a href="#fnref-footnote">↩︎</a></sup></p></li>
 </ol>
 </div>
 ````````````````````````````````

@@ -342,12 +342,12 @@ let table_body headers rows =
           rows))
 ;;
 
-let footnote_block content =
+let footnote_block attr content =
   elt
     Block
     "div"
-    [ "class", "footnotes" ]
-    (Some (concat (elt Inline "hr" [] None) content))
+    (("class", "footnotes") :: attr)
+    (Some (concat (elt Block "hr" [] None) content))
 ;;
 
 (* changed from : to - to match deno lume's behavior *)
@@ -468,10 +468,8 @@ let rec block ~auto_identifiers = function
       "table"
       attr
       (Some (concat (table_header headers) (table_body headers rows)))
-  | Footnote_list footnotes ->
-    (match List.is_empty footnotes with
-     | false -> footnote_block (footnote_list footnotes)
-     | true -> Null)
+  | Footnote_list (_, []) -> Null
+  | Footnote_list (attr, footnotes) -> footnote_block attr (footnote_list footnotes)
 ;;
 
 let of_doc ?(auto_identifiers = true) doc =

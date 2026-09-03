@@ -57,9 +57,9 @@ module Make (C : BlockContent) = struct
     | Html_block of 'attr * string
     | Definition_list of 'attr * 'attr def_elt list
     | Table of 'attr * ('attr C.t * cell_alignment) list * 'attr C.t list list
-    | Footnote_list of 'attr footnote list
     (** A table is represented by a header row, which is a list of pairs of
             header cells and alignments, and a list of rows *)
+    | Footnote_list of 'attr * 'attr footnote list
 end
 
 module MakeMapper (Src : BlockContent) (Dst : BlockContent) = struct
@@ -86,12 +86,13 @@ module MakeMapper (Src : BlockContent) (Dst : BlockContent) = struct
         ( attr
         , List.map (fun (header, alignment) -> f header, alignment) headers
         , List.map (List.map f) rows )
-    | Footnote_list footnotes ->
+    | Footnote_list (attr, footnotes) ->
       Footnote_list
-        (List.map
-           (fun { SrcBlock.id; content; label } ->
-              { DstBlock.id; content = f content; label })
-           footnotes)
+        ( attr
+        , List.map
+            (fun { SrcBlock.id; content; label } ->
+               { DstBlock.id; content = f content; label })
+            footnotes )
   ;;
 end
 

@@ -15,8 +15,10 @@ let toc = Toc.toc
 
 let parse_inline ~fnrefs defs s = Parser.inline ~fnrefs defs (Parser.P.of_string s)
 
+(* the trailing footnote list, or nothing when the document defines none. an
+   empty block here would reach every consumer that matches over blocks *)
 let footnotes defs =
-  let footnote_defs =
+  match
     List.filter_map
       (fun def ->
          match def.Parser.kind with
@@ -24,9 +26,9 @@ let footnotes defs =
            Some { id; label; Ast_block.Raw.content = def.destination }
          | _ -> None)
       defs
-  in
-  let footnote_block : _ Ast_block.Raw.block = Footnote_list footnote_defs in
-  footnote_block
+  with
+  | [] -> []
+  | footnote_defs -> [ (Footnote_list ([], footnote_defs) : _ Ast_block.Raw.block) ]
 ;;
 
 let parse_inlines (md, defs) : doc =
@@ -36,7 +38,7 @@ let parse_inlines (md, defs) : doc =
     in
     List.map f defs
   in
-  let blocks = md @ [ footnotes defs ] in
+  let blocks = md @ footnotes defs in
   (* one table per document so a label referenced twice gets two distinct ids *)
   let fnrefs = Hashtbl.create 8 in
   List.map (Ast_block.Mapper.map (parse_inline ~fnrefs defs)) blocks

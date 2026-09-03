@@ -25,7 +25,7 @@ and inline = function
   | Link (_, def) -> List [ Atom "url"; link def ]
   | Html (_, s) -> List [ Atom "html"; Atom s ]
   | Image _ -> Atom "img"
-  | Sup _ -> Atom "sup"
+  | Sup (_, il) -> List [ Atom "sup"; inline il ]
   | Math (_, s) -> List [ Atom "math"; Atom s ]
 ;;
 
@@ -66,7 +66,12 @@ let rec block = function
       ; List (List.map table_header headers)
       ; List (List.map (fun row -> List (List.map inline row)) rows)
       ]
-  | Footnote_list _footnotes -> List []
+  | Footnote_list (_, footnotes) ->
+    List
+      (Atom "footnotes"
+       :: List.map
+            (fun { id; label; content } -> List [ Atom id; Atom label; inline content ])
+            footnotes)
 ;;
 
 let create ast = List (List.map block ast)
