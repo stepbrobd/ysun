@@ -102,7 +102,7 @@ let%expect_test "construct code blocks" =
       [ code_bl ~attrs:[ "class", "my-code" ] ~lang:"ocaml" "let foo = bar + bing" ];
   [%expect
     {|
-    <pre class="my-code"><code><span class='ocaml-keyword'>let</span><span class='ocaml-source'> </span><span class='ocaml-entity-name-function-binding'>foo</span><span class='ocaml-source'> </span><span class='ocaml-keyword-operator'>=</span><span class='ocaml-source'> </span><span class='ocaml-source'>bar</span><span class='ocaml-source'> </span><span class='ocaml-keyword-operator'>+</span><span class='ocaml-source'> </span><span class='ocaml-source'>bing</span><span class='ocaml-source'>
+    <pre class="my-code"><code class="language-ocaml"><span class='ocaml-keyword'>let</span><span class='ocaml-source'> </span><span class='ocaml-entity-name-function-binding'>foo</span><span class='ocaml-source'> </span><span class='ocaml-keyword-operator'>=</span><span class='ocaml-source'> </span><span class='ocaml-source'>bar</span><span class='ocaml-source'> </span><span class='ocaml-keyword-operator'>+</span><span class='ocaml-source'> </span><span class='ocaml-source'>bing</span><span class='ocaml-source'>
     </span></code></pre>
     |}]
 ;;
