@@ -24,7 +24,8 @@
   "A library for adding syntax highlighting to OCaml-related code and outputing to HTML")
  (depends
   (cmarkit (and (>= 0.3.0) :with-test))
-  (textmate-language (>= 0.3.3)))
+  (textmate-language (>= 0.3.3))
+  (yojson :build))
  (depopts
   (cmarkit (>= 0.3.0)))
 )

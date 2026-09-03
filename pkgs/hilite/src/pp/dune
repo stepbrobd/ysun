@@ -1,5 +1,3 @@
-; Re-enable to generate JSONs
-
-; (executable
-;  (name pp)
-;  (libraries yojson))
+(executable
+ (name pp)
+ (libraries yojson))

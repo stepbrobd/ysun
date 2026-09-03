@@ -2,6 +2,7 @@
 , buildDunePackage
 , cmarkit
 , textmate-language
+, yojson
 }:
 
 buildDunePackage (finalAttrs: {
@@ -23,6 +24,11 @@ buildDunePackage (finalAttrs: {
   };
 
   env.DUNE_CACHE = "disabled";
+
+  # yojson only builds src/pp, which turns the textmate grammars into jsons.ml
+  buildInputs = [
+    yojson
+  ];
 
   propagatedBuildInputs = [
     cmarkit
