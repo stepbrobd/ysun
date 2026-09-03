@@ -1,7 +1,6 @@
 { lib
 , buildDunePackage
 , cmarkit
-, mdx
 , textmate-language
 }:
 
@@ -18,7 +17,6 @@ buildDunePackage (finalAttrs: {
     fileset = unions [
       ./src
       ./test
-      ./dune
       ./dune-project
       ./license.txt
     ];
@@ -32,12 +30,4 @@ buildDunePackage (finalAttrs: {
   ];
 
   doCheck = true;
-
-  nativeCheckInputs = [
-    mdx.bin
-  ];
-
-  checkInputs = [
-    mdx
-  ];
 })

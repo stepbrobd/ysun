@@ -11,7 +11,7 @@
 
     @param tm
       If no collection of textmate grammars is provided, then a default
-      OCaml-centric on will be used. See {! Hilite.Syntax.langs} for details. *)
+      OCaml-centric on will be used. See {! Hilite.langs} for details. *)
 val transform
   :  ?skip_unknown_languages:bool
   -> ?lookup_method:Hilite.tm_lookup_method
