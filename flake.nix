@@ -1,13 +1,13 @@
 {
-  outputs = { self, nixpkgs, parts, systems } @ inputs: parts.lib.mkFlake { inherit inputs; } {
+  outputs = { nixpkgs, parts, systems, ... } @ inputs: parts.lib.mkFlake { inherit inputs; } {
     systems = import systems;
 
     perSystem = { lib, pkgs, system, self', ... }: {
       _module.args.pkgs = import nixpkgs {
         inherit system;
         overlays = [
-          (final: prev: {
-            ocamlPackages = prev.ocaml-ng.ocamlPackages.overrideScope (ocamlFinal: ocamlPrev:
+          (_: prev: {
+            ocamlPackages = prev.ocaml-ng.ocamlPackages.overrideScope (ocamlFinal: _:
               (with lib; genAttrs
                 (attrNames (builtins.readDir ./pkgs))
                 (name: ocamlFinal.callPackage ./pkgs/${name} { })));
