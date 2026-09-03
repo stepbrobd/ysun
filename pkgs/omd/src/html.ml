@@ -219,6 +219,14 @@ let get_dimensions path =
 
 exception Math_error of string
 
+(* re-exported as Omd.Math_error. without a printer the default rendering names
+   the internal module *)
+let () =
+  Printexc.register_printer (function
+    | Math_error msg -> Some (Printf.sprintf "Omd.Math_error(%s)" msg)
+    | _ -> None)
+;;
+
 (* convert tex to mathml at build time. an expression outside camlmath's subset
    stops the build. the alternative is emitting the source as text, which ships
    raw tex to readers while the build reports success *)
@@ -226,8 +234,7 @@ let tex2mathml ~display content =
   let display = if display then Camlmath.Block else Camlmath.Inline in
   match Camlmath.to_mathml ~display content with
   | Ok markup -> markup
-  | Error e ->
-    raise (Math_error (Format.asprintf "%a in %S" Camlmath.pp_error e content))
+  | Error e -> raise (Math_error (Format.asprintf "%a in %S" Camlmath.pp_error e content))
 ;;
 
 let nl = Raw "\n"

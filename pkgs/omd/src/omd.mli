@@ -26,10 +26,12 @@ val escape_html_entities : string -> string
 
 val of_channel : in_channel -> doc
 val of_string : string -> doc
-(** Raised by {!to_html} when a math node holds an expression outside the subset
-    camlmath converts. The payload names the failure and the offending source.
-    Nothing is emitted for such a node, because rendering the source as text
-    would ship raw TeX to readers while reporting success. *)
+
+(** Raised by {!to_html} when a math node does not convert: an expression
+    outside the subset camlmath accepts, a character it cannot emit, or a [$$]
+    pair that was never meant as math. Nothing is emitted for such a node,
+    because rendering the source as text would ship raw TeX to readers while
+    reporting success. *)
 exception Math_error of string
 
 val to_html : ?auto_identifiers:bool -> doc -> string
