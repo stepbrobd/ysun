@@ -26,7 +26,7 @@ and inline = function
   | Html (_, s) -> List [ Atom "html"; Atom s ]
   | Image _ -> Atom "img"
   | Sup _ -> Atom "sup"
-  | Math (_, display_type, s) -> List [ Atom "math"; Atom display_type; Atom s ]
+  | Math (_, s) -> List [ Atom "math"; Atom s ]
 ;;
 
 let table_header (header, alignment) =

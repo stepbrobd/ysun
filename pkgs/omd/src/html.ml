@@ -199,7 +199,7 @@ let to_plain_text t =
     | Hard_break _ | Soft_break _ -> Buffer.add_char buf ' '
     | Html _ -> ()
     | Sup (_, i) -> go i
-    | Math (_, _, t) -> Buffer.add_string buf t
+    | Math (_, t) -> Buffer.add_string buf t
   in
   go t;
   Buffer.contents buf
@@ -231,7 +231,6 @@ let () =
    stops the build. the alternative is emitting the source as text, which ships
    raw tex to readers while the build reports success *)
 let tex2mathml ~display content =
-  let display = if display then Camlmath.Block else Camlmath.Inline in
   match Camlmath.to_mathml ~display content with
   | Ok markup -> markup
   | Error e -> raise (Math_error (Format.asprintf "%a in %S" Camlmath.pp_error e content))
@@ -291,12 +290,9 @@ and inline = function
   | Link (attr, { label; destination; title }) -> url label destination title attr
   | Image (attr, { label; destination; title }) -> img label destination title attr
   | Sup (attrs, il) -> sup attrs (inline il)
-  | Math (_, display_type, content) ->
-    let display = display_type = "display" in
-    let markup = tex2mathml ~display content in
-    if display
-    then elt Block "div" [ "class", "math-display" ] (Some (raw markup))
-    else raw markup
+  (* math reached here is inside a paragraph, so it renders inline. a paragraph
+     that is nothing but math is handled as a block below *)
+  | Math (_, content) -> raw (tex2mathml ~display:Camlmath.Inline content)
 ;;
 
 let alignment_attributes = function
@@ -379,6 +375,15 @@ let rec block ~auto_identifiers = function
       (Some (concat nl (concat_map (block ~auto_identifiers) q)))
   | Paragraph (_, Ast.Impl.Image (attr, { label; destination; title })) ->
     figure label destination title attr
+  (* a paragraph that holds nothing but math becomes the display block itself.
+     wrapping it in <p> instead would put a <div> inside a <p>, which no html
+     parser keeps *)
+  | Paragraph (_, Ast.Impl.Math (_, content)) ->
+    elt
+      Block
+      "div"
+      [ "class", "math-display" ]
+      (Some (raw (tex2mathml ~display:Camlmath.Block content)))
   | Paragraph (attr, md) -> elt Block "p" attr (Some (inline md))
   | List (attr, ty, sp, bl) ->
     let name =

@@ -2138,7 +2138,7 @@ let rec inline ~fnrefs defs st =
       (match if display then scan_math () else None with
        | Some content when String.length (String.trim content) > 0 ->
          let acc = text acc in
-         loop ~seen_link (Pre.R (Math ([], "display", content)) :: acc) st
+         loop ~seen_link (Pre.R (Math ([], content)) :: acc) st
        | _ ->
          set_pos st off0;
          junk st;

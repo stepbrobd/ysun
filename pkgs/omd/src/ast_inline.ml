@@ -17,7 +17,7 @@ type 'attr inline =
   | Image of 'attr * 'attr link
   | Html of 'attr * string
   | Sup of 'attr * 'attr inline
-  | Math of 'attr * string * string
+  | Math of 'attr * string
 
 and 'attr link =
   { label : 'attr inline
