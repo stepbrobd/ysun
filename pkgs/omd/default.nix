@@ -1,9 +1,9 @@
 { lib
 , buildDunePackage
+, camlmath
 , dune-build-info
 , hilite
 , imgmeta
-, mathjax-node-cli
 , ppx_expect
 , uucp
 , uunf
@@ -33,16 +33,13 @@ buildDunePackage (finalAttrs: {
   env.DUNE_CACHE = "disabled";
 
   propagatedBuildInputs = [
+    camlmath
     dune-build-info
     hilite
     imgmeta
     uucp
     uunf
     uutf
-  ];
-
-  propagatedNativeBuildInputs = [
-    mathjax-node-cli
   ];
 
   doCheck = true;

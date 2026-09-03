@@ -217,29 +217,17 @@ let get_dimensions path =
   | Error _ -> None
 ;;
 
-(* call tex2svg at build time to get tex to svg *)
-let tex2svg ~display content =
-  let flag = if display then "" else "--inline" in
-  let cmd =
-    Printf.sprintf
-      "tex2svg --speech false %s %s 2>/dev/null"
-      flag
-      (Filename.quote content)
-  in
-  try
-    let ic = Unix.open_process_in cmd in
-    let buf = Buffer.create 1024 in
-    (try
-       while true do
-         Buffer.add_char buf (input_char ic)
-       done
-     with
-     | End_of_file -> ());
-    let _ = Unix.close_process_in ic in
-    let svg = Buffer.contents buf in
-    if String.length svg > 0 then Some svg else None
-  with
-  | _ -> None
+exception Math_error of string
+
+(* convert tex to mathml at build time. an expression outside camlmath's subset
+   stops the build. the alternative is emitting the source as text, which ships
+   raw tex to readers while the build reports success *)
+let tex2mathml ~display content =
+  let display = if display then Camlmath.Block else Camlmath.Inline in
+  match Camlmath.to_mathml ~display content with
+  | Ok markup -> markup
+  | Error e ->
+    raise (Math_error (Format.asprintf "%a in %S" Camlmath.pp_error e content))
 ;;
 
 let nl = Raw "\n"
@@ -298,14 +286,10 @@ and inline = function
   | Sup (attrs, il) -> sup attrs (inline il)
   | Math (_, display_type, content) ->
     let display = display_type = "display" in
-    (match tex2svg ~display content with
-     | Some svg ->
-       if display
-       then elt Block "div" [ "class", "math-display" ] (Some (raw svg))
-       else raw svg
-     | None ->
-       let delim = if display then "$$" else "$" in
-       elt Inline "code" [] (Some (text (delim ^ content ^ delim))))
+    let markup = tex2mathml ~display content in
+    if display
+    then elt Block "div" [ "class", "math-display" ] (Some (raw markup))
+    else raw markup
 ;;
 
 let alignment_attributes = function

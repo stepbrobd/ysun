@@ -12,6 +12,10 @@ type t =
   | Null
   | Concat of t * t
 
+(** Raised when a [Math] node holds an expression outside the subset camlmath
+    converts. The payload names the failure and the offending source. *)
+exception Math_error of string
+
 val htmlentities : string -> string
 val of_doc : ?auto_identifiers:bool -> attributes block list -> t
 val to_string : t -> string
