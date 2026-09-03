@@ -247,7 +247,7 @@ let rec url label destination title attrs =
   let attrs = ("href", escape_uri destination) :: attrs in
   elt Inline "a" attrs (Some (inline label))
 
-and img label destination title attrs =
+and img ?alt label destination title attrs =
   let attrs =
     match title with
     | None -> attrs
@@ -258,9 +258,14 @@ and img label destination title attrs =
     | Some (w, h) -> ("width", w) :: ("height", h) :: attrs
     | None -> attrs
   in
+  let alt =
+    match alt with
+    | Some alt -> alt
+    | None -> to_plain_text label
+  in
   let attrs =
     ("src", escape_uri destination)
-    :: ("alt", to_plain_text label)
+    :: ("alt", alt)
     :: ("loading", "lazy")
     :: ("decoding", "async")
     :: attrs
@@ -269,12 +274,15 @@ and img label destination title attrs =
 
 (* wrap img with figure and caption *)
 and figure label destination title attrs =
-  let img_el = img label destination title attrs in
   let alt = to_plain_text label in
-  let caption =
-    if String.trim alt = "" then Null else elt Block "figcaption" [] (Some (text alt))
-  in
-  elt Block "figure" [] (Some (concat img_el caption))
+  if String.trim alt = ""
+  then elt Block "figure" [] (Some (img label destination title attrs))
+  else (
+    (* the caption already carries the description, so repeating it in alt only
+       makes a screen reader read it twice *)
+    let img_el = img ~alt:"" label destination title attrs in
+    let caption = elt Block "figcaption" [] (Some (text alt)) in
+    elt Block "figure" [] (Some (concat img_el caption)))
 
 and sup attrs child = elt Inline "sup" attrs (Some child)
 
@@ -448,7 +456,17 @@ let rec block ~auto_identifiers = function
     (match List.assoc_opt "id" attr with
      | Some id ->
        let anchor =
-         elt Inline "a" [ "class", "header-anchor"; "href", "#" ^ id ] (Some (raw "#"))
+         (* hidden from assistive tech, and unfocusable because aria-hidden must
+            not sit on anything reachable by keyboard *)
+         elt
+           Inline
+           "a"
+           [ "class", "header-anchor"
+           ; "href", "#" ^ id
+           ; "aria-hidden", "true"
+           ; "tabindex", "-1"
+           ]
+           (Some (raw "#"))
        in
        let attr' = ("tabindex", "-1") :: attr in
        let content = concat anchor (concat (raw " ") (inline text)) in

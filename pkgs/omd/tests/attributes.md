@@ -46,9 +46,9 @@ Heading id attributes testing
 # Heading 3 {#id3a #id3b}
 .
 <p>Heading id attributes testing</p>
-<h1 tabindex="-1" id="id1"><a class="header-anchor" href="#id1">#</a> Heading 1</h1>
-<h1 tabindex="-1" id="id2"><a class="header-anchor" href="#id2">#</a> Heading 2</h1>
-<h1 tabindex="-1" id="id3b"><a class="header-anchor" href="#id3b">#</a> Heading 3</h1>
+<h1 tabindex="-1" id="id1"><a class="header-anchor" href="#id1" aria-hidden="true" tabindex="-1">#</a> Heading 1</h1>
+<h1 tabindex="-1" id="id2"><a class="header-anchor" href="#id2" aria-hidden="true" tabindex="-1">#</a> Heading 2</h1>
+<h1 tabindex="-1" id="id3b"><a class="header-anchor" href="#id3b" aria-hidden="true" tabindex="-1">#</a> Heading 3</h1>
 ````````````````````````````````
 
 Inline code with classes:
@@ -169,9 +169,9 @@ Link class attributes testing
 <p>Link class attributes testing</p>
 <p><a href="url_1" class="class1">Link 1</a></p>
 <p><a href="url_2" class="class2a class2b">Link 2</a></p>
-<figure><img src="url_1" alt="Link 1" loading="lazy" decoding="async" class="class1" /><figcaption>Link 1</figcaption>
+<figure><img src="url_1" alt="" loading="lazy" decoding="async" class="class1" /><figcaption>Link 1</figcaption>
 </figure>
-<figure><img src="url_2" alt="Link 2" loading="lazy" decoding="async" class="class2a class2b" /><figcaption>Link 2</figcaption>
+<figure><img src="url_2" alt="" loading="lazy" decoding="async" class="class2a class2b" /><figcaption>Link 2</figcaption>
 </figure>
 ````````````````````````````````
 
@@ -191,9 +191,9 @@ Link data attributes testing
 <p>Link data attributes testing</p>
 <p><a href="url_1" data1="value1">Link 1</a></p>
 <p><a href="url_2" data1="value2a" data2="value2b">Link 2</a></p>
-<figure><img src="url_1" alt="Link 1" loading="lazy" decoding="async" data1="value1" /><figcaption>Link 1</figcaption>
+<figure><img src="url_1" alt="" loading="lazy" decoding="async" data1="value1" /><figcaption>Link 1</figcaption>
 </figure>
-<figure><img src="url_2" alt="Link 2" loading="lazy" decoding="async" data1="value2a" data2="value2b" /><figcaption>Link 2</figcaption>
+<figure><img src="url_2" alt="" loading="lazy" decoding="async" data1="value2a" data2="value2b" /><figcaption>Link 2</figcaption>
 </figure>
 ````````````````````````````````
 
@@ -213,9 +213,9 @@ Link id attributes testing
 <p>Link id attributes testing</p>
 <p><a href="url_1" id="id1">Link 1</a></p>
 <p><a href="url_2" id="id2b">Link 2</a></p>
-<figure><img src="url_1" alt="Link 1" loading="lazy" decoding="async" id="id1" /><figcaption>Link 1</figcaption>
+<figure><img src="url_1" alt="" loading="lazy" decoding="async" id="id1" /><figcaption>Link 1</figcaption>
 </figure>
-<figure><img src="url_2" alt="Link 2" loading="lazy" decoding="async" id="id2b" /><figcaption>Link 2</figcaption>
+<figure><img src="url_2" alt="" loading="lazy" decoding="async" id="id2b" /><figcaption>Link 2</figcaption>
 </figure>
 ````````````````````````````````
 
@@ -240,9 +240,9 @@ Ref class attributes testing
 <p>Ref class attributes testing</p>
 <p><a href="ref_1" class="class1">Ref 1</a></p>
 <p><a href="ref_2" class="class2a class2b">Ref 2</a></p>
-<figure><img src="ref_3" alt="Ref 3" loading="lazy" decoding="async" class="class1" /><figcaption>Ref 3</figcaption>
+<figure><img src="ref_3" alt="" loading="lazy" decoding="async" class="class1" /><figcaption>Ref 3</figcaption>
 </figure>
-<figure><img src="ref_4" alt="Ref 4" loading="lazy" decoding="async" class="class2a class2b" /><figcaption>Ref 4</figcaption>
+<figure><img src="ref_4" alt="" loading="lazy" decoding="async" class="class2a class2b" /><figcaption>Ref 4</figcaption>
 </figure>
 ````````````````````````````````
 
@@ -267,9 +267,9 @@ Ref data attributes testing
 <p>Ref data attributes testing</p>
 <p><a href="ref_1" data1="value1">Ref 1</a></p>
 <p><a href="ref_2" data1="value2a" data2="value2b">Ref 2</a></p>
-<figure><img src="ref_3" alt="Ref 3" loading="lazy" decoding="async" data1="value1" /><figcaption>Ref 3</figcaption>
+<figure><img src="ref_3" alt="" loading="lazy" decoding="async" data1="value1" /><figcaption>Ref 3</figcaption>
 </figure>
-<figure><img src="ref_4" alt="Ref 4" loading="lazy" decoding="async" data1="value2a" data2="value2b" /><figcaption>Ref 4</figcaption>
+<figure><img src="ref_4" alt="" loading="lazy" decoding="async" data1="value2a" data2="value2b" /><figcaption>Ref 4</figcaption>
 </figure>
 ````````````````````````````````
 
@@ -294,9 +294,9 @@ Ref id attributes testing
 <p>Ref id attributes testing</p>
 <p><a href="ref_1" id="id1">Ref 1</a></p>
 <p><a href="ref_2" id="id2b">Ref 2</a></p>
-<figure><img src="ref_3" alt="Ref 3" loading="lazy" decoding="async" id="id1" /><figcaption>Ref 3</figcaption>
+<figure><img src="ref_3" alt="" loading="lazy" decoding="async" id="id1" /><figcaption>Ref 3</figcaption>
 </figure>
-<figure><img src="ref_4" alt="Ref 4" loading="lazy" decoding="async" id="id2b" /><figcaption>Ref 4</figcaption>
+<figure><img src="ref_4" alt="" loading="lazy" decoding="async" id="id2b" /><figcaption>Ref 4</figcaption>
 </figure>
 ````````````````````````````````
 
