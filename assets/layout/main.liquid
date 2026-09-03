@@ -6,6 +6,21 @@
     <link rel="stylesheet" href="/assets/style/tailwind.css" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="{{ canonical }}" />
+    <script type="speculationrules">
+      {
+        "prefetch": [
+          {
+            "where": {
+              "and": [
+                { "href_matches": "/*" },
+                { "not": { "href_matches": "/assets/*" } }
+              ]
+            },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
     <script
       defer="defer"
       data-domain="ysun.co"
