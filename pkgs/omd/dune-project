@@ -29,5 +29,8 @@ package installs both the OMD library and the command line tool `omd`.")
    uutf
    uucp
    uunf
+   camlmath
+   hilite
+   imgmeta
   (dune-build-info (>= 2.7))
   (ppx_expect :with-test)))

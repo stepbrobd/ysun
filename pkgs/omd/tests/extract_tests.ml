@@ -9,29 +9,31 @@ let protect ~finally f =
     r
 ;;
 
+(* keyed by fixture as well as example, because the numbering restarts in every
+   file, so a bare number would disable the same index everywhere *)
 let disabled =
-  [ 516 (* img inside <a>: loading/decoding attrs added *)
-  ; 519 (* standalone img: figure wrapping + loading/decoding *)
-  ; 530 (* img inside <a>: loading/decoding attrs added *)
-  ; 571 (* standalone img: figure wrapping + loading/decoding *)
-  ; 572 (* standalone img: figure wrapping + loading/decoding *)
-  ; 573 (* standalone img: figure wrapping + loading/decoding *)
-  ; 574 (* standalone img: figure wrapping + loading/decoding *)
-  ; 575 (* standalone img: figure wrapping + loading/decoding *)
-  ; 576 (* standalone img: figure wrapping + loading/decoding *)
-  ; 577 (* standalone img: figure wrapping + loading/decoding *)
-  ; 578 (* img with preceding text: loading/decoding attrs added *)
-  ; 579 (* standalone img: figure wrapping + loading/decoding *)
-  ; 580 (* standalone img (empty alt): figure wrapping + loading/decoding *)
-  ; 581 (* standalone img: figure wrapping + loading/decoding *)
-  ; 582 (* standalone img: figure wrapping + loading/decoding *)
-  ; 583 (* standalone img: figure wrapping + loading/decoding *)
-  ; 584 (* standalone img: figure wrapping + loading/decoding *)
-  ; 585 (* standalone img: figure wrapping + loading/decoding *)
-  ; 586 (* img followed by text: loading/decoding attrs added *)
-  ; 587 (* standalone img: figure wrapping + loading/decoding *)
-  ; 588 (* standalone img: figure wrapping + loading/decoding *)
-  ; 590 (* standalone img: figure wrapping + loading/decoding *)
+  [ "spec", 516 (* img inside <a>: loading/decoding attrs added *)
+  ; "spec", 519 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 530 (* img inside <a>: loading/decoding attrs added *)
+  ; "spec", 571 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 572 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 573 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 574 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 575 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 576 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 577 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 578 (* img with preceding text: loading/decoding attrs added *)
+  ; "spec", 579 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 580 (* standalone img (empty alt): figure wrapping + loading/decoding *)
+  ; "spec", 581 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 582 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 583 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 584 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 585 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 586 (* img followed by text: loading/decoding attrs added *)
+  ; "spec", 587 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 588 (* standalone img: figure wrapping + loading/decoding *)
+  ; "spec", 590 (* standalone img: figure wrapping + loading/decoding *)
   ]
 ;;
 
@@ -135,7 +137,7 @@ let write_dune_file test_specs tests =
     tests;
   let pp ppf { filename; example; _ } =
     let base = Filename.remove_extension filename in
-    if List.mem example disabled
+    if List.mem (base, example) disabled
     then Format.fprintf ppf "@ ; (alias %s-%03d) ;; disabled" base example
     else Format.fprintf ppf "@ (alias %s-%03d)" base example
   in
