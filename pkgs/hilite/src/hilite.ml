@@ -82,9 +82,12 @@ let span ?(escape = true) class_gen t =
   span_gen (String.concat "-" (drop_last t))
 ;;
 
+(* the class prefix is the language, lowercased, so that ```Go and ```go reach
+   the same stylesheet rules *)
 let mk_block ?escape lang =
+  let prefix = String.lowercase_ascii lang in
   List.map
-    (List.map (fun (scope, str) -> (span ?escape (fun c -> lang ^ "-" ^ c) scope) str))
+    (List.map (fun (scope, str) -> (span ?escape (fun c -> prefix ^ "-" ^ c) scope) str))
 ;;
 
 let rec highlight_tokens i spans line = function
