@@ -86,7 +86,7 @@ proceed anyway ;)
 | ---------------------------------------- | ---------------- | ----------------------- |
 | [NetActuate](https://netactuate.com)     | Compute, transit | 2026-04-09 - present    |
 | [Oxide Computer](https://oxide.computer) | Compute          | 2026-04-03 - present    |
-| [Anthropic](https://anthropic.com)       | Claude for OSS   | 2026-03-03 - 2026-09-03 |
+| [Anthropic](https://anthropic.com)       | Claude for OSS   | 2026-03-03 - 2027-03-04 |
 | [Fastly](https://fastly.com)             | Service credit   | 2026-02-16 - present    |
 | [Garnix](https://garnix.io)              | CI credit        | 2025-09-04 - 2026-07-15 |
 | [Cloudflare](https://cloudflare.com)     | Enterprise plan  | 2025-08-07 - present    |
