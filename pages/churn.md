@@ -2,11 +2,16 @@
 title: Churn
 description: Churn, baby, churn!
 created: 2024-03-30
-updated: 2026-02-12
+updated: 2026-09-06
+hidden: true
 metas:
   go-import: ysun.co/churn git https://github.com/stepbrobd/churn.git
   go-source: ysun.co/churn https://github.com/stepbrobd/churn https://github.com/stepbrobd/churn/tree/master{/dir} https://github.com/stepbrobd/churn/blob/master{/dir}/{file}#L{line}
 ---
+
+> This is a very old project of mine that is no longer maintained. This page is
+> kept for archival purposes only. No one should ever use it in its current
+> state as is without extensive audit and modifications.
 
 ## Motivation
 
