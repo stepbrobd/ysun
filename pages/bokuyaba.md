@@ -2,25 +2,25 @@
 title: Otaku rant
 description: A review of manga and anime series "The Dangers in My Heart"
 created: 2024-03-31
-updated: 2026-02-12
+updated: 2026-09-14
 ---
 
 I've caught up with the manga, and finished the second season of the anime
 yesterday.
 
-In the digital age, where content is king and the competition for attention is
+In the digital age where content is king and the competition for attention is
 fierce, the art of storytelling faces both unprecedented challenges and
-opportunities. School romance-themed anime, in particular, is a genre that has
-seen a surge in popularity and also, a saturation of content.
+opportunities. School romance themed anime in particular, is a genre that has
+seen a surge in popularity and also content saturation.
 
 - Girlfriend, Girlfriend
 - My Dress-Up Darling
 - Shikimori's Not Just a Cutie
 - ...
 
-It's not that these series are bad; in fact, many of them are quite enjoyable.
-But the sheer volume of similar stories can make it difficult for any one series
-to stand out.
+I would say most of these series are not that bad and in fact many of them are
+quite enjoyable. But the sheer volume of similar stories can make it difficult
+for any one series to stand out.
 
 The key to success in this saturated market is not just in the telling, but in
 the crafting of tales that weave together the timeless elements of classic
