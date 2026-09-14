@@ -5,7 +5,8 @@ created: 2023-09-17
 updated: 2025-05-14
 ---
 
-Photo dump from HackZurich 2023 at Zurich, Switzerland.
+Photo dump from HackZurich 2023 at Zurich, Switzerland. See the project details
+[here](/finch) (archived).
 
 ![Halle 550](/assets/static/img/hackzurich-23-1.avif)
 

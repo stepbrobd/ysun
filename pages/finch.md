@@ -6,6 +6,7 @@ updated: 2026-02-12
 metas:
   go-import: ysun.co/finch git https://github.com/stepbrobd/finch.git
   go-source: ysun.co/finch https://github.com/stepbrobd/finch https://github.com/stepbrobd/finch/tree/master{/dir} https://github.com/stepbrobd/finch/blob/master{/dir}/{file}#L{line}
+hidden: true
 ---
 
 ## Credit
