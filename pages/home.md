@@ -6,6 +6,11 @@ updated: 2026-09-14
 url: /index.html
 ---
 
+<!---
+![Weekend outing with labmates (Walden Pond)](/assets/static/img/home-1.avif)
+![You just have to go out and touch grass once in a while (Uji Shrine)](/assets/static/img/home-2.avif)
+-->
+
 I am a PhD student at ENS de Lyon [Avalon Team](https://avalon.ens-lyon.fr) and
 Inria [DataMove Team](https://team.inria.fr/datamove) co-supervised under
 [Olivier Richard](https://datamove.imag.fr/olivier.richard) and
@@ -33,11 +38,11 @@ I'm generally interested in systems and theory ([CV](/cv)), topics include:
 My contact info is hidden within the
 [source code of this site](https://github.com/search?q=repo%3Astepbrobd%2Fysun+%22hidden%3A+true%22+%22redirect%3A+https%3A%2F%2F%22+%22layout%3A+redirect%22&type=code).
 Search for the platform you want to reach me on in all lowercase (e.g.
-[`github`](/github), [`linkedin`](/linkedin), etc.). You can reach me directly
-with [Matrix](/matrix) or email
+[`github`](/github), [`linkedin`](/linkedin), etc.). Or you can reach me
+directly over [Matrix](/matrix) or email
 (`echo -n 'eXN1bkBkdWNrLmNvbQo=' | base64 --decode`).
 
-![Weekend outing with labmates (Walden Pond)](/assets/static/img/home-1.avif)
+![Guess my OS ;)](/assets/static/img/home-3.avif)
 
 I daily drive a Framework Laptop 13 with [NixOS](https://nixos.org) and a
 14-inch MacBook Pro with
@@ -53,8 +58,6 @@ nobody uses (daily), swimming (sometimes, but I used to swim competitively), and
 playing [osu!](/osu) (mostly std on a Wacom Intuos Pro originally bought for a
 digital art class). Streaming services? Apple Music all the way
 ([playlist](/music))!
-
-![You just have to go out and touch grass once in a while (Uji Shrine)](/assets/static/img/home-2.avif)
 
 Random recommendations:
 
@@ -80,6 +83,8 @@ Random recommendations:
 - Secure NTP with [`ntpd-rs`](https://github.com/pendulum-project/ntpd-rs) NTS
 - Tailscale doesn't cut it? Try [ranet](https://github.com/nickcao/ranet) IPsec
   full mesh
+
+![Recommended lifestyle?](/assets/static/img/home-4.avif)
 
 Huge thanks to the following sponsors! They were warned (or not?) and chose to
 proceed anyway ;)
