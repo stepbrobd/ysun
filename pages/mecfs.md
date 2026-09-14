@@ -2,8 +2,15 @@
 title: ME/CFS & Long COVID
 description: A summary of research related to ME/CFS and Long COVID
 created: 2022-12-07
-updated: 2026-02-12
+updated: 2026-09-14
+hidden: true
 ---
+
+> Note that this article outdated and may require extensive fact checking to be
+> reused. Due to above reason, I've marked this page as hidden and can only be
+> accessed with a direct link. Most if not all of the below proposal should
+> already be included in <https://arxiv.org/abs/2404.04345> and/or
+> <https://www.frontiersin.org/journals/neurology/articles/10.3389/fneur.2025.1691147>.
 
 This post is an introduction to my bachelor's thesis background information,
 related work done before writing the final draft.
