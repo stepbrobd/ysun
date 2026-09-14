@@ -29,7 +29,7 @@ I'm generally interested in systems and theory ([CV](/cv)), topics include:
 - Reproducible HPC testbed infrastructure, experiment description, configuration
   and reconfiguration formalization
 - Programmable networks via eBPF/XDP/TC, and hardware/software codesign for
-  package processing
+  packet processing
 - Software defined networks, segment routing, and overlay networks
 - Formal verification of consistency and safety properties in distributed
   systems
