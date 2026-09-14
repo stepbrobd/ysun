@@ -2,8 +2,12 @@
 title: My outdated Nix way
 description: Manage your system configurations + packages + ... my Nix way
 created: 2023-12-08
-updated: 2026-02-12
+updated: 2026-09-14
+hidden: true
 ---
+
+> Note that this page is no longer maintained and has been marked as hidden. See
+> [github:stepbrobd/inc](https://github.com/stepbrobd/inc) for details.
 
 Outdated and I'm too lazy to change anything here, just read my code.
 
