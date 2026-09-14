@@ -161,7 +161,7 @@ accounts, but the module can't manage those, more on this later).
     persons = {
       ysun = {
         displayName = "Yifei";
-        mailAddresses = [ "ysun@hey.com" ];
+        mailAddresses = [ "ysun@duck.com" ];
         groups = [ "hydra.admins" "hydra.users" ];
       };
     };
@@ -379,7 +379,7 @@ in
         ysun = {
           displayName = "Yifei";
           legalName = "Yifei Sun";
-          mailAddresses = [ "ysun@hey.com" ];
+          mailAddresses = [ "ysun@duck.com" ];
           groups = [ "hydra.admins" "hydra.users" ];
         };
       };

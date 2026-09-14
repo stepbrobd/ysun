@@ -2,7 +2,7 @@
 title: Yifei Sun
 description: Yifei Sun - 孫 奕飛 (そん いーふぇい)
 created: 2019-08-11
-updated: 2026-04-08
+updated: 2026-09-14
 url: /index.html
 ---
 
@@ -23,10 +23,13 @@ undergrad at University of Utah advised under
 I'm generally interested in systems and theory ([CV](/cv)), topics include:
 
 - Reproducible HPC testbed infrastructure, experiment description, configuration
-  and reconfiguration formalization, and programmable networking via eBPF/XDP
+  and reconfiguration formalization
+- Programmable networks via eBPF/XDP/TC, and hardware/software codesign for
+  package processing
+- Software defined networks, segment routing, and overlay networks
 - Formal verification of consistency and safety properties in distributed
   systems
-- Constructive type theory and mechanized proofs
+- Type theory and mechanized proofs
 
 My contact info is hidden within the
 [source code of this site](https://github.com/search?q=repo%3Astepbrobd%2Fysun+%22hidden%3A+true%22+%22redirect%3A+https%3A%2F%2F%22+%22layout%3A+redirect%22&type=code).
