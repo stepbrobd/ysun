@@ -13,9 +13,8 @@ Inria [DataMove Team](https://team.inria.fr/datamove) co-supervised under
 my master's from Northeastern University advised by
 [Ji-Yong Shin](https://www.jiyongshin.info) at
 [Systems Research Group](https://srg.khoury.northeastern.edu). I was a visiting
-researcher advised by [Tomoharu Ugawa](https://tugawa.github.io/index-e.html) at
-University of Tokyo
-[Computing Software Group](https://www.csg.ci.i.u-tokyo.ac.jp/en). I finished my
+researcher advised by [Tomoharu Ugawa](https://tugawa.github.io/index.html) at
+University of Tokyo [PLAS Group](https://plasgroup.github.io). I finished my
 undergrad at University of Utah advised under
 [Shad Roundy](https://iss.mech.utah.edu/shad-roundy) and
 [Tucker Hermans](https://robot-learning.cs.utah.edu/thermans).
@@ -35,8 +34,8 @@ My contact info is hidden within the
 [source code of this site](https://github.com/search?q=repo%3Astepbrobd%2Fysun+%22hidden%3A+true%22+%22redirect%3A+https%3A%2F%2F%22+%22layout%3A+redirect%22&type=code).
 Search for the platform you want to reach me on in all lowercase (e.g.
 [`github`](/github), [`linkedin`](/linkedin), etc.). You can reach me directly
-with [Matrix](/matrix), Discord (use my GitHub username), or email
-(`echo -n 'eXN1bkBoZXkuY29tCg==' | base64 --decode`).
+with [Matrix](/matrix) or email
+(`echo -n 'eXN1bkBkdWNrLmNvbQo=' | base64 --decode`).
 
 ![Weekend outing with labmates (Walden Pond)](/assets/static/img/home-1.avif)
 
