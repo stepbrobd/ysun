@@ -5,13 +5,13 @@
 
 buildDunePackage (finalAttrs: {
   pname = "camlmath";
-  version = "2026.903.1";
+  version = "2026.917.0";
 
   src = fetchFromGitHub {
     owner = "stepbrobd";
     repo = "camlmath";
     tag = finalAttrs.version;
-    hash = "sha256-+E4xXsN70o5j7JQLvM6onyuAzE9JQ1v/aDGXVNSvAf4=";
+    hash = "sha256-0T0zA+3ZGDxJpYiX08r8cHmslTY3dRuvhlrjcnd9Nqc=";
   };
 
   env.DUNE_CACHE = "disabled";
