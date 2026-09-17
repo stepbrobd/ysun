@@ -319,11 +319,12 @@ Everything else in this repo is declarative, so why not git repos too?
 
 [Miroir](https://github.com/stepbrobd/miroir) (see also [here](/miroir)) is a
 CLI tool (and index daemon) that manages repos across multiple git forges from a
-single TOML config ([`repos/config.toml`](repos/config.toml)). Each repo
-declares its description, visibility, and archive status. Each platform declares
-a forge domain and username. Miroir converges the declared state onto all
-configured forges: creating repos that don't exist, updating metadata on ones
-that do, and archiving repos marked `archived = true`.
+single TOML config
+([`repos/config.toml`](https://github.com/stepbrobd/inc/blob/master/repos/config.toml)).
+Each repo declares its description, visibility, and archive status. Each
+platform declares a forge domain and username. Miroir converges the declared
+state onto all configured forges: creating repos that don't exist, updating
+metadata on ones that do, and archiving repos marked `archived = true`.
 
 The practical motivation is multi-forge redundancy. All repos are mirrored to
 GitHub, GitLab, Codeberg, and SourceHut so that no single forge going down (or
