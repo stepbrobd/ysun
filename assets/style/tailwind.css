@@ -48,7 +48,7 @@
   }
 
   .math-display {
-    @apply overflow-x-scroll;
+    @apply overflow-x-auto;
   }
 }
 
