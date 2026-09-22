@@ -61,6 +61,11 @@ digital art class). Streaming services? Apple Music all the way
 
 Random recommendations:
 
+- Get your connection statistics to Fastly with my
+  [open source](https://github.com/stepbrobd/howfastly)
+  [speedtest tool](https://speed.edgecompute.app)
+- Parallel NixOS deployment tool
+  [Colmena](https://github.com/nix-community/colmena) which I maintain ;)
 - Paid search engine [Kagi](https://kagi.com), you control the ranking
 - [NixOS](https://nixos.org) for your next OS
 - Self-hostable code search engine [Zoekt](https://github.com/sourcegraph/zoekt)
