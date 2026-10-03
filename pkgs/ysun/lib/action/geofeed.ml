@@ -7,7 +7,7 @@ type entry =
   }
 
 let header =
-  "# StepBroBD, Inc. | noc@stepbrobd.com | AS10779, AS18932 | 2026-08-19T00:00:00Z"
+  "# StepBroBD, Inc. | noc@stepbrobd.com | AS10779, AS18932 | 2026-10-03T00:00:00Z"
 ;;
 
 let entries =
@@ -213,22 +213,6 @@ let nodes =
         ; region = "DE-SN"
         ; city = "Falkenstein"
         ; postal = "08223"
-        }
-    }
-  ; { name = "Oxide"
-    ; v4 =
-        { prefix = "23.161.104.138/32"
-        ; country = "US"
-        ; region = "US-CA"
-        ; city = "Fremont"
-        ; postal = "94536"
-        }
-    ; v6 =
-        { prefix = "2602:f590::23:161:104:138/128"
-        ; country = "US"
-        ; region = "US-CA"
-        ; city = "Fremont"
-        ; postal = "94536"
         }
     }
   ; { name = "Baldy"
