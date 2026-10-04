@@ -4,6 +4,7 @@
 , deno
 , dune-build-info
 , libxml2
+, omd
 , tailwindcss_4
 , yocaml
 , yocaml_eio
@@ -46,6 +47,7 @@ buildDunePackage (finalAttrs: {
   buildInputs = [
     cmdliner
     dune-build-info
+    omd
     yocaml
     yocaml_eio
     yocaml_liquid

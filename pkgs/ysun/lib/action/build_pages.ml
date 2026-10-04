@@ -57,6 +57,29 @@ let template_chain (module R : Sigs.RESOLVER) tmpl_type template_name =
   | Error -> apply template_name >>> apply "error/generic.liquid"
 ;;
 
+(* first site absolute image, "//" starts a protocol relative remote url *)
+let find_og_image md =
+  let rec inline : _ Omd.inline -> string option = function
+    | Image (_, { destination = d; _ })
+      when String.starts_with ~prefix:"/" d && not (String.starts_with ~prefix:"//" d) ->
+      Some d
+    | Concat (_, xs) -> List.find_map inline xs
+    | Emph (_, x) | Strong (_, x) | Sup (_, x) | Link (_, { label = x; _ }) -> inline x
+    | Image _ | Text _ | Code _ | Hard_break _ | Soft_break _ | Html _ | Math _ -> None
+  and block : _ Omd.block -> string option = function
+    | Paragraph (_, x) | Heading (_, _, x) -> inline x
+    | List (_, _, _, items) -> List.find_map (List.find_map block) items
+    | Blockquote (_, xs) -> List.find_map block xs
+    | Definition_list (_, l) ->
+      List.find_map (fun { Omd.term; defs } -> List.find_map inline (term :: defs)) l
+    | Table (_, header, rows) ->
+      List.find_map inline (List.map fst header @ List.concat rows)
+    | Footnote_list (_, l) -> List.find_map (fun { Omd.content; _ } -> inline content) l
+    | Thematic_break _ | Code_block _ | Html_block _ -> None
+  in
+  List.find_map block (Omd.of_string md)
+;;
+
 let process_file
       (module R : Sigs.RESOLVER)
       ~available_templates
@@ -77,12 +100,11 @@ let process_file
     (R.track_common_dependencies
      >>> Yocaml.Pipeline.track_files deps
      >>> lift (fun () ->
+       let og_image =
+         Option.fold ~none:R.Url.og_image ~some:R.Url.absolute (find_og_image content)
+       in
        let meta =
-         Model.Page.inject_og_metas
-           ~site_url:R.Url.site
-           ~og_image:R.Url.og_image
-           pre_meta
-           url
+         Model.Page.inject_og_metas ~site_url:R.Url.site ~og_image pre_meta url
        in
        let data = Model.Page.normalize meta in
        let pages_data = [ "pages", Yocaml.Data.list_of normalize_page_item menu_pages ] in
