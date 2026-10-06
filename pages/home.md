@@ -97,7 +97,7 @@ proceed anyway ;)
 | Sponsor                                  | Support          | Since                   |
 | ---------------------------------------- | ---------------- | ----------------------- |
 | [NetActuate](https://netactuate.com)     | Compute, transit | 2026-04-09 - present    |
-| [Oxide Computer](https://oxide.computer) | Compute          | 2026-04-03 - present    |
+| [Oxide Computer](https://oxide.computer) | Compute          | 2026-04-03 - 2026-10-06 |
 | [Anthropic](https://anthropic.com)       | Claude for OSS   | 2026-03-03 - 2027-03-04 |
 | [Fastly](https://fastly.com)             | Service credit   | 2026-02-16 - present    |
 | [Garnix](https://garnix.io)              | CI credit        | 2025-09-04 - 2026-07-15 |
