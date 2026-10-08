@@ -1,5 +1,6 @@
 type t =
   { title : string
+  ; heading : string option
   ; description : string option
   ; created : string
   ; updated : string
@@ -34,6 +35,7 @@ let validate_string_pairs =
 let validate_underlying_page fields =
   let open Yocaml.Data.Validation in
   let+ title = required fields "title" string
+  and+ heading = optional fields "heading" string
   and+ description = optional fields "description" string
   and+ created = required fields "created" string
   and+ updated = required fields "updated" string
@@ -45,6 +47,7 @@ let validate_underlying_page fields =
   let hidden = Option.value ~default:false hidden in
   let metas = Option.value ~default:[] metas in
   { title
+  ; heading
   ; description
   ; created
   ; updated
@@ -79,6 +82,7 @@ let escape s =
 
 let normalize
       { title
+      ; heading
       ; description
       ; created
       ; updated
@@ -94,6 +98,8 @@ let normalize
   let open Yocaml.Data in
   let escaped v = option string (Option.map escape v) in
   [ "title", string (escape title)
+  ; (* raw html for h1 but `title` for head and feeds *)
+    "heading", option string heading
   ; "description", escaped description
   ; "created", string (escape created)
   ; "updated", string (escape updated)

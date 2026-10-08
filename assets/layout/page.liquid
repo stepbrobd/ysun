@@ -1,5 +1,5 @@
 <article lang="en-US" class="prose container mx-auto">
-  <h1>{{ title }}</h1>
+  <h1>{% if heading %}{{ heading }}{% else %}{{ title }}{% endif %}</h1>
   <small class="text-nord-9 flex flex-row items-center gap-2">
     <time>{{ created }}<sup class="text-xs text-nord-10">c</sup></time>
     <span>&#xB7;</span>

@@ -1,5 +1,6 @@
 type t =
   { title : string
+  ; heading : string option
   ; description : string option
   ; created : string
   ; updated : string
