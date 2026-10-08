@@ -3,7 +3,7 @@ title: Yifei Sun
 heading: '<span class="flex flex-wrap items-baseline justify-between gap-x-4"><span><ruby lang="ja-JP">孫<rt>そん</rt></ruby> <ruby lang="ja-JP">奕<rt>いー</rt>飛<rt>ふぇい</rt></ruby></span><span>Yifei Sun</span></span>'
 description: Yifei Sun - 孫 奕飛 (そん いーふぇい)
 created: 2019-08-11
-updated: 2026-09-14
+updated: 2026-10-08
 url: /index.html
 ---
 
