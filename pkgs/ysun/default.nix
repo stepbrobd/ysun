@@ -5,6 +5,7 @@
 , dune-build-info
 , libxml2
 , omd
+, stdenv
 , tailwindcss_4
 , yocaml
 , yocaml_eio
@@ -36,7 +37,12 @@ buildDunePackage (finalAttrs: {
     ];
   };
 
-  env.DUNE_CACHE = "disabled";
+  env = {
+    DUNE_CACHE = "disabled";
+  } // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
+    # TODO: FIXME: bun compiled tailwindcss dies with SIGTRAP at startup in darwin sandbox unless the jsc jit is off
+    BUN_JSC_useJIT = "0";
+  };
 
   nativeBuildInputs = [
     deno
