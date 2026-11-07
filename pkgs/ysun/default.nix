@@ -37,6 +37,8 @@ buildDunePackage (finalAttrs: {
     ];
   };
 
+  outputs = [ "out" ];
+
   env = {
     DUNE_CACHE = "disabled";
   } // lib.optionalAttrs stdenv.hostPlatform.isDarwin {
