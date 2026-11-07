@@ -27,7 +27,7 @@ buildDunePackage (finalAttrs: {
   doCheck = true;
 
   nativeCheckInputs = [
-    mdx.bin
+    mdx.out
   ];
 
   checkInputs = [
