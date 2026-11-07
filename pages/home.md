@@ -3,7 +3,7 @@ title: Yifei Sun
 heading: '<span class="flex flex-wrap items-baseline justify-between gap-x-4"><span><ruby lang="ja-JP">孫<rt>そん</rt></ruby> <ruby lang="ja-JP">奕<rt>いー</rt>飛<rt>ふぇい</rt></ruby></span><span>Yifei Sun</span></span>'
 description: Yifei Sun - 孫 奕飛 (そん いーふぇい)
 created: 2019-08-11
-updated: 2026-10-08
+updated: 2026-11-07
 url: /index.html
 ---
 
@@ -89,6 +89,8 @@ Random recommendations:
 - Secure NTP with [`ntpd-rs`](https://github.com/pendulum-project/ntpd-rs) NTS
 - Tailscale doesn't cut it? Try [ranet](https://github.com/nickcao/ranet) IPsec
   full mesh
+- I started [ranet3](https://ranet3.com), a high performance policy routed IPsec
+  mesh SD-WAN
 
 ![Recommended lifestyle?](/assets/static/img/home-4.avif)
 
