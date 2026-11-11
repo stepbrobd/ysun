@@ -3,7 +3,7 @@ title: Yifei Sun
 heading: '<span class="flex flex-wrap items-baseline justify-between gap-x-4"><span><ruby lang="ja-JP">孫<rt>そん</rt></ruby> <ruby lang="ja-JP">奕<rt>いー</rt>飛<rt>ふぇい</rt></ruby></span><span>Yifei Sun</span></span>'
 description: Yifei Sun - 孫 奕飛 (そん いーふぇい)
 created: 2019-08-11
-updated: 2026-11-07
+updated: 2026-11-11
 url: /index.html
 ---
 
@@ -102,6 +102,7 @@ proceed anyway ;)
 | [NetActuate](https://netactuate.com)     | Compute, transit | 2026-04-09 - present    |
 | [Oxide Computer](https://oxide.computer) | Compute          | 2026-04-03 - 2026-10-06 |
 | [Anthropic](https://anthropic.com)       | Claude for OSS   | 2026-03-03 - 2027-03-04 |
+| [OpenAI](https://openai.com)             | Codex for OSS    | 2026-11-11 - 2027-05-11 |
 | [Fastly](https://fastly.com)             | Service credit   | 2026-02-16 - present    |
 | [Garnix](https://garnix.io)              | CI credit        | 2025-09-04 - 2026-07-15 |
 | [Cloudflare](https://cloudflare.com)     | Enterprise plan  | 2025-08-07 - present    |
